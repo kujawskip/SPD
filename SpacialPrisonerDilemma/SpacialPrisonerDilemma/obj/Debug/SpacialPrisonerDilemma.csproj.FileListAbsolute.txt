@@ -1,0 +1,14 @@
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\bin\Debug\SpacialPrisonerDilemma.exe.config
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\bin\Debug\SpacialPrisonerDilemma.exe
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\bin\Debug\SpacialPrisonerDilemma.pdb
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma.csprojResolveAssemblyReference.cache
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\MainWindow.g.cs
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\App.g.cs
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma_MarkupCompile.cache
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma_MarkupCompile.lref
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\MainWindow.baml
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma.g.resources
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma.Properties.Resources.resources
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma.csproj.GenerateResource.Cache
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma.exe
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SpacialPrisonerDilemma\obj\Debug\SpacialPrisonerDilemma.pdb
