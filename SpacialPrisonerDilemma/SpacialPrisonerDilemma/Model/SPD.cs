@@ -8,6 +8,18 @@ namespace SpacialPrisonerDilemma.Model
 {
     class SPD
     {
+        public Cell this[int i, int j]
+        {
+            get
+            {
+                return cells[i, j];
+            }
+            set
+            {
+                cells[i, j] = value;
+            }
+        }
+
         private static T[] ReduceDim<T>(T[,] input)
         {
             var result = new List<T>();
