@@ -76,15 +76,15 @@ namespace SpacialPrisonerDilemma.View
         private volatile bool cont = false;
 
         int delay = 1000;
-        Task iteration;
+        Task<int> iteration;
         private async Task SPDLooper()
         {
              while (cont)
              {
                 iteration = Task.Run(async () => await spd.IterateAsync());
-                await iteration;
+                if (await iteration == 0) cont = false;
                     UpdateImage();
-                await Task.Delay(delay);
+                //await Task.Delay(delay);
              }
         }
         private async Task StartSPD()
@@ -116,7 +116,7 @@ namespace SpacialPrisonerDilemma.View
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             cont = false;
-            iteration.Wait();
+            iteration?.Wait();
             Model.SPD.Clear();
         }
 
