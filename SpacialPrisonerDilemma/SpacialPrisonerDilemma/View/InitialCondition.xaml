@@ -12,7 +12,7 @@
             <Slider Name="RandomSize" Height="21"  Minimum="2" Maximum="120" Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
         <TextBlock Text="{Binding ElementName=RandomSize, Path=Value}"></TextBlock>
         </StackPanel>
-        <ComboBox Name="ComboBox" HorizontalAlignment="Left" Height="20" Margin="386,48,0,0" VerticalAlignment="Top" Width="74" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox Name="ComboBox" HorizontalAlignment="Left" Height="20" Margin="386,48,0,0" VerticalAlignment="Top" Width="74"/>
         <ComboBox x:Name="ComboBox_Copy" HorizontalAlignment="Left" Height="20" Margin="20,23,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ComboBox_SelectionChanged"/>
     </Grid>
 </Window>

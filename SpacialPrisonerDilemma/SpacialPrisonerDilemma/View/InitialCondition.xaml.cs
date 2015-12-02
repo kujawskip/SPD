@@ -36,6 +36,17 @@ namespace SpacialPrisonerDilemma.View
             this.DataContext = this;
             ConditionNames = new List<string>();
             Conditions = new Dictionary<string, InitialConditions>();
+            var ic1 = InitialConditions.DonutFactory();
+            var ic2 = InitialConditions.DonutFactory(true);
+            ConditionNames.AddRange(new[]{ic1.Name,ic2.Name});
+            Conditions.Add(ic1.Name, ic1);
+            Conditions.Add(ic2.Name, ic2);
+            ic1 = InitialConditions.CircleFactory();
+            ic2 = InitialConditions.CircleFactory(true);
+            ConditionNames.AddRange(new[] { ic1.Name, ic2.Name });
+            Conditions.Add(ic1.Name, ic1);
+            Conditions.Add(ic2.Name, ic2);
+            ComboBox_Copy.ItemsSource = ConditionNames;
             var image2 = new Image()
             {
                 Source = SPDBrushes.GenerateLegend(Legend.Height)
@@ -140,7 +151,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Condition = Conditions[ConditionNames[ComboBox_Copy.SelectedIndex]];
         }
 
 

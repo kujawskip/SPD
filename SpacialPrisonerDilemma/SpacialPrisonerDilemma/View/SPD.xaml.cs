@@ -116,7 +116,7 @@ namespace SpacialPrisonerDilemma.View
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             cont = false;
-            iteration?.Wait();
+          if (iteration!=null) iteration.Wait();
             Model.SPD.Clear();
         }
 
@@ -142,6 +142,7 @@ namespace SpacialPrisonerDilemma.View
 
         public static void CreateBrushes(int count)
         {
+            
             BrushArray = new Brush[count];
             for (int p = 0; p < count; p++)
             {
@@ -150,7 +151,9 @@ namespace SpacialPrisonerDilemma.View
         }
         public static Brush GetBrush(int p)
         {
-            return BrushArray[p];
+                return BrushArray[p];
+           
+            
         }
         private static string[] Descriptions;
 
