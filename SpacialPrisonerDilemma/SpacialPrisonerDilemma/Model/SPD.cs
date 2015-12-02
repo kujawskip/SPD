@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Model
 {
-    class SPD
+    public class SPD
     {
         public Cell this[int i, int j]
         {
@@ -84,7 +84,7 @@ namespace SpacialPrisonerDilemma.Model
             Singleton.BothBetrayedPoints = bothBetrayed;
             Singleton.cells = new Cell[initialConfig.GetLength(0), initialConfig.GetLength(1)];
             for (int i = 0; i < initialConfig.GetLength(0); i++)
-                for (int j = 0; i < initialConfig.GetLength(1); j++)
+                for (int j = 0; j < initialConfig.GetLength(1); j++)
                 {
                     Singleton.cells[i, j] = new Cell(initialConfig[i, j]);
                     Singleton.coords.Add(Singleton.cells[i, j], new Tuple<int, int>(i, j));
@@ -131,7 +131,7 @@ namespace SpacialPrisonerDilemma.Model
         {
             var str = new IStrategy[initialConfig.GetLength(0), initialConfig.GetLength(1)];
             for (int i = 0; i < initialConfig.GetLength(0); i++)
-                for (int j = 0; i < initialConfig.GetLength(1); j++)
+                for (int j = 0; j < initialConfig.GetLength(1); j++)
                     str[i, j] = IntegerStrategy.Strategies[initialConfig[i, j]];
             Initialize(str, stepsPerIteration, noneBetrayed, wasBetrayed, wasntBetrayed, bothBetrayed);
         }
@@ -140,7 +140,7 @@ namespace SpacialPrisonerDilemma.Model
         {
             var str = new IStrategy[initialConfig.GetLength(0), initialConfig.GetLength(1)];
             for (int i = 0; i < initialConfig.GetLength(0); i++)
-                for (int j = 0; i < initialConfig.GetLength(1); j++)
+                for (int j = 0; j < initialConfig.GetLength(1); j++)
                     str[i, j] = IntegerStrategy.Strategies[(int)initialConfig[i, j]];
             Initialize(str, stepsPerIteration, noneBetrayed, wasBetrayed, wasntBetrayed, bothBetrayed);
         }
@@ -160,10 +160,10 @@ namespace SpacialPrisonerDilemma.Model
         {
             ForEachCell(x =>
             {
-                var skirmishes = from keyVal in singleton.skirmishes
+                var Skirmishes = from keyVal in singleton.skirmishes
                                  where keyVal.Key.Item1 == x
                                  select keyVal.Value;
-                foreach (var s in skirmishes) s.SingleMove();
+                foreach (var s in Skirmishes) s.SingleMove();
             });
             foreach (var skirmish in skirmishes.Values)
                 skirmish.EndStep();
@@ -177,10 +177,10 @@ namespace SpacialPrisonerDilemma.Model
         {
             var tasks = ReduceDim(ForEachCell(x => Task.Run(() =>
               {
-                  var skirmishes = from keyVal in singleton.skirmishes
+                  var Skirmishes = from keyVal in singleton.skirmishes
                                    where keyVal.Key.Item1 == x
                                    select keyVal.Value;
-                  foreach (var s in skirmishes) s.SingleMove();
+                  foreach (var s in Skirmishes) s.SingleMove();
               })));
             await Task.WhenAll(tasks);
             foreach (var skirmish in skirmishes.Values)
@@ -192,7 +192,7 @@ namespace SpacialPrisonerDilemma.Model
             await Task.WhenAll(tasks);
         }
 
-        protected void Iterate()
+        protected internal void Iterate()
         {
             for (int i = 0; i < StepCount; i++)
                 Step();
@@ -201,7 +201,7 @@ namespace SpacialPrisonerDilemma.Model
             CacheToHistory();
         }
 
-        protected async Task IterateAsync()
+        public async Task IterateAsync()
         {
             for (int i = 0; i < StepCount; i++)
             {
@@ -264,6 +264,7 @@ namespace SpacialPrisonerDilemma.Model
             return result.Where(cell => cell != null).ToArray();
         }
 
+        
         private Cell GetCell(int x, int y)
         {
             if (x < 0 || x >= cells.GetLength(0) || y < 0 || y >= cells.GetLength(1)) return null;

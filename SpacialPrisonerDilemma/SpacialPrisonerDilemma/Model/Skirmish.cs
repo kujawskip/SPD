@@ -17,6 +17,7 @@ namespace SpacialPrisonerDilemma.Model
         public Skirmish(Cell c1, Cell c2)
         {
             cells = new Tuple<Cell, Cell>(c1, c2);
+            story = new List<Tuple<bool, bool>>();
         }
 
         internal void SingleMove()
