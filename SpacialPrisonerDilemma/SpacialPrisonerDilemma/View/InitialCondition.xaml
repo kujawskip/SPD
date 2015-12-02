@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SpacialPrisonerDilemma.View.InitialCondition"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="InitialCondition" Height="326.866" Width="510.343">
+        Title="InitialCondition" Height="352.866" Width="510.343">
     <Grid Margin="0,0,-35,0">
         <ListBox HorizontalAlignment="Left" Height="24" Margin="29,10,0,0" VerticalAlignment="Top" Width="352"/>
         <Canvas Name="Canvas" HorizontalAlignment="Left" Height="204" Margin="20,57,0,0" VerticalAlignment="Top" Width="310"/>
@@ -10,6 +10,9 @@
         <Button Content="Random" HorizontalAlignment="Left" Height="20" Margin="29,266,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click"/>
         <Button Content="Accept" HorizontalAlignment="Left" Height="20" Margin="112,266,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
         <Canvas Name="Legend" HorizontalAlignment="Left" Height="147" Margin="350,126,0,0" VerticalAlignment="Top" Width="139"/>
-
+        <StackPanel Margin="29,291,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal">
+            <Slider Name="RandomSize" Height="21"  Minimum="2" Maximum="120" Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
+        <TextBlock Text="{Binding ElementName=RandomSize, Path=Value}"></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>

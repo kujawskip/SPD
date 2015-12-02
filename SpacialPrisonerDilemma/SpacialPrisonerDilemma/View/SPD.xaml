@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="SPD" Height="446.269" Width="646.343">
     <Canvas>
-        <Button Content="Button" HorizontalAlignment="Left" Height="21" Margin="184,384,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click"/>
+        <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Height="21" Margin="184,384,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click"/>
         <Canvas Name="Canvas" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390"/>
         <Canvas HorizontalAlignment="Right" Name="Legenda" Height="152" VerticalAlignment="Top" Width="196" Canvas.Left="432" Canvas.Top="130"/>
 

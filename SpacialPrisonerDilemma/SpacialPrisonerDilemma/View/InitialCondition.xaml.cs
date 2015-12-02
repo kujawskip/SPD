@@ -124,7 +124,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Condition = InitialConditions.GenerateRandom(10);
+            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

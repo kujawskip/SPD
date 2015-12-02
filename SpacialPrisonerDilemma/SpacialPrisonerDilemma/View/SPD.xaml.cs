@@ -117,7 +117,9 @@ namespace SpacialPrisonerDilemma.View
             if (cont == true)
             {
                 await StartSPD();
+                StartStop.Content = "Stop";
             }
+            else StartStop.Content = "Start";
         }
     }
 
