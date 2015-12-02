@@ -28,6 +28,7 @@ namespace SpacialPrisonerDilemma.Model
         Tuple<bool, bool> currentStep;
         internal void EndStep()
         {
+            if (currentStep == null) throw new Exception();
             story.Add(currentStep);
             currentStep = null;
         }

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SpacialPrisonerDilemma.View.SPD"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SPD" Height="446.269" Width="646.343">
+        Title="SPD" Height="446.269" Width="646.343" Closing="Window_Closing">
     <Canvas>
         <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Height="21" Margin="184,384,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click"/>
         <Canvas Name="Canvas" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390"/>

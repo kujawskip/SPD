@@ -23,18 +23,23 @@ namespace SpacialPrisonerDilemma.View
     {
         private Model.SPD spd;
         private int _width, _height;
-        public SPD(double[] payValues,int[,] Strategies)
+        double[] payValues;
+        int[,] strategies;
+
+        public SPD(double[] PayValues,int[,] Strategies)
         {
+            payValues = PayValues;
+            strategies = Strategies;
             InitializeComponent();
            
             spd = Model.SPD.Singleton;
-            Model.SPD.Initialize(Strategies,10,(float)payValues[0],(float)payValues[1],(float)payValues[2],(float)payValues[3]);
+            Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0]);
             var image = new Image() {Source = SPDBrushes.GenerateLegend(Legenda.Height),Width = Legenda.Width,Height = Canvas.Height};
-            _width = Strategies.GetLength(0);
-            _height = Strategies.GetLength(1);
+            _width = strategies.GetLength(0);
+            _height = strategies.GetLength(1);
             var image2 = new Image()
             {
-                Source = GenerateImage(spd, 0, 0, Strategies.GetLength(0), Strategies.GetLength(1))
+                Source = GenerateImage(spd, 0, 0, strategies.GetLength(0), strategies.GetLength(1))
             };
             Canvas.SetTop(image, 0);
             Canvas.SetLeft(image, 0);
@@ -70,21 +75,21 @@ namespace SpacialPrisonerDilemma.View
 
         private volatile bool cont = false;
 
+        int delay = 1000;
+        Task iteration;
         private async Task SPDLooper()
         {
              while (cont)
              {
-                 await spd.IterateAsync();
+                iteration = Task.Run(async () => await spd.IterateAsync());
+                await iteration;
                     UpdateImage();
+                await Task.Delay(delay);
              }
         }
         private async Task StartSPD()
         {
-            Task Task = Task.Factory.StartNew(async ()=> await SPDLooper());
-           
-
-
-            await Task;
+            await SPDLooper();
         }
 
         private int X = 0, Y = 0;
@@ -107,6 +112,14 @@ namespace SpacialPrisonerDilemma.View
                 BrushArray[p] = new SolidColorBrush(Color.FromRgb((byte)(255 - 25 * p), (byte)(50 * p>255?255:50*p), (byte)(25 * p)));
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            cont = false;
+            iteration.Wait();
+            Model.SPD.Clear();
+        }
+
         private Brush GetBrush(int p)
         {
             return SPDBrushes.GetBrush(p);

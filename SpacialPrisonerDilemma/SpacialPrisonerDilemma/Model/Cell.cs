@@ -63,9 +63,12 @@ namespace SpacialPrisonerDilemma.Model
             return cellList.First(x => x.Points == cellList.Max(y => y.Points)).Strategy;
         }
 
-        public void OptimizeStrategy()
+        public bool OptimizeStrategy()
         {
-            Strategy = GetBest(GetNeighbours().Concat(new Cell[] { this }));
+            var str = GetBest(GetNeighbours().Concat(new Cell[] { this }));
+            if (str == Strategy) return false;
+            Strategy = str;
+            return true;
         }
 
         internal Cell Clone()
