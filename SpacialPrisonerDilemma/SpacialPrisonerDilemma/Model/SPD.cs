@@ -24,7 +24,7 @@ namespace SpacialPrisonerDilemma.Model
         {
             var result = new List<T>();
             for (int i = 0; i < input.GetLength(0); i++)
-                for (int j = 0; i < input.GetLength(1); j++)
+                for (int j = 0; j < input.GetLength(1); j++)
                     result.Add(input[i, j]);
             return result.ToArray();
         }
@@ -175,13 +175,14 @@ namespace SpacialPrisonerDilemma.Model
 
         protected async Task StepAsync()
         {
-            var tasks = ReduceDim(ForEachCell(x => Task.Run(() =>
-              {
-                  var Skirmishes = from keyVal in singleton.skirmishes
-                                   where keyVal.Key.Item1 == x
-                                   select keyVal.Value;
-                  foreach (var s in Skirmishes) s.SingleMove();
-              })));
+            var ctasks = ForEachCell(x => Task.Run(() =>
+            {
+                var Skirmishes = from keyVal in singleton.skirmishes
+                                 where keyVal.Key.Item1 == x
+                                 select keyVal.Value;
+                foreach (var s in Skirmishes.ToArray()) s.SingleMove();
+            }));
+            var tasks = ReduceDim(ctasks);
             await Task.WhenAll(tasks);
             foreach (var skirmish in skirmishes.Values)
                 skirmish.EndStep();
