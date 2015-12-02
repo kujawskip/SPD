@@ -145,7 +145,7 @@ namespace SpacialPrisonerDilemma.View
             BrushArray = new Brush[count];
             for (int p = 0; p < count; p++)
             {
-                BrushArray[p] = new SolidColorBrush(Color.FromRgb((byte)(255 - 25 * p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p)));
+                BrushArray[p] = new SolidColorBrush(Color.FromRgb((byte)(256 - 15 * p>255?0:255 - 10*p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p)));
             }
         }
         public static Brush GetBrush(int p)

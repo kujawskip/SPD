@@ -33,7 +33,7 @@
             <TextBox Grid.Row="2" Grid.Column="3" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
             <TextBox Grid.Row="3" Grid.Column="3" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
         </Grid>
-        <Button Content="Button" Height="31" IsEnabled="{Binding NoError}" Canvas.Left="35" Canvas.Top="234" Width="48" Click="Button_Click" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Uruchom" Height="44" IsEnabled="{Binding NoError}" Canvas.Left="35" Canvas.Top="234" Width="66" Click="Button_Click" RenderTransformOrigin="0.5,0.5">
 
         </Button>
         <TextBlock Height="38" Canvas.Left="317" TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Canvas.Top="40" Width="88"/>

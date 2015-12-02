@@ -31,6 +31,8 @@ namespace SpacialPrisonerDilemma.View
         public InitialCondition()
         {
             InitializeComponent();
+            ComboBox.ItemsSource = Enum.GetValues(typeof (WhenBetray)).Cast<WhenBetray>();
+            ComboBox.SelectedIndex = 0;
             this.DataContext = this;
             ConditionNames = new List<string>();
             Conditions = new Dictionary<string, InitialConditions>();
@@ -41,7 +43,7 @@ namespace SpacialPrisonerDilemma.View
        
             Legend.Children.Add(image2);
         }
-        
+
         public DrawingImage GenerateImage(InitialConditionsGrid Grid, int X, int Y, int Width, int Height)
         {
             double CellWidth = Canvas.Width/Width;
@@ -136,6 +138,24 @@ namespace SpacialPrisonerDilemma.View
         private double scale = 1;
         private int X = 0, Y = 0;
 
-      
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+        private void Canvas_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!(ChangeCell.IsChecked.HasValue && ChangeCell.IsChecked.Value)) return;
+            if(ComboBox.SelectedIndex<0) return;
+            Point P = e.GetPosition(Canvas);
+            InitialConditions IC = Condition;
+            double X = P.X/(Canvas.Width/(IC.grid.CellGrid.GetLength(0)));
+            if (X >= IC.grid.CellGrid.GetLength(0) ) return;
+            double Y = P.Y/(Canvas.Height/(IC.grid.CellGrid.GetLength(1)));
+            if (Y >= IC.grid.CellGrid.GetLength(1) ) return;
+            IC.grid.CellGrid[(int) X, (int) Y].Value = ComboBox.SelectedIndex;
+            Condition = IC;
+        }
     }
 }
