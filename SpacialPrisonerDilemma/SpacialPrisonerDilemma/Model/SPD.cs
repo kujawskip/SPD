@@ -109,6 +109,11 @@ namespace SpacialPrisonerDilemma.Model
                 }
         }
 
+        internal static void Clear()
+        {
+            singleton = null;
+        }
+
         void ForEachCell(Action<Cell> action)
         {
             for (int x = 0; x < Singleton.cells.GetLength(0); x++)
@@ -197,7 +202,7 @@ namespace SpacialPrisonerDilemma.Model
         {
             for (int i = 0; i < StepCount; i++)
                 Step();
-            ForEachCell(x => x.OptimizeStrategy());
+            var changed = ReduceDim(ForEachCell(x => x.OptimizeStrategy()));
             ForEachCell(x => x.Clear());
             CacheToHistory();
         }
@@ -209,15 +214,16 @@ namespace SpacialPrisonerDilemma.Model
                 await StepAsync();
             }
             var tasks = ReduceDim(ForEachCell(c => Task.Run(() =>
-            {
-                c.OptimizeStrategy();
-            })));
+                c.OptimizeStrategy()
+            )));
             var optimizing = Task.WhenAll(tasks);
-            tasks = ReduceDim(ForEachCell(c => Task.Run(() =>
+            int changed = tasks.Select(x => x.Result).Count(x => x == true);
+            var tasks2 = ReduceDim(ForEachCell(c => Task.Run(() =>
             {
                 c.Clear();
             })));
-            await Task.WhenAll(tasks);
+            var skirTask = Singleton.skirmishes.Select(x => Task.Run(() => x.Value.Clear()));
+            await Task.WhenAll(tasks2.Concat(skirTask));
             CacheToHistory();
         }
 
