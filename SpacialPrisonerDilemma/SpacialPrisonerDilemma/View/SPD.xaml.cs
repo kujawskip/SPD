@@ -76,11 +76,11 @@ namespace SpacialPrisonerDilemma.View
              {
                  await spd.IterateAsync();
                     UpdateImage();
-                }
+             }
         }
         private async Task StartSPD()
         {
-            Task Task = Task.Run(() => SPDLooper());
+            Task Task = Task.Factory.StartNew(async ()=> await SPDLooper());
            
 
 
