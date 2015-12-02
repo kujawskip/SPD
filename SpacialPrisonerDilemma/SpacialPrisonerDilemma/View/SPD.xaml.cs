@@ -81,7 +81,7 @@ namespace SpacialPrisonerDilemma.View
         }
         private async Task StartSPD()
         {
-            Task Task = Task.Run((Func<Task>) SPDLooper);
+            Task Task = Task.Run(() => SPDLooper());
            
 
 
