@@ -9,7 +9,7 @@
         <Button Content="Button" HorizontalAlignment="Left" Height="19" Margin="350,82,0,0" VerticalAlignment="Top" Width="31"/>
         <Button Content="Random" HorizontalAlignment="Left" Height="20" Margin="29,266,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click"/>
         <Button Content="Accept" HorizontalAlignment="Left" Height="20" Margin="112,266,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
-        <Canvas HorizontalAlignment="Left" Height="147" Margin="350,126,0,0" VerticalAlignment="Top" Width="139"/>
+        <Canvas Name="Legend" HorizontalAlignment="Left" Height="147" Margin="350,126,0,0" VerticalAlignment="Top" Width="139"/>
 
     </Grid>
 </Window>

@@ -26,10 +26,10 @@ namespace SpacialPrisonerDilemma.View
     [Serializable]
      public class InitialConditionsGrid 
     {
-        internal static InitialConditionsGrid GenerateRandom(Random r)
+        internal static InitialConditionsGrid GenerateRandom(Random r,int size=100)
         {
-            int x = r.Next(95, 105);
-            int y = r.Next(95, 105);
+            int x = size;
+            int y = size;
             List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never+1];
             for(int i=0;i<sets.Length;i++) sets[i]=new List<InitialConditionCell>();
             InitialConditionCell[,] Grid = new InitialConditionCell[x,y];
@@ -73,13 +73,13 @@ namespace SpacialPrisonerDilemma.View
         public InitialConditionsGrid grid;
         public String Name;
 
-        internal static InitialConditions GenerateRandom()
+        internal static InitialConditions GenerateRandom(int size=100)
         {
             Random r = new Random();
             var ic = new InitialConditions
             {
                 Name = "Random" + r.Next().ToString(),
-                grid = InitialConditionsGrid.GenerateRandom(r)
+                grid = InitialConditionsGrid.GenerateRandom(r,size)
             };
             return ic;
         }

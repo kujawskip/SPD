@@ -34,6 +34,12 @@ namespace SpacialPrisonerDilemma.View
             this.DataContext = this;
             ConditionNames = new List<string>();
             Conditions = new Dictionary<string, InitialConditions>();
+            var image2 = new Image()
+            {
+                Source = SPDBrushes.GenerateLegend(Legend.Height)
+            };
+       
+            Legend.Children.Add(image2);
         }
         
         public DrawingImage GenerateImage(InitialConditionsGrid Grid, int X, int Y, int Width, int Height)
@@ -118,7 +124,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Condition = InitialConditions.GenerateRandom();
+            Condition = InitialConditions.GenerateRandom(10);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

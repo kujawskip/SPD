@@ -38,8 +38,7 @@ namespace SpacialPrisonerDilemma.View
             };
             Canvas.SetTop(image, 0);
             Canvas.SetLeft(image, 0);
-            Legenda.Children.Add(image)
-                ;
+            Legenda.Children.Add(image);
             Canvas.Children.Add(image2);
         }
 
