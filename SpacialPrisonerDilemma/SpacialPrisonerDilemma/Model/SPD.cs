@@ -181,10 +181,10 @@ namespace SpacialPrisonerDilemma.Model
         {
             var ctasks = ForEachCell(x => Task.Run(() =>
             {
-                var Skirmishes = from keyVal in singleton.skirmishes
+                var Skirmishes = from keyVal in Singleton.skirmishes
                                  where keyVal.Key.Item1 == x
                                  select keyVal.Value;
-                foreach (var s in Skirmishes.ToArray()) s.SingleMove();
+                foreach (var s in Skirmishes) s.SingleMove();
             }));
             var tasks = ReduceDim(ctasks);
             await Task.WhenAll(tasks);
@@ -197,16 +197,17 @@ namespace SpacialPrisonerDilemma.Model
             await Task.WhenAll(tasks);
         }
 
-        protected internal void Iterate()
+        protected internal int Iterate()
         {
             for (int i = 0; i < StepCount; i++)
                 Step();
             var changed = ReduceDim(ForEachCell(x => x.OptimizeStrategy()));
             ForEachCell(x => x.Clear());
             CacheToHistory();
+            return changed.Count(x => x == true);
         }
 
-        public async Task IterateAsync()
+        public async Task<int> IterateAsync()
         {
             for (int i = 0; i < StepCount; i++)
             {
@@ -224,6 +225,7 @@ namespace SpacialPrisonerDilemma.Model
             var skirTask = Singleton.skirmishes.Select(x => Task.Run(() => x.Value.Clear()));
             await Task.WhenAll(tasks2.Concat(skirTask));
             CacheToHistory();
+            return changed;
         }
 
         public int CurrentIteration
