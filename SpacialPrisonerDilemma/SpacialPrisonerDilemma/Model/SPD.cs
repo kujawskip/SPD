@@ -77,7 +77,6 @@ namespace SpacialPrisonerDilemma.Model
 
         public static void Initialize(IStrategy[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed)
         {
-            //InitWinnings(noneBetrayed, wasBetrayed, wasntBetrayed, bothBetrayed);
             Singleton.NoneBetrayedPoints = noneBetrayed;
             Singleton.WasBetrayedPoints = wasBetrayed;
             Singleton.WasntBetrayedPoints = wasntBetrayed;
