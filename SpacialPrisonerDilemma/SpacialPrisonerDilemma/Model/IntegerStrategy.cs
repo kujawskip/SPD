@@ -63,11 +63,13 @@ namespace SpacialPrisonerDilemma.Model
 
         public bool Decide(Cell parent, Cell opponent)
         {
-            return (from neighbour in parent.GetNeighbours()
-                    let skirmish = SPD.Singleton.GetSkirmish(parent, neighbour)
-                    let last = skirmish != null ? skirmish.Last : null
-                    let decision = last == null ? false : last.Item1.Item1 == parent ? last.Item2.Item2 : last.Item1.Item2
-                    select decision).Count(x => x == true) >= Treshold;
+            var decs = (from neighbour in parent.GetNeighbours()
+                        let skirmish = SPD.Singleton.GetSkirmish(parent, neighbour)
+                        let last = skirmish != null ? skirmish.Last : null
+                        let decision = last == null ? false : last.Item1.Item1 == parent ? last.Item2.Item2 : last.Item1.Item2
+                        select decision);
+            var res = decs.Count(x => x == true) >= Treshold;
+            return res;
         }
     }
 }
