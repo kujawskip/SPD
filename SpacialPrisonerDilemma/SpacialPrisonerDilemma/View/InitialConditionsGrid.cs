@@ -101,6 +101,29 @@ namespace SpacialPrisonerDilemma.View
             };
             return ig;
         }
+        internal static InitialConditionsGrid CrossFactory()
+        {
+            InitialConditionCell[,] ic = new InitialConditionCell[30, 30];
+            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
+            for(int i=0;i<30; i++)
+                for (int j = 0; j < 30; j++)
+                {
+                    InitialConditionCell c = new InitialConditionCell(i, j, 0, -1);
+                    if (i < 10 && j < 10) c.Set = (i + j) / 2;
+                    if ((i < 10 && j > 20) || (i > 20 && j < 10)) c.Set = (i + j - 10) / 2;
+                    if (i > 20 && j > 20) c.Set = (i + j - 20) / 2;
+                    ic[i, j] = c;
+                    sets[c.Set].Add(c);
+                }
+            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            InitialConditionsGrid ig = new InitialConditionsGrid
+            {
+                CellGrid = ic,
+                CellSets = Sets
+            };
+            return ig;
+        }
         internal static InitialConditionsGrid CircleFactory()
         {
             InitialConditionCell[,] ic = new InitialConditionCell[30, 30];
@@ -188,5 +211,10 @@ namespace SpacialPrisonerDilemma.View
             };
             return ic;
         }
+        internal static InitialConditions CrossFactory(bool reversed = false)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
