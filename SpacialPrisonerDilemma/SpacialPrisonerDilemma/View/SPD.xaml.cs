@@ -46,7 +46,36 @@ namespace SpacialPrisonerDilemma.View
             Legenda.Children.Add(image);
             Canvas.Children.Add(image2);
         }
+        private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            
+            Point P = e.GetPosition(Canvas);
+            double X = this.X + scale * P.X / (Canvas.Width / (strategies.GetLength(0)));
+            if (X >= strategies.GetLength(0)) return;
+            double Y = this.Y + scale * P.Y / (Canvas.Height / (strategies.GetLength(1)));
+            if (Y >= strategies.GetLength(1)) return;
+            scale += Math.Sign(-e.Delta) * 0.1;
+            if (scale < 0.1) scale = 0.1;
+            if (scale > 1) scale = 1;
 
+            int width = strategies.GetLength(0);
+            int height = strategies.GetLength(1);
+            var nwidth = (int)(((double)width) * scale);
+            var nheight = (int)(((double)height) * scale);
+            int x = (int)X - (nwidth / 2);
+            int y = (int)Y
+                    - (nheight / 2);
+            int xx = (int)X + (nwidth / 2);
+            int yy = (int)Y + (nheight / 2);
+
+            if (xx >= width) x -= (xx - width) + 1;
+            if (yy >= height) y -= (yy - height) + 1;
+            if (x < 0) x = 0;
+            if (y < 0) y = 0;
+            this.X = x;
+            this.Y = y;
+            UpdateImage();
+        }
        
         public DrawingImage GenerateImage(Model.SPD spd, int X, int Y, int Width, int Height)
         {

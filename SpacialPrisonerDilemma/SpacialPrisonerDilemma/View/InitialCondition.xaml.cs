@@ -70,6 +70,7 @@ namespace SpacialPrisonerDilemma.View
             {
                 for (int j = Y; j < Y + Height; j++)
                 {
+                  
                     RectangleGeometry RG = new RectangleGeometry(new Rect(new Point((i - X) * CellWidth, (j - Y) * CellHeight), new Point((i - X + 1) * CellWidth, (j + 1 - Y) * CellHeight)));
                     GeometryDrawing gd = new GeometryDrawing();
                     gd.Brush = SPDBrushes.GetBrush(Condition.grid.CellGrid[i, j].Value);
@@ -161,11 +162,43 @@ namespace SpacialPrisonerDilemma.View
             if(ComboBox.SelectedIndex<0) return;
             Point P = e.GetPosition(Canvas);
             InitialConditions IC = Condition;
-            double X = P.X/(Canvas.Width/(IC.grid.CellGrid.GetLength(0)));
+            double X =this.X + scale*P.X/(Canvas.Width/(IC.grid.CellGrid.GetLength(0)));
             if (X >= IC.grid.CellGrid.GetLength(0) ) return;
-            double Y = P.Y/(Canvas.Height/(IC.grid.CellGrid.GetLength(1)));
+            double Y =this.Y + scale*P.Y/(Canvas.Height/(IC.grid.CellGrid.GetLength(1)));
             if (Y >= IC.grid.CellGrid.GetLength(1) ) return;
             IC.grid.CellGrid[(int) X, (int) Y].Value = ComboBox.SelectedIndex;
+            Condition = IC;
+        }
+
+        private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Condition == null) return;
+            var IC = Condition;
+            Point P = e.GetPosition(Canvas);
+            double X = this.X + scale * P.X / (Canvas.Width / (IC.grid.CellGrid.GetLength(0)));
+            if (X >= IC.grid.CellGrid.GetLength(0)) return;
+            double Y = this.Y + scale * P.Y / (Canvas.Height / (IC.grid.CellGrid.GetLength(1)));
+            if (Y >= IC.grid.CellGrid.GetLength(1)) return;
+            scale += Math.Sign(-e.Delta)*0.1;
+            if (scale < 0.1) scale = 0.1;
+            if (scale > 1) scale = 1;
+           
+            int width = Condition.grid.CellGrid.GetLength(0);
+            int height = Condition.grid.CellGrid.GetLength(1);
+            var nwidth = (int) (((double) width)*scale);
+            var nheight = (int) (((double) height)*scale);
+            int x = (int) X - (nwidth/2);
+            int y = (int) Y
+                    - (nheight/2);
+            int xx = (int) X + (nwidth/2);
+            int yy = (int) Y + (nheight/2);
+          
+            if (xx >= width) x -= (xx - width) + 1;
+            if (yy >= height) y -= (yy - height) + 1;
+            if (x < 0) x = 0;
+            if (y < 0) y = 0;
+            this.X = x;
+            this.Y = y;
             Condition = IC;
         }
     }
