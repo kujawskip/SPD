@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="InitialCondition" Height="352.866" Width="510.343">
     <Grid Margin="0,0,-35,0">
-        <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" MouseDown="Canvas_OnMouseDown"  HorizontalAlignment="Left" Height="204" Margin="20,57,0,0" VerticalAlignment="Top" Width="310"/>
+        <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" MouseDown="Canvas_OnMouseDown"  HorizontalAlignment="Left" Height="205" Margin="20,57,0,0" VerticalAlignment="Top" Width="205"/>
         <CheckBox Name="ChangeCell" Content="Change Cell" HorizontalAlignment="Left" Height="19" Margin="373,73,0,0" VerticalAlignment="Top" Width="87" />
         <Button Content="Random" HorizontalAlignment="Left" Height="20" Margin="29,266,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click"/>
         <Button Content="Accept" HorizontalAlignment="Left" Height="20" Margin="112,266,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
