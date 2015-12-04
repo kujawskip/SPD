@@ -8,6 +8,8 @@ namespace SpacialPrisonerDilemma.Model
 {
     public class SPD
     {
+        public const int ThreadCountSQRT = 8;
+
         public Cell this[int i, int j]
         {
             get
@@ -42,7 +44,7 @@ namespace SpacialPrisonerDilemma.Model
         public SPD()
         {
             skirmishes = new Dictionary<Tuple<Cell, Cell>, Skirmish>();
-            history = new List<Cell[,]>();
+            history = new List<Tuple<int, Cell[,]>>();
             coords = new Dictionary<Cell, Tuple<int, int>>();
             cells = new Cell[0, 0];
         }
@@ -106,6 +108,7 @@ namespace SpacialPrisonerDilemma.Model
                     if (key.Item2 != null)
                         Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
                 }
+            Singleton.Batches = Singleton.BatchCells();
         }
 
         internal static void Clear()
@@ -149,15 +152,35 @@ namespace SpacialPrisonerDilemma.Model
             Initialize(str, stepsPerIteration, noneBetrayed, wasBetrayed, wasntBetrayed, bothBetrayed);
         }
 
+        List<Cell[]> Batches;
         Cell[,] cells;
         internal Dictionary<Tuple<Cell, Cell>, Skirmish> skirmishes;
         Dictionary<Cell, Tuple<int, int>> coords;
-        List<Cell[,]> history;
+        List<Tuple<int,Cell[,]>> history;
 
-        protected void CacheToHistory()
+        protected bool CacheToHistory()
         {
             var stateCopy = ForEachCell(x => x.Clone());
-            history.Add(stateCopy);
+            var hashes = ForEachCell(x => x.Strategy.GetHashCode());
+            int hash = 0;
+            for (int i = 0; i < hashes.GetLength(0); i++)
+                for (int j = 0; j < hashes.GetLength(1); j++)
+                    hash = unchecked(i * j * hashes[i, j] + hash);
+            var repeated = history.Where(x => x.Item1 == hash).Select(x => x.Item2).Aggregate(false, (current, x) => current = current || ArrayEquals(x, stateCopy));
+            history.Add(new Tuple<int, Cell[,]>(hash, stateCopy));
+            return repeated;
+        }
+
+        private bool ArrayEquals(Cell[,] tab1, Cell[,] tab2)
+        {
+            if (tab1 == null && tab2 == null) return true;
+            if (tab1 == null || tab2 == null) return false;
+            if (tab1.GetLength(0) != tab2.GetLength(0)) return false;
+            if (tab1.GetLength(1) != tab2.GetLength(1)) return false;
+            for (int i = 0; i < tab1.GetLength(0); i++)
+                for (int j = 0; j < tab1.GetLength(1); j++)
+                    if (tab1[i, j].Strategy != tab2[i, j].Strategy) return false;
+            return true;
         }
 
         protected void Step()
@@ -177,23 +200,89 @@ namespace SpacialPrisonerDilemma.Model
             });
         }
 
+        List<Cell> GetCells(int minX, int minY, int maxX, int maxY)
+        {
+            var res = new List<Cell>();
+            for (int i = minX; i < maxX; i++)
+                for (int j = minY; j < maxY; j++)
+                    res.Add(cells[i, j]);
+            return res;
+        }
+
+        List<Cell[]> BatchCells()
+        {
+            var result = new List<Cell[]>();
+            //var divX = (cells.GetLength(0) / ThreadCountSQRT);
+            //if (divX * ThreadCountSQRT < cells.GetLength(0)) divX++;
+            //var divY = (cells.GetLength(1) / ThreadCountSQRT);
+            //if (divY * ThreadCountSQRT < cells.GetLength(1)) divY++;
+            //for (int x = 0; x < ThreadCountSQRT; x++)
+            //    for (int y = 0; y < ThreadCountSQRT; y++)
+            //    {
+            //        var maxX = Math.Min((x + 1) * divX, cells.GetLength(0));
+            //        var maxY = Math.Min((y + 1) * divY, cells.GetLength(1));
+            //        var arr = GetCells(divX * x, divY * y, maxX, maxY);
+            //        result.Add(arr.ToArray());
+            //    }
+            //return result;
+            var batch = new List<Cell>();
+            var allThreads = ThreadCountSQRT * ThreadCountSQRT;
+            var lCount = cells.Length / allThreads;
+            if (lCount * allThreads < cells.Length) lCount++;
+            for (int y = 0; y < cells.GetLength(1); y++)
+                for (int x = 0; x < cells.GetLength(0); x++)
+                {
+                    batch.Add(cells[x, y]);
+                    if(batch.Count>=lCount)
+                    {
+                        result.Add(batch.ToArray());
+                        batch.Clear();
+                    }
+                }
+            if (batch.Count > 0)
+            {
+                result.Add(batch.ToArray());
+                batch.Clear();
+            }
+            return result;
+        }
+
         protected async Task StepAsync()
         {
-            var ctasks = ForEachCell(x => Task.Run(() =>
+            //var ctasks = ForEachCell(x => Task.Run(() =>
+            //{
+            //    var Skirmishes = from keyVal in Singleton.skirmishes
+            //                     where keyVal.Key.Item1 == x
+            //                     select keyVal.Value;
+            //    foreach (var s in Skirmishes) s.SingleMove();
+            //}));
+            var tasks = Batches.Select(x => Task.Run(() =>
             {
-                var Skirmishes = from keyVal in Singleton.skirmishes
-                                 where keyVal.Key.Item1 == x
-                                 select keyVal.Value;
-                foreach (var s in Skirmishes) s.SingleMove();
+                foreach (Cell c in x)
+                {
+                    var skir = from keyVal in Singleton.skirmishes
+                               where keyVal.Key.Item1 == c
+                               select keyVal.Value;
+                    foreach (var s in skir)
+                        s.SingleMove();
+                }
             }));
-            var tasks = ReduceDim(ctasks);
+            //var tasks = ReduceDim(ctasks);
             await Task.WhenAll(tasks);
             foreach (var skirmish in skirmishes.Values)
                 skirmish.EndStep();
-            tasks = ReduceDim(ForEachCell(x => Task.Run(() =>
+            tasks = Batches.Select(x => Task.Run(() =>
             {
-                x.UpdatePoints();
-            })));
+                foreach (Cell c in x)
+                {
+                    c.UpdatePoints();
+                }
+            }));
+            //tasks = ReduceDim(ForEachCell(x => Task.Run(() =>
+            //{
+            //    x.UpdatePoints();
+            //})));
+            GC.Collect();
             await Task.WhenAll(tasks);
         }
 
@@ -213,18 +302,37 @@ namespace SpacialPrisonerDilemma.Model
             {
                 await StepAsync();
             }
-            var tasks = ReduceDim(ForEachCell(c => Task.Run(() =>
-                c.OptimizeStrategy()
-            )));
+            var tasks = Batches.Select(x => Task.Run(() =>
+             {
+                 return x.Select(c => c.OptimizeStrategy()).Count(b => b == true);
+             }));
+            //    ReduceDim(ForEachCell(c => Task.Run(() =>
+            //    c.OptimizeStrategy()
+            //)));
             var optimizing = Task.WhenAll(tasks);
-            int changed = tasks.Select(x => x.Result).Count(x => x == true);
-            var tasks2 = ReduceDim(ForEachCell(c => Task.Run(() =>
+            int changed = tasks.Sum(x => x.Result);
+            var tasks2 = Batches.Select(x => Task.Run(() =>
+              {
+                  foreach (Cell c in x)
+                  {
+                      c.Clear();
+                      foreach(var s in skirmishes.Where(s => s.Key.Item1 == c))
+                      {
+                          s.Value.Clear();
+                      }
+                  }
+              }));
+                //ReduceDim(ForEachCell(c => Task.Run(() =>
+            //{
+            //    c.Clear();
+            //})));
+            //var skirTask = Singleton.skirmishes.Select(x => Task.Run(() => x.Value.Clear()));
+            await Task.WhenAll(tasks2);
+            var repeating = CacheToHistory();
+            if(repeating)
             {
-                c.Clear();
-            })));
-            var skirTask = Singleton.skirmishes.Select(x => Task.Run(() => x.Value.Clear()));
-            await Task.WhenAll(tasks2.Concat(skirTask));
-            CacheToHistory();
+
+            }
             return changed;
         }
 
@@ -281,7 +389,7 @@ namespace SpacialPrisonerDilemma.Model
 
         public Cell[,] GetStateByIteration(int i)
         {
-            return history[i];
+            return history[i].Item2;
         }
     }
 }

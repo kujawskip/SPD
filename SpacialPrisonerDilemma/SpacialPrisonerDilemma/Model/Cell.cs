@@ -58,14 +58,21 @@ namespace SpacialPrisonerDilemma.Model
             else throw new ArgumentException();
         }
 
-        public static IStrategy GetBest(IEnumerable<Cell> cellList)
+        public static IStrategy GetBest(Cell c, IEnumerable<Cell> cellList)
         {
-            return cellList.First(x => x.Points == cellList.Max(y => y.Points)).Strategy;
+            var max = cellList.Max(y => y.Points);
+            if (c.Points == max) return c.Strategy;
+            var best = cellList.Where(x => x.Points == cellList.Max(y => y.Points)).Select(x => x.Strategy).Distinct();
+            if (best.Count() > 1)
+            {
+                //TODO:Zdecydować którą wybrać
+            }
+            return best.First();
         }
 
         public bool OptimizeStrategy()
         {
-            var str = GetBest(GetNeighbours().Concat(new Cell[] { this }));
+            var str = GetBest(this, GetNeighbours().Concat(new Cell[] { this }));
             if (str == Strategy) return false;
             Strategy = str;
             return true;

@@ -111,9 +111,10 @@ namespace SpacialPrisonerDilemma.View
              while (cont)
              {
                 iteration = Task.Run(async () => await spd.IterateAsync());
-                if (await iteration == 0) cont = false;
+                await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
+                //if (await iteration == 0) cont = false;
                     UpdateImage();
-                //await Task.Delay(delay);
+                await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
              }
         }
         private async Task StartSPD()
@@ -158,8 +159,9 @@ namespace SpacialPrisonerDilemma.View
             cont = !cont;
             if (cont == true)
             {
-                await StartSPD();
+              
                 StartStop.Content = "Stop";
+                await StartSPD();
             }
             else StartStop.Content = "Start";
         }
