@@ -58,7 +58,7 @@ namespace SpacialPrisonerDilemma.Model
 
         public override string ToString()
         {
-            return base.ToString();
+            return "IntegrtStrategy " + ((WhenBetray) Treshold).ToString();
         }
 
         public bool Decide(Cell parent, Cell opponent)
