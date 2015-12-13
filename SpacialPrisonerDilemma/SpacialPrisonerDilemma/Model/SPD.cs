@@ -77,7 +77,7 @@ namespace SpacialPrisonerDilemma.Model
         { get; private set; }
 
 
-        public static void Initialize(IStrategy[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed)
+        public static void Initialize(IStrategy[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed, bool moore = true, bool torus = false)
         {
             Singleton.NoneBetrayedPoints = noneBetrayed;
             Singleton.WasBetrayedPoints = wasBetrayed;
@@ -95,18 +95,24 @@ namespace SpacialPrisonerDilemma.Model
             for (int x = 0; x < Singleton.cells.GetLength(0); x++)
                 for (int y = 0; y < Singleton.cells.GetLength(1); y++)
                 {
-                    var key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x, y - 1));
+                    var key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x, y - 1, torus));
                     if (key.Item2 != null)
                         Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
-                    key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x + 1, y - 1));
+                    if (moore)
+                    {
+                        key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x + 1, y - 1, torus));
+                        if (key.Item2 != null)
+                            Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
+                    }
+                    key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x + 1, y, torus));
                     if (key.Item2 != null)
                         Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
-                    key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x + 1, y));
-                    if (key.Item2 != null)
-                        Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
-                    key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x + 1, y + 1));
-                    if (key.Item2 != null)
-                        Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
+                    if (moore)
+                    {
+                        key = new Tuple<Cell, Cell>(Singleton.GetCell(x, y), Singleton.GetCell(x + 1, y + 1, torus));
+                        if (key.Item2 != null)
+                            Singleton.skirmishes.Add(key, new Skirmish(key.Item1, key.Item2));
+                    }
                 }
             Singleton.Batches = Singleton.BatchCells();
         }
@@ -360,30 +366,40 @@ namespace SpacialPrisonerDilemma.Model
             return null;
         }
 
-        internal Cell[] GetNeighbours(Cell c)
+        internal Cell[] GetNeighbours(Cell c, bool moore = true, bool torus = false)
         {
             var result = new List<Cell>();
             var coord = coords[c];
             var x = coord.Item1;
             var y = coord.Item2;
 
-            result.Add(GetCell(x, y - 1)); //Up
-            result.Add(GetCell(x + 1, y - 1));
-            result.Add(GetCell(x + 1, y)); //Right
-            result.Add(GetCell(x + 1, y + 1));
+            result.Add(GetCell(x, y - 1, torus)); //Up
+            if (moore)
+                result.Add(GetCell(x + 1, y - 1, torus));
+            result.Add(GetCell(x + 1, y, torus)); //Right
+            if (moore)
+                result.Add(GetCell(x + 1, y + 1, torus));
 
-            result.Add(GetCell(x, y + 1)); //Down
-            result.Add(GetCell(x - 1, y + 1));
-            result.Add(GetCell(x - 1, y)); //Left
-            result.Add(GetCell(x - 1, y - 1));
+            result.Add(GetCell(x, y + 1, torus)); //Down
+            if (moore)
+                result.Add(GetCell(x - 1, y + 1, torus));
+            result.Add(GetCell(x - 1, y, torus)); //Left
+            if (moore)
+                result.Add(GetCell(x - 1, y - 1, torus));
 
             return result.Where(cell => cell != null).ToArray();
         }
 
         
-        private Cell GetCell(int x, int y)
+        private Cell GetCell(int x, int y, bool torus = false)
         {
-            if (x < 0 || x >= cells.GetLength(0) || y < 0 || y >= cells.GetLength(1)) return null;
+            if (!torus && (x < 0 || x >= cells.GetLength(0) || y < 0 || y >= cells.GetLength(1))) return null;
+            while (x < 0)
+                x += cells.GetLength(0);
+            x = x % cells.GetLength(0);
+            while (y < 0)
+                y += cells.GetLength(1);
+            y = y % cells.GetLength(1);
             return cells[x, y];
         }
 
