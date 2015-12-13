@@ -218,19 +218,6 @@ namespace SpacialPrisonerDilemma.Model
         List<Cell[]> BatchCells()
         {
             var result = new List<Cell[]>();
-            //var divX = (cells.GetLength(0) / ThreadCountSQRT);
-            //if (divX * ThreadCountSQRT < cells.GetLength(0)) divX++;
-            //var divY = (cells.GetLength(1) / ThreadCountSQRT);
-            //if (divY * ThreadCountSQRT < cells.GetLength(1)) divY++;
-            //for (int x = 0; x < ThreadCountSQRT; x++)
-            //    for (int y = 0; y < ThreadCountSQRT; y++)
-            //    {
-            //        var maxX = Math.Min((x + 1) * divX, cells.GetLength(0));
-            //        var maxY = Math.Min((y + 1) * divY, cells.GetLength(1));
-            //        var arr = GetCells(divX * x, divY * y, maxX, maxY);
-            //        result.Add(arr.ToArray());
-            //    }
-            //return result;
             var batch = new List<Cell>();
             var allThreads = ThreadCountSQRT * ThreadCountSQRT;
             var lCount = cells.Length / allThreads;
@@ -296,10 +283,25 @@ namespace SpacialPrisonerDilemma.Model
         {
             for (int i = 0; i < StepCount; i++)
                 Step();
-            var changed = ReduceDim(ForEachCell(x => x.OptimizeStrategy()));
-            ForEachCell(x => x.Clear());
+            int changed = 0;
+            var newStr = ForEachCell(c => c.OptimizeStrategy());
+            for (int x = 0; x < Singleton.cells.GetLength(0); x++)
+                for (int y = 0; y < Singleton.cells.GetLength(1); y++)
+                    if (cells[x, y].Strategy != newStr[x, y])
+                    {
+                        cells[x, y].Strategy = newStr[x, y];
+                        changed++;
+                    }
+            ForEachCell(x =>
+            {
+                x.Clear();
+                foreach (var s in skirmishes.Where(s => s.Key.Item1 == x))
+                {
+                    s.Value.Clear();
+                }
+            });
             CacheToHistory();
-            return changed.Count(x => x == true);
+            return changed;
         }
 
         public async Task<int> IterateAsync()
@@ -310,13 +312,25 @@ namespace SpacialPrisonerDilemma.Model
             }
             var tasks = Batches.Select(x => Task.Run(() =>
              {
-                 return x.Select(c => c.OptimizeStrategy()).Count(b => b == true);
+                 return x.Select(c => new Tuple<Cell, IStrategy>(c, c.OptimizeStrategy()));
+             })).ToArray();
+            var finding = Task.WhenAll(tasks);
+            await finding;
+            var optimizing = tasks.Select(x => Task.Run(() =>
+             {
+                 int res = 0;
+                 foreach (var tuple in x.Result)
+                 {
+                     if (tuple.Item1.Strategy != tuple.Item2)
+                     {
+                         tuple.Item1.Strategy = tuple.Item2;
+                         res++;
+                     }
+                 }
+                 return res;
              }));
-            //    ReduceDim(ForEachCell(c => Task.Run(() =>
-            //    c.OptimizeStrategy()
-            //)));
-            var optimizing = Task.WhenAll(tasks);
-            int changed = tasks.Sum(x => x.Result);
+            await Task.WhenAll(optimizing);
+            int changed = optimizing.Sum(x => x.Result);
             var tasks2 = Batches.Select(x => Task.Run(() =>
               {
                   foreach (Cell c in x)
