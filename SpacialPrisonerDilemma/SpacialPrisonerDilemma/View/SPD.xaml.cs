@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SpacialPrisonerDilemma.Annotations;
 using SpacialPrisonerDilemma.Model;
 
 namespace SpacialPrisonerDilemma.View
@@ -19,27 +22,36 @@ namespace SpacialPrisonerDilemma.View
     /// <summary>
     /// Interaction logic for SPD.xaml
     /// </summary>
-    public partial class SPD : Window
+    public partial class SPD : Window, INotifyPropertyChanged
     {
         private Model.SPD spd;
         private int _width, _height;
         double[] payValues;
         int[,] strategies;
-
+        private int iter;
+        private List<Cell[,]> History;
+        public int Iteration
+        {
+            get { return iter; }
+            set { iter = value; OnPropertyChanged(); UpdateImage(); }
+        }
         public SPD(double[] PayValues,int[,] Strategies)
         {
+            DataContext = this;
             payValues = PayValues;
             strategies = Strategies;
-            InitializeComponent();
-           
             spd = Model.SPD.Singleton;
+            InitializeComponent();
+            History = new List<Cell[,]>();
+            Iteration = 0;
+          
             Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0]);
             var image = new Image() {Source = SPDBrushes.GenerateLegend(Legenda.Height),Width = Legenda.Width,Height = Canvas.Height};
             _width = strategies.GetLength(0);
             _height = strategies.GetLength(1);
             var image2 = new Image()
             {
-                Source = GenerateImage(spd, 0, 0, strategies.GetLength(0), strategies.GetLength(1))
+                Source = GenerateImage(spd, 0, 0, strategies.GetLength(0), strategies.GetLength(1),Iteration)
             };
             Canvas.SetTop(image, 0);
             Canvas.SetLeft(image, 0);
@@ -77,7 +89,7 @@ namespace SpacialPrisonerDilemma.View
             UpdateImage();
         }
        
-        public DrawingImage GenerateImage(Model.SPD spd, int X, int Y, int Width, int Height)
+        public DrawingImage GenerateImage(Model.SPD spd, int X, int Y, int Width, int Height,int iteration)
         {
             double CellWidth = Canvas.Width / Width;
             double CellHeight = Canvas.Height / Height;
@@ -94,7 +106,7 @@ namespace SpacialPrisonerDilemma.View
                 {
                     RectangleGeometry RG = new RectangleGeometry(new Rect(new Point((i-X)*CellWidth,(j-Y)*CellHeight),new Point((i-X+1)*CellWidth,(j+1-Y)*CellHeight)));
                     GeometryDrawing gd = new GeometryDrawing();
-                    gd.Brush= GetBrush((spd[i,j].Strategy as IntegerStrategy).Treshold);
+                    gd.Brush= GetBrush((spd.GetStateByIteration(Iteration)[i,j].Strategy as IntegerStrategy).Treshold);
                     gd.Geometry = RG;
                     DG.Children.Add(gd);
                 }
@@ -104,17 +116,26 @@ namespace SpacialPrisonerDilemma.View
 
         private volatile bool cont = false;
 
+        public int StateCount
+        {
+            get { return spd.CurrentIteration>0?spd.CurrentIteration-1:0; }
+        }
         int delay = 1000;
         Task<int> iteration;
         private async Task SPDLooper()
         {
              while (cont)
              {
+                
                 iteration = Task.Run(async () => await spd.IterateAsync());
                 await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
                 //if (await iteration == 0) cont = false;
+                
                     UpdateImage();
+                OnPropertyChanged("StateCount");
+                if (Iteration == StateCount - 1) Iteration++;
                 await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
+                
              }
         }
         private async Task StartSPD()
@@ -129,7 +150,7 @@ namespace SpacialPrisonerDilemma.View
             Canvas.Children.Clear();
             Canvas.Children.Add(new Image()
             {
-                Source = GenerateImage(spd, X, Y, (int) (_width*scale), (int) (_height*scale))
+                Source = GenerateImage(spd, X, Y, (int) (_width*scale), (int) (_height*scale),Iteration)
             });
         }
         private Brush[] BrushArray;
@@ -165,6 +186,20 @@ namespace SpacialPrisonerDilemma.View
             }
             else StartStop.Content = "Start";
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void RangeBase_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
+        }
     }
 
     internal static class SPDBrushes
@@ -179,6 +214,12 @@ namespace SpacialPrisonerDilemma.View
             {
                 BrushArray[p] = new SolidColorBrush(Color.FromRgb((byte)(256 - 15 * p>255?0:255 - 10*p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p)));
             }
+        }
+
+        private static string Font;
+        public static void ChangeFont(string FontName)
+        {
+            Font = FontName;
         }
         public static Brush GetBrush(int p)
         {
@@ -210,7 +251,7 @@ namespace SpacialPrisonerDilemma.View
                 FormattedText text = new FormattedText(Descriptions[i],
         CultureInfo.CurrentCulture,
         FlowDirection.LeftToRight,
-        new Typeface("Arial"),
+        new Typeface(Font),
         16,
         Brushes.Black);
                 GeometryDrawing gd = new GeometryDrawing();

@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Canvas>
+        <Menu Canvas.Top="0">
+            <MenuItem Header="Opcje">
+                <MenuItem Header="Zmień czcionke" Click="Font_OnClick"></MenuItem>
+                <MenuItem Header="Zmień kolory" Click="Color_OnClick"></MenuItem>
+            </MenuItem>
+        </Menu>
         <Grid Canvas.Left="10" Canvas.Top="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>

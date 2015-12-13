@@ -31,7 +31,7 @@ namespace SpacialPrisonerDilemma
             ParseError,
             ValueError
         }
-
+        
         private bool canvalidate = false;
         public MainWindow()
         {
@@ -41,6 +41,7 @@ namespace SpacialPrisonerDilemma
             Error = ValidationErrors.None;
             canvalidate = true;
             SPDBrushes.CreateBrushes(10);
+            SPDBrushes.ChangeFont("Arial");
             SPDBrushes.InitialiseDescriptions();
 
         }
@@ -209,6 +210,16 @@ namespace SpacialPrisonerDilemma
                 NotifyPropertyChanged("NoError");
             }
 
+        }
+
+        private void Color_OnClick(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void Font_OnClick(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

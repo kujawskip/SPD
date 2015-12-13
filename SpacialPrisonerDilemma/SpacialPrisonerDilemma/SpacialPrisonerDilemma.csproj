@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\CustomBehaviour.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="View\SPD.xaml.cs">

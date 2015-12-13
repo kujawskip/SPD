@@ -14,5 +14,7 @@
         </StackPanel>
         <ComboBox Name="ComboBox" HorizontalAlignment="Left" Height="20" Margin="386,48,0,0" VerticalAlignment="Top" Width="74"/>
         <ComboBox x:Name="ComboBox_Copy" HorizontalAlignment="Left" Height="20" Margin="20,23,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button Content="Load" HorizontalAlignment="Left" Height="21" Margin="259,291,0,0" VerticalAlignment="Top" Width="53" Click="ButtonBase_OnClick1"/>
+        <Button Content="Save" HorizontalAlignment="Left" Height="21" Margin="317,291,0,0" VerticalAlignment="Top" Width="51" Click="ButtonBase_OnClick2"/>
     </Grid>
 </Window>

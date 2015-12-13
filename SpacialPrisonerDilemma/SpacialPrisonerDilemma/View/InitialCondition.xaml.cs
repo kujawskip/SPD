@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using SpacialPrisonerDilemma.Model;
 
 namespace SpacialPrisonerDilemma.View
@@ -152,7 +153,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Condition = Conditions[ConditionNames[ComboBox_Copy.SelectedIndex]];
+            Condition = Conditions[ConditionNames[ComboBox_Copy.SelectedIndex]].GetCopy();
         }
 
 
@@ -200,6 +201,35 @@ namespace SpacialPrisonerDilemma.View
             this.X = x;
             this.Y = y;
             Condition = IC;
+        }
+
+        private void ButtonBase_OnClick1(object sender, RoutedEventArgs e)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            OpenFileDialog ofd = new OpenFileDialog {Filter = "Initial Condition File (*.cic)|*.cic"};
+            ofd.Multiselect = false;
+            
+            var result = ofd.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                FileStream fs = new FileStream(ofd.FileName,FileMode.Open);
+                var obj = bf.Deserialize(fs);
+                Condition = obj as InitialConditions;
+            }
+        }
+
+        private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        {
+            if (Condition == null) return;
+            BinaryFormatter bf = new BinaryFormatter();
+            SaveFileDialog ofd = new SaveFileDialog { Filter = "Initial Condition File (*.cic)|*.cic" };
+            var result = ofd.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                FileStream fs = new FileStream(ofd.FileName, FileMode.Create);
+                bf.Serialize(fs,Condition);
+               
+            }
         }
     }
 }

@@ -22,6 +22,11 @@ namespace SpacialPrisonerDilemma.View
             this.Set = Set;
             this.Value = Value;
         }
+
+        public InitialConditionCell GetCopy()
+        {
+            return new InitialConditionCell(X,Y,Value,Set);
+        }
     }
     [Serializable]
      public class InitialConditionsGrid 
@@ -157,6 +162,32 @@ namespace SpacialPrisonerDilemma.View
             };
             return ig;
         }
+
+        internal InitialConditionsGrid GetCopy()
+        {
+            InitialConditionCell[][] Set;
+            List<InitialConditionCell[]> list = new List<InitialConditionCell[]>();
+            InitialConditionCell[,] Grid = new InitialConditionCell[CellGrid.GetLength(0), CellGrid.GetLength(1)];
+            for (int i = 0; i < CellSets.Length;i++)
+            {
+                List<InitialConditionCell> L = new List<InitialConditionCell>();
+                for (int j = 0; j < CellSets[i].Length; j++)
+                {
+                    var C = CellSets[i][j].GetCopy();
+                    Grid[C.X, C.Y] = C;
+                    L.Add(C);
+
+                }
+                list.Add(L.ToArray());
+            }
+            Set = list.ToArray();
+            return new InitialConditionsGrid()
+            {
+                CellGrid = Grid,
+                CellSets = Set
+            };
+
+        }
     }
 
     [Serializable]
@@ -216,5 +247,11 @@ namespace SpacialPrisonerDilemma.View
             throw new NotImplementedException();
         }
 
+
+        internal InitialConditions GetCopy()
+        {
+            return new InitialConditions() {Name = this.Name, grid = this.grid.GetCopy()};
+
+        }
     }
 }
