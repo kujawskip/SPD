@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Model
@@ -14,7 +15,7 @@ namespace SpacialPrisonerDilemma.Model
         }
 
         public IStrategy Strategy
-        { get; private set; }
+        { get; internal set; }
 
         public Cell[] GetNeighbours()
         {
@@ -26,9 +27,23 @@ namespace SpacialPrisonerDilemma.Model
             return Strategy.Decide(this, opponent);
         }
 
+        Mutex m = new Mutex();
+        public float points;
         public float Points
         {
-            get; internal set;
+            get
+            {
+                m.WaitOne();
+                var res = points;
+                m.ReleaseMutex();
+                return res;
+            }
+            internal set
+            {
+                m.WaitOne();
+                points = value;
+                m.ReleaseMutex();
+            }
         }
 
         public void UpdatePoints()
@@ -70,12 +85,10 @@ namespace SpacialPrisonerDilemma.Model
             return best.First();
         }
 
-        public bool OptimizeStrategy()
+        public IStrategy OptimizeStrategy()
         {
-            var str = GetBest(this, GetNeighbours().Concat(new Cell[] { this }));
-            if (str == Strategy) return false;
-            Strategy = str;
-            return true;
+            var str = GetBest(this, this.GetNeighbours().Concat(new Cell[] { this }));
+            return str;
         }
 
         internal Cell Clone()
