@@ -111,6 +111,7 @@ namespace SpacialPrisonerDilemma.View
              while (cont)
              {
                 iteration = Task.Run(async () => await spd.IterateAsync());
+                //iteration = Task.Run(() => spd.Iterate());
                 await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
                 //if (await iteration == 0) cont = false;
                     UpdateImage();
