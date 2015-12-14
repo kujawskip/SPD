@@ -80,7 +80,9 @@ namespace SpacialPrisonerDilemma.Model
 
         internal Cell Clone()
         {
-            return new Cell(Strategy);
+            var C = new Cell(Strategy);
+            C.Points = this.Points;
+            return C;
         }
 
         internal void Clear()
