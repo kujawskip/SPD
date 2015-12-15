@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -337,6 +338,22 @@ namespace SpacialPrisonerDilemma.View
             if (v.HasValue && v.Value)
             {
                 SaveImageToFile(sfd.FileName,b);
+            }
+        }
+
+        private void CicSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            int Iter = iter;
+            SaveFileDialog sfd = new SaveFileDialog { Filter = "Initial Condition (*.cic)|*.cic" };
+            var v = sfd.ShowDialog();
+            if (v.HasValue && v.Value)
+            {
+                Cell[,] C = spd.GetStateByIteration(iter);
+                InitialConditions ifc = InitialConditions.FromCellArray(C, System.IO.Path.GetFileName(sfd.FileName));
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream fs = new FileStream(sfd.FileName,FileMode.Create);
+                bf.Serialize(fs,ifc);
+                fs.Close();
             }
         }
     }

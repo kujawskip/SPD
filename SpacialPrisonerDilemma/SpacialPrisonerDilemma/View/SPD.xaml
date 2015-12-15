@@ -9,7 +9,7 @@
         <Canvas.ContextMenu>
             <ContextMenu>
                 <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick"></MenuItem>
-                <MenuItem Name="CicSave" Header="Zapisz jako plik cic"></MenuItem>
+                <MenuItem Name="CicSave" Header="Zapisz jako plik cic" Click="CicSave_OnClick"></MenuItem>
             </ContextMenu>
             </Canvas.ContextMenu>
         </Canvas>

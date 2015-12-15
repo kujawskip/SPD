@@ -213,6 +213,24 @@ namespace SpacialPrisonerDilemma.View
             };
             return ig;
         }
+
+        public static InitialConditionsGrid FromCellArray(Cell[,] cells)
+        {
+            InitialConditionCell[,] arr = new InitialConditionCell[cells.GetLength(0),cells.GetLength(1)];
+            List<
+           List<InitialConditionCell>> List;
+            List = new List<List<InitialConditionCell>>();
+            for(int i=0;i<(Enum.GetValues(typeof(WhenBetray))).Length;i++) List.Add(new List<InitialConditionCell>());
+            for(int i=0;i<cells.GetLength(0);i++)
+                for (int j = 0; j < cells.GetLength(1); j++)
+                {
+                    int k = (cells[i, j].Strategy as IntegerStrategy).Treshold;
+                    arr[i,j] = new InitialConditionCell(i,j,k,k);
+                    List[k].Add(arr[i, j]);
+                }
+            var arr2 = List.Select(l => l.ToArray()).ToArray();
+            return new InitialConditionsGrid() {CellGrid = arr, CellSets = arr2};
+        }
     }
 
     [Serializable]
@@ -295,6 +313,13 @@ namespace SpacialPrisonerDilemma.View
         {
             return new InitialConditions() {Name = this.Name, grid = this.grid.GetCopy()};
 
+        }
+
+        public static InitialConditions FromCellArray(Cell[,] cells, string getFileName)
+        {
+            InitialConditionsGrid ICG = InitialConditionsGrid.FromCellArray(cells);
+            
+            return new InitialConditions(){Name = getFileName,grid = ICG};
         }
     }
 }
