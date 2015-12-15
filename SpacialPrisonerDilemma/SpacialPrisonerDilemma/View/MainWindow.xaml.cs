@@ -24,6 +24,7 @@ namespace SpacialPrisonerDilemma
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private ValidationErrors _error;
+        private int ColorPickerIndex = 0;
         private InitialConditions ic;
         public enum ValidationErrors
         {
@@ -214,7 +215,13 @@ namespace SpacialPrisonerDilemma
 
         private void Color_OnClick(object sender, RoutedEventArgs e)
         {
-           
+           ColorPicker CP = new ColorPicker(ColorPickerIndex);
+            var b = CP.ShowDialog();
+            if (b.HasValue && b.Value)
+            {
+                ColorPickerIndex = CP.ID;
+                
+            }
         }
 
         private void Font_OnClick(object sender, RoutedEventArgs e)

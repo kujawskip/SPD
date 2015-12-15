@@ -9,8 +9,10 @@ namespace SpacialPrisonerDilemma.Model
 {
     public class Cell
     {
+       
         public Cell(IStrategy strategy)
         {
+           
             Strategy = strategy;
         }
 
@@ -75,6 +77,8 @@ namespace SpacialPrisonerDilemma.Model
 
         public static IStrategy GetBest(Cell c, IEnumerable<Cell> cellList)
         {
+            
+          
             var max = cellList.Max(y => y.Points);
             if (c.Points == max) return c.Strategy;
             var best = cellList.Where(x => x.Points == cellList.Max(y => y.Points)).Select(x => x.Strategy).Distinct();

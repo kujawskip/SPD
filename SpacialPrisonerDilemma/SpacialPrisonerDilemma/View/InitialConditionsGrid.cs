@@ -188,6 +188,31 @@ namespace SpacialPrisonerDilemma.View
             };
 
         }
+
+        internal static InitialConditionsGrid DiagonalFactory()
+        {
+            InitialConditionCell[,] ic = new InitialConditionCell[30, 30];
+            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
+            for (int i = 0; i < 30; i++)
+                for (int j = 0; j < 30; j++)
+                {
+                    int k = Math.Abs(i - j);
+                    int m = Math.Max(ic.GetLength(0), ic.GetLength(1));
+                    InitialConditionCell c = new InitialConditionCell(i, j, 0, k * 9 / m);
+                   
+                    
+                    ic[i, j] = c;
+                    sets[c.Set].Add(c);
+                }
+            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            InitialConditionsGrid ig = new InitialConditionsGrid
+            {
+                CellGrid = ic,
+                CellSets = Sets
+            };
+            return ig;
+        }
     }
 
     [Serializable]
@@ -247,6 +272,24 @@ namespace SpacialPrisonerDilemma.View
             throw new NotImplementedException();
         }
 
+        internal static InitialConditions DiagonalFactory(bool reversed = false)
+        {
+            InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory();
+            if (reversed)
+            {
+                for (int i = 0; i < 10; i++) ig.Fill(i, i);
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++) ig.Fill(i, 9 - i);
+            }
+            var ic = new InitialConditions
+            {
+                Name = "Diagonal " + (reversed ? "reversed" : ""),
+                grid = ig
+            };
+            return ic; 
+        }
 
         internal InitialConditions GetCopy()
         {

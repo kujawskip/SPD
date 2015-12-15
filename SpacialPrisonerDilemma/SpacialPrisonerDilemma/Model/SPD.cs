@@ -89,6 +89,7 @@ namespace SpacialPrisonerDilemma.Model
             for (int i = 0; i < initialConfig.GetLength(0); i++)
                 for (int j = 0; j < initialConfig.GetLength(1); j++)
                 {
+                    
                     Singleton.cells[i, j] = new Cell(initialConfig[i, j]);
                     Singleton.coords.Add(Singleton.cells[i, j], new Tuple<int, int>(i, j));
                 }
@@ -333,6 +334,7 @@ namespace SpacialPrisonerDilemma.Model
              }));
             await Task.WhenAll(optimizing);
             int changed = optimizing.Sum(x => x.Result);
+            var repeating = CacheToHistory();
             var tasks2 = Batches.Select(x => Task.Run(() =>
               {
                   foreach (Cell c in x)
@@ -346,7 +348,7 @@ namespace SpacialPrisonerDilemma.Model
               }));
 
             await Task.WhenAll(tasks2);
-            var repeating = CacheToHistory();
+          
             if(repeating)
             {
 

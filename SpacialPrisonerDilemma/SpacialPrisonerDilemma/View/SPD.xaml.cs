@@ -80,9 +80,12 @@ namespace SpacialPrisonerDilemma.View
           
 
             }
-            foreach (var S in GenerateColumns(category,d[1]))
+            if (category > 0)
             {
-                (PointsModel.Series[0] as ColumnSeries).Items.Add(S);
+                foreach (var S in GenerateColumns(category-1, d[1]))
+                {
+                    (PointsModel.Series[0] as ColumnSeries).Items.Add(S);
+                }
             }
             CountModel = CountModel;
             PointsModel = PointsModel;
@@ -138,7 +141,7 @@ namespace SpacialPrisonerDilemma.View
             PointsModel.Series.Add(new ColumnSeries() {ColumnWidth = 10,IsStacked = true});
             CountModel.Series.Add(new ColumnSeries() { ColumnWidth = 10, IsStacked = true });
             Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0]);
-          // ResetModels();
+           ResetModels();
 
             InitializeComponent();
             Iteration = 0;
@@ -324,10 +327,15 @@ namespace SpacialPrisonerDilemma.View
             for (int p = 0; p < count; p++)
             {
                 BrushArray[p] = new SolidColorBrush(Color.FromRgb((byte)(256 - 15 * p>255?0:255 - 10*p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p)));
-                OxyArray[p] = OxyColor.FromRgb((byte)(256 - 15 * p>255?0:255 - 10*p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p));
+                OxyArray[p] = OxyColor.FromRgb((byte)(256 - 15 * p > 255 ? 0 : 255 - 10 * p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p));
             }
         }
 
+        public static void ModifyColor(Brush b,OxyColor o,int i)
+        {
+            BrushArray[i] = b;
+            OxyArray[i] = o;
+        }
         private static string Font;
         public static void ChangeFont(string FontName)
         {

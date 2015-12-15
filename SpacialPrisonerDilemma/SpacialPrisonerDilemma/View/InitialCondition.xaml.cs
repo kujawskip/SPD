@@ -47,6 +47,11 @@ namespace SpacialPrisonerDilemma.View
             ConditionNames.AddRange(new[] { ic1.Name, ic2.Name });
             Conditions.Add(ic1.Name, ic1);
             Conditions.Add(ic2.Name, ic2);
+            ic1 = InitialConditions.DiagonalFactory();
+            ic2 = InitialConditions.DiagonalFactory(true);
+            ConditionNames.AddRange(new[] { ic1.Name, ic2.Name });
+            Conditions.Add(ic1.Name, ic1);
+            Conditions.Add(ic2.Name, ic2);
             ComboBox_Copy.ItemsSource = ConditionNames;
             var image2 = new Image()
             {
