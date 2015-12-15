@@ -236,5 +236,12 @@ namespace SpacialPrisonerDilemma.View
                
             }
         }
+
+        private void Legend_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+          Point P =  e.GetPosition(Legend);
+            var D = P.Y/(Legend.Height/Enum.GetValues(typeof(WhenBetray)).Length);
+            ComboBox.SelectedIndex = (int) D;
+        }
     }
 }

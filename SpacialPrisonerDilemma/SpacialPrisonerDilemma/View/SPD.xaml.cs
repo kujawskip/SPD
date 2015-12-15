@@ -341,6 +341,11 @@ namespace SpacialPrisonerDilemma.View
         {
             Font = FontName;
         }
+
+        public static string GetFont()
+        {
+            return Font;
+        }
         public static Brush GetBrush(int p)
         {
                 return BrushArray[p];

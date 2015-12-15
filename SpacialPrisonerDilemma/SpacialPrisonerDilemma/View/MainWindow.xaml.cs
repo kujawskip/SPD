@@ -226,7 +226,9 @@ namespace SpacialPrisonerDilemma
 
         private void Font_OnClick(object sender, RoutedEventArgs e)
         {
-           
+           FontPicker FP = new FontPicker(SPDBrushes.GetFont());
+           var b = FP.ShowDialog();
+          
         }
     }
 }

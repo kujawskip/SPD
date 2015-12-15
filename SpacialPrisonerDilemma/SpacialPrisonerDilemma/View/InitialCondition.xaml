@@ -7,7 +7,7 @@
         <CheckBox Name="ChangeCell" Content="Change Cell" HorizontalAlignment="Left" Height="19" Margin="373,73,0,0" VerticalAlignment="Top" Width="87" />
         <Button Content="Random" HorizontalAlignment="Left" Height="20" Margin="29,266,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click"/>
         <Button Content="Accept" HorizontalAlignment="Left" Height="20" Margin="112,266,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
-        <Canvas Name="Legend" HorizontalAlignment="Left" Height="147" Margin="350,126,0,0" VerticalAlignment="Top" Width="139"/>
+        <Canvas Name="Legend" HorizontalAlignment="Left" Height="147" Margin="350,126,0,0" VerticalAlignment="Top" Width="139" MouseDown="Legend_OnMouseDown"/>
         <StackPanel Margin="29,291,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal">
             <Slider Name="RandomSize" Height="21"  Minimum="2" Maximum="120" Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
         <TextBlock Text="{Binding ElementName=RandomSize, Path=Value}"></TextBlock>
