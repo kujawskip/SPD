@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -308,6 +310,34 @@ namespace SpacialPrisonerDilemma.View
         private void RangeBase_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             
+        }
+        public static void SaveImageToFile(string filePath,Image b)
+        {
+            FileStream stream = new FileStream(filePath, FileMode.Create);
+
+            DrawingVisual vis = new DrawingVisual();
+            DrawingContext cont = vis.RenderOpen();
+            cont.DrawImage(b.Source, new Rect(new Size(b.ActualWidth,b.ActualHeight)));
+            cont.Close();
+
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)b.ActualWidth,
+                (int)b.ActualHeight, 96d, 96d, PixelFormats.Default);
+            rtb.Render(vis);
+
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(rtb));
+            encoder.Save(stream);
+            stream.Close();
+        }
+        private void ImageSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            Image b = Canvas.Children[0] as Image;
+            SaveFileDialog sfd = new SaveFileDialog {Filter = "PNG Image (*.png)|*.png"};
+            var v = sfd.ShowDialog();
+            if (v.HasValue && v.Value)
+            {
+                SaveImageToFile(sfd.FileName,b);
+            }
         }
     }
 

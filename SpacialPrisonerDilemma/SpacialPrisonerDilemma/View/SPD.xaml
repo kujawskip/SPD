@@ -5,7 +5,14 @@
          Title="SPD" Height="600.269" Width="866.343" Closing="Window_Closing">
     <Canvas Margin="0,0,-62,0">
         <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>
-        <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390"/>
+        <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390">
+        <Canvas.ContextMenu>
+            <ContextMenu>
+                <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick"></MenuItem>
+                <MenuItem Name="CicSave" Header="Zapisz jako plik cic"></MenuItem>
+            </ContextMenu>
+            </Canvas.ContextMenu>
+        </Canvas>
         <Canvas HorizontalAlignment="Right" Name="Legenda" Height="152" VerticalAlignment="Top" Width="196" Canvas.Left="500" Canvas.Top="302"/>
         <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31">
             <Slider Name="Slider" Height="11" Canvas.Left="22" Canvas.Top="384" Width="322" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Iteration,Mode=TwoWay}" Maximum="{Binding StateCount}"/>
