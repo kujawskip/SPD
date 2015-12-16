@@ -297,7 +297,7 @@ namespace SpacialPrisonerDilemma.Model
             return changed;
         }
 
-        public async Task<int> IterateAsync()
+        public async Task<Tuple<int, bool>> IterateAsync()
         {
             for (int i = 0; i < StepCount; i++)
             {
@@ -332,8 +332,9 @@ namespace SpacialPrisonerDilemma.Model
                  }
                  return res;
              }));
-            await Task.WhenAll(optimizing);
-            int changed = optimizing.Sum(x => x.Result);
+            var opt = optimizing.ToArray();
+            await Task.WhenAll(opt);
+            int changed = opt.Sum(x => x.Result);
             var repeating = CacheToHistory();
             var tasks2 = Batches.Select(x => Task.Run(() =>
               {
@@ -348,12 +349,7 @@ namespace SpacialPrisonerDilemma.Model
               }));
 
             await Task.WhenAll(tasks2);
-          
-            if(repeating)
-            {
-
-            }
-            return changed;
+            return new Tuple<int, bool>(changed, repeating);
         }
 
         public int CurrentIteration
