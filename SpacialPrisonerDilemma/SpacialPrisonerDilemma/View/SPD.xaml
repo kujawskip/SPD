@@ -13,7 +13,7 @@
                 </ContextMenu>
             </Canvas.ContextMenu>
         </Canvas>
-        <Canvas HorizontalAlignment="Right" Name="Legenda" Height="152" VerticalAlignment="Top" Width="196" Canvas.Left="500" Canvas.Top="302"/>
+        <Canvas HorizontalAlignment="Right" Name="Legenda" Height="213" VerticalAlignment="Top" Width="230" Canvas.Left="850" Canvas.Top="241"/>
         <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31">
 
             <TextBlock>Iteracja:</TextBlock>

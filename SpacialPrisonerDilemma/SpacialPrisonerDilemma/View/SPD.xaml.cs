@@ -120,10 +120,10 @@ namespace SpacialPrisonerDilemma.View
           
             CountModel = CountModel;
             PointsModel = PointsModel;
-            VariationModel = VariationModel;
+           
             CountModel.InvalidatePlot(true);
             PointsModel.InvalidatePlot(true);
-            VariationModel.InvalidatePlot(true);
+           
         }
         double[][] CalculateModels(Cell[,] cells)
         {
@@ -200,6 +200,7 @@ namespace SpacialPrisonerDilemma.View
             var image2 = new Image()
             {
                 Source = GenerateImage(spd, 0, 0, strategies.GetLength(0), strategies.GetLength(1),Iteration)
+                
             };
            
 
@@ -265,12 +266,7 @@ namespace SpacialPrisonerDilemma.View
         }
 
         private volatile bool cont = false;
-        private void UpdateVariation(int x)
-        {
-            int category = Iteration - 1;
-            (VariationModel.Series[0] as ColumnSeries).Items.Add(new ColumnItem(x, category) { Color = OxyColor.FromArgb(255, 0, 0, 0) });
-
-        }
+      
         public int StateCount
         {
             get { return spd.CurrentIteration>0?spd.CurrentIteration-1:0; }
@@ -278,10 +274,10 @@ namespace SpacialPrisonerDilemma.View
         int delay = 16;
 
         Task<Tuple<int, bool>> iteration;
-
+        private bool over = true;
         private async Task SPDLooper()
         {
-             while (cont)
+             while (cont && over)
              {
                 
                 iteration = Task.Run(async () => await spd.IterateAsync());
@@ -290,13 +286,15 @@ namespace SpacialPrisonerDilemma.View
                 await Task.WhenAll(new Task[] { iteration, Task.Delay((60/Speed)*delay) });
                 //if (await iteration == 0) cont = false;
                  var i = await iteration;
-                    UpdateImage();
-                OnPropertyChanged("StateCount");
-                if (Iteration == StateCount - 1) Iteration++;
-                await Task.WhenAll(new Task[] { iteration, Task.Delay((60 / Speed) * delay) });
-                UpdateVariation(i.Item1);
-                ResetModels();
-
+                 if (over)
+                 {
+                     UpdateImage();
+                     OnPropertyChanged("StateCount");
+                     if (Iteration == StateCount - 1) Iteration++;
+                     await Task.WhenAll(new Task[] {iteration, Task.Delay((60/Speed)*delay)});
+                     InsertVariationColumn(i.Item1);
+                     ResetModels();
+                 }
 
              }
         }
@@ -324,7 +322,7 @@ namespace SpacialPrisonerDilemma.View
             });
         }
         private Brush[] BrushArray;
-        private int speed;
+        
         private PlotModel changemodel;
 
         private void CreateBrushes(int count)
@@ -339,6 +337,7 @@ namespace SpacialPrisonerDilemma.View
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             cont = false;
+            over = false;
           if (iteration!=null) iteration.Wait();
             Model.SPD.Clear();
         }
@@ -427,6 +426,17 @@ namespace SpacialPrisonerDilemma.View
     {
         private static  Brush[] BrushArray;
         private static OxyColor[] OxyArray;
+
+        public static List<Image> GetBrushRectangles()
+        {
+            return BrushArray.Select(s =>
+            {
+                RectangleGeometry rg = new RectangleGeometry(new Rect(new Point(0, 0), new Point(30, 15)));
+                GeometryDrawing gd = new GeometryDrawing(s, new Pen(s, 1), rg);
+                DrawingImage di = new DrawingImage(gd);
+                return new Image() {Source = di};
+            }).ToList();
+        }
         public static OxyColor GetOxyColor(int p)
         {
             return OxyArray[p];
@@ -489,7 +499,7 @@ namespace SpacialPrisonerDilemma.View
         CultureInfo.CurrentCulture,
         FlowDirection.LeftToRight,
         new Typeface(Font),
-        16,
+        15,
         Brushes.Black);
                 GeometryDrawing gd = new GeometryDrawing();
                 gd.Brush = GetBrush(i);
