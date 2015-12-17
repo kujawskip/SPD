@@ -23,6 +23,16 @@ namespace SpacialPrisonerDilemma
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        public enum Neighbourhoods
+        {
+            Moore,
+            VonNeumann
+        }
+        public enum Shape
+        {
+            Płaski,
+            Torus
+        }
         private ValidationErrors _error;
         private int ColorPickerIndex = 0;
         private InitialConditions ic;
@@ -38,6 +48,10 @@ namespace SpacialPrisonerDilemma
         {
 
             InitializeComponent();
+            ShapeBox.ItemsSource = Enum.GetValues(typeof(Shape));
+            NeighbourBox.ItemsSource = Enum.GetValues(typeof(Neighbourhoods));
+            ShapeBox.SelectedItem = Shape.Płaski;
+            NeighbourBox.SelectedItem = Neighbourhoods.Moore;
             this.DataContext = this;
             Error = ValidationErrors.None;
             canvalidate = true;
@@ -186,7 +200,7 @@ namespace SpacialPrisonerDilemma
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double[] d = Validate();
-            SPD spd = new SPD(d, Transform(ic.grid));
+            SPD spd = new SPD(d, Transform(ic.grid),(Shape)ShapeBox.SelectedItem == Shape.Torus,Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
             spd.ShowDialog();
         }
 
@@ -230,5 +244,11 @@ namespace SpacialPrisonerDilemma
            var b = FP.ShowDialog();
           
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
+
 }

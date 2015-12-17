@@ -36,6 +36,7 @@ namespace SpacialPrisonerDilemma.View
         double[] payValues;
         int[,] strategies;
         private int iter;
+        private int speed;
         private List<Cell[,]> History;
         PlotModel pointsmodel;
         private PlotModel countmodel;
@@ -58,16 +59,20 @@ namespace SpacialPrisonerDilemma.View
                 OnPropertyChanged();
             }
         }
+
         public PlotModel ChangeModel
+
         {
             get
             {
+
 
                 return changemodel;
             }
             set
             {
                 changemodel = value;
+
                 OnPropertyChanged();
             }
         }
@@ -79,21 +84,26 @@ namespace SpacialPrisonerDilemma.View
         public int Speed
         {
             get { return speed; }
-            set { speed = value; OnPropertyChanged(); }
+
+            set { speed = value; OnPropertyChanged();  }
         }
+
+
         private List<Tuple<int, String>> Iterations;
         
         private List<ColumnItem> GenerateColumns(int category, double[] values)
         {
             return values.Select((t, i) => new ColumnItem(t, category) {Color = SPDBrushes.GetOxyColor(i)}).ToList();
         }
-        private void ResetModels()
+        private void ResetModels(int x=0)
         {
             int category = Iterations.Count;
             
             var d = CalculateModels(spd.GetStateByIteration(category));
          
-            Iterations.Add(new Tuple<int,String>(category,"".ToString()));
+
+            Iterations.Add(new Tuple<int,String>(category,""));
+
             foreach (var S in GenerateColumns(category,d[0]))
             {
                 (CountModel.Series[0] as ColumnSeries).Items.Add(S);
@@ -107,10 +117,13 @@ namespace SpacialPrisonerDilemma.View
                     (PointsModel.Series[0] as ColumnSeries).Items.Add(S);
                 }
             }
+          
             CountModel = CountModel;
             PointsModel = PointsModel;
+            VariationModel = VariationModel;
             CountModel.InvalidatePlot(true);
             PointsModel.InvalidatePlot(true);
+            VariationModel.InvalidatePlot(true);
         }
         double[][] CalculateModels(Cell[,] cells)
         {
@@ -145,7 +158,7 @@ namespace SpacialPrisonerDilemma.View
             count = count.Select(d => 100*d/d2).ToArray();
             return new[] {count, result};
         }
-        public SPD(double[] PayValues,int[,] Strategies)
+        public SPD(double[] PayValues,int[,] Strategies,bool torus,bool vonneumann)
         {
             DataContext = this;
             payValues = PayValues;
@@ -159,16 +172,21 @@ namespace SpacialPrisonerDilemma.View
             CountModel.Title = "Liczebność strategii";
             ChangeModel.Title = "Niestabilność układu";
             Iterations = new List<Tuple<int, string>>();
+           
            PointsModel.Axes.Add(new CategoryAxis(){ItemsSource=Iterations,LabelField = "Item2"});
+           
            CountModel.Axes.Add(new CategoryAxis() { ItemsSource = Iterations, LabelField = "Item2" });
             PointsModel.Axes.Add(new LinearAxis(){MinimumPadding=0, AbsoluteMinimum = 0});
             CountModel.Axes.Add(new LinearAxis(){MinimumPadding = 0,AbsoluteMinimum = 0});
+           
             PointsModel.Series.Add(new ColumnSeries() {ColumnWidth = 10,IsStacked = true});
             CountModel.Series.Add(new ColumnSeries() { ColumnWidth = 10, IsStacked = true });
+
             ChangeModel.Axes.Add(new CategoryAxis() {ItemsSource = Iterations, LabelField = "Item2"});
             ChangeModel.Axes.Add(new LinearAxis() { MinimumPadding = 0, AbsoluteMinimum = 0 });
             ChangeModel.Series.Add(new ColumnSeries() { ColumnWidth = 10, IsStacked = true });
-            Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0]);
+            Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0],!vonneumann,torus);
+
            ResetModels();
 
             InitializeComponent();
@@ -247,13 +265,20 @@ namespace SpacialPrisonerDilemma.View
         }
 
         private volatile bool cont = false;
+        private void UpdateVariation(int x)
+        {
+            int category = Iteration - 1;
+            (VariationModel.Series[0] as ColumnSeries).Items.Add(new ColumnItem(x, category) { Color = OxyColor.FromArgb(255, 0, 0, 0) });
 
+        }
         public int StateCount
         {
             get { return spd.CurrentIteration>0?spd.CurrentIteration-1:0; }
         }
         int delay = 16;
-        Task<int> iteration;
+
+        Task<Tuple<int, bool>> iteration;
+
         private async Task SPDLooper()
         {
              while (cont)
@@ -261,16 +286,18 @@ namespace SpacialPrisonerDilemma.View
                 
                 iteration = Task.Run(async () => await spd.IterateAsync());
                 //iteration = Task.Run(() => spd.Iterate());
-                await Task.WhenAll(new Task[] { iteration, Task.Delay(60*delay/speed) });
+
+                await Task.WhenAll(new Task[] { iteration, Task.Delay((60/Speed)*delay) });
                 //if (await iteration == 0) cont = false;
                  var i = await iteration;
-                 
                     UpdateImage();
                 OnPropertyChanged("StateCount");
                 if (Iteration == StateCount - 1) Iteration++;
-                await Task.WhenAll(new Task[] { iteration, Task.Delay(60 * delay / speed) });
+                await Task.WhenAll(new Task[] { iteration, Task.Delay((60 / Speed) * delay) });
+                UpdateVariation(i.Item1);
                 ResetModels();
-                InsertVariationColumn(i);
+
+
              }
         }
 
@@ -337,6 +364,7 @@ namespace SpacialPrisonerDilemma.View
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private PlotModel variationmodel;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
