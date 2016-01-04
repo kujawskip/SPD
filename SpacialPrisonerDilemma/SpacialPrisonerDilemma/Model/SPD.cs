@@ -360,16 +360,10 @@ namespace SpacialPrisonerDilemma.Model
               }));
 
             await Task.WhenAll(tasks2);
-            return new Tuple<int, bool>(changed, repeating);
-          
-            if(repeating)
-            {
-
-            }
             var stepEnd = DateTime.Now;
             Log.NewStepStart(stepStart);
             Log.NewStepEnd(stepEnd);
-            return changed;
+            return new Tuple<int, bool>(changed, repeating);
         }
 
         public int CurrentIteration
