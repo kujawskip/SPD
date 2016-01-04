@@ -276,7 +276,7 @@ namespace SpacialPrisonerDilemma.View
         {
             cont = false;
           if (iteration!=null) iteration.Wait();
-            Model.SPD.Clear();
+            var log = Model.SPD.ClearAndGetLog();
         }
 
         private Brush GetBrush(int p)

@@ -74,6 +74,7 @@
     </ApplicationDefinition>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\CustomBehaviour.cs" />
+    <Compile Include="Tools\PerformanceLog.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="View\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>

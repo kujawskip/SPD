@@ -81,11 +81,8 @@ namespace SpacialPrisonerDilemma.Model
           
             var max = cellList.Max(y => y.Points);
             if (c.Points == max) return c.Strategy;
+            if (c.GetNeighbours().All(x => x.Strategy == c.Strategy)) return c.Strategy;
             var best = cellList.Where(x => x.Points == cellList.Max(y => y.Points)).Select(x => x.Strategy).Distinct();
-            if (best.Count() > 1)
-            {
-                //TODO:Zdecydować którą wybrać
-            }
             return best.First();
         }
 

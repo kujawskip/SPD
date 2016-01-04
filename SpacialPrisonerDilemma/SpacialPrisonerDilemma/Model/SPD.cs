@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpacialPrisonerDilemma.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace SpacialPrisonerDilemma.Model
     public class SPD
     {
         public const int ThreadCount = 16;
-
+        private PerformanceLog Log;
         public Cell this[int i, int j]
         {
             get
@@ -79,6 +80,7 @@ namespace SpacialPrisonerDilemma.Model
 
         public static void Initialize(IStrategy[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed, bool moore = true, bool torus = false)
         {
+            var allocStart = DateTime.Now;
             Singleton.moore = moore;
             Singleton.torus = torus;
             Singleton.NoneBetrayedPoints = noneBetrayed;
@@ -118,11 +120,15 @@ namespace SpacialPrisonerDilemma.Model
                     }
                 }
             Singleton.Batches = Singleton.BatchCells();
+            var allocEnd = DateTime.Now;
+            Singleton.Log = new PerformanceLog(allocStart, allocEnd);
         }
 
-        internal static void Clear()
+        internal static PerformanceLog ClearAndGetLog()
         {
+            var log = Singleton.Log;
             singleton = null;
+            return log;
         }
 
         void ForEachCell(Action<Cell> action)
@@ -274,6 +280,7 @@ namespace SpacialPrisonerDilemma.Model
 
         protected internal int Iterate()
         {
+            var stepStart = DateTime.Now;
             for (int i = 0; i < StepCount; i++)
                 Step();
             int changed = 0;
@@ -294,11 +301,15 @@ namespace SpacialPrisonerDilemma.Model
                 }
             });
             CacheToHistory();
+            var stepEnd = DateTime.Now;
+            Log.NewStepStart(stepStart);
+            Log.NewStepEnd(stepEnd);
             return changed;
         }
 
         public async Task<int> IterateAsync()
         {
+            var stepStart = DateTime.Now;
             for (int i = 0; i < StepCount; i++)
             {
                 await StepAsync();
@@ -353,6 +364,9 @@ namespace SpacialPrisonerDilemma.Model
             {
 
             }
+            var stepEnd = DateTime.Now;
+            Log.NewStepStart(stepStart);
+            Log.NewStepEnd(stepEnd);
             return changed;
         }
 
