@@ -36,6 +36,7 @@ namespace SpacialPrisonerDilemma.View
         double[] payValues;
         int[,] strategies;
         private int iter;
+        private int speed;
         private List<Cell[,]> History;
         PlotModel pointsmodel;
         private PlotModel countmodel;
@@ -58,11 +59,35 @@ namespace SpacialPrisonerDilemma.View
                 OnPropertyChanged();
             }
         }
+
+        public PlotModel ChangeModel
+
+        {
+            get
+            {
+
+
+                return changemodel;
+            }
+            set
+            {
+                changemodel = value;
+
+                OnPropertyChanged();
+            }
+        }
         public int Iteration
         {
             get { return iter; }
             set { iter = value; OnPropertyChanged(); UpdateImage(); }
         }
+        public int Speed
+        {
+            get { return speed; }
+
+            set { speed = value; OnPropertyChanged();  }
+        }
+
 
         private List<Tuple<int, String>> Iterations;
         
@@ -70,13 +95,15 @@ namespace SpacialPrisonerDilemma.View
         {
             return values.Select((t, i) => new ColumnItem(t, category) {Color = SPDBrushes.GetOxyColor(i)}).ToList();
         }
-        private void ResetModels()
+        private void ResetModels(int x=0)
         {
             int category = Iterations.Count;
             
             var d = CalculateModels(spd.GetStateByIteration(category));
          
-            Iterations.Add(new Tuple<int,String>(category,category.ToString()));
+
+            Iterations.Add(new Tuple<int,String>(category,""));
+
             foreach (var S in GenerateColumns(category,d[0]))
             {
                 (CountModel.Series[0] as ColumnSeries).Items.Add(S);
@@ -90,10 +117,13 @@ namespace SpacialPrisonerDilemma.View
                     (PointsModel.Series[0] as ColumnSeries).Items.Add(S);
                 }
             }
+          
             CountModel = CountModel;
             PointsModel = PointsModel;
+           
             CountModel.InvalidatePlot(true);
             PointsModel.InvalidatePlot(true);
+           
         }
         double[][] CalculateModels(Cell[,] cells)
         {
@@ -128,22 +158,35 @@ namespace SpacialPrisonerDilemma.View
             count = count.Select(d => 100*d/d2).ToArray();
             return new[] {count, result};
         }
-        public SPD(double[] PayValues,int[,] Strategies)
+        public SPD(double[] PayValues,int[,] Strategies,bool torus,bool vonneumann)
         {
             DataContext = this;
             payValues = PayValues;
             strategies = Strategies;
             spd = Model.SPD.Singleton;
+            Speed = 1;
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
+            ChangeModel = new PlotModel();
+            PointsModel.Title = "Średnie wartości punktowe";
+            CountModel.Title = "Liczebność strategii";
+            ChangeModel.Title = "Niestabilność układu";
             Iterations = new List<Tuple<int, string>>();
+           
            PointsModel.Axes.Add(new CategoryAxis(){ItemsSource=Iterations,LabelField = "Item2"});
+           
            CountModel.Axes.Add(new CategoryAxis() { ItemsSource = Iterations, LabelField = "Item2" });
             PointsModel.Axes.Add(new LinearAxis(){MinimumPadding=0, AbsoluteMinimum = 0});
             CountModel.Axes.Add(new LinearAxis(){MinimumPadding = 0,AbsoluteMinimum = 0});
+           
             PointsModel.Series.Add(new ColumnSeries() {ColumnWidth = 10,IsStacked = true});
             CountModel.Series.Add(new ColumnSeries() { ColumnWidth = 10, IsStacked = true });
-            Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0]);
+
+            ChangeModel.Axes.Add(new CategoryAxis() {ItemsSource = Iterations, LabelField = "Item2"});
+            ChangeModel.Axes.Add(new LinearAxis() { MinimumPadding = 0, AbsoluteMinimum = 0 });
+            ChangeModel.Series.Add(new ColumnSeries() { ColumnWidth = 10, IsStacked = true });
+            Model.SPD.Initialize(strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0],!vonneumann,torus);
+
            ResetModels();
 
             InitializeComponent();
@@ -157,6 +200,7 @@ namespace SpacialPrisonerDilemma.View
             var image2 = new Image()
             {
                 Source = GenerateImage(spd, 0, 0, strategies.GetLength(0), strategies.GetLength(1),Iteration)
+                
             };
            
 
@@ -222,29 +266,45 @@ namespace SpacialPrisonerDilemma.View
         }
 
         private volatile bool cont = false;
-
+      
         public int StateCount
         {
             get { return spd.CurrentIteration>0?spd.CurrentIteration-1:0; }
         }
-        int delay = 1000;
-        Task<int> iteration;
+        int delay = 16;
+
+        Task<Tuple<int, bool>> iteration;
+        private bool over = true;
         private async Task SPDLooper()
         {
-             while (cont)
+             while (cont && over)
              {
                 
                 iteration = Task.Run(async () => await spd.IterateAsync());
                 //iteration = Task.Run(() => spd.Iterate());
-                await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
+
+                await Task.WhenAll(new Task[] { iteration, Task.Delay((60/Speed)*delay) });
                 //if (await iteration == 0) cont = false;
-                
-                    UpdateImage();
-                OnPropertyChanged("StateCount");
-                if (Iteration == StateCount - 1) Iteration++;
-                await Task.WhenAll(new Task[] { iteration, Task.Delay(delay) });
-                ResetModels();
+                 var i = await iteration;
+                 if (over)
+                 {
+                     UpdateImage();
+                     OnPropertyChanged("StateCount");
+                     if (Iteration == StateCount - 1) Iteration++;
+                     await Task.WhenAll(new Task[] {iteration, Task.Delay((60/Speed)*delay)});
+                     InsertVariationColumn(i.Item1);
+                     ResetModels();
+                 }
+
              }
+        }
+
+        private void InsertVariationColumn(int x)
+        {
+            int i = Iterations.Count - 1;
+            (ChangeModel.Series[0] as ColumnSeries).Items.Add(new ColumnItem(x,i));
+            ChangeModel.InvalidatePlot(true);
+            
         }
         private async Task StartSPD()
         {
@@ -262,6 +322,8 @@ namespace SpacialPrisonerDilemma.View
             });
         }
         private Brush[] BrushArray;
+        
+        private PlotModel changemodel;
 
         private void CreateBrushes(int count)
         {
@@ -275,6 +337,7 @@ namespace SpacialPrisonerDilemma.View
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             cont = false;
+            over = false;
           if (iteration!=null) iteration.Wait();
             var log = Model.SPD.ClearAndGetLog();
         }
@@ -300,6 +363,7 @@ namespace SpacialPrisonerDilemma.View
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private PlotModel variationmodel;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -362,6 +426,17 @@ namespace SpacialPrisonerDilemma.View
     {
         private static  Brush[] BrushArray;
         private static OxyColor[] OxyArray;
+
+        public static List<Image> GetBrushRectangles()
+        {
+            return BrushArray.Select(s =>
+            {
+                RectangleGeometry rg = new RectangleGeometry(new Rect(new Point(0, 0), new Point(30, 15)));
+                GeometryDrawing gd = new GeometryDrawing(s, new Pen(s, 1), rg);
+                DrawingImage di = new DrawingImage(gd);
+                return new Image() {Source = di};
+            }).ToList();
+        }
         public static OxyColor GetOxyColor(int p)
         {
             return OxyArray[p];
@@ -424,7 +499,7 @@ namespace SpacialPrisonerDilemma.View
         CultureInfo.CurrentCulture,
         FlowDirection.LeftToRight,
         new Typeface(Font),
-        16,
+        15,
         Brushes.Black);
                 GeometryDrawing gd = new GeometryDrawing();
                 gd.Brush = GetBrush(i);

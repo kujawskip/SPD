@@ -2,23 +2,33 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:oxy="http://oxyplot.org/wpf"
-         Title="SPD" Height="600.269" Width="866.343" Closing="Window_Closing">
+         Title="SPD" Height="600.269" Width="1166.343" Closing="Window_Closing">
     <Canvas Margin="0,0,-62,0">
         <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>
         <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390">
-        <Canvas.ContextMenu>
-            <ContextMenu>
-                <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick"></MenuItem>
-                <MenuItem Name="CicSave" Header="Zapisz jako plik cic" Click="CicSave_OnClick"></MenuItem>
-            </ContextMenu>
+            <Canvas.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick"></MenuItem>
+                    <MenuItem Name="CicSave" Header="Zapisz jako plik cic" Click="CicSave_OnClick"></MenuItem>
+                </ContextMenu>
             </Canvas.ContextMenu>
         </Canvas>
-        <Canvas HorizontalAlignment="Right" Name="Legenda" Height="152" VerticalAlignment="Top" Width="196" Canvas.Left="500" Canvas.Top="302"/>
+        <Canvas HorizontalAlignment="Right" Name="Legenda" Height="213" VerticalAlignment="Top" Width="230" Canvas.Left="850" Canvas.Top="241"/>
         <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31">
+
+            <TextBlock>Iteracja:</TextBlock>
             <Slider Name="Slider" Height="11" Canvas.Left="22" Canvas.Top="384" Width="322" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Iteration,Mode=TwoWay}" Maximum="{Binding StateCount}"/>
             <TextBlock Text="{Binding ElementName=Slider,Path=Value}"/>
         </StackPanel>
-        <oxy:PlotView Model="{Binding CountModel}" Canvas.Left="500" Canvas.Top="020" Width="300" Height="200"></oxy:PlotView>
+        <oxy:PlotView   Model="{Binding CountModel}" Canvas.Left="500" Canvas.Top="020" Width="300" Height="200"></oxy:PlotView>
+        <oxy:PlotView   Model="{Binding ChangeModel}" Canvas.Left="810" Canvas.Top="020" Width="300" Height="200">
+        </oxy:PlotView>
         <oxy:PlotView Model="{Binding PointsModel}" Canvas.Left="500" Canvas.Top="240" Width="300" Height="200"></oxy:PlotView>
+        <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="424" Height="31">
+            <TextBlock>Prędkość:</TextBlock>
+            <Slider x:Name="Slider1" Height="11" Canvas.Left="22" Canvas.Top="384" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5"/>
+            <TextBlock Text="{Binding Value, ElementName=Slider1}"/>
+        </StackPanel>
+
     </Canvas>
 </Window>

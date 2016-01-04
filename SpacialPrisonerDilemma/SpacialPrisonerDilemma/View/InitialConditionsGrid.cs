@@ -76,20 +76,20 @@ namespace SpacialPrisonerDilemma.View
             } 
         }
 
-        internal static InitialConditionsGrid DonutFactory()
+        internal static InitialConditionsGrid DonutFactory(int size=30)
         {
-            InitialConditionCell[,] ic = new InitialConditionCell[30,30];
+            InitialConditionCell[,] ic = new InitialConditionCell[size,size];
             List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
             for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
-            for(int i=0;i<30;i++)
-                for (int j = 0; j < 30; j++)
+            for(int i=0;i<size;i++)
+                for (int j = 0; j < size; j++)
                 {
                     InitialConditionCell c = new InitialConditionCell(i,j,-1,0);
                     for (int k = 9; k >= 0; k--)
                     {
 
 
-                        if ((i - 15)*(i - 15) + (j - 15)*(j - 15) > 225/(k+1))
+                        if ((i - size/2)*(i - size/2) + (j - size/2)*(j - size/2) > (size*(size/4))/(k+1))
                         {
                             c.Set = k;
                         }
@@ -129,20 +129,20 @@ namespace SpacialPrisonerDilemma.View
             };
             return ig;
         }
-        internal static InitialConditionsGrid CircleFactory()
+        internal static InitialConditionsGrid CircleFactory(int size=30)
         {
-            InitialConditionCell[,] ic = new InitialConditionCell[30, 30];
+            InitialConditionCell[,] ic = new InitialConditionCell[size, size];
             List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
             for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
-            for (int i = 0; i < 30; i++)
-                for (int j = 0; j < 30; j++)
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
                 {
                     InitialConditionCell c = new InitialConditionCell(i, j, 0, -1);
                     for (int k = 0;k<9;k++)
                     {
 
                         
-                        if ((i - 15) * (i - 15) + (j - 15) * (j - 15) <= 225 / ((k+1)*(k + 1)))
+                        if ((i - size/2) * (i - size/2) + (j - size/2) * (j - size/2) <= (size/2)*(size/2) / ((k+1)*(k + 1)))
                         {
                             c.Set = k;
                         }
@@ -189,13 +189,13 @@ namespace SpacialPrisonerDilemma.View
 
         }
 
-        internal static InitialConditionsGrid DiagonalFactory()
+        internal static InitialConditionsGrid DiagonalFactory(int size=30)
         {
-            InitialConditionCell[,] ic = new InitialConditionCell[30, 30];
+            InitialConditionCell[,] ic = new InitialConditionCell[size, size];
             List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
             for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
-            for (int i = 0; i < 30; i++)
-                for (int j = 0; j < 30; j++)
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
                 {
                     int k = Math.Abs(i - j);
                     int m = Math.Max(ic.GetLength(0), ic.GetLength(1));
@@ -244,14 +244,14 @@ namespace SpacialPrisonerDilemma.View
             Random r = new Random();
             var ic = new InitialConditions
             {
-                Name = "Random" + r.Next().ToString(),
+                Name = "Losowy" + r.Next().ToString(),
                 grid = InitialConditionsGrid.GenerateRandom(r,size)
             };
             return ic;
         }
-        internal static InitialConditions CircleFactory(bool reversed = false)
+        internal static InitialConditions CircleFactory(bool reversed=false,int size=30)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory();
+            InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size);
             if (reversed)
             {
                 for (int i = 0; i < 10; i++) ig.Fill(i, i);
@@ -262,14 +262,14 @@ namespace SpacialPrisonerDilemma.View
             }
             var ic = new InitialConditions
             {
-                Name = "Circle " + (reversed ? "reversed" : ""),
+                Name = "Koło " + (reversed ? "- odwrócone kolory" : ""),
                 grid = ig
             };
             return ic;
         }
-        internal static InitialConditions DonutFactory(bool reversed=false)
+        internal static InitialConditions DonutFactory(bool reversed=false,int size=30)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory();
+            InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size);
             if (reversed)
             {
                 for(int i=0;i<10;i++) ig.Fill(i,i);
@@ -280,19 +280,19 @@ namespace SpacialPrisonerDilemma.View
             }
             var ic = new InitialConditions
             {
-                Name = "Donut "+ (reversed?"reversed":""),
+                Name = "Donut " + (reversed ? "- odwrócone kolory" : ""),
                 grid = ig
             };
             return ic;
         }
-        internal static InitialConditions CrossFactory(bool reversed = false)
+        internal static InitialConditions CrossFactory(bool reversed=false,int size=30)
         {
             throw new NotImplementedException();
         }
 
-        internal static InitialConditions DiagonalFactory(bool reversed = false)
+        internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory();
+            InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size);
             if (reversed)
             {
                 for (int i = 0; i < 10; i++) ig.Fill(i, i);
@@ -303,7 +303,7 @@ namespace SpacialPrisonerDilemma.View
             }
             var ic = new InitialConditions
             {
-                Name = "Diagonal " + (reversed ? "reversed" : ""),
+                Name = "Przekątna " + (reversed ? "- odwrócone kolory" : ""),
                 grid = ig
             };
             return ic; 
