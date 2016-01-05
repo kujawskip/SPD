@@ -29,6 +29,7 @@
             <Slider x:Name="Slider1" Height="11" Canvas.Left="22" Canvas.Top="384" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5"/>
             <TextBlock Text="{Binding Value, ElementName=Slider1}"/>
         </StackPanel>
+        <CheckBox Name="PerformanceCheck" Content="Informuj o wydajności" xml:space="preserve" Height="45" Canvas.Left="408" Canvas.Top="453" Width="215"/>
 
     </Canvas>
 </Window>

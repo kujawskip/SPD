@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Tools
 {
-    class PerformanceLog
+    public class PerformanceLog
     {
         public List<DateTime> StepStarts;
         public List<DateTime> StepEnds;
@@ -58,11 +58,11 @@ namespace SpacialPrisonerDilemma.Tools
                 l.Sort();
                 if(l.Count%2==1)
                 {
-                    return l[l.Count / 2 + 1];
+                    return l[l.Count / 2];
                 }
                 else
                 {
-                    return TimeSpan.FromMilliseconds((l[l.Count / 2] + l[l.Count / 2 + 1]).TotalMilliseconds / 2);
+                    return TimeSpan.FromMilliseconds((l[l.Count / 2] + l[l.Count / 2 - 1]).TotalMilliseconds / 2);
                 }
             }
         }

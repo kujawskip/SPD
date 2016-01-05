@@ -12,8 +12,8 @@
     </Window.Resources>
     <Grid Margin="0,0,-35,0">
         <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" MouseDown="Canvas_OnMouseDown"  HorizontalAlignment="Left" Height="205" Margin="20,57,0,0" VerticalAlignment="Top" Width="205"/>
-        <Button Content="Losowy"  HorizontalAlignment="Left" Height="20" Margin="29,266,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click"/>
-        <Button Content="Akceptuj" IsEnabled="{Binding Loaded}" HorizontalAlignment="Left" Height="20" Margin="112,266,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
+        <Button Content="Losowy"  HorizontalAlignment="Left" Height="20" Margin="250,264,0,0" VerticalAlignment="Top" Width="48" Click="Button_Click"/>
+        <Button Content="Akceptuj" IsEnabled="{Binding Loaded}" HorizontalAlignment="Left" Height="20" Margin="308,289,0,0" VerticalAlignment="Top" Width="50" Click="Button_Click_1"/>
         <Canvas Name="Legend" HorizontalAlignment="Left" Height="147" Margin="528,76,0,0" VerticalAlignment="Top" Width="149" MouseDown="Legend_OnMouseDown"/>
         <StackPanel Margin="29,291,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal">
             <Slider Name="RandomSize" Height="21"  Minimum="2" Maximum="120" Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
@@ -21,8 +21,8 @@
         </StackPanel>
         <ComboBox Name="ComboBox" ItemTemplate="{StaticResource cmbTemplate}" HorizontalAlignment="Left" Height="23" Margin="386,57,0,0" VerticalAlignment="Top" Width="87"/>
         <ComboBox x:Name="ComboBox_Copy"  HorizontalAlignment="Left" Height="20" Margin="20,23,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button Content="Wczytaj" HorizontalAlignment="Left" Height="21" Margin="259,291,0,0" VerticalAlignment="Top" Width="53" Click="ButtonBase_OnClick1"/>
-        <Button Content="Zapisz" IsEnabled="{Binding Loaded}" HorizontalAlignment="Left" Height="21" Margin="317,291,0,0" VerticalAlignment="Top" Width="51" Click="ButtonBase_OnClick2"/>
+        <Button Content="Wczytaj" HorizontalAlignment="Left" Height="21" Margin="250,289,0,0" VerticalAlignment="Top" Width="53" Click="ButtonBase_OnClick1"/>
+        <Button Content="Zapisz" IsEnabled="{Binding Loaded}" HorizontalAlignment="Left" Height="21" Margin="303,264,0,0" VerticalAlignment="Top" Width="51" Click="ButtonBase_OnClick2"/>
         <RadioButton GroupName="Operation" Checked="RadioPixel_OnChecked" Unchecked="RadioPixel_OnChecked" Name="RadioPixel"  Content="Zmiana komórki" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,154,0,0"/>
         <RadioButton GroupName="Operation" Checked="RadioPixel_OnChecked" Unchecked="RadioPixel_OnChecked" Name="RadioFill" Content="Zastąpienie koloru" HorizontalAlignment="Left" Height="32" Margin="386,127,0,0" VerticalAlignment="Top" Width="123"/>
     </Grid>

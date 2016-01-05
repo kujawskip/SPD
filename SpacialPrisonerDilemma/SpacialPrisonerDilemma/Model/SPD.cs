@@ -124,7 +124,7 @@ namespace SpacialPrisonerDilemma.Model
             Singleton.Log = new PerformanceLog(allocStart, allocEnd);
         }
 
-        internal static PerformanceLog ClearAndGetLog()
+        public static PerformanceLog ClearAndGetLog()
         {
             var log = Singleton.Log;
             singleton = null;
