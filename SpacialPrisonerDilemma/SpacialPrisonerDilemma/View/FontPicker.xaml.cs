@@ -1,49 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SpacialPrisonerDilemma.View
 {
     /// <summary>
     /// Interaction logic for FontPicker.xaml
     /// </summary>
-    public partial class FontPicker : Window
+    public partial class FontPicker
     {
-        private String TypeFace;
-        public FontPicker(string TF)
+        private String _typeFace;
+        public FontPicker(string tf)
         {
-            TypeFace = TF;
+            _typeFace = tf;
             InitializeComponent();
-            foreach (var V in new[] {"Arial", "Helvetica", "Times New Roman"}) Left.Items.Add(V);
-            if (Left.Items.Contains(TF))
+            foreach (var v in new[] {"Arial", "Helvetica", "Times New Roman"}) Box.Items.Add(v);
+            if (Box.Items.Contains(tf))
             {
-                Left.SelectedIndex = Left.Items.IndexOf(TF);
+                Box.SelectedIndex = Box.Items.IndexOf(tf);
             }
         }
 
         private void Left_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           SPDBrushes.ChangeFont(Left.SelectedItem.ToString());
+           SPDAssets.ChangeFont(Box.SelectedItem.ToString());
             Canvas.Children.Clear();
-            Canvas.Children.Add(new Image() {Source = SPDBrushes.GenerateLegend(Canvas.Height)});
-            SPDBrushes.ChangeFont(TypeFace);
+            Canvas.Children.Add(new Image() {Source = SPDAssets.GenerateLegend(Canvas.Height)});
+            SPDAssets.ChangeFont(_typeFace);
 
         }
 
         private void Akceptuj_Click(object sender, RoutedEventArgs e)
         {
-            TypeFace = Left.SelectedItem.ToString();
-            SPDBrushes.ChangeFont(TypeFace);
+            _typeFace = Box.SelectedItem.ToString();
+            SPDAssets.ChangeFont(_typeFace);
             DialogResult = true;
             Close();
         }

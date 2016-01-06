@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SpacialPrisonerDilemma.Model;
 
 namespace SpacialPrisonerDilemma.View
@@ -15,12 +13,12 @@ namespace SpacialPrisonerDilemma.View
         public int Set { get; internal set; }
         public int Y { get; set; }
 
-        public InitialConditionCell(int X, int Y, int Value, int Set)
+        public InitialConditionCell(int x, int y, int value, int set)
         {
-            this.X = X;
-            this.Y = Y;
-            this.Set = Set;
-            this.Value = Value;
+            X = x;
+            Y = y;
+            Set = set;
+            Value = value;
         }
 
         public InitialConditionCell GetCopy()
@@ -35,52 +33,52 @@ namespace SpacialPrisonerDilemma.View
         {
             int x = size;
             int y = size;
-            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never+1];
-            for(int i=0;i<sets.Length;i++) sets[i]=new List<InitialConditionCell>();
-            InitialConditionCell[,] Grid = new InitialConditionCell[x,y];
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never+1];
+            for(int i=0;i<setLists.Length;i++) setLists[i]=new List<InitialConditionCell>();
+            InitialConditionCell[,] grid = new InitialConditionCell[x,y];
             for(int i=0;i<x;i++)
                 for (int j = 0; j < y; j++)
                 {
-                    int k = r.Next(sets.Length);
+                    int k = r.Next(setLists.Length);
                     InitialConditionCell c = new InitialConditionCell(i,j,k,k);
-                    Grid[i, j] = c;
-                    sets[k].Add(c);
+                    grid[i, j] = c;
+                    setLists[k].Add(c);
 
                 }
-            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            var sets = setLists.Select(a => a.ToArray()).ToArray();
             InitialConditionsGrid ig = new InitialConditionsGrid
             {
-                CellGrid = Grid,
-                CellSets = Sets
+                CellGrid = grid,
+                CellSets = sets
             };
             return ig;
         }
         public InitialConditionCell[][] CellSets;
         public InitialConditionCell[,] CellGrid;
-        public void ChangeValue(int X, int Y, int Value)
+        public void ChangeValue(int x, int y, int value)
         {
-            CellGrid[X,Y].Value = Value;
+            CellGrid[x,y].Value = value;
         }
 
-        public void Fill(int X, int Y, int Value)
+        public void Fill(int x, int y, int value)
         {
-            int index = CellGrid[X,Y].Set;
-            Fill(index,Value);
+            int index = CellGrid[x,y].Set;
+            Fill(index,value);
         }
 
-        public void Fill(int index, int Value)
+        public void Fill(int index, int value)
         {
             for (int i = 0; i < CellSets[index].Length; i++)
             {
-                CellSets[index][i].Value = Value;
+                CellSets[index][i].Value = value;
             } 
         }
 
         internal static InitialConditionsGrid DonutFactory(int size=30)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size,size];
-            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
-            for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for(int i=0;i<size;i++)
                 for (int j = 0; j < size; j++)
                 {
@@ -96,21 +94,21 @@ namespace SpacialPrisonerDilemma.View
                     }
                     if (c.Set < 0) c.Set = 9;
                     ic[i, j] = c;
-                    sets[c.Set].Add(c);
+                    setLists[c.Set].Add(c);
                 }
-            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            var sets = setLists.Select(a => a.ToArray()).ToArray();
             InitialConditionsGrid ig = new InitialConditionsGrid
             {
                 CellGrid = ic,
-                CellSets = Sets
+                CellSets = sets
             };
             return ig;
         }
         internal static InitialConditionsGrid CrossFactory()
         {
             InitialConditionCell[,] ic = new InitialConditionCell[30, 30];
-            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
-            for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for(int i=0;i<30; i++)
                 for (int j = 0; j < 30; j++)
                 {
@@ -119,21 +117,21 @@ namespace SpacialPrisonerDilemma.View
                     if ((i < 10 && j > 20) || (i > 20 && j < 10)) c.Set = (i + j - 10) / 2;
                     if (i > 20 && j > 20) c.Set = (i + j - 20) / 2;
                     ic[i, j] = c;
-                    sets[c.Set].Add(c);
+                    setLists[c.Set].Add(c);
                 }
-            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            var sets = setLists.Select(a => a.ToArray()).ToArray();
             InitialConditionsGrid ig = new InitialConditionsGrid
             {
                 CellGrid = ic,
-                CellSets = Sets
+                CellSets = sets
             };
             return ig;
         }
         internal static InitialConditionsGrid CircleFactory(int size=30)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size, size];
-            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
-            for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
                 {
@@ -152,39 +150,38 @@ namespace SpacialPrisonerDilemma.View
                         c.Set = 9;
                     }
                     ic[i, j] = c;
-                    sets[c.Set].Add(c);
+                    setLists[c.Set].Add(c);
                 }
-            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            var sets = setLists.Select(a => a.ToArray()).ToArray();
             InitialConditionsGrid ig = new InitialConditionsGrid
             {
                 CellGrid = ic,
-                CellSets = Sets
+                CellSets = sets
             };
             return ig;
         }
 
         internal InitialConditionsGrid GetCopy()
         {
-            InitialConditionCell[][] Set;
+            InitialConditionCell[][] set;
             List<InitialConditionCell[]> list = new List<InitialConditionCell[]>();
-            InitialConditionCell[,] Grid = new InitialConditionCell[CellGrid.GetLength(0), CellGrid.GetLength(1)];
-            for (int i = 0; i < CellSets.Length;i++)
+            InitialConditionCell[,] grid = new InitialConditionCell[CellGrid.GetLength(0), CellGrid.GetLength(1)];
+            foreach (InitialConditionCell[] t in CellSets)
             {
-                List<InitialConditionCell> L = new List<InitialConditionCell>();
-                for (int j = 0; j < CellSets[i].Length; j++)
+                List<InitialConditionCell> l = new List<InitialConditionCell>();
+                foreach (InitialConditionCell t1 in t)
                 {
-                    var C = CellSets[i][j].GetCopy();
-                    Grid[C.X, C.Y] = C;
-                    L.Add(C);
-
+                    var c = t1.GetCopy();
+                    grid[c.X, c.Y] = c;
+                    l.Add(c);
                 }
-                list.Add(L.ToArray());
+                list.Add(l.ToArray());
             }
-            Set = list.ToArray();
-            return new InitialConditionsGrid()
+            set = list.ToArray();
+            return new InitialConditionsGrid
             {
-                CellGrid = Grid,
-                CellSets = Set
+                CellGrid = grid,
+                CellSets = set
             };
 
         }
@@ -192,8 +189,8 @@ namespace SpacialPrisonerDilemma.View
         internal static InitialConditionsGrid DiagonalFactory(int size=30)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size, size];
-            List<InitialConditionCell>[] sets = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
-            for (int i = 0; i < sets.Length; i++) sets[i] = new List<InitialConditionCell>();
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
                 {
@@ -203,13 +200,13 @@ namespace SpacialPrisonerDilemma.View
                    
                     
                     ic[i, j] = c;
-                    sets[c.Set].Add(c);
+                    setLists[c.Set].Add(c);
                 }
-            var Sets = sets.Select(a => a.ToArray()).ToArray();
+            var sets = setLists.Select(a => a.ToArray()).ToArray();
             InitialConditionsGrid ig = new InitialConditionsGrid
             {
                 CellGrid = ic,
-                CellSets = Sets
+                CellSets = sets
             };
             return ig;
         }
@@ -217,26 +214,24 @@ namespace SpacialPrisonerDilemma.View
         public static InitialConditionsGrid FromCellArray(Cell[,] cells)
         {
             InitialConditionCell[,] arr = new InitialConditionCell[cells.GetLength(0),cells.GetLength(1)];
-            List<
-           List<InitialConditionCell>> List;
-            List = new List<List<InitialConditionCell>>();
-            for(int i=0;i<(Enum.GetValues(typeof(WhenBetray))).Length;i++) List.Add(new List<InitialConditionCell>());
+            var list = new List<List<InitialConditionCell>>();
+            for(int i=0;i<(Enum.GetValues(typeof(WhenBetray))).Length;i++) list.Add(new List<InitialConditionCell>());
             for(int i=0;i<cells.GetLength(0);i++)
                 for (int j = 0; j < cells.GetLength(1); j++)
                 {
-                    int k = (cells[i, j].Strategy as IntegerStrategy).Treshold;
+                    int k = ((IntegerStrategy) cells[i, j].Strategy).Treshold;
                     arr[i,j] = new InitialConditionCell(i,j,k,k);
-                    List[k].Add(arr[i, j]);
+                    list[k].Add(arr[i, j]);
                 }
-            var arr2 = List.Select(l => l.ToArray()).ToArray();
-            return new InitialConditionsGrid() {CellGrid = arr, CellSets = arr2};
+            var arr2 = list.Select(l => l.ToArray()).ToArray();
+            return new InitialConditionsGrid {CellGrid = arr, CellSets = arr2};
         }
     }
 
     [Serializable]
     public class InitialConditions
     {
-        public InitialConditionsGrid grid;
+        public InitialConditionsGrid Grid;
         public String Name;
 
         internal static InitialConditions GenerateRandom(int size=100)
@@ -244,8 +239,8 @@ namespace SpacialPrisonerDilemma.View
             Random r = new Random();
             var ic = new InitialConditions
             {
-                Name = "Losowy" + r.Next().ToString(),
-                grid = InitialConditionsGrid.GenerateRandom(r,size)
+                Name = "Losowy" + r.Next(),
+                Grid = InitialConditionsGrid.GenerateRandom(r,size)
             };
             return ic;
         }
@@ -263,7 +258,7 @@ namespace SpacialPrisonerDilemma.View
             var ic = new InitialConditions
             {
                 Name = "Koło " + (reversed ? "- odwrócone kolory" : ""),
-                grid = ig
+                Grid = ig
             };
             return ic;
         }
@@ -281,14 +276,11 @@ namespace SpacialPrisonerDilemma.View
             var ic = new InitialConditions
             {
                 Name = "Donut " + (reversed ? "- odwrócone kolory" : ""),
-                grid = ig
+                Grid = ig
             };
             return ic;
         }
-        internal static InitialConditions CrossFactory(bool reversed=false,int size=30)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30)
         {
@@ -304,22 +296,22 @@ namespace SpacialPrisonerDilemma.View
             var ic = new InitialConditions
             {
                 Name = "Przekątna " + (reversed ? "- odwrócone kolory" : ""),
-                grid = ig
+                Grid = ig
             };
             return ic; 
         }
 
         internal InitialConditions GetCopy()
         {
-            return new InitialConditions() {Name = this.Name, grid = this.grid.GetCopy()};
+            return new InitialConditions {Name = Name, Grid = Grid.GetCopy()};
 
         }
 
         public static InitialConditions FromCellArray(Cell[,] cells, string getFileName)
         {
-            InitialConditionsGrid ICG = InitialConditionsGrid.FromCellArray(cells);
+            InitialConditionsGrid icg = InitialConditionsGrid.FromCellArray(cells);
             
-            return new InitialConditions(){Name = getFileName,grid = ICG};
+            return new InitialConditions {Name = getFileName,Grid = icg};
         }
     }
 }

@@ -1,27 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SpacialPrisonerDilemma.View;
 
-namespace SpacialPrisonerDilemma
+namespace SpacialPrisonerDilemma.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : INotifyPropertyChanged
     {
         public enum Neighbourhoods
         {
@@ -34,8 +23,8 @@ namespace SpacialPrisonerDilemma
             Torus
         }
         private ValidationErrors _error;
-        private int ColorPickerIndex = 0;
-        private InitialConditions ic;
+        private int _colorPickerIndex;
+        private InitialConditions _ic;
         public enum ValidationErrors
         {
             None,
@@ -43,7 +32,7 @@ namespace SpacialPrisonerDilemma
             ValueError
         }
         
-        private bool canvalidate = false;
+        private bool _canvalidate;
         public MainWindow()
         {
 
@@ -52,12 +41,12 @@ namespace SpacialPrisonerDilemma
             NeighbourBox.ItemsSource = Enum.GetValues(typeof(Neighbourhoods));
             ShapeBox.SelectedItem = Shape.Płaski;
             NeighbourBox.SelectedItem = Neighbourhoods.Moore;
-            this.DataContext = this;
+            DataContext = this;
             Error = ValidationErrors.None;
-            canvalidate = true;
-            SPDBrushes.CreateBrushes(10);
-            SPDBrushes.ChangeFont("Arial");
-            SPDBrushes.InitialiseDescriptions();
+            _canvalidate = true;
+            SPDAssets.CreateBrushes(10);
+            SPDAssets.ChangeFont("Arial");
+            SPDAssets.InitialiseDescriptions();
 
         }
 
@@ -71,7 +60,7 @@ namespace SpacialPrisonerDilemma
             }
         }
 
-        private static readonly string[] ErrorMessages = new string[] { "", "Błąd przetwarzania", "Błąd wartości" };
+        private static readonly string[] ErrorMessages = { "", "Błąd przetwarzania", "Błąd wartości" };
 
         public string ErrorMessage
         {
@@ -80,7 +69,7 @@ namespace SpacialPrisonerDilemma
 
         public bool NoError
         {
-            get { return Error == ValidationErrors.None && ic != null; }
+            get { return Error == ValidationErrors.None && _ic != null; }
         }
 
         public bool ShowErrorMessage
@@ -89,19 +78,19 @@ namespace SpacialPrisonerDilemma
         }
         private void NotifyPropertyChanged(string s)
         {
-            List<string> Properties = new List<string>();
+            List<string> properties = new List<string>();
 
             if (s == "Error")
             {
-                Properties.Add("ErrorMessage");
-                Properties.Add("NoError");
+                properties.Add("ErrorMessage");
+                properties.Add("NoError");
 
             }
             if (s == "NoError")
             {
-                Properties.Add("ShowErrorMessage");
+                properties.Add("ShowErrorMessage");
             }
-            foreach (var p in Properties)
+            foreach (var p in properties)
             {
                 NotifyPropertyChanged(p);
             }
@@ -120,7 +109,7 @@ namespace SpacialPrisonerDilemma
             newtext = string.Format("({0} , {1})", array[1], array[0]);
             return newtext;
         }
-        private bool validatesToPair(string text)
+        private bool ValidatesToPair(string text)
         {
             return Regex.Match(text,
                 Regex.Escape("(") + Regex.Escape(" ") + "*" + "[0-9]+(" + Regex.Escape(".") + "[0-9]*)? , [0-9]+(" + Regex.Escape(".") +
@@ -135,7 +124,7 @@ namespace SpacialPrisonerDilemma
         {
             var1 = -1;
             var2 = -1;
-            if (!validatesToPair(text)) return false;
+            if (!ValidatesToPair(text)) return false;
             var array = text.Substring(1, text.Length - 2).Split(',');
             bool flag = double.TryParse(array[0].Trim(), out var1);
             if (!flag) return false;
@@ -146,7 +135,7 @@ namespace SpacialPrisonerDilemma
         }
         private void TryValidate()
         {
-            if (!canvalidate) return;
+            if (!_canvalidate) return;
             Validate();
 
         }
@@ -154,7 +143,7 @@ namespace SpacialPrisonerDilemma
         private double[] Validate()
         {
             double[] array = new double[6];
-            var sarray = new string[] {BothBetray.Text, FirstBetrays.Text, NobodyBetrays.Text,SecondBetrays.Text};
+            var sarray = new[] {BothBetray.Text, FirstBetrays.Text, NobodyBetrays.Text,SecondBetrays.Text};
             int i = 0;
             foreach (var s in sarray)
             {
@@ -183,7 +172,7 @@ namespace SpacialPrisonerDilemma
         }
         private void SecondBetrays_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (validatesToPair(SecondBetrays.Text))
+            if (ValidatesToPair(SecondBetrays.Text))
             {
                 FirstBetrays.Text = SwitchText(SecondBetrays.Text);
             }
@@ -191,7 +180,7 @@ namespace SpacialPrisonerDilemma
 
         private void FirstBetrays_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (validatesToPair(FirstBetrays.Text))
+            if (ValidatesToPair(FirstBetrays.Text))
             {
                 SecondBetrays.Text = SwitchText(FirstBetrays.Text);
             }
@@ -200,7 +189,7 @@ namespace SpacialPrisonerDilemma
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double[] d = Validate();
-            SPD spd = new SPD(d, Transform(ic.grid),(Shape)ShapeBox.SelectedItem == Shape.Torus,Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
+            SPD spd = new SPD(d, Transform(_ic.Grid),(Shape)ShapeBox.SelectedItem == Shape.Torus,Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
             spd.ShowDialog();
         }
 
@@ -217,11 +206,11 @@ namespace SpacialPrisonerDilemma
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            InitialCondition IC = new InitialCondition();
-            var b = IC.ShowDialog();
+            InitialCondition ic = new InitialCondition();
+            var b = ic.ShowDialog();
             if (b.HasValue && b.Value)
             {
-                ic = IC.Condition;
+                _ic = ic.Condition;
                 NotifyPropertyChanged("NoError");
             }
 
@@ -229,19 +218,19 @@ namespace SpacialPrisonerDilemma
 
         private void Color_OnClick(object sender, RoutedEventArgs e)
         {
-           ColorPicker CP = new ColorPicker(ColorPickerIndex);
-            var b = CP.ShowDialog();
+           ColorPicker cp = new ColorPicker(_colorPickerIndex);
+            var b = cp.ShowDialog();
             if (b.HasValue && b.Value)
             {
-                ColorPickerIndex = CP.ID;
+                _colorPickerIndex = cp.Id;
                 
             }
         }
 
         private void Font_OnClick(object sender, RoutedEventArgs e)
         {
-           FontPicker FP = new FontPicker(SPDBrushes.GetFont());
-           var b = FP.ShowDialog();
+           FontPicker fp = new FontPicker(SPDAssets.GetFont());
+           fp.ShowDialog();
           
         }
 

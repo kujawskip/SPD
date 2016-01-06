@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using SpacialPrisonerDilemma.Model;
 
@@ -24,39 +17,39 @@ namespace SpacialPrisonerDilemma.View
     /// <summary>
     /// Interaction logic for InitialCondition.xaml
     /// </summary>
-    public partial class InitialCondition : Window, INotifyPropertyChanged
+    public partial class InitialCondition : INotifyPropertyChanged
     {
-        private Dictionary<Tuple<string, bool>, Func<bool, int, InitialConditions>> Conditions;
-        private List<Tuple<string, Tuple<string, bool>>> ConditionNames;
+        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, InitialConditions>> _conditions;
+        private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private InitialConditions _condition;
-        private Operation selectedOperation;
+        private Operation _selectedOperation;
         
         
         public InitialCondition()
         {
             InitializeComponent();
-            selectedOperation = Operation.None;
-            ComboBox.ItemsSource = SPDBrushes.GetBrushRectangles();
+            _selectedOperation = Operation.None;
+            ComboBox.ItemsSource = SPDAssets.GetBrushRectangles();
             ComboBox.SelectedIndex = 0;
-            this.DataContext = this;
-            ConditionNames = new List<Tuple<string,Tuple<string,bool> > >();
-            Conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,InitialConditions>>();
+            DataContext = this;
+            _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
+            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,InitialConditions>>();
             foreach (var T in new[] {false, true})
             {
-                Conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
-                Conditions.Add(new Tuple<string, bool>("Circle", T), InitialConditions.CircleFactory);
-                Conditions.Add(new Tuple<string,bool>("Diagonal",T),InitialConditions.DiagonalFactory);
+                _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
+                _conditions.Add(new Tuple<string, bool>("Circle", T), InitialConditions.CircleFactory);
+                _conditions.Add(new Tuple<string,bool>("Diagonal",T),InitialConditions.DiagonalFactory);
 
             }
-            ConditionNames.AddRange(
-                Conditions.Select(
+            _conditionNames.AddRange(
+                _conditions.Select(
                     k =>
                         new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
-            ComboBox_Copy.ItemsSource = ConditionNames.Select(s=>s.Item1);
-            var image2 = new Image()
+            ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
+            var image2 = new Image
             {
-                Source = SPDBrushes.GenerateLegend(Legend.Height),
+                Source = SPDAssets.GenerateLegend(Legend.Height),
                 Stretch = Stretch.Fill
             };
        
@@ -68,35 +61,33 @@ namespace SpacialPrisonerDilemma.View
             Fill,
             Check
         }
-        public DrawingImage GenerateImage(InitialConditionsGrid Grid, int X, int Y, int Width, int Height)
+        public DrawingImage GenerateImage(InitialConditionsGrid grid, int x, int y, int width, int height)
         {
-            double CellWidth = Canvas.Width/Width;
-            double CellHeight = Canvas.Height/Height;
-            FontStyle fs = FontStyles.Normal;
-            FontWeight fw = FontWeights.Normal;
-            FontFamily ff = new FontFamily("Arial");
-            FontStretch ffs = FontStretches.Normal;
-            
+            var cellWidth = Canvas.Width/width;
+            var cellHeight = Canvas.Height/height;
+          
            
-            DrawingGroup DG = new DrawingGroup();
-            for (int i = X; i < X + Width; i++)
+            var dg = new DrawingGroup();
+            for (var i = x; i < x + width; i++)
             {
-                for (int j = Y; j < Y + Height; j++)
+                for (var j = y; j < y + height; j++)
                 {
                   
-                    RectangleGeometry RG = new RectangleGeometry(new Rect(new Point((i - X) * CellWidth, (j - Y) * CellHeight), new Point((i - X + 1) * CellWidth, (j + 1 - Y) * CellHeight)));
-                    GeometryDrawing gd = new GeometryDrawing();
-                    gd.Brush = SPDBrushes.GetBrush(Condition.grid.CellGrid[i, j].Value);
-                    gd.Geometry = RG;
-                    DG.Children.Add(gd);
+                    var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
+                    var gd = new GeometryDrawing
+                    {
+                        Brush = SPDAssets.GetBrush(Condition.Grid.CellGrid[i, j].Value),
+                        Geometry = rg
+                    };
+                    dg.Children.Add(gd);
                 }
             }
-            return new DrawingImage(DG);
+            return new DrawingImage(dg);
         }
         public InitialConditions LoadConditions(string path)
         {
-            FileStream fs = new FileStream(path,FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
+            var fs = new FileStream(path,FileMode.Open);
+            var bf = new BinaryFormatter();
             try
             {
                 var obj = bf.Deserialize(fs);
@@ -115,13 +106,6 @@ namespace SpacialPrisonerDilemma.View
 
         private void NotifyPropertyChanged(string s)
         {
-            List<string> Properties = new List<string>();
-
-          
-            foreach (var p in Properties)
-            {
-                NotifyPropertyChanged(p);
-            }
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(s));
@@ -134,22 +118,22 @@ namespace SpacialPrisonerDilemma.View
             get { return _condition; }
             private set { _condition = value;
                 UpdateScreen();
-             NotifyPropertyChanged("Loaded");
+             NotifyPropertyChanged("ConditionLoaded");
             }
         }
 
-        public bool Loaded
+        public bool ConditionLoaded
         {
             get { return Condition != null; }
         }
         private void UpdateScreen()
         {
             Canvas.Children.Clear();
-            Canvas.Children.Add(new Image()
+            Canvas.Children.Add(new Image
             {
                 Source =
-                    GenerateImage(Condition.grid, X,Y, (int)(Condition.grid.CellGrid.GetLength(0)*scale),
-                        (int)(Condition.grid.CellGrid.GetLength(1)*scale))
+                    GenerateImage(Condition.Grid, _x,_y, (int)(Condition.Grid.CellGrid.GetLength(0)*_scale),
+                        (int)(Condition.Grid.CellGrid.GetLength(1)*_scale))
                
             });
         }
@@ -157,96 +141,99 @@ namespace SpacialPrisonerDilemma.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
-            ComboBox_Copy.SelectedIndex = -1;
+            ComboBoxCopy.SelectedIndex = -1;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-            this.Close();
+            Close();
         }
 
-        private double scale = 1;
-        private int X = 0, Y = 0;
+        private double _scale = 1;
+        private int _x, _y;
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboBox_Copy.SelectedIndex < 0) return;
+            if (ComboBoxCopy.SelectedIndex < 0) return;
             Condition =
-                Conditions[ConditionNames[ComboBox_Copy.SelectedIndex].Item2](
-                    ConditionNames[ComboBox_Copy.SelectedIndex].Item2.Item2, (int) RandomSize.Value);
+                _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
+                    _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int) RandomSize.Value);
         }
 
 
         private void Canvas_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (Operation.None == selectedOperation) return;
+            if (Operation.None == _selectedOperation) return;
             
             if(ComboBox.SelectedIndex<0) return;
-            Point P = e.GetPosition(Canvas);
-            InitialConditions IC = Condition;
-            double X =this.X + scale*P.X/(Canvas.Width/(IC.grid.CellGrid.GetLength(0)));
-            if (X >= IC.grid.CellGrid.GetLength(0) ) return;
-            double Y =this.Y + scale*P.Y/(Canvas.Height/(IC.grid.CellGrid.GetLength(1)));
-            if (Y >= IC.grid.CellGrid.GetLength(1) ) return;
-            if (Operation.Check == selectedOperation)
+            var p = e.GetPosition(Canvas);
+            var ic = Condition;
+            var x =_x + _scale*p.X/(Canvas.Width/(ic.Grid.CellGrid.GetLength(0)));
+            if (x >= ic.Grid.CellGrid.GetLength(0) ) return;
+            var y =_y + _scale*p.Y/(Canvas.Height/(ic.Grid.CellGrid.GetLength(1)));
+            if (y >= ic.Grid.CellGrid.GetLength(1) ) return;
+            if (Operation.Check == _selectedOperation)
             {
-                IC.grid.CellGrid[(int) X, (int) Y].Value = ComboBox.SelectedIndex;
+                ic.Grid.CellGrid[(int) x, (int) y].Value = ComboBox.SelectedIndex;
             }
             else
             {
-                int k = IC.grid.CellGrid[(int) X, (int) Y].Value;
-                for(int i=0;i<IC.grid.CellGrid.GetLength(0);i++)
-                    for (int j = 0; j < IC.grid.CellGrid.GetLength(1); j++)
+                var k = ic.Grid.CellGrid[(int) x, (int) y].Value;
+                for(var i=0;i<ic.Grid.CellGrid.GetLength(0);i++)
+                    for (var j = 0; j < ic.Grid.CellGrid.GetLength(1); j++)
                     {
-                        if (IC.grid.CellGrid[i, j].Value == k) IC.grid.CellGrid[i, j].Value = ComboBox.SelectedIndex;
+                        if (ic.Grid.CellGrid[i, j].Value == k) ic.Grid.CellGrid[i, j].Value = ComboBox.SelectedIndex;
                     }
             }
-            Condition = IC;
+            Condition = ic;
         }
 
         private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (Condition == null) return;
-            var IC = Condition;
-            Point P = e.GetPosition(Canvas);
-            double X = this.X + scale * P.X / (Canvas.Width / (IC.grid.CellGrid.GetLength(0)));
-            if (X >= IC.grid.CellGrid.GetLength(0)) return;
-            double Y = this.Y + scale * P.Y / (Canvas.Height / (IC.grid.CellGrid.GetLength(1)));
-            if (Y >= IC.grid.CellGrid.GetLength(1)) return;
-            scale += Math.Sign(-e.Delta)*0.1;
-            if (scale < 0.1) scale = 0.1;
-            if (scale > 1) scale = 1;
+            var ic = Condition;
+            var p = e.GetPosition(Canvas);
+            var X = _x + _scale * p.X / (Canvas.Width / (ic.Grid.CellGrid.GetLength(0)));
+            if (X >= ic.Grid.CellGrid.GetLength(0)) return;
+            var Y = _y + _scale * p.Y / (Canvas.Height / (ic.Grid.CellGrid.GetLength(1)));
+            if (Y >= ic.Grid.CellGrid.GetLength(1)) return;
+            _scale += Math.Sign(-e.Delta)*0.1;
+            if (_scale < 0.1) _scale = 0.1;
+            if (_scale > 1) _scale = 1;
            
-            int width = Condition.grid.CellGrid.GetLength(0);
-            int height = Condition.grid.CellGrid.GetLength(1);
-            var nwidth = (int) (((double) width)*scale);
-            var nheight = (int) (((double) height)*scale);
-            int x = (int) X - (nwidth/2);
-            int y = (int) Y
+            var width = Condition.Grid.CellGrid.GetLength(0);
+            var height = Condition.Grid.CellGrid.GetLength(1);
+            var nwidth = (int) (width*_scale);
+            var nheight = (int) (height*_scale);
+            var x = (int) X - (nwidth/2);
+            var y = (int) Y
                     - (nheight/2);
-            int xx = (int) X + (nwidth/2);
-            int yy = (int) Y + (nheight/2);
+            var xx = (int) X + (nwidth/2);
+            var yy = (int) Y + (nheight/2);
           
             if (xx >= width) x -= (xx - width) + 1;
             if (yy >= height) y -= (yy - height) + 1;
             if (x < 0) x = 0;
             if (y < 0) y = 0;
-            this.X = x;
-            this.Y = y;
-            Condition = IC;
+            _x = x;
+            _y = y;
+            Condition = ic;
         }
 
         private void ButtonBase_OnClick1(object sender, RoutedEventArgs e)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            OpenFileDialog ofd = new OpenFileDialog {Filter = "Initial Condition File (*.cic)|*.cic"};
-            ofd.Multiselect = false;
-            
+            var bf = new BinaryFormatter();
+            var ofd = new OpenFileDialog
+            {
+                Filter = "Initial Condition File (*.cic)|*.cic",
+                Multiselect = false
+            };
+
             var result = ofd.ShowDialog();
             if (result.HasValue && result.Value)
             {
-                FileStream fs = new FileStream(ofd.FileName,FileMode.Open);
+                var fs = new FileStream(ofd.FileName,FileMode.Open);
                 var obj = bf.Deserialize(fs);
                 Condition = obj as InitialConditions;
             }
@@ -255,12 +242,12 @@ namespace SpacialPrisonerDilemma.View
         private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
         {
             if (Condition == null) return;
-            BinaryFormatter bf = new BinaryFormatter();
-            SaveFileDialog ofd = new SaveFileDialog { Filter = "Initial Condition File (*.cic)|*.cic" };
+            var bf = new BinaryFormatter();
+            var ofd = new SaveFileDialog { Filter = "Initial Condition File (*.cic)|*.cic" };
             var result = ofd.ShowDialog();
             if (result.HasValue && result.Value)
             {
-                FileStream fs = new FileStream(ofd.FileName, FileMode.Create);
+                var fs = new FileStream(ofd.FileName, FileMode.Create);
                 bf.Serialize(fs,Condition);
                
             }
@@ -268,24 +255,24 @@ namespace SpacialPrisonerDilemma.View
 
         private void Legend_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-          Point P =  e.GetPosition(Legend);
-            var D = P.Y/(Legend.Height/Enum.GetValues(typeof(WhenBetray)).Length);
-            ComboBox.SelectedIndex = (int) D;
+          var p =  e.GetPosition(Legend);
+            var d = p.Y/(Legend.Height/Enum.GetValues(typeof(WhenBetray)).Length);
+            ComboBox.SelectedIndex = (int) d;
         }
 
         private void RadioPixel_OnChecked(object sender, RoutedEventArgs e)
         {
             if (RadioFill.IsChecked.HasValue && RadioFill.IsChecked.Value)
             {
-                selectedOperation = Operation.Fill;
+                _selectedOperation = Operation.Fill;
                 return;
             }
             if (RadioPixel.IsChecked.HasValue && RadioPixel.IsChecked.Value)
             {
-                selectedOperation = Operation.Check;
+                _selectedOperation = Operation.Check;
                 return;
             }
-            selectedOperation = Operation.None;
+            _selectedOperation = Operation.None;
             
         }
     }

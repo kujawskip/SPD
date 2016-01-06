@@ -1,12 +1,12 @@
 ﻿<Window x:Class="SpacialPrisonerDilemma.View.FontPicker"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FontPicker" Height="340" Width="330">
+        Title="FontPicker" Height="440" Width="330">
     <Grid Margin="0,0,0,0">
-        <ComboBox Name="Left" Height="32" Margin="23,10,0,0" VerticalAlignment="Top" Width="242" SelectionChanged="Left_SelectionChanged"/>
-        <Canvas Name="Canvas" HorizontalAlignment="Left" Height="208" Margin="23,47,0,0" VerticalAlignment="Top" Width="292"/>
-        <Button Content="Akceptuj" Name="Akceptuj" HorizontalAlignment="Left" Height="36" Margin="23,260,0,0" VerticalAlignment="Top" Width="80" Click="Akceptuj_Click"/>
-        <Button Content="Anuluj" Name ="Anuluj" HorizontalAlignment="Left" Height="36" Margin="195,260,0,0" VerticalAlignment="Top" Width="70" Click="Anuluj_Click"/>
+        <ComboBox Name="Box" Height="32" Margin="23,10,0,0" VerticalAlignment="Top" Width="242" SelectionChanged="Left_SelectionChanged"/>
+        <Canvas Name="Canvas" HorizontalAlignment="Left" Height="295" Margin="20,47,0,0" VerticalAlignment="Top" Width="292"/>
+        <Button Content="Akceptuj" Name="Akceptuj" HorizontalAlignment="Left" Height="36" Margin="23,347,0,0" VerticalAlignment="Top" Width="80" Click="Akceptuj_Click"/>
+        <Button Content="Anuluj" Name ="Anuluj" HorizontalAlignment="Left" Height="36" Margin="198,347,0,0" VerticalAlignment="Top" Width="70" Click="Anuluj_Click"/>
 
 
     </Grid>
