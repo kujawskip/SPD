@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Model
 {
+    /// <summary>
+    /// Implementacja obliczeń przestrzennego dylematu więźnia
+    /// </summary>
     public class SPD
     {
         /// <summary>

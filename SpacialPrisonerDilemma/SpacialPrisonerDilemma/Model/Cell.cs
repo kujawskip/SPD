@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Model
 {
+    /// <summary>
+    /// Implementacja komórki automatu komórkowego
+    /// </summary>
     public class Cell
     {
        /// <summary>
