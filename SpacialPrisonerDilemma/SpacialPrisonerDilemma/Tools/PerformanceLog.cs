@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Tools
 {
@@ -132,7 +130,7 @@ namespace SpacialPrisonerDilemma.Tools
         /// <summary>
         /// Dodaj początek nowego kroku
         /// </summary>
-        /// <param name="stepStart">Data rozpoczęcia realizacji nowego kroku</param>
+        /// <param name="stepStart">Czas rozpoczęcia realizacji nowego kroku</param>
         public void NewStepStart(DateTime stepStart)
         {
             if (started) throw new ArgumentException();
@@ -143,7 +141,7 @@ namespace SpacialPrisonerDilemma.Tools
         /// <summary>
         /// Dodaj koniec aktualnego kroku
         /// </summary>
-        /// <param name="stepEnd">Data zakończenia realizacji kroku</param>
+        /// <param name="stepEnd">Czas zakończenia realizacji kroku</param>
         public void NewStepEnd(DateTime stepEnd)
         {
             if (!started) throw new ArgumentException();
