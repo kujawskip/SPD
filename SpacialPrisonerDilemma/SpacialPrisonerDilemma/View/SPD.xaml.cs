@@ -315,8 +315,13 @@ namespace SpacialPrisonerDilemma.View
                 if (_over) await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
                 if (_over) InsertVariationColumn(i.Item1);
                 if (_over) UpdateModels();
-
-
+                if (!i.Item2) continue;
+                var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
+                    MessageBoxButton.YesNo);
+                if (b == MessageBoxResult.Yes)
+                {
+                    _over = false;
+                }
             }
 
         }

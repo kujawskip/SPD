@@ -37,6 +37,7 @@ namespace SpacialPrisonerDilemma.View
         {
 
             InitializeComponent();
+            InitialConditions.Initialise();
             ShapeBox.ItemsSource = Enum.GetValues(typeof(Shape));
             NeighbourBox.ItemsSource = Enum.GetValues(typeof(Neighbourhoods));
             ShapeBox.SelectedItem = Shape.Płaski;

@@ -19,7 +19,7 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class InitialCondition : INotifyPropertyChanged
     {
-        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, InitialConditions>> _conditions;
+        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private InitialConditions _condition;
         private Operation _selectedOperation;
@@ -33,7 +33,7 @@ namespace SpacialPrisonerDilemma.View
             ComboBox.SelectedIndex = 0;
             DataContext = this;
             _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
-            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,InitialConditions>>();
+            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,InitialConditions>>();
             foreach (var T in new[] {false, true})
             {
                 _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
@@ -44,7 +44,7 @@ namespace SpacialPrisonerDilemma.View
             _conditionNames.AddRange(
                 _conditions.Select(
                     k =>
-                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1).Name,
+                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
             var image2 = new Image
@@ -155,10 +155,11 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            bool v = VonNeumann.IsChecked.HasValue && VonNeumann.IsChecked.Value;
             if (ComboBoxCopy.SelectedIndex < 0) return;
             Condition =
                 _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                    _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int) RandomSize.Value);
+                _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int) RandomSize.Value,v?6:10);
         }
 
 

@@ -6,34 +6,13 @@ using SpacialPrisonerDilemma.Model;
 namespace SpacialPrisonerDilemma.View
 {
     [Serializable]
-    public class InitialConditionCell
-    {
-        public int X { get; set; }
-        public int Value { get; set; }
-        public int Set { get; internal set; }
-        public int Y { get; set; }
-
-        public InitialConditionCell(int x, int y, int value, int set)
-        {
-            X = x;
-            Y = y;
-            Set = set;
-            Value = value;
-        }
-
-        public InitialConditionCell GetCopy()
-        {
-            return new InitialConditionCell(X,Y,Value,Set);
-        }
-    }
-    [Serializable]
      public class InitialConditionsGrid 
     {
-        internal static InitialConditionsGrid GenerateRandom(Random r,int size=100)
+        internal static InitialConditionsGrid GenerateRandom(Random r,int size=100,int stateCount=10)
         {
             int x = size;
             int y = size;
-            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never+1];
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[stateCount];
             for(int i=0;i<setLists.Length;i++) setLists[i]=new List<InitialConditionCell>();
             InitialConditionCell[,] grid = new InitialConditionCell[x,y];
             for(int i=0;i<x;i++)
@@ -74,16 +53,20 @@ namespace SpacialPrisonerDilemma.View
             } 
         }
 
-        internal static InitialConditionsGrid DonutFactory(int size=30)
+        internal void Transform(StateTransformation s,int stateCount=10)
+        {
+            for(int i=0;i<stateCount;i++) Fill(i,s(i));
+        }
+        internal static InitialConditionsGrid DonutFactory(int size=30,int stateCount=10)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size,size];
-            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[stateCount];
             for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for(int i=0;i<size;i++)
                 for (int j = 0; j < size; j++)
                 {
                     InitialConditionCell c = new InitialConditionCell(i,j,-1,0);
-                    for (int k = 9; k >= 0; k--)
+                    for (int k = stateCount-1; k >= 0; k--)
                     {
 
 
@@ -92,7 +75,7 @@ namespace SpacialPrisonerDilemma.View
                             c.Set = k;
                         }
                     }
-                    if (c.Set < 0) c.Set = 9;
+                    if (c.Set < 0) c.Set = stateCount;
                     ic[i, j] = c;
                     setLists[c.Set].Add(c);
                 }
@@ -127,7 +110,7 @@ namespace SpacialPrisonerDilemma.View
             };
             return ig;
         }
-        internal static InitialConditionsGrid CircleFactory(int size=30)
+        internal static InitialConditionsGrid CircleFactory(int size=30,int stateCount=10)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size, size];
             List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
@@ -136,7 +119,7 @@ namespace SpacialPrisonerDilemma.View
                 for (int j = 0; j < size; j++)
                 {
                     InitialConditionCell c = new InitialConditionCell(i, j, 0, -1);
-                    for (int k = 0;k<9;k++)
+                    for (int k = 0;k<stateCount-1;k++)
                     {
 
                         
@@ -147,7 +130,7 @@ namespace SpacialPrisonerDilemma.View
                     }
                     if (c.Set < 0)
                     {
-                        c.Set = 9;
+                        c.Set = stateCount-1;
                     }
                     ic[i, j] = c;
                     setLists[c.Set].Add(c);
@@ -186,17 +169,17 @@ namespace SpacialPrisonerDilemma.View
 
         }
 
-        internal static InitialConditionsGrid DiagonalFactory(int size=30)
+        internal static InitialConditionsGrid DiagonalFactory(int size=30,int stateCount=10)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size, size];
-            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[stateCount];
             for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
                 {
                     int k = Math.Abs(i - j);
                     int m = Math.Max(ic.GetLength(0), ic.GetLength(1));
-                    InitialConditionCell c = new InitialConditionCell(i, j, 0, k * 9 / m);
+                    InitialConditionCell c = new InitialConditionCell(i, j, 0, k * (stateCount-1) / m);
                    
                     
                     ic[i, j] = c;
@@ -225,93 +208,6 @@ namespace SpacialPrisonerDilemma.View
                 }
             var arr2 = list.Select(l => l.ToArray()).ToArray();
             return new InitialConditionsGrid {CellGrid = arr, CellSets = arr2};
-        }
-    }
-
-    [Serializable]
-    public class InitialConditions
-    {
-        public InitialConditionsGrid Grid;
-        public String Name;
-
-        internal static InitialConditions GenerateRandom(int size=100)
-        {
-            Random r = new Random();
-            var ic = new InitialConditions
-            {
-                Name = "Losowy" + r.Next(),
-                Grid = InitialConditionsGrid.GenerateRandom(r,size)
-            };
-            return ic;
-        }
-        internal static InitialConditions CircleFactory(bool reversed=false,int size=30)
-        {
-            InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size);
-            if (reversed)
-            {
-                for (int i = 0; i < 10; i++) ig.Fill(i, i);
-            }
-            else
-            {
-                for (int i = 0; i < 10; i++) ig.Fill(i, 9 - i);
-            }
-            var ic = new InitialConditions
-            {
-                Name = "Koło " + (reversed ? "- odwrócone kolory" : ""),
-                Grid = ig
-            };
-            return ic;
-        }
-        internal static InitialConditions DonutFactory(bool reversed=false,int size=30)
-        {
-            InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size);
-            if (reversed)
-            {
-                for(int i=0;i<10;i++) ig.Fill(i,i);
-            }
-            else
-            {
-                for (int i = 0; i < 10; i++) ig.Fill(i,9 - i);
-            }
-            var ic = new InitialConditions
-            {
-                Name = "Donut " + (reversed ? "- odwrócone kolory" : ""),
-                Grid = ig
-            };
-            return ic;
-        }
-      
-
-        internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30)
-        {
-            InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size);
-            if (reversed)
-            {
-                for (int i = 0; i < 10; i++) ig.Fill(i, i);
-            }
-            else
-            {
-                for (int i = 0; i < 10; i++) ig.Fill(i, 9 - i);
-            }
-            var ic = new InitialConditions
-            {
-                Name = "Przekątna " + (reversed ? "- odwrócone kolory" : ""),
-                Grid = ig
-            };
-            return ic; 
-        }
-
-        internal InitialConditions GetCopy()
-        {
-            return new InitialConditions {Name = Name, Grid = Grid.GetCopy()};
-
-        }
-
-        public static InitialConditions FromCellArray(Cell[,] cells, string getFileName)
-        {
-            InitialConditionsGrid icg = InitialConditionsGrid.FromCellArray(cells);
-            
-            return new InitialConditions {Name = getFileName,Grid = icg};
         }
     }
 }

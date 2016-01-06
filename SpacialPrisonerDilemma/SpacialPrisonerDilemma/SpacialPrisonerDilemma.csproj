@@ -81,10 +81,13 @@
     <Compile Include="View\FontPicker.xaml.cs">
       <DependentUpon>FontPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\InitialConditionCell.cs" />
+    <Compile Include="View\InitialConditions.cs" />
     <Compile Include="View\SPD.xaml.cs">
       <DependentUpon>SPD.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SPDAssets.cs" />
+    <Compile Include="View\StateTransformation.cs" />
     <Page Include="View\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
