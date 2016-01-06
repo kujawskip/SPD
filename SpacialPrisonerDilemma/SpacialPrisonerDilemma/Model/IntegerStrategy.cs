@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Model
 {
+    /// <summary>
+    /// Enumeracja rodzajów strategii typu IntegerStrategy
+    /// </summary>
     public enum WhenBetray
     {
         Always,
@@ -20,14 +23,28 @@ namespace SpacialPrisonerDilemma.Model
         Never
     }
 
+    /// <summary>
+    /// Implementacja strategii zdradzającej gdy w poprzednim ruchu została zdradzona przez zadaną liczbę sąsiadów.
+    /// </summary>
     class IntegerStrategy : IStrategy
     {
+        /// <summary>
+        /// Próg, po którym komórka zdradza
+        /// </summary>
         public virtual int Treshold { get; protected set; }
+
+        /// <summary>
+        /// Rodzaj strategii
+        /// </summary>
         public WhenBetray StrategyType
         {
             get { return (WhenBetray)Treshold; }
             set { Treshold = (int)value; }
         }
+
+        /// <summary>
+        /// Zbiór wszystkich możliwych strategii tego typu
+        /// </summary>
         public static IntegerStrategy[] Strategies
         {
             get
@@ -48,11 +65,19 @@ namespace SpacialPrisonerDilemma.Model
             }
         }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="treshold">Próg, po którym komórka zdradza</param>
         public IntegerStrategy(int treshold)
         {
             Treshold = treshold;
         }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="whenBetray">Rodzaj strategii</param>
         public IntegerStrategy(WhenBetray whenBetray):this((int)whenBetray)
         { }
 
@@ -61,6 +86,12 @@ namespace SpacialPrisonerDilemma.Model
             return "IntegrtStrategy " + ((WhenBetray) Treshold).ToString();
         }
 
+        /// <summary>
+        /// Implementacja podejmowania decyzji przez strategię
+        /// </summary>
+        /// <param name="parent">Komórka decydująca</param>
+        /// <param name="opponent">Komórka, przeciw której podejmowana jest decyzja</param>
+        /// <returns>True jeśli zdrada, false w przeciwnym przypadku</returns>
         public bool Decide(Cell parent, Cell opponent)
         {
             var decs = (from neighbour in parent.GetNeighbours()

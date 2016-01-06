@@ -355,9 +355,11 @@ namespace SpacialPrisonerDilemma.View
             if (_iteration != null) _iteration.Wait();
             if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
             var pl = Model.SPD.ClearAndGetLog();
+
             if (pl.StepTimes.Length == 0) return;
-            MessageBox.Show(string.Format("Mediana: {0} Średnia: {1} Max Step Time: {2} Min Step Time: {3}",
-                       pl.Median, pl.Average, pl.MaxStepTime, pl.MinStepTime));
+             MessageBox.Show(string.Format("Median: {0}\nAverage: {1}\nStandard Deviation: {4}\nMax Step Time: {2}\nMin Step Time: {3}",
+                       pl.Median, pl.Average, pl.MaxStepTime, pl.MinStepTime, pl.StandardDeviation));
+
         }
 
         private Brush GetBrush(int p)

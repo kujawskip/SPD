@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace SpacialPrisonerDilemma.Tools
 {
+    /// <summary>
+    /// Raport wydajnościowy
+    /// </summary>
     public class PerformanceLog
     {
-        public List<DateTime> StepStarts;
-        public List<DateTime> StepEnds;
+
+        private List<DateTime> StepStarts;
+        private List<DateTime> StepEnds;
+
+        /// <summary>
+        /// Czas jaki zajęła alokacja SPD
+        /// </summary>
         public TimeSpan AllocationTime
         { get; internal set; }
 
+        /// <summary>
+        /// Tablica czasów obliczeń kolejnych kroków automatu
+        /// </summary>
         public TimeSpan[] StepTimes
         {
             get
@@ -26,6 +37,9 @@ namespace SpacialPrisonerDilemma.Tools
             }
         }
 
+        /// <summary>
+        /// Największy czas obliczeń
+        /// </summary>
         public TimeSpan MaxStepTime
         {
             get
@@ -34,6 +48,9 @@ namespace SpacialPrisonerDilemma.Tools
             }
         }
 
+        /// <summary>
+        /// Najmniejszy czas obliczeń
+        /// </summary>
         public TimeSpan MinStepTime
         {
             get
@@ -42,6 +59,9 @@ namespace SpacialPrisonerDilemma.Tools
             }
         }
 
+        /// <summary>
+        /// Średnia czasu obliczeń
+        /// </summary>
         public TimeSpan Average
         {
             get
@@ -50,6 +70,9 @@ namespace SpacialPrisonerDilemma.Tools
             }
         }
 
+        /// <summary>
+        /// Mediana czasu obliczeń
+        /// </summary>
         public TimeSpan Median
         {
             get
@@ -67,6 +90,9 @@ namespace SpacialPrisonerDilemma.Tools
             }
         }
 
+        /// <summary>
+        /// Odchylenie standardowe czasu obliczeń
+        /// </summary>
         public TimeSpan StandardDeviation
         {
             get
@@ -75,22 +101,38 @@ namespace SpacialPrisonerDilemma.Tools
             }
         }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public PerformanceLog()
         {
             StepStarts = new List<DateTime>();
             StepEnds = new List<DateTime>();
         }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="allocTime">Czas alokacji SPD</param>
         public PerformanceLog(TimeSpan allocTime) : this()
         {
             AllocationTime = allocTime;
         }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="allocStart">Początek alokacji SPD</param>
+        /// <param name="allocEnd">Koniec alokacji SPD</param>
         public PerformanceLog(DateTime allocStart, DateTime allocEnd) : this(allocEnd - allocStart)
         { }
 
 
         bool started = false;
+        /// <summary>
+        /// Dodaj początek nowego kroku
+        /// </summary>
+        /// <param name="stepStart">Data rozpoczęcia realizacji nowego kroku</param>
         public void NewStepStart(DateTime stepStart)
         {
             if (started) throw new ArgumentException();
@@ -98,6 +140,10 @@ namespace SpacialPrisonerDilemma.Tools
             started = true;
         }
 
+        /// <summary>
+        /// Dodaj koniec aktualnego kroku
+        /// </summary>
+        /// <param name="stepEnd">Data zakończenia realizacji kroku</param>
         public void NewStepEnd(DateTime stepEnd)
         {
             if (!started) throw new ArgumentException();
