@@ -24,7 +24,9 @@ namespace SpacialPrisonerDilemma.View
         private InitialConditions _condition;
         private Operation _selectedOperation;
         
-        
+        /// <summary>
+        /// Konstruktor okna warunków początkowych
+        /// </summary>
         public InitialCondition()
         {
             InitializeComponent();
@@ -55,13 +57,16 @@ namespace SpacialPrisonerDilemma.View
        
             Legend.Children.Add(image2);
         }
+        /// <summary>
+        /// Możliwe operacje na układzie początkowym
+        /// </summary>
         public enum Operation
         {
             None,
             Fill,
             Check
         }
-        public DrawingImage GenerateImage(InitialConditionsGrid grid, int x, int y, int width, int height)
+        private DrawingImage GenerateImage(InitialConditionsGrid grid, int x, int y, int width, int height)
         {
             var cellWidth = Canvas.Width/width;
             var cellHeight = Canvas.Height/height;
@@ -84,26 +89,7 @@ namespace SpacialPrisonerDilemma.View
             }
             return new DrawingImage(dg);
         }
-        public InitialConditions LoadConditions(string path)
-        {
-            var fs = new FileStream(path,FileMode.Open);
-            var bf = new BinaryFormatter();
-            try
-            {
-                var obj = bf.Deserialize(fs);
-                fs.Close();
-                return (InitialConditions)obj;
-            }
-            catch (Exception)
-            {
-                fs.Close();
-
-                return null;
-            }
-         
-            
-        }
-
+      
         private void NotifyPropertyChanged(string s)
         {
             if (PropertyChanged != null)
@@ -113,7 +99,7 @@ namespace SpacialPrisonerDilemma.View
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public InitialConditions Condition
+        internal InitialConditions Condition
         {
             get { return _condition; }
             private set { _condition = value;

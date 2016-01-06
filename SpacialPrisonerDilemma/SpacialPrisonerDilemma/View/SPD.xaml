@@ -23,6 +23,7 @@
         <oxy:PlotView   Model="{Binding CountModel}" Canvas.Left="500" Canvas.Top="020" Width="300" Height="200"></oxy:PlotView>
         <oxy:PlotView   Model="{Binding ChangeModel}" Canvas.Left="810" Canvas.Top="020" Width="300" Height="200">
         </oxy:PlotView>
+        <oxy:PlotView Model="{Binding SumModel}" Canvas.Left="810" Canvas.Top="240" Width="300" Height="200"></oxy:PlotView>
         <oxy:PlotView Model="{Binding PointsModel}" Canvas.Left="500" Canvas.Top="240" Width="300" Height="200"></oxy:PlotView>
         <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="424" Height="31">
             <TextBlock>Prędkość:</TextBlock>

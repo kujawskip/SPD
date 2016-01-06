@@ -5,10 +5,17 @@ using OxyPlot;
 
 namespace SpacialPrisonerDilemma.View
 {
+    /// <summary>
+    /// Klasa realizuj¹ca wybór koloru
+    /// </summary>
     public class ColorPicking
     {
         private readonly Func<int, byte>[] _functions;
         private readonly String _s;
+        /// <summary>
+        /// Opis wyboru
+        /// </summary>
+        /// <returns>Tekst zawieraj¹cy opis wyboru</returns>
         public override string ToString()
         {
             return _s;
@@ -86,7 +93,10 @@ namespace SpacialPrisonerDilemma.View
             return new Tuple<int,int,int>(r,g,b);
 
         }
-
+        /// <summary>
+        /// Metoda factory dla wyboru kolorów cytrusowych
+        /// </summary>
+        /// <returns>Wybór kolorów cytrusowych</returns>
         public static ColorPicking CitrusFactory()
         {
             Func<int, byte>[] f = {
@@ -99,6 +109,10 @@ namespace SpacialPrisonerDilemma.View
             String s = "Kolory cytrusowe";
             return new ColorPicking(f,s);
         }
+        /// <summary>
+        /// Metoda factory dla wyboru kolorów têczy
+        /// </summary>
+        /// <returns>Wybór kolorów têczy</returns>
         public static ColorPicking RainbowFactory()
         {
             Func<int, byte>[] f = {
@@ -110,6 +124,10 @@ namespace SpacialPrisonerDilemma.View
             String s = "Kolory têczy";
             return new ColorPicking(f, s);
         }
+        /// <summary>
+        /// Metoda factory dla wyboru odcieni szaroœci
+        /// </summary>
+        /// <returns>Wybór odcieni szaroœci</returns>
         public static ColorPicking GrayScaleFactory()
         {
             Func<int, byte>[] f = {
@@ -121,6 +139,10 @@ namespace SpacialPrisonerDilemma.View
             String s = "Odcienie szaroœci";
             return new ColorPicking(f, s);
         }
+        /// <summary>
+        /// Metoda factory dla wyboru odwrotnoœci kolorów standardowych
+        /// </summary>
+        /// <returns>Wybór odwrotnoœci kolorów standardowych</returns>
         public static ColorPicking ReverseRegularPickingFactory()
         {
             Func<int, byte>[] f = {
@@ -137,6 +159,10 @@ namespace SpacialPrisonerDilemma.View
             var s = "Odwrócony standardowy zestaw kolorów";
             return new ColorPicking(f, s);
         }
+        /// <summary>
+        /// Metoda factory dla wyboru kolorów standardowych
+        /// </summary>
+        /// <returns>Wybór kolorów standardowych</returns>
         public static ColorPicking RegularPickingFactory()
         {
             Func<int, byte>[] f = {
@@ -158,17 +184,26 @@ namespace SpacialPrisonerDilemma.View
             _functions = functions.ToArray();
             _s = name;
         }
-
+        /// <summary>
+        /// Metoda generuje oxycolor o indeksie i wg. metody wyboru
+        /// </summary>
+        /// <param name="i">indeks koloru</param>
+        /// <returns>OxyColor</returns>
         public OxyColor GenerateOxyColor(int i)
         {
             var T = GenerateColor(i);
             return OxyColor.FromArgb(T.Item1, T.Item2, T.Item3, T.Item4);
         }
+        
         private Tuple<byte, byte, byte, byte> GenerateColor(int i)
         {
             return new Tuple<byte, byte, byte, byte>(_functions[0](i), _functions[1](i), _functions[2](i), _functions[3](i));
         }
-
+        /// <summary>
+        /// Metoda generuje brush o indeksie i wg. metody wyboru
+        /// </summary>
+        /// <param name="i">indeks koloru</param>
+        /// <returns>Brush</returns>
         internal Brush GenerateBrush(int i)
         {
             var T = GenerateColor(i);

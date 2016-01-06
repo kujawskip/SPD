@@ -5,14 +5,19 @@ using SpacialPrisonerDilemma.Model;
 
 namespace SpacialPrisonerDilemma.View
 {
+    /// <summary>
+    /// Klasa reprezentuj¹ca uk³ad pocz¹tkowy
+    /// </summary>
     [Serializable]
-    public class InitialConditions
+    internal class InitialConditions
     {
-        public InitialConditionsGrid Grid;
-        public String Name;
+        internal InitialConditionsGrid Grid;
+        internal String Name;
         private static Dictionary<Tuple<int, bool>, StateTransformation> Transformations;
-
-        public static void Initialise()
+        /// <summary>
+        /// Inicjalizacja obiektów statycznych
+        /// </summary>
+        internal static void Initialise()
         {
             Transformations = new Dictionary<Tuple<int, bool>, StateTransformation>
             {
@@ -32,6 +37,12 @@ namespace SpacialPrisonerDilemma.View
 
             }
         }
+        /// <summary>
+        /// Metoda generuj¹ca losowy uk³ad
+        /// </summary>
+        /// <param name="size">Rozmiar uk³adu</param>
+        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
+        /// <returns>Uk³ad pocz¹tkowy</returns>
         internal static InitialConditions GenerateRandom(int size=100,int stateCount=10)
         {
             Random r = new Random();
@@ -44,7 +55,13 @@ namespace SpacialPrisonerDilemma.View
             };
             return ic;
         }
-        
+        /// <summary>
+        /// Metoda factory generuj¹ca ko³o
+        /// </summary>
+        /// <param name="reversed">Czy wartoœci maj¹ byæ odwrócone</param>
+        /// <param name="size">Rozmiar</param>
+        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
+        /// <returns>Uk³ad pocz¹tkowy z ko³em</returns>
         internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = 30)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size,stateCount);
@@ -56,6 +73,13 @@ namespace SpacialPrisonerDilemma.View
             };
             return ic;
         }
+        /// <summary>
+        /// Metoda factory generuj¹ca donut
+        /// </summary>
+        /// <param name="reversed">Czy wartoœci maj¹ byæ odwrócone</param>
+        /// <param name="size">Rozmiar</param>
+        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
+        /// <returns>Uk³ad pocz¹tkowy z donutem</returns>
         internal static InitialConditions DonutFactory(bool reversed=false,int size=30,int stateCount=10)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size,stateCount);
@@ -67,8 +91,14 @@ namespace SpacialPrisonerDilemma.View
             };
             return ic;
         }
-      
 
+        /// <summary>
+        /// Metoda factory generuj¹ca przek¹tn¹
+        /// </summary>
+        /// <param name="reversed">Czy wartoœci maj¹ byæ odwrócone</param>
+        /// <param name="size">Rozmiar</param>
+        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
+        /// <returns>Uk³ad pocz¹tkowy z przek¹tn¹</returns>
         internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30,int stateCount=10)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size,stateCount);
@@ -87,7 +117,7 @@ namespace SpacialPrisonerDilemma.View
 
         }
 
-        public static InitialConditions FromCellArray(Cell[,] cells, string getFileName)
+        internal static InitialConditions FromCellArray(Cell[,] cells, string getFileName="FileLoaded")
         {
             InitialConditionsGrid icg = InitialConditionsGrid.FromCellArray(cells);
             

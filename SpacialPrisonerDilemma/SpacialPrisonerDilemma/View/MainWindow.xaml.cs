@@ -25,6 +25,9 @@ namespace SpacialPrisonerDilemma.View
         private ValidationErrors _error;
         private int _colorPickerIndex;
         private InitialConditions _ic;
+        /// <summary>
+        /// Możliwe błędy walidacji
+        /// </summary>
         public enum ValidationErrors
         {
             None,
@@ -33,6 +36,9 @@ namespace SpacialPrisonerDilemma.View
         }
         
         private bool _canvalidate;
+        /// <summary>
+        /// Konstruktor okna głównego
+        /// </summary>
         public MainWindow()
         {
 
@@ -62,17 +68,23 @@ namespace SpacialPrisonerDilemma.View
         }
 
         private static readonly string[] ErrorMessages = { "", "Błąd przetwarzania", "Błąd wartości" };
-
+        /// <summary>
+        /// Opis błędu walidacji
+        /// </summary>
         public string ErrorMessage
         {
             get { return ErrorMessages[(int)Error]; }
         }
-
+        /// <summary>
+        /// Czy wystąpił błąd walidacji
+        /// </summary>
         public bool NoError
         {
             get { return Error == ValidationErrors.None && _ic != null; }
         }
-
+        /// <summary>
+        /// Czy wyświetlić opis błedu
+        /// </summary>
         public bool ShowErrorMessage
         {
             get { return !NoError; }
@@ -193,8 +205,8 @@ namespace SpacialPrisonerDilemma.View
             SPD spd = new SPD(d, Transform(_ic.Grid),(Shape)ShapeBox.SelectedItem == Shape.Torus,Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
             spd.ShowDialog();
         }
-
-        public int[,] Transform(InitialConditionsGrid ig)
+       
+        private int[,] Transform(InitialConditionsGrid ig)
         {
             var ar = ig.CellGrid;
             int[,] result = new int[ar.GetLength(0), ar.GetLength(1)];
@@ -207,19 +219,16 @@ namespace SpacialPrisonerDilemma.View
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            InitialCondition ic = new InitialCondition();
+            var ic = new InitialCondition();
             var b = ic.ShowDialog();
-            if (b.HasValue && b.Value)
-            {
-                _ic = ic.Condition;
-                NotifyPropertyChanged("NoError");
-            }
-
+            if (!b.HasValue || !b.Value) return;
+            _ic = ic.Condition;
+            NotifyPropertyChanged("NoError");
         }
 
         private void Color_OnClick(object sender, RoutedEventArgs e)
         {
-           ColorPicker cp = new ColorPicker(_colorPickerIndex);
+           var cp = new ColorPicker(_colorPickerIndex);
             var b = cp.ShowDialog();
             if (b.HasValue && b.Value)
             {
@@ -230,7 +239,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void Font_OnClick(object sender, RoutedEventArgs e)
         {
-           FontPicker fp = new FontPicker(SPDAssets.GetFont());
+           var fp = new FontPicker(SPDAssets.GetFont());
            fp.ShowDialog();
           
         }

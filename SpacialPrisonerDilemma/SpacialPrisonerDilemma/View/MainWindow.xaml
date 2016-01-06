@@ -45,6 +45,8 @@
         <Button Content="Wprowadz początkowy stan" Height="56" Canvas.Left="272" Canvas.Top="222" Width="162" Click="ButtonBase_OnClick" RenderTransformOrigin="0.5,0.5"/>
         <ComboBox Name="NeighbourBox" Height="20" Canvas.Left="21" Canvas.Top="111" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
         <ComboBox Name="ShapeBox" Height="20" Canvas.Left="117" Canvas.Top="111" Width="80"/>
+        <TextBlock Height="23" Canvas.Left="21" TextWrapping="Wrap" Text="Sąsiedztwo" Canvas.Top="83" Width="80"/>
+        <TextBlock Height="23" Canvas.Left="117" TextWrapping="Wrap" Text="Geometria" Canvas.Top="83" Width="80"/>
 
     </Canvas>
 </Window>

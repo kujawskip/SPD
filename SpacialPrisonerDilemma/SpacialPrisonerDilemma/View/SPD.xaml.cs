@@ -17,7 +17,6 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using SpacialPrisonerDilemma.Annotations;
 using SpacialPrisonerDilemma.Model;
-using FontWeights = System.Windows.FontWeights;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -35,12 +34,17 @@ namespace SpacialPrisonerDilemma.View
 
         private PlotModel _pointsmodel;
         private PlotModel _countmodel;
-
+        /// <summary>
+        /// Model liczebności strategii
+        /// </summary>
         public PlotModel CountModel
         {
             get { return _countmodel; }
             set { _countmodel = value; OnPropertyChanged(); }
         }
+        /// <summary>
+        /// Model wyników punktowych
+        /// </summary>
         public PlotModel PointsModel
         {
             get
@@ -54,7 +58,25 @@ namespace SpacialPrisonerDilemma.View
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Model wyników sum punktów
+        /// </summary>
+        public PlotModel SumModel
+        {
+            get
+            {
 
+                return _summodel;
+            }
+            set
+            {
+                _summodel = value;
+                OnPropertyChanged();
+            }
+        }
+        /// <summary>
+        /// Model wariancji układu
+        /// </summary>
         public PlotModel ChangeModel
         {
             get
@@ -68,11 +90,17 @@ namespace SpacialPrisonerDilemma.View
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Aktualna iteracja
+        /// </summary>
         public int Iteration
         {
             get { return _iter; }
             set { _iter = value; OnPropertyChanged(); UpdateImage(); }
         }
+        /// <summary>
+        /// Szybkość wyświetlania
+        /// </summary>
         public int Speed
         {
             get { return _speed; }
@@ -98,7 +126,10 @@ namespace SpacialPrisonerDilemma.View
 
             var d = CalculateModels(_spd.GetStateByIteration(category));
 
-
+            var sum = SumPoints.ToArray();
+            double v = sum.Sum();
+            if (Math.Abs(v) < double.Epsilon*100) v = 1;
+            sum = sum.Select(k => 100*k/v).ToArray();
             _iterations.Add(new Tuple<int, String>(category, ""));
 
             foreach (var s in GenerateColumns(category, d[0]))
@@ -114,46 +145,58 @@ namespace SpacialPrisonerDilemma.View
                     if (columnSeries != null)
                         columnSeries.Items.Add(s);
                 }
+                foreach (var s in GenerateColumns(category - 1, sum))
+                {
+                    var columnSeries = SumModel.Series[0] as ColumnSeries;
+                    if (columnSeries != null)
+                        columnSeries.Items.Add(s);
+                }
             }
 
             CountModel = CountModel;
             PointsModel = PointsModel;
-
+            SumModel = SumModel;
             CountModel.InvalidatePlot(true);
             PointsModel.InvalidatePlot(true);
+            SumModel.InvalidatePlot(true);
 
         }
+
+        private double[] SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
         /// <summary>
         /// Metoda wyliczająca dane do wykresów na podstawie stanu automatu
         /// </summary>
-
         double[][] CalculateModels(Cell[,] cells)
         {
             var result = new double[Enum.GetValues(typeof(WhenBetray)).Length];
             var count = new double[result.Length];
+            var sum = new double[result.Length];
             for (var i = 0; i < result.Length; i++)
             {
                 result[i] = 0;
                 count[i] = 0;
+                
             }
             for (var i = 0; i < cells.GetLength(0); i++)
                 for (var j = 0; j < cells.GetLength(1); j++)
                 {
                     var c = cells[i, j];
                     var integerStrategy = c.Strategy as IntegerStrategy;
+
                     if (integerStrategy != null)
                     {
                         var k = integerStrategy.Treshold;
                         double d = c.Points / _spd[i, j].GetNeighbours().Length;
                         result[k] += d;
                         count[k]++;
+                        
                     }
                 }
             for (var i = 0; i < count.Length; i++)
             {
                 if ((count[i] - Double.Epsilon) <= 0) continue;
                 result[i] /= count[i];
-
+                
 
             }
             var d1 = result.Sum();
@@ -161,6 +204,7 @@ namespace SpacialPrisonerDilemma.View
             var d2 = count.Sum();
             if (Math.Abs(d2) < double.Epsilon * 100) d2 = 1;
             result = result.Select(d => 100 * d / d1).ToArray();
+            for (int i = 0; i < result.Length; i++) SumPoints[i] += result[i];
             count = count.Select(d => 100 * d / d2).ToArray();
             return new[] { count, result };
         }
@@ -174,6 +218,8 @@ namespace SpacialPrisonerDilemma.View
         public SPD(double[] PayValues, int[,] strategies, bool torus, bool vonneumann)
         {
             DataContext = this;
+            SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
+            for (int i = 0; i < SumPoints.Length; i++) SumPoints[i] = 0;
             var payValues = PayValues;
             _strategies = strategies;
             _spd = Model.SPD.Singleton;
@@ -181,9 +227,11 @@ namespace SpacialPrisonerDilemma.View
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
             ChangeModel = new PlotModel();
+            SumModel = new PlotModel();
             PointsModel.Title = "Średnie wartości punktowe";
             CountModel.Title = "Liczebność strategii";
             ChangeModel.Title = "Niestabilność układu";
+            SumModel.Title = "Punkty dla strategii zagregowane";
             _iterations = new List<Tuple<int, string>>();
 
             PointsModel.Axes.Add(new CategoryAxis { ItemsSource = _iterations, LabelField = "Item2" });
@@ -197,7 +245,10 @@ namespace SpacialPrisonerDilemma.View
 
             ChangeModel.Axes.Add(new CategoryAxis { ItemsSource = _iterations, LabelField = "Item2" });
             ChangeModel.Axes.Add(new LinearAxis { MinimumPadding = 0, AbsoluteMinimum = 0 });
-            ChangeModel.Series.Add(new ColumnSeries { ColumnWidth = 10, IsStacked = true });
+            ChangeModel.Series.Add(new ColumnSeries {ColumnWidth = 10, IsStacked = true});
+                 SumModel.Axes.Add(new CategoryAxis { ItemsSource = _iterations, LabelField = "Item2" });
+            SumModel.Axes.Add(new LinearAxis { MinimumPadding = 0, AbsoluteMinimum = 0 });
+            SumModel.Series.Add(new ColumnSeries { ColumnWidth = 10, IsStacked = true });
             Model.SPD.Initialize(_strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0], !vonneumann, torus);
 
             UpdateModels();
@@ -291,7 +342,9 @@ namespace SpacialPrisonerDilemma.View
         }
 
         private volatile bool _cont;
-
+        /// <summary>
+        /// Ilość iteracji
+        /// </summary>
         public int StateCount
         {
             get { return _spd.CurrentIteration > 0 ? _spd.CurrentIteration - 1 : 0; }
@@ -301,8 +354,13 @@ namespace SpacialPrisonerDilemma.View
 
         Task<Tuple<int, bool>> _iteration;
         private bool _over = true;
+        /// <summary>
+        /// Metoda realizująca pętle symulacji
+        /// </summary>
+        /// <returns>Task pętli</returns>
         private async Task SPDLooper()
         {
+            // _cont - pauza, _over - koniec obliczeń
             while (_cont && _over)
             {
 
@@ -325,7 +383,7 @@ namespace SpacialPrisonerDilemma.View
             }
 
         }
-
+       
         private void InsertVariationColumn(int x)
         {
             var i = _iterations.Count - 1;
@@ -387,6 +445,7 @@ namespace SpacialPrisonerDilemma.View
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private PlotModel _summodel;
        
 
         [NotifyPropertyChangedInvocator]
@@ -395,7 +454,11 @@ namespace SpacialPrisonerDilemma.View
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        /// <summary>
+        /// Metoda zapisuje wykres automatu do pliku
+        /// </summary>
+        /// <param name="filePath">ścieżka pliku do zapisania</param>
+        /// <param name="b">Wykres automatu</param>
         public static void SaveImageToFile(string filePath, Image b)
         {
             var stream = new FileStream(filePath, FileMode.Create);
