@@ -9,8 +9,19 @@ namespace SpacialPrisonerDilemma.Model
 {
     public class SPD
     {
+        /// <summary>
+        /// Ilość wątków, na których przeprowadzane będą obliczenia
+        /// </summary>
         public const int ThreadCount = 16;
+
         private PerformanceLog Log;
+
+        /// <summary>
+        /// Akcesor komórek automatu
+        /// </summary>
+        /// <param name="i">Indeks kolumny</param>
+        /// <param name="j">Indeks wiersza</param>
+        /// <returns>Komórka o podanych współrzędnych</returns>
         public Cell this[int i, int j]
         {
             get
@@ -50,6 +61,12 @@ namespace SpacialPrisonerDilemma.Model
             cells = new Cell[0, 0];
         }
 
+        /// <summary>
+        /// Obsługa odwołań do macierzy wypłat
+        /// </summary>
+        /// <param name="myDecision"></param>
+        /// <param name="opponentsDecision"></param>
+        /// <returns>Ilość punktów otrzymanych po podjęciu decyzji myDecision przeciw decyzji opponentsDecision</returns>
         internal float GetAward(bool myDecision, bool opponentsDecision)
         {
             if (myDecision)
@@ -67,17 +84,38 @@ namespace SpacialPrisonerDilemma.Model
                     return NoneBetrayedPoints;
             }
         }
-
+        /// <summary>
+        /// Wypłata dla zdradzonego
+        /// </summary>
         public float WasBetrayedPoints
         { get; private set; }
+        /// <summary>
+        /// Wypłata dla zdradzającego
+        /// </summary>
         public float WasntBetrayedPoints
         { get; private set; }
+        /// <summary>
+        /// Wypłata jeśli do zdrady nie doszło
+        /// </summary>
         public float NoneBetrayedPoints
         { get; private set; }
+        /// <summary>
+        /// Wypłata, gdy obie strony zdradziły
+        /// </summary>
         public float BothBetrayedPoints
         { get; private set; }
 
-
+        /// <summary>
+        /// Zainicjowanie instancji danymi początkowymi
+        /// </summary>
+        /// <param name="initialConfig">Konfiguracja początkowa automatu</param>
+        /// <param name="stepsPerIteration">Ilość decyzji podejmowanych między kolejnymi krokami automatu</param>
+        /// <param name="noneBetrayed">Wypłata jeśli do zdrady nie doszło</param>
+        /// <param name="wasBetrayed">Wypłata dla zdradzonego</param>
+        /// <param name="wasntBetrayed">Wypłata dla zdradzającego</param>
+        /// <param name="bothBetrayed">Wypłata, gdy obie strony zdradziły</param>
+        /// <param name="moore">true - sąsiedztwo Moore'a, false - sąsiedztwo von Neumanna</param>
+        /// <param name="torus">true - symulacja na torusie, false - symulacja na ograniczonej płaszczyźnie</param>
         public static void Initialize(IStrategy[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed, bool moore = true, bool torus = false)
         {
             var allocStart = DateTime.Now;
@@ -124,6 +162,10 @@ namespace SpacialPrisonerDilemma.Model
             Singleton.Log = new PerformanceLog(allocStart, allocEnd);
         }
 
+        /// <summary>
+        /// Wyczyszczenie singletona
+        /// </summary>
+        /// <returns>Raport wydajności</returns>
         public static PerformanceLog ClearAndGetLog()
         {
             var log = Singleton.Log;
@@ -148,7 +190,17 @@ namespace SpacialPrisonerDilemma.Model
                     result[x, y] = func(cells[x, y]);
             return result;
         }
-
+        /// <summary>
+        /// Zainicjowanie instancji danymi początkowymi
+        /// </summary>
+        /// <param name="initialConfig">Konfiguracja początkowa automatu</param>
+        /// <param name="stepsPerIteration">Ilość decyzji podejmowanych między kolejnymi krokami automatu</param>
+        /// <param name="noneBetrayed">Wypłata jeśli do zdrady nie doszło</param>
+        /// <param name="wasBetrayed">Wypłata dla zdradzonego</param>
+        /// <param name="wasntBetrayed">Wypłata dla zdradzającego</param>
+        /// <param name="bothBetrayed">Wypłata, gdy obie strony zdradziły</param>
+        /// <param name="moore">true - sąsiedztwo Moore'a, false - sąsiedztwo von Neumanna</param>
+        /// <param name="torus">true - symulacja na torusie, false - symulacja na ograniczonej płaszczyźnie</param>
         public static void Initialize(int[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed, bool moore = true, bool torus = false)
         {
             var str = new IStrategy[initialConfig.GetLength(0), initialConfig.GetLength(1)];
@@ -158,6 +210,17 @@ namespace SpacialPrisonerDilemma.Model
             Initialize(str, stepsPerIteration, noneBetrayed, wasBetrayed, wasntBetrayed, bothBetrayed, moore, torus);
         }
 
+        /// <summary>
+        /// Zainicjowanie instancji danymi początkowymi
+        /// </summary>
+        /// <param name="initialConfig">Konfiguracja początkowa automatu</param>
+        /// <param name="stepsPerIteration">Ilość decyzji podejmowanych między kolejnymi krokami automatu</param>
+        /// <param name="noneBetrayed">Wypłata jeśli do zdrady nie doszło</param>
+        /// <param name="wasBetrayed">Wypłata dla zdradzonego</param>
+        /// <param name="wasntBetrayed">Wypłata dla zdradzającego</param>
+        /// <param name="bothBetrayed">Wypłata, gdy obie strony zdradziły</param>
+        /// <param name="moore">true - sąsiedztwo Moore'a, false - sąsiedztwo von Neumanna</param>
+        /// <param name="torus">true - symulacja na torusie, false - symulacja na ograniczonej płaszczyźnie</param>
         public static void Initialize(WhenBetray[,] initialConfig, int stepsPerIteration, float noneBetrayed, float wasBetrayed, float wasntBetrayed, float bothBetrayed, bool moore = true, bool torus = false)
         {
             var str = new IStrategy[initialConfig.GetLength(0), initialConfig.GetLength(1)];
@@ -175,6 +238,10 @@ namespace SpacialPrisonerDilemma.Model
         Dictionary<Cell, Tuple<int, int>> coords;
         List<Tuple<int,Cell[,]>> history;
 
+        /// <summary>
+        /// Zapisanie konfiguracji w historii i spradzenie, czy otrzymaliśmy układ stabilny
+        /// </summary>
+        /// <returns>True gdy układ jest stabilby, w przeciwnym przypadku false</returns>
         protected bool CacheToHistory()
         {
             var stateCopy = ForEachCell(x => x.Clone());
@@ -200,6 +267,9 @@ namespace SpacialPrisonerDilemma.Model
             return true;
         }
 
+        /// <summary>
+        /// Implementacja podjęcia pojedynczej decyzji przez każdą komórkę
+        /// </summary>
         protected void Step()
         {
             ForEachCell(x =>
@@ -250,7 +320,10 @@ namespace SpacialPrisonerDilemma.Model
             }
             return result;
         }
-
+        /// <summary>
+        /// Implementacja podjęcia pojedynczej decyzji przez każdą komórkę
+        /// </summary>
+        /// <returns>Task powiązany z realizacją powyższego zadania</returns>
         protected async Task StepAsync()
         {
             var tasks = Batches.Select(x => Task.Run(() =>
@@ -278,7 +351,11 @@ namespace SpacialPrisonerDilemma.Model
             await Task.WhenAll(tasks);
         }
 
-        protected internal int Iterate()
+        /// <summary>
+        /// Implementacja pojedynczego kroku automatu.
+        /// </summary>
+        /// <returns>Ilość komórek, które zmieniły strategię oraz informacja, czy układ jest stabilny</returns>
+        protected internal Tuple<int, bool> Iterate()
         {
             var stepStart = DateTime.Now;
             for (int i = 0; i < StepCount; i++)
@@ -300,13 +377,16 @@ namespace SpacialPrisonerDilemma.Model
                     s.Value.Clear();
                 }
             });
-            CacheToHistory();
+            var stable = CacheToHistory();
             var stepEnd = DateTime.Now;
             Log.NewStepStart(stepStart);
             Log.NewStepEnd(stepEnd);
-            return changed;
+            return new Tuple<int, bool>(changed, stable);
         }
-
+        /// <summary>
+        /// Implementacja asynchroniczna pojedynczego kroku automatu.
+        /// </summary>
+        /// <returns>Ilość komórek, które zmieniły strategię oraz informacja, czy układ jest stabilny</returns>
         public async Task<Tuple<int, bool>> IterateAsync()
         {
             var stepStart = DateTime.Now;
@@ -314,16 +394,6 @@ namespace SpacialPrisonerDilemma.Model
             {
                 await StepAsync();
             }
-
-            //int changed = 0;
-            //var newStr = ForEachCell(x => x.OptimizeStrategy());
-            //for (int x = 0; x < Singleton.cells.GetLength(0); x++)
-            //    for (int y = 0; y < Singleton.cells.GetLength(1); y++)
-            //        if (cells[x, y].Strategy != newStr[x, y])
-            //        {
-            //            cells[x, y].Strategy = newStr[x, y];
-            //            changed++;
-            //        }
 
             var tasks = Batches.Select(x => Task.Run(() =>
              {
@@ -366,6 +436,9 @@ namespace SpacialPrisonerDilemma.Model
             return new Tuple<int, bool>(changed, repeating);
         }
 
+        /// <summary>
+        /// Numer ostatniego obiczonego kroku automatu
+        /// </summary>
         public int CurrentIteration
         {
             get
@@ -374,6 +447,9 @@ namespace SpacialPrisonerDilemma.Model
             }
         }
 
+        /// <summary>
+        /// Ilość decyzji podejmowanych przez pojedynczą komórkę pomiędzy krokami automatu
+        /// </summary>
         public int StepCount { get; private set; }
 
         internal Skirmish GetSkirmish(Cell c1, Cell c2)
@@ -427,6 +503,11 @@ namespace SpacialPrisonerDilemma.Model
             return cells[x, y];
         }
 
+        /// <summary>
+        /// Dostęp do przeszłych stanów automatu
+        /// </summary>
+        /// <param name="i">Numer kroku automatu</param>
+        /// <returns>Stan automatu w zadanym kroku</returns>
         public Cell[,] GetStateByIteration(int i)
         {
             return history[i].Item2;

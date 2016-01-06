@@ -9,21 +9,35 @@ namespace SpacialPrisonerDilemma.Model
 {
     public class Cell
     {
-       
+       /// <summary>
+       /// Inicjalizacja komórki
+       /// </summary>
+       /// <param name="strategy">Strategia początkowa komórki</param>
         public Cell(IStrategy strategy)
         {
-           
             Strategy = strategy;
         }
 
+        /// <summary>
+        /// Akcesor do aktualnej strategii komórki
+        /// </summary>
         public IStrategy Strategy
         { get; internal set; }
 
+        /// <summary>
+        /// Dostęp do sąsiadów komórki
+        /// </summary>
+        /// <returns>Tablica komórek sąsiadujących</returns>
         public Cell[] GetNeighbours()
         {
             return SPD.Singleton.GetNeighbours(this);
         }
 
+        /// <summary>
+        /// Implementacja podejmowania decyzji przez komórkę
+        /// </summary>
+        /// <param name="opponent">Komórka będąca przeciwnikiem</param>
+        /// <returns>True jeśli zdradza, false w przeciwnym wypadku</returns>
         public bool Decide(Cell opponent)
         {
             return Strategy.Decide(this, opponent);
@@ -31,6 +45,9 @@ namespace SpacialPrisonerDilemma.Model
 
         Mutex m = new Mutex();
         public float points;
+        /// <summary>
+        /// Ilość zdobytych przez komórkę punktów
+        /// </summary>
         public float Points
         {
             get
@@ -48,6 +65,9 @@ namespace SpacialPrisonerDilemma.Model
             }
         }
 
+        /// <summary>
+        /// Aktualizacja ilości punktów bazując na ostatnich decyzjach komórki
+        /// </summary>
         public void UpdatePoints()
         {
             var Lasts = GetNeighbours().Select(x => SPD.Singleton.GetSkirmish(this, x).Last);
@@ -75,10 +95,15 @@ namespace SpacialPrisonerDilemma.Model
             else throw new ArgumentException();
         }
 
+        /// <summary>
+        /// Znajdź najlepszą strategię spośród podanych komórek względem centralnej.
+        /// W przypadku remisu punktów wybierana jest centralna (o ile ma najwięcej punktów), następnie priorytety maleją zgodnie z ruchem wskazówek zegara.
+        /// </summary>
+        /// <param name="c">Komórka centralna</param>
+        /// <param name="cellList">Sąsiedzi</param>
+        /// <returns>Najlepsza strategia</returns>
         public static IStrategy GetBest(Cell c, IEnumerable<Cell> cellList)
         {
-            
-          
             var max = cellList.Max(y => y.Points);
             if (c.Points == max) return c.Strategy;
             if (c.GetNeighbours().All(x => x.Strategy == c.Strategy)) return c.Strategy;
@@ -86,6 +111,10 @@ namespace SpacialPrisonerDilemma.Model
             return best.First();
         }
 
+        /// <summary>
+        /// Zwróć najlepszą strategię w sąsiedztwie tej komórki
+        /// </summary>
+        /// <returns>Najlepsza strategia</returns>
         public IStrategy OptimizeStrategy()
         {
             var str = GetBest(this, this.GetNeighbours().Concat(new Cell[] { this }));
