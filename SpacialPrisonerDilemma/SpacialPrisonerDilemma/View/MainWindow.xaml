@@ -33,10 +33,10 @@
                 <TextBlock Grid.Row="1" Grid.Column="3" Margin="4">Nie zdradza</TextBlock>
                 <TextBlock Grid.Row="2" Grid.Column="1" Margin="4">Zdradza</TextBlock>
                 <TextBlock Grid.Row="3" Grid.Column="1" Margin="4">Nie zdradza</TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="2" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
-                <TextBox Grid.Row="3" Grid.Column="2" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
-                <TextBox Grid.Row="2" Grid.Column="3" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
-                <TextBox Grid.Row="3" Grid.Column="3" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
+                <TextBox Grid.Row="2" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
+                <TextBox Grid.Row="3" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
+                <TextBox Grid.Row="2" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
+                <TextBox Grid.Row="3" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="2" Header="Opcje obliczeń" Margin="16">
