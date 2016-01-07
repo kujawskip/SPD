@@ -9,19 +9,31 @@ using OxyPlot;
 namespace SpacialPrisonerDilemma.View
 {
     /// <summary>
-    /// Klasa obs³uguj¹ca elementy pomocnicze dla okien programu
+    /// Klasa obsÅ‚ugujÄ…ca elementy pomocnicze dla okien programu
     /// </summary>
     internal static class SPDAssets
     {
         private static Brush[] _brushArray;
         private static OxyColor[] _oxyArray;
         /// <summary>
-        /// Metoda zwraca prostok¹ty zawieraj¹ce kolory wykresu
+        /// Metoda zwraca prostokÄ…ty zawierajÄ…ce kolory wykresu
         /// </summary>
-        /// <returns></returns>
-        public static List<Image> GetBrushRectangles()
+        /// <returns>Lista prostokÄ…tÃ³w</returns>
+		public static List<Image> GetBrushRectangles()
         {
-            return _brushArray.Select(s =>
+			return GetBrushRectangles(10,(x)=>(x));
+        }
+		 /// <summary>
+        /// Metoda zwraca prostokÄ…ty zawierajÄ…ce kolory wykresu
+        /// </summary>
+		/// <param name="stateCount"> IloÅ›Ä‡ kolorÃ³w </param>
+		/// <param name="SF>Predykat wyboru kolorÃ³w</param>"
+        /// <returns>Lista prostokÄ…tÃ³w</returns>
+        public static List<Image> GetBrushRectangles(int stateCount,StateTransformation SF)
+        {
+			List<Brush> brushes = new List<Brush>();
+			for(int i=0;i<stateCount;i++) brushes.Add(_brushArray[SF(i)]);
+            return brushes.Select(s =>
             {
                 var rg = new RectangleGeometry(new Rect(new Point(0, 0), new Point(30, 15)));
                 var gd = new GeometryDrawing(s, new Pen(s, 1), rg);
@@ -33,15 +45,15 @@ namespace SpacialPrisonerDilemma.View
         /// Metoda zwraca OxyColor dla strategii o indeksie p
         /// </summary>
         /// <param name="p">indeks strategii</param>
-        /// <returns>OxyColor zawieraj¹cy kolor dla tej strategii</returns>
+        /// <returns>OxyColor zawierajÄ…cy kolor dla tej strategii</returns>
         public static OxyColor GetOxyColor(int p)
         {
             return _oxyArray[p];
         }
         /// <summary>
-        /// Metoda inicjalizuj¹ca generuj¹ca pêdzle i OxyColory
+        /// Metoda inicjalizujÄ…ca generujÄ…ca pÄ™dzle i OxyColory
         /// </summary>
-        /// <param name="count">Iloœæ kolorów do wygenerowania</param>
+        /// <param name="count">IloÅ›Ä‡ kolorÃ³w do wygenerowania</param>
         public static void CreateBrushes(int count)
         {
 
@@ -54,7 +66,7 @@ namespace SpacialPrisonerDilemma.View
             }
         }
         /// <summary>
-        /// Metoda modyfikuje kolor o indeksie i przypisuj¹c mu brush i oxycolor
+        /// Metoda modyfikuje kolor o indeksie i przypisujÄ…c mu brush i oxycolor
         /// </summary>
         /// <param name="b">brush</param>
         /// <param name="o">oxycolor</param>
@@ -66,7 +78,7 @@ namespace SpacialPrisonerDilemma.View
         }
         private static string _font;
         /// <summary>
-        /// Metoda zmienia czcionke na czcionkê o podanej nazwie
+        /// Metoda zmienia czcionke na czcionkÄ™ o podanej nazwie
         /// </summary>
         /// <param name="fontName">nazwa czcionki</param>
         public static void ChangeFont(string fontName)
@@ -101,15 +113,54 @@ namespace SpacialPrisonerDilemma.View
             var des = new List<string> {"Zawsze zdradzaj"};
             for (var i = 1; i < 9; i++)
             {
-                des.Add(string.Format("Zdradzaj gdy {0} s¹siad{1} zdradza", i, i == 1 ? "" : "ów"));
+                des.Add(string.Format("Zdradzaj gdy {0} sÄ…siad{1} zdradza", i, i == 1 ? "" : "Ã³w"));
             }
             des.Add("Zawsze wybaczaj");
             _descriptions = des.ToArray();
         }
+		 /// <summary>
+        /// Metoda generuje obrazek legendy
+        /// </summary>
+        /// <param name="height">WysokoÅ›Ä‡ canvasa dla legendy</param>
+		/// <param name="stateCount">IloÅ›Ä‡ kolorÃ³w</param>
+		/// <param name="SF">Predykat wyboru kolorÃ³w</param>
+        /// <returns>Obrazek legendy</returns>
+        public static DrawingImage GenerateLegend(double height,int stateCount,StateTransformation SF)
+        {
+
+            var dg = new DrawingGroup();
+            for (var i = 0; i < stateCount; i++)
+            {
+                var rg = new RectangleGeometry(new Rect(new Point(0,8*i+ i * (height / _descriptions.Length)), new Point(20,8*i+ (i + 1) * (height / _descriptions.Length))));
+                var text = new FormattedText(_descriptions[SF(i)],
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface(_font),
+                    15,
+                    Brushes.Black);
+                var gd = new GeometryDrawing
+                {
+                    Brush = GetBrush(SF(i)),
+                    Geometry = rg,
+                    Pen = new Pen(Brushes.Black, 2)
+                };
+                var gd2 = new GeometryDrawing
+                {
+                    Pen = new Pen(Brushes.Black, 2),
+                    Brush = Brushes.Black,
+                    Geometry = text.BuildGeometry(new Point(22,8*i+ i*(height/_descriptions.Length)))
+                };
+                dg.Children.Add(gd);
+                dg.Children.Add(gd2);
+            }
+            var d = new DrawingImage(dg);
+            d.Freeze();
+            return d;
+        }
         /// <summary>
         /// Metoda generuje obrazek legendy
         /// </summary>
-        /// <param name="height">Wysokoœæ canvasa dla legendy</param>
+        /// <param name="height">WysokoÅ›Ä‡ canvasa dla legendy</param>
         /// <returns>Obrazek legendy</returns>
         public static DrawingImage GenerateLegend(double height)
         {

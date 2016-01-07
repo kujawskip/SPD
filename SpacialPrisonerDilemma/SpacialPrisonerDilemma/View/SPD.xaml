@@ -3,7 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:oxy="http://oxyplot.org/wpf"
          Title="SPD" Height="600.269" Width="1366.343" Closing="Window_Closing">
-    <Canvas Margin="0,0,-62,0">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390">
+                <Canvas.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick"></MenuItem>
+                        <MenuItem Name="CicSave" Header="Zapisz jako plik cic" Click="CicSave_OnClick"></MenuItem>
+                    </ContextMenu>
+                </Canvas.ContextMenu>
+            </Canvas>
+            <StackPanel Canvas.Left="10" Canvas.Top="384">
+                <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31" HorizontalAlignment="Right" Margin="8">
+                    <TextBlock VerticalAlignment="Center" Margin="8">Iteracja:</TextBlock>
+                    <TextBlock VerticalAlignment="Center" Margin="8" Text="{Binding ElementName=Slider,Path=Value}"/>
+                    <Slider VerticalAlignment="Center" Name="Slider" Canvas.Left="22" Canvas.Top="384" Width="322" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Iteration,Mode=TwoWay}" Maximum="{Binding StateCount}" Margin="8"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="424" Height="31" HorizontalAlignment="Right" Margin="8">
+                    <TextBlock VerticalAlignment="Center" Margin="8">Prędkość:</TextBlock>
+                    <TextBlock VerticalAlignment="Center" Margin="8" Text="{Binding Value, ElementName=Slider1}"/>
+                    <Slider VerticalAlignment="Center" x:Name="Slider1" Canvas.Left="22" Canvas.Top="384" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5" Margin="8"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="8" HorizontalAlignment="Right">
+                    <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Padding="4" Margin="8" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>
+                    <CheckBox Name="PerformanceCheck" Content="Informuj o wydajności" xml:space="preserve" Margin="8" VerticalAlignment="Center"/><!--Height="45" Canvas.Left="408" Canvas.Top="453" Width="215"/>-->
+                </StackPanel>
+         </StackPanel>
+    </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <oxy:PlotView   Model="{Binding CountModel}" Width="300" Height="200" Margin="8"/>
+            <oxy:PlotView   Model="{Binding ChangeModel}" Grid.Column="1"  Margin="8" Width="300" Height="200"/>
+            <oxy:PlotView Model="{Binding SumModel}" Grid.Column="1" Grid.Row="1" Width="300" Height="200"  Margin="8"/>
+            <oxy:PlotView Model="{Binding PointsModel}" Grid.Row="1" Width="300" Height="200" Margin="8"/>
+        </Grid>
+        <Canvas HorizontalAlignment="Right" Name="Legenda" Height="346" VerticalAlignment="Center" Width="230" Grid.Column="2" Margin="8"/>
+    </Grid>
+    <!--<Canvas Margin="0,0,-62,0">
         <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>
         <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390">
             <Canvas.ContextMenu>
@@ -14,23 +62,23 @@
             </Canvas.ContextMenu>
         </Canvas>
         <Canvas HorizontalAlignment="Right" Name="Legenda" Height="346" VerticalAlignment="Top" Width="230" Canvas.Left="1125" Canvas.Top="69"/>
-        <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31">
-
-            <TextBlock>Iteracja:</TextBlock>
-            <Slider Name="Slider" Height="11" Canvas.Left="22" Canvas.Top="384" Width="322" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Iteration,Mode=TwoWay}" Maximum="{Binding StateCount}"/>
-            <TextBlock Text="{Binding ElementName=Slider,Path=Value}"/>
-        </StackPanel>
         <oxy:PlotView   Model="{Binding CountModel}" Canvas.Left="500" Canvas.Top="020" Width="300" Height="200"></oxy:PlotView>
         <oxy:PlotView   Model="{Binding ChangeModel}" Canvas.Left="810" Canvas.Top="020" Width="300" Height="200">
         </oxy:PlotView>
         <oxy:PlotView Model="{Binding SumModel}" Canvas.Left="810" Canvas.Top="240" Width="300" Height="200"></oxy:PlotView>
         <oxy:PlotView Model="{Binding PointsModel}" Canvas.Left="500" Canvas.Top="240" Width="300" Height="200"></oxy:PlotView>
-        <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="424" Height="31">
-            <TextBlock>Prędkość:</TextBlock>
-            <Slider x:Name="Slider1" Height="11" Canvas.Left="22" Canvas.Top="384" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5"/>
-            <TextBlock Text="{Binding Value, ElementName=Slider1}"/>
-        </StackPanel>
-        <CheckBox Name="PerformanceCheck" Content="Informuj o wydajności" xml:space="preserve" Height="45" Canvas.Left="408" Canvas.Top="453" Width="215"/>
-
-    </Canvas>
+        <StackPanel Canvas.Left="10" Canvas.Top="384">
+            <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31" Margin="4">
+                <TextBlock VerticalAlignment="Center" Margin="8">Iteracja:</TextBlock>
+                <TextBlock VerticalAlignment="Center" Margin="8" Text="{Binding ElementName=Slider,Path=Value}"/>
+                <Slider VerticalAlignment="Center" Name="Slider" Canvas.Left="22" Canvas.Top="384" Width="322" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Iteration,Mode=TwoWay}" Maximum="{Binding StateCount}" Margin="8"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="424" Height="31">
+                <TextBlock VerticalAlignment="Center" Margin="8">Prędkość:</TextBlock>
+                <TextBlock VerticalAlignment="Center" Margin="8" Text="{Binding Value, ElementName=Slider1}"/>
+                <Slider VerticalAlignment="Center" x:Name="Slider1" Canvas.Left="22" Canvas.Top="384" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5" Margin="8"/>
+            </StackPanel>
+            <CheckBox Name="PerformanceCheck" Content="Informuj o wydajności" xml:space="preserve" Height="45" Canvas.Left="408" Canvas.Top="453" Width="215"/>
+    </StackPanel>
+    </Canvas>-->
 </Window>

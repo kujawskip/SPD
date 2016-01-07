@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
@@ -173,7 +173,6 @@ namespace SpacialPrisonerDilemma.View
                 array[i + 1] = d2;
                 i += 2;
             }
-            // array[3] = x2 array[4] = x1 array[2] = x3 array[1] = x4
             if (array[1]!=array[0] || array[4]!=array[5] || 2*array[4]<=(array[2]+array[3]) || !(array[3]<array[1]&&array[1]<array[4]&&array[4]<array[2]))
                 {
                     
@@ -219,7 +218,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var ic = new InitialCondition();
+            var ic = new InitialCondition(Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
             var b = ic.ShowDialog();
             if (!b.HasValue || !b.Value) return;
             _ic = ic.Condition;

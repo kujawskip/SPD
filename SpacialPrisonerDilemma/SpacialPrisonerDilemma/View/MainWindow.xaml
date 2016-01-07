@@ -4,49 +4,66 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Canvas>
-        <Menu Canvas.Top="0">
+        Title="MainWindow" Height="450" Width="375">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Macierz wypłat" Margin="16" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="8" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center">Więzień pierwszy</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap">Więzień drugi</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="2" Margin="4">Zdradza</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="3" Margin="4">Nie zdradza</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Margin="4">Zdradza</TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Margin="4">Nie zdradza</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="2" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
+                <TextBox Grid.Row="3" Grid.Column="2" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
+                <TextBox Grid.Row="2" Grid.Column="3" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
+                <TextBox Grid.Row="3" Grid.Column="3" Margin="4" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="Opcje obliczeń" Margin="16">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="NeighbourBox" Height="20" Grid.Row="1" Margin="8" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox Name="ShapeBox" Height="20" Grid.Row="1" Grid.Column="1" Margin="8" Width="80"/>
+                <TextBlock HorizontalAlignment="Center" Height="23" Text="Sąsiedztwo" Margin="8"/>
+                <TextBlock HorizontalAlignment="Center" Height="23" Text="Geometria" Grid.Column="1" Margin="8"/>
+            </Grid>
+        </GroupBox>
+        <Menu HorizontalAlignment="Left">
             <MenuItem Header="Opcje">
                 <MenuItem Header="Zmień czcionke" Click="Font_OnClick"></MenuItem>
                 <MenuItem Header="Zmień kolory" Click="Color_OnClick"></MenuItem>
             </MenuItem>
         </Menu>
-        <Grid Canvas.Left="10" Canvas.Top="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">Więzień pierwszy</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve">Więzień 
- drugi</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="2">Zdradza</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="3">Nie zdradza</TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="1">Zdradza</TextBlock>
-            <TextBlock Grid.Row="3" Grid.Column="1">Nie zdradza</TextBlock>
-            <TextBox Grid.Row="2" Grid.Column="2" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
-            <TextBox Grid.Row="3" Grid.Column="2" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
-            <TextBox Grid.Row="2" Grid.Column="3" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
-            <TextBox Grid.Row="3" Grid.Column="3" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
-        </Grid>
-        <Button Content="Uruchom" Height="44" IsEnabled="{Binding NoError}" Canvas.Left="35" Canvas.Top="234" Width="66" Click="Button_Click" RenderTransformOrigin="0.5,0.5">
-
-        </Button>
-        <TextBlock Height="38" Canvas.Left="317" TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Canvas.Top="40" Width="88"/>
-        <Button Content="Wprowadz początkowy stan" Height="56" Canvas.Left="272" Canvas.Top="222" Width="162" Click="ButtonBase_OnClick" RenderTransformOrigin="0.5,0.5"/>
-        <ComboBox Name="NeighbourBox" Height="20" Canvas.Left="21" Canvas.Top="111" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
-        <ComboBox Name="ShapeBox" Height="20" Canvas.Left="117" Canvas.Top="111" Width="80"/>
-        <TextBlock Height="23" Canvas.Left="21" TextWrapping="Wrap" Text="Sąsiedztwo" Canvas.Top="83" Width="80"/>
-        <TextBlock Height="23" Canvas.Left="117" TextWrapping="Wrap" Text="Geometria" Canvas.Top="83" Width="80"/>
-
-    </Canvas>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Uruchom" IsEnabled="{Binding NoError}" Click="Button_Click" RenderTransformOrigin="0.5,0.5" Margin="16" Padding="16"/>
+            <Button Content="Wprowadz początkowy stan" Click="ButtonBase_OnClick" RenderTransformOrigin="0.5,0.5" Margin="16" Padding="16"/>
+        </StackPanel>
+    </Grid>
 </Window>

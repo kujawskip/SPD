@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Win32;
 using SpacialPrisonerDilemma.Model;
+using System.Windows.Controls.Primitives;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -22,16 +23,18 @@ namespace SpacialPrisonerDilemma.View
         private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private InitialConditions _condition;
+		private int Mode;
         private Operation _selectedOperation;
         
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
-        public InitialCondition()
+        public InitialCondition(bool vonneumann = false)
         {
             InitializeComponent();
+			Mode = vonneumann?6:10;
             _selectedOperation = Operation.None;
-            ComboBox.ItemsSource = SPDAssets.GetBrushRectangles();
+            ComboBox.ItemsSource = SPDAssets.GetBrushRectangles(Mode,InitialConditions.GetTransformation(Mode));
             ComboBox.SelectedIndex = 0;
             DataContext = this;
             _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
@@ -51,7 +54,7 @@ namespace SpacialPrisonerDilemma.View
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
             var image2 = new Image
             {
-                Source = SPDAssets.GenerateLegend(Legend.Height),
+                Source = SPDAssets.GenerateLegend(Legend.Height,Mode,InitialConditions.GetTransformation(Mode)),
                 Stretch = Stretch.Fill
             };
        
@@ -126,6 +129,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ResetScale();
             Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
             ComboBoxCopy.SelectedIndex = -1;
         }
@@ -141,13 +145,19 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool v = VonNeumann.IsChecked.HasValue && VonNeumann.IsChecked.Value;
+            ResetScale();
             if (ComboBoxCopy.SelectedIndex < 0) return;
             Condition =
-                _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int) RandomSize.Value,v?6:10);
+                 _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
+                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode);
         }
 
+        private void ResetScale()
+        {
+            _x = 0;
+            _y = 0;
+            _scale = 1;
+        }
 
         private void Canvas_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -162,7 +172,7 @@ namespace SpacialPrisonerDilemma.View
             if (y >= ic.Grid.CellGrid.GetLength(1) ) return;
             if (Operation.Check == _selectedOperation)
             {
-                ic.Grid.CellGrid[(int) x, (int) y].Value = ComboBox.SelectedIndex;
+                ic.Grid.CellGrid[(int) x, (int) y].Value = InitialConditions.GetTransformation(Mode)(ComboBox.SelectedIndex);
             }
             else
             {
@@ -170,12 +180,24 @@ namespace SpacialPrisonerDilemma.View
                 for(var i=0;i<ic.Grid.CellGrid.GetLength(0);i++)
                     for (var j = 0; j < ic.Grid.CellGrid.GetLength(1); j++)
                     {
-                        if (ic.Grid.CellGrid[i, j].Value == k) ic.Grid.CellGrid[i, j].Value = ComboBox.SelectedIndex;
+                        if (ic.Grid.CellGrid[i, j].Value == k) ic.Grid.CellGrid[i, j].Value = InitialConditions.GetTransformation(Mode)(ComboBox.SelectedIndex);
                     }
             }
             Condition = ic;
         }
-
+		private void RandomSize_DragCompleted(object sender, DragCompletedEventArgs e)
+		{
+            ResetScale();
+            if (Condition==null) return;
+			if (ComboBoxCopy.SelectedIndex < 0) 
+			{
+				Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
+                return;
+			}
+            Condition =
+                          _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
+                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode);
+        }
         private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (Condition == null) return;

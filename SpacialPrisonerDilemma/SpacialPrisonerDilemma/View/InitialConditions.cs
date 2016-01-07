@@ -6,7 +6,7 @@ using SpacialPrisonerDilemma.Model;
 namespace SpacialPrisonerDilemma.View
 {
     /// <summary>
-    /// Klasa reprezentuj¹ca uk³ad pocz¹tkowy
+    /// Klasa reprezentujÄ…ca ukÅ‚ad poczÄ…tkowy
     /// </summary>
     [Serializable]
     internal class InitialConditions
@@ -15,7 +15,7 @@ namespace SpacialPrisonerDilemma.View
         internal String Name;
         private static Dictionary<Tuple<int, bool>, StateTransformation> Transformations;
         /// <summary>
-        /// Inicjalizacja obiektów statycznych
+        /// Inicjalizacja obiektÃ³w statycznych
         /// </summary>
         internal static void Initialise()
         {
@@ -37,12 +37,16 @@ namespace SpacialPrisonerDilemma.View
 
             }
         }
+		public static StateTransformation GetTransformation(int i)
+		{
+			return Transformations[new Tuple<int,bool>(i,false)];
+		}
         /// <summary>
-        /// Metoda generuj¹ca losowy uk³ad
+        /// Metoda generujÄ…ca losowy ukÅ‚ad
         /// </summary>
-        /// <param name="size">Rozmiar uk³adu</param>
-        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
-        /// <returns>Uk³ad pocz¹tkowy</returns>
+        /// <param name="size">Rozmiar ukÅ‚adu</param>
+        /// <param name="stateCount">IloÅ›Ä‡ moÅ¼liwych wartoÅ›ci komÃ³rek</param>
+        /// <returns>UkÅ‚ad poczÄ…tkowy</returns>
         internal static InitialConditions GenerateRandom(int size=100,int stateCount=10)
         {
             Random r = new Random();
@@ -56,56 +60,56 @@ namespace SpacialPrisonerDilemma.View
             return ic;
         }
         /// <summary>
-        /// Metoda factory generuj¹ca ko³o
+        /// Metoda factory generujÄ…ca koÅ‚o
         /// </summary>
-        /// <param name="reversed">Czy wartoœci maj¹ byæ odwrócone</param>
+        /// <param name="reversed">Czy wartoÅ›ci majÄ… byÄ‡ odwrÃ³cone</param>
         /// <param name="size">Rozmiar</param>
-        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
-        /// <returns>Uk³ad pocz¹tkowy z ko³em</returns>
+        /// <param name="stateCount">IloÅ›Ä‡ moÅ¼liwych wartoÅ›ci komÃ³rek</param>
+        /// <returns>UkÅ‚ad poczÄ…tkowy z koÅ‚em</returns>
         internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = 30)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size,stateCount);
             ig.Transform(Transformations[new Tuple<int, bool>(stateCount, reversed)],stateCount);
             var ic = new InitialConditions
             {
-                Name = "Ko³o " + (reversed ? "- odwrócone kolory" : ""),
+                Name = "KoÅ‚o " + (reversed ? "- odwrÃ³cone kolory" : ""),
                 Grid = ig
             };
             return ic;
         }
         /// <summary>
-        /// Metoda factory generuj¹ca donut
+        /// Metoda factory generujÄ…ca donut
         /// </summary>
-        /// <param name="reversed">Czy wartoœci maj¹ byæ odwrócone</param>
+        /// <param name="reversed">Czy wartoÅ›ci majÄ… byÃ¦ odwrÃ³cone</param>
         /// <param name="size">Rozmiar</param>
-        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
-        /// <returns>Uk³ad pocz¹tkowy z donutem</returns>
+        /// <param name="stateCount">IloÅ›Ã¦ moÅ¼liwych wartoÅ›ci komÃ³rek</param>
+        /// <returns>UkÅ‚ad poczÄ…tkowy z donutem</returns>
         internal static InitialConditions DonutFactory(bool reversed=false,int size=30,int stateCount=10)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size,stateCount);
             ig.Transform(Transformations[new Tuple<int, bool>(stateCount, reversed)],stateCount);
             var ic = new InitialConditions
             {
-                Name = "Donut " + (reversed ? "- odwrócone kolory" : ""),
+                Name = "Donut " + (reversed ? "- odwrÃ³cone kolory" : ""),
                 Grid = ig
             };
             return ic;
         }
 
         /// <summary>
-        /// Metoda factory generuj¹ca przek¹tn¹
+        /// Metoda factory generujÄ…ca przekÄ…tnÄ…
         /// </summary>
-        /// <param name="reversed">Czy wartoœci maj¹ byæ odwrócone</param>
+        /// <param name="reversed">Czy wartoÅ›ci majÄ… byÃ¦ odwrÃ³cone</param>
         /// <param name="size">Rozmiar</param>
-        /// <param name="stateCount">Iloœæ mo¿liwych wartoœci komórek</param>
-        /// <returns>Uk³ad pocz¹tkowy z przek¹tn¹</returns>
+        /// <param name="stateCount">IloÅ›Ã¦ moÅ¼liwych wartoÅ›ci komÃ³rek</param>
+        /// <returns>UkÅ‚ad poczÄ…tkowy z przekÄ…tnÄ…</returns>
         internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30,int stateCount=10)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size,stateCount);
             ig.Transform(Transformations[new Tuple<int, bool>(stateCount,reversed)],stateCount);
             var ic = new InitialConditions
             {
-                Name = "Przek¹tna " + (reversed ? "- odwrócone kolory" : ""),
+                Name = "PrzekÄ…tna " + (reversed ? "- odwrÃ³cone kolory" : ""),
                 Grid = ig
             };
             return ic; 
