@@ -420,8 +420,8 @@ namespace SpacialPrisonerDilemma.View
             var pl = Model.SPD.ClearAndGetLog();
 
             if (pl.StepTimes.Length == 0) return;
-             MessageBox.Show(string.Format("Median: {0}\nAverage: {1}\nStandard Deviation: {4}\nMax Step Time: {2}\nMin Step Time: {3}",
-                       pl.Median, pl.Average, pl.MaxStepTime, pl.MinStepTime, pl.StandardDeviation));
+             MessageBox.Show(string.Format("Mediana: {0}\nŚrednia: {1}\nMaksymalny czas kroku: {2}\nMinimalny czas kroku: {3}",
+                       pl.Median, pl.Average, pl.MaxStepTime, pl.MinStepTime));
 
         }
 

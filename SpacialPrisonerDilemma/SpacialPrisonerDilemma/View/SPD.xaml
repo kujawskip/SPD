@@ -19,15 +19,15 @@
                 </Canvas.ContextMenu>
             </Canvas>
             <StackPanel Canvas.Left="10" Canvas.Top="384">
-                <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="384" Height="31" HorizontalAlignment="Right" Margin="8">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="8">
                     <TextBlock VerticalAlignment="Center" Margin="8">Iteracja:</TextBlock>
                     <TextBlock VerticalAlignment="Center" Margin="8" Text="{Binding ElementName=Slider,Path=Value}"/>
                     <Slider VerticalAlignment="Center" Name="Slider" Canvas.Left="22" Canvas.Top="384" Width="322" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Iteration,Mode=TwoWay}" Maximum="{Binding StateCount}" Margin="8"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="424" Height="31" HorizontalAlignment="Right" Margin="8">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="8">
                     <TextBlock VerticalAlignment="Center" Margin="8">Prędkość:</TextBlock>
                     <TextBlock VerticalAlignment="Center" Margin="8" Text="{Binding Value, ElementName=Slider1}"/>
-                    <Slider VerticalAlignment="Center" x:Name="Slider1" Canvas.Left="22" Canvas.Top="384" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5" Margin="8"/>
+                    <Slider VerticalAlignment="Center" x:Name="Slider1" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5" Margin="8"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="8" HorizontalAlignment="Right">
                     <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Padding="4" Margin="8" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>

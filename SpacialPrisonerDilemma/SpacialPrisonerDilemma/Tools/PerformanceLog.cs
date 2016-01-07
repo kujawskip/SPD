@@ -42,7 +42,7 @@ namespace SpacialPrisonerDilemma.Tools
         {
             get
             {
-                return TimeSpan.FromMilliseconds(StepTimes.Max(x => x.TotalMilliseconds));
+                return TimeSpan.FromTicks(StepTimes.Max(x => x.Ticks));
             }
         }
 
@@ -53,7 +53,7 @@ namespace SpacialPrisonerDilemma.Tools
         {
             get
             {
-                return TimeSpan.FromMilliseconds(StepTimes.Min(x => x.TotalMilliseconds));
+                return TimeSpan.FromTicks(StepTimes.Min(x => x.Ticks));
             }
         }
 
@@ -64,7 +64,7 @@ namespace SpacialPrisonerDilemma.Tools
         {
             get
             {
-                return TimeSpan.FromMilliseconds(StepTimes.Sum(x => x.TotalMilliseconds) / StepTimes.Length);
+                return TimeSpan.FromTicks(StepTimes.Sum(x=>x.Ticks) / StepTimes.Length);
             }
         }
 
@@ -83,19 +83,8 @@ namespace SpacialPrisonerDilemma.Tools
                 }
                 else
                 {
-                    return TimeSpan.FromMilliseconds((l[l.Count / 2] + l[l.Count / 2 - 1]).TotalMilliseconds / 2);
+                    return TimeSpan.FromTicks((l[l.Count / 2] + l[l.Count / 2 - 1]).Ticks / 2);
                 }
-            }
-        }
-
-        /// <summary>
-        /// Odchylenie standardowe czasu obliczeń
-        /// </summary>
-        public TimeSpan StandardDeviation
-        {
-            get
-            {
-                return TimeSpan.FromMilliseconds(StepTimes.Select(x => (x.TotalMilliseconds - Average.TotalMilliseconds)).Average(x => x * x));
             }
         }
 
