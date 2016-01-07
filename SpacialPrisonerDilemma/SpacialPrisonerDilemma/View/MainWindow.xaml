@@ -26,7 +26,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="8" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center">Więzień pierwszy</TextBlock>
                 <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap">Więzień drugi</TextBlock>
                 <TextBlock Grid.Row="1" Grid.Column="2" Margin="4">Zdradza</TextBlock>
