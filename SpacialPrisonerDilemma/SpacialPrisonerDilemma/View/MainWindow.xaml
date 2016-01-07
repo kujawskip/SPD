@@ -49,8 +49,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="NeighbourBox" Height="20" Grid.Row="1" Margin="8" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
-                <ComboBox Name="ShapeBox" Height="20" Grid.Row="1" Grid.Column="1" Margin="8" Width="80"/>
+                <ComboBox Name="NeighbourBox" Grid.Row="1" Margin="8" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox Name="ShapeBox" Grid.Row="1" Grid.Column="1" Margin="8" Width="80"/>
                 <TextBlock HorizontalAlignment="Center" Height="23" Text="Sąsiedztwo" Margin="8"/>
                 <TextBlock HorizontalAlignment="Center" Height="23" Text="Geometria" Grid.Column="1" Margin="8"/>
             </Grid>
