@@ -26,7 +26,7 @@
                 <Button Content="Wczytaj" Margin="2" Padding="2" Grid.Column="1" Click="ButtonBase_OnClick1"/>
                 <Button Content="Zapisz" IsEnabled="{Binding ConditionLoaded}" Margin="2" Padding="2" Grid.Row="1" Grid.Column="1" Click="ButtonBase_OnClick2"/>
             </Grid>
-        <Canvas Name="Legend" HorizontalAlignment="Left" Height="218" Margin="528,76,0,0" VerticalAlignment="Top" Width="149" MouseDown="Legend_OnMouseDown"/>
+        <Canvas Name="Legend" HorizontalAlignment="Left" Height="228" Margin="528,76,0,0" VerticalAlignment="Top" Width="149" MouseDown="Legend_OnMouseDown"/>
         <StackPanel Margin="29,291,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal">
             <Slider Name="RandomSize" Thumb.DragCompleted="RandomSize_DragCompleted" Height="21"  Minimum="2" Maximum="120" Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
             <TextBlock Text="{Binding ElementName=RandomSize, Path=Value}"></TextBlock>

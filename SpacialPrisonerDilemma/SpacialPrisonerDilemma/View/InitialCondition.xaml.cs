@@ -265,7 +265,7 @@ namespace SpacialPrisonerDilemma.View
         private void Legend_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
           var p =  e.GetPosition(Legend);
-            var d = p.Y/(Legend.Height/Enum.GetValues(typeof(WhenBetray)).Length);
+            var d = p.Y/(Legend.ActualHeight/(Mode));
             ComboBox.SelectedIndex = (int) d;
         }
 

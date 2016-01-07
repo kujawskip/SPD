@@ -131,7 +131,7 @@ namespace SpacialPrisonerDilemma.View
             var dg = new DrawingGroup();
             for (var i = 0; i < stateCount; i++)
             {
-                var rg = new RectangleGeometry(new Rect(new Point(0,8*i+ i * (height / _descriptions.Length)), new Point(20,8*i+ (i + 1) * (height / _descriptions.Length))));
+                var rg = new RectangleGeometry(new Rect(new Point(0,i * (height / stateCount)), new Point(20,-8+ (i + 1) * (height / stateCount))));
                 var text = new FormattedText(_descriptions[SF(i)],
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
@@ -148,7 +148,7 @@ namespace SpacialPrisonerDilemma.View
                 {
                     Pen = new Pen(Brushes.Black, 2),
                     Brush = Brushes.Black,
-                    Geometry = text.BuildGeometry(new Point(22,8*i+ i*(height/_descriptions.Length)))
+                    Geometry = text.BuildGeometry(new Point(22,i*(height/stateCount)))
                 };
                 dg.Children.Add(gd);
                 dg.Children.Add(gd2);
@@ -165,34 +165,7 @@ namespace SpacialPrisonerDilemma.View
         public static DrawingImage GenerateLegend(double height)
         {
 
-            var dg = new DrawingGroup();
-            for (var i = 0; i < _descriptions.Length; i++)
-            {
-                var rg = new RectangleGeometry(new Rect(new Point(0,8*i+ i * (height / _descriptions.Length)), new Point(20,8*i+ (i + 1) * (height / _descriptions.Length))));
-                var text = new FormattedText(_descriptions[i],
-                    CultureInfo.CurrentCulture,
-                    FlowDirection.LeftToRight,
-                    new Typeface(_font),
-                    15,
-                    Brushes.Black);
-                var gd = new GeometryDrawing
-                {
-                    Brush = GetBrush(i),
-                    Geometry = rg,
-                    Pen = new Pen(Brushes.Black, 2)
-                };
-                var gd2 = new GeometryDrawing
-                {
-                    Pen = new Pen(Brushes.Black, 2),
-                    Brush = Brushes.Black,
-                    Geometry = text.BuildGeometry(new Point(22,8*i+ i*(height/_descriptions.Length)))
-                };
-                dg.Children.Add(gd);
-                dg.Children.Add(gd2);
-            }
-            var d = new DrawingImage(dg);
-            d.Freeze();
-            return d;
+            return GenerateLegend(height,10,x=>x);
         }
     }
 }

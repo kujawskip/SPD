@@ -13,10 +13,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using OxyPlot;
-using OxyPlot.Axes;
 using OxyPlot.Series;
+using OxyPlot.Wpf;
 using SpacialPrisonerDilemma.Annotations;
 using SpacialPrisonerDilemma.Model;
+using CategoryAxis = OxyPlot.Axes.CategoryAxis;
+using ColumnSeries = OxyPlot.Series.ColumnSeries;
+using LinearAxis = OxyPlot.Axes.LinearAxis;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -25,7 +28,7 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class SPD : INotifyPropertyChanged
     {
-        private readonly Model.SPD _spd;
+        private readonly SpacialPrisonerDilemma.Model.SPD _spd;
         private readonly int _width;
         private readonly int _height;
         readonly int[,] _strategies;
@@ -111,7 +114,23 @@ namespace SpacialPrisonerDilemma.View
 
         private readonly List<Tuple<int, String>> _iterations;
 
+        private void SavePlot(OxyPlot.PlotModel PlotKey)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "PNG|*.png",
+                FileName = DateTime.Now.ToString("yy-MM-dd")+ DateTime.Now.GetHashCode() + ".png"
+            };
+            var b = sfd.ShowDialog();
+            if (!b.HasValue || !b.Value) return;
+            using (var stream = File.Create(sfd.FileName))
+            {
+                    
+                PngExporter.Export(PlotKey, stream, 600, 400,OxyColor.FromArgb(255,255,255,255));
+            }
+        }
 
+       
         private List<ColumnItem> GenerateColumns(int category, double[] values)
         {
             return values.Select((t, i) => new ColumnItem(t, category) { Color = SPDAssets.GetOxyColor(i) }).ToList();
@@ -317,7 +336,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="width">Ile kolumn automatu będzie wyrysowanych</param>
         /// <param name="height">Ile wierszy automatu będzie wyrysowanych</param>
         /// <returns>Wyrysowany wykres</returns>
-        private DrawingImage GenerateImage(Model.SPD spd, int x, int y, int width, int height)
+        private DrawingImage GenerateImage(SpacialPrisonerDilemma.Model.SPD spd, int x, int y, int width, int height)
         {
             var cellWidth = Canvas.Width / width;
             var cellHeight = Canvas.Height / height;
@@ -499,6 +518,13 @@ namespace SpacialPrisonerDilemma.View
             var fs = new FileStream(sfd.FileName, FileMode.Create);
             bf.Serialize(fs, ifc);
             fs.Close();
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var s =( (sender as MenuItem).Parent as ContextMenu).PlacementTarget as PlotView;
+            
+            SavePlot(s.Model);
         }
     }
 }
