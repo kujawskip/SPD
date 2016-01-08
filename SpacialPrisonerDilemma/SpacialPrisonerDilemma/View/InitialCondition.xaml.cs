@@ -29,9 +29,11 @@ namespace SpacialPrisonerDilemma.View
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
-        public InitialCondition(bool vonneumann = false)
+        internal InitialCondition(bool vonneumann = false,InitialConditions condition=null)
         {
+            
             InitializeComponent();
+         
 			Mode = vonneumann?6:10;
             _selectedOperation = Operation.None;
             ComboBox.ItemsSource = SPDAssets.GetBrushRectangles(Mode,InitialConditions.GetTransformation(Mode));
@@ -59,6 +61,7 @@ namespace SpacialPrisonerDilemma.View
             };
        
             Legend.Children.Add(image2);
+            if (condition != null) Condition = condition;
         }
         /// <summary>
         /// Możliwe operacje na układzie początkowym

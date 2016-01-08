@@ -332,8 +332,9 @@ namespace SpacialPrisonerDilemma.Model
             {
                 foreach (Cell c in x)
                 {
+                    var c1 = c;
                     var skir = from keyVal in Singleton.skirmishes
-                               where keyVal.Key.Item1 == c
+                               where keyVal.Key.Item1 == c1
                                select keyVal.Value;
                     foreach (var s in skir)
                         s.SingleMove();

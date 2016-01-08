@@ -218,7 +218,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var ic = new InitialCondition(Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
+            var ic = new InitialCondition(Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem,_ic);
             var b = ic.ShowDialog();
             if (!b.HasValue || !b.Value) return;
             _ic = ic.Condition;
@@ -245,7 +245,8 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            _ic = null;
+            NotifyPropertyChanged("NoError");
         }
     }
 

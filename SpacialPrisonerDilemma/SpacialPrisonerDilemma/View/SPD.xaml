@@ -44,7 +44,7 @@
                     <Slider VerticalAlignment="Center" x:Name="Slider1" Width="322" Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Speed}" Maximum="5" Margin="8"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="8" HorizontalAlignment="Right">
-                    <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Padding="4" Margin="8" VerticalAlignment="Top" Width="45" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>
+                    <Button Content="Start" Name="StartStop" HorizontalAlignment="Left" Padding="4" Margin="8" VerticalAlignment="Top" Width="116" RenderTransformOrigin="1.786,2.495" Click="Button_Click" Canvas.Left="432" Canvas.Top="384"/>
                     <CheckBox Name="PerformanceCheck" Content="Informuj o wydajności" xml:space="preserve" Margin="8" VerticalAlignment="Center"/><!--Height="45" Canvas.Left="408" Canvas.Top="453" Width="215"/>-->
                 </StackPanel>
          </StackPanel>
