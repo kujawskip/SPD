@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -237,6 +238,7 @@ namespace SpacialPrisonerDilemma.View
         public SPD(double[] PayValues, int[,] strategies, bool torus, bool vonneumann)
         {
             DataContext = this;
+            
             SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
             for (int i = 0; i < SumPoints.Length; i++) SumPoints[i] = 0;
             var payValues = PayValues;
@@ -372,6 +374,7 @@ namespace SpacialPrisonerDilemma.View
         readonly int _delay = 16;
 
         Task<Tuple<int, bool>> _iteration;
+        private Task Looper;
         private bool _over = true;
         /// <summary>
         /// Metoda realizująca pętle symulacji
@@ -382,7 +385,7 @@ namespace SpacialPrisonerDilemma.View
             // _cont - pauza, _over - koniec obliczeń
             while (_cont && _over)
             {
-
+              
                 _iteration = Task.Run(async () => await _spd.IterateAsync());
                 await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
                 var i = await _iteration;
@@ -392,6 +395,7 @@ namespace SpacialPrisonerDilemma.View
                 if (_over) await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
                 if (_over) InsertVariationColumn(i.Item1);
                 if (_over) UpdateModels();
+                
                 if (!i.Item2) continue;
                 var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
                     MessageBoxButton.YesNo);
@@ -399,6 +403,7 @@ namespace SpacialPrisonerDilemma.View
                 {
                     _over = false;
                 }
+               
             }
 
         }
@@ -414,7 +419,8 @@ namespace SpacialPrisonerDilemma.View
         }
         private async Task StartSPD()
         {
-            await SPDLooper();
+            Looper = SPDLooper();
+            await Looper;
         }
 
         private int _x, _y;
@@ -434,6 +440,8 @@ namespace SpacialPrisonerDilemma.View
         {
             _cont = false;
             _over = false;
+
+            if (Looper != null) Looper.Wait();
             if (_iteration != null) _iteration.Wait();
             if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
             var pl = Model.SPD.ClearAndGetLog();
@@ -448,6 +456,15 @@ namespace SpacialPrisonerDilemma.View
         {
             return SPDAssets.GetBrush(p);
         }
+
+        private async Task WaitForIteration()
+        {
+            if (Looper != null) await Looper;
+            if (_iteration != null) await _iteration;
+          
+            StartStop.Content = "Start";
+            StartStop.IsEnabled = true;
+        }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -457,8 +474,14 @@ namespace SpacialPrisonerDilemma.View
 
                 StartStop.Content = "Stop";
                 await StartSPD();
+
             }
-            else StartStop.Content = "Start";
+            else
+            {
+                StartStop.Content = "Zatrzymywanie...";
+                StartStop.IsEnabled = false;
+                await WaitForIteration();
+            }
 
            
         }
