@@ -146,10 +146,7 @@ namespace SpacialPrisonerDilemma.View
 
             var d = CalculateModels(_spd.GetStateByIteration(category));
 
-            var sum = SumPoints.ToArray();
-            double v = sum.Sum();
-            if (Math.Abs(v) < double.Epsilon*100) v = 1;
-            sum = sum.Select(k => 100*k/v).ToArray();
+            
             _iterations.Add(new Tuple<int, String>(category, ""));
 
             foreach (var s in GenerateColumns(category, d[0]))
@@ -165,6 +162,10 @@ namespace SpacialPrisonerDilemma.View
                     if (columnSeries != null)
                         columnSeries.Items.Add(s);
                 }
+                var sum = _sumPoints.ToArray();
+                double v = sum.Sum();
+                if (Math.Abs(v) < double.Epsilon * 100) v = 1;
+                sum = sum.Select(k => 100 * k / v).ToArray();
                 foreach (var s in GenerateColumns(category - 1, sum))
                 {
                     var columnSeries = SumModel.Series[0] as ColumnSeries;
@@ -182,7 +183,7 @@ namespace SpacialPrisonerDilemma.View
 
         }
 
-        private double[] SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
+        private readonly double[] _sumPoints;
         /// <summary>
         /// Metoda wyliczająca dane do wykresów na podstawie stanu automatu
         /// </summary>
@@ -224,7 +225,7 @@ namespace SpacialPrisonerDilemma.View
             var d2 = count.Sum();
             if (Math.Abs(d2) < double.Epsilon * 100) d2 = 1;
             result = result.Select(d => 100 * d / d1).ToArray();
-            for (int i = 0; i < result.Length; i++) SumPoints[i] += result[i];
+            for (int i = 0; i < result.Length; i++) _sumPoints[i] += result[i];
             count = count.Select(d => 100 * d / d2).ToArray();
             return new[] { count, result };
         }
@@ -239,8 +240,8 @@ namespace SpacialPrisonerDilemma.View
         {
             DataContext = this;
             
-            SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
-            for (int i = 0; i < SumPoints.Length; i++) SumPoints[i] = 0;
+            _sumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
+            for (int i = 0; i < _sumPoints.Length; i++) _sumPoints[i] = 0;
             var payValues = PayValues;
             _strategies = strategies;
             _spd = Model.SPD.Singleton;
@@ -345,15 +346,17 @@ namespace SpacialPrisonerDilemma.View
             
 
             var dg = new DrawingGroup();
+            var C = spd.GetStateByIteration(Iteration);
             for (var i = x; i < x + width; i++)
             {
                 for (var j = y; j < y + height; j++)
                 {
                     var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
+                  
                     var gd = new GeometryDrawing
                     {
                         Brush =
-                            GetBrush(((IntegerStrategy) spd.GetStateByIteration(Iteration)[i, j].Strategy).Treshold),
+                            GetBrush(((IntegerStrategy) C[i, j].Strategy).Treshold),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);
@@ -443,8 +446,9 @@ namespace SpacialPrisonerDilemma.View
 
             if (Looper != null) Looper.Wait();
             if (_iteration != null) _iteration.Wait();
-            if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
             var pl = Model.SPD.ClearAndGetLog();
+            if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
+            
 
             if (pl.StepTimes.Length == 0) return;
              MessageBox.Show(string.Format("Mediana: {0}\nŚrednia: {1}\nMaksymalny czas kroku: {2}\nMinimalny czas kroku: {3}",

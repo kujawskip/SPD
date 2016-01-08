@@ -133,7 +133,7 @@ namespace SpacialPrisonerDilemma.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ResetScale();
-            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
+            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value,Mode);
             ComboBoxCopy.SelectedIndex = -1;
         }
 
@@ -194,7 +194,7 @@ namespace SpacialPrisonerDilemma.View
             if (Condition==null) return;
 			if (ComboBoxCopy.SelectedIndex < 0) 
 			{
-				Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
+				Condition = InitialConditions.GenerateRandom((int)RandomSize.Value,Mode);
                 return;
 			}
             Condition =
