@@ -13,5 +13,6 @@ namespace SPD.Engine.Strategies
         void Clear();
         void EndStep();
         IStrategy GetCopy();
+        int StrategyCode { get; }
     }
 }

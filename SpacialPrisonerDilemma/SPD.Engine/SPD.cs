@@ -12,25 +12,25 @@ namespace SPD.Engine
     public class SPD
     {
         public PointMatrix Matrix { get; }
-        public int CurrentIteration { get; } = 0;
+        public int CurrentIteration { get; private set; } = 0;
         public int Width { get; }
         public int Height { get; }
 
         ConcurrentDictionary<Coord, IStrategy> _strategies;
 
-        ConcurrentDictionary<Coord, float> _points;
+        ConcurrentDictionary<Coord, float> _points = new ConcurrentDictionary<Coord, float>();
 
-        ConcurrentDictionary<Coord, Coord[]> _neighbours;
+        ConcurrentDictionary<Coord, Coord[]> _neighbours = new ConcurrentDictionary<Coord, Coord[]>();
 
-        ConcurrentDictionary<int, Coord[]> _threadConcernes;
+        ConcurrentDictionary<int, Coord[]> _threadConcernes = new ConcurrentDictionary<int, Coord[]>();
 
-        ConcurrentDictionary<Coord, Tuple<Coord, bool>[]> _decisions;
+        ConcurrentDictionary<Coord, Tuple<Coord, bool>[]> _decisions = new ConcurrentDictionary<Coord, Tuple<Coord, bool>[]>();
 
         public int StepsPerIteration { get; }
 
         public int ThreadCount { get; }
 
-        public SPD(PointMatrix m, INeighbourhood neighbourhood, IStrategy[,] initialConfiguration, int stepNum, int threadNum = 1)
+        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1)
         {
             if (threadNum <= 0) throw new ArgumentException();
             Width = initialConfiguration.GetLength(0);
@@ -49,13 +49,15 @@ namespace SPD.Engine
                 for(int y=0; y<Height; y++)
                 {
                     var key = new Coord(x, y);
-                    _strategies.AddOrUpdate(key, initialConfiguration[x, y], (c, s) => initialConfiguration[x, y]);
+                    _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]], (c, s) => possibleStrategies[initialConfiguration[x, y]]);
                     _neighbours.AddOrUpdate(key, neighbourhood.GetNeighbours(key).ToArray(), (a, b) => neighbourhood.GetNeighbours(key).ToArray());
                     concernes[index].Add(key);
                     index = (index + 1) % ThreadCount;
                 }
             for (int i = 0; i < ThreadCount; i++)
                 _threadConcernes.AddOrUpdate(i, concernes[i].ToArray(), (a, b) => concernes[i].ToArray());
+
+            ProcessHistory(initialConfiguration);
         }
 
 
@@ -75,10 +77,68 @@ namespace SPD.Engine
             Parallel.For(0, ThreadCount, ClearForMany);
             Parallel.For(0, ThreadCount, OptimizeForMany);
             _strategies = _newStrategies;
+            var strategyConfig = ExtractToArray(_strategies);
+            var result = new SPDResult(ExtractToArray(_points), strategyConfig, ProcessHistory(strategyConfig));
+            _points.Clear();
+            _decisions.Clear();
+            _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
+            CurrentIteration++;
+            return result;
+        }
 
-            throw new NotImplementedException("SPDREsult implementation");
+        List<Tuple<int, int[,]>> _history = new List<Tuple<int, int[,]>>();
 
-            //TODO:Clear dictionaries before starting new iteration
+        private bool ProcessHistory(int[,] strategyConfig)
+        {
+            var result = false;
+            var b = GetHashOf(strategyConfig);
+            if(_history.Any(x=>x.Item1==b))
+            {
+                result = CheckHistory(strategyConfig);
+            }
+            _history.Add(new Tuple<int, int[,]>(b, strategyConfig));
+            return result;
+            
+        }
+
+        private bool CheckHistory(int[,] strategyConfig)
+        {
+            return _history.Reverse<Tuple<int, int[,]>>().Any(x => CompareCodes(x.Item2, strategyConfig));
+        }
+
+        private bool CompareCodes(int[,] config1, int[,] config2)
+        {
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                    if (config1[x, y] != config2[x, y]) return false;
+            return true;
+        }
+
+        private int GetHashOf(int[,] strategyConfig)
+        {
+            int result = 1;
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                    result = unchecked(result + ((x + x * y) * strategyConfig[x, y]));
+            return result;
+        }
+
+        int[,] ExtractToArray(ConcurrentDictionary<Coord, IStrategy> dict)
+        {
+            var r = new int[Width, Height];
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                    r[x, y] = dict.GetOrAdd(new Coord(x, y), a => default(IStrategy)).StrategyCode;
+            return r;
+        }
+
+        T[,] ExtractToArray<T>(ConcurrentDictionary<Coord, T> dict)
+        {
+            var r = new T[Width, Height];
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                    r[x, y] = dict.GetOrAdd(new Coord(x, y), a => default(T));
+            return r;
         }
 
         IStrategy GetBestFor(Coord c)

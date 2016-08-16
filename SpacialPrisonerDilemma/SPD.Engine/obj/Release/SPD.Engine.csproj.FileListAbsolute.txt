@@ -1,1 +1,5 @@
 C:\Users\Błażej\Source\Repos\SPD\SpacialPrisonerDilemma\SPD.Engine\obj\Release\SPD.Engine.csprojResolveAssemblyReference.cache
+C:\Users\Błażej\Source\Repos\SPD\SpacialPrisonerDilemma\SPD.Engine\bin\Release\SPD.Engine.dll
+C:\Users\Błażej\Source\Repos\SPD\SpacialPrisonerDilemma\SPD.Engine\bin\Release\SPD.Engine.pdb
+C:\Users\Błażej\Source\Repos\SPD\SpacialPrisonerDilemma\SPD.Engine\obj\Release\SPD.Engine.dll
+C:\Users\Błażej\Source\Repos\SPD\SpacialPrisonerDilemma\SPD.Engine\obj\Release\SPD.Engine.pdb

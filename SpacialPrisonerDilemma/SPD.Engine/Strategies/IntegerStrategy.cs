@@ -11,6 +11,14 @@ namespace SPD.Engine.Strategies
     {
         public int BetrayalThreshold { get; }
 
+        public int StrategyCode
+        {
+            get
+            {
+                return BetrayalThreshold * 100;
+            }
+        }
+
         ConcurrentDictionary<long, int> val = new ConcurrentDictionary<long, int>();
 
         bool _isAggressive = false;
