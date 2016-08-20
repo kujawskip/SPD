@@ -9,11 +9,11 @@ namespace SpacialPrisonerDilemma.Model
     /// </summary>
     internal class Skirmish
     {
-        Tuple<Cell, Cell> cells;
-        List<Tuple<bool, bool>> story;
+        readonly Tuple<Cell, Cell> _cells;
+        readonly List<Tuple<bool, bool>> _story;
 
-        private Cell c1 { get { return cells.Item1; } }
-        private Cell c2 { get { return cells.Item2; } }
+        private Cell C1 { get { return _cells.Item1; } }
+        private Cell C2 { get { return _cells.Item2; } }
 
         /// <summary>
         /// Konstruktor
@@ -22,8 +22,8 @@ namespace SpacialPrisonerDilemma.Model
         /// <param name="c2">Przeciwnik komórki c1</param>
         public Skirmish(Cell c1, Cell c2)
         {
-            cells = new Tuple<Cell, Cell>(c1, c2);
-            story = new List<Tuple<bool, bool>>();
+            _cells = new Tuple<Cell, Cell>(c1, c2);
+            _story = new List<Tuple<bool, bool>>();
         }
 
         /// <summary>
@@ -31,19 +31,19 @@ namespace SpacialPrisonerDilemma.Model
         /// </summary>
         internal void SingleMove()
         {
-            currentStep = new Tuple<bool, bool>(c1.Decide(c2), c2.Decide(c1));
+            _currentStep = new Tuple<bool, bool>(C1.Decide(C2), C2.Decide(C1));
         }
 
-        Tuple<bool, bool> currentStep;
+        Tuple<bool, bool> _currentStep;
 
         /// <summary>
         /// Dodaj ostatni ruch do zbioru ruchów wykonanych w aktualnym kroku automatu
         /// </summary>
         internal void EndStep()
         {
-            if (currentStep == null) throw new Exception();
-            story.Add(currentStep);
-            currentStep = null;
+            if (_currentStep == null) throw new Exception();
+            _story.Add(_currentStep);
+            _currentStep = null;
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace SpacialPrisonerDilemma.Model
             get
             {
                 return new Tuple<Tuple<Cell, bool>, Tuple<Cell, bool>>(
-                        new Tuple<Cell, bool>(c1, story[step].Item1),
-                        new Tuple<Cell, bool>(c2, story[step].Item2)
+                        new Tuple<Cell, bool>(C1, _story[step].Item1),
+                        new Tuple<Cell, bool>(C2, _story[step].Item2)
                         );
             }
         }
@@ -69,15 +69,15 @@ namespace SpacialPrisonerDilemma.Model
         {
             get
             {
-                if(story.Count==0)
+                if(_story.Count==0)
                     return new Tuple<Tuple<Cell, bool>, Tuple<Cell, bool>>(
-                        new Tuple<Cell, bool>(c1, false),
-                        new Tuple<Cell, bool>(c2, false)
+                        new Tuple<Cell, bool>(C1, false),
+                        new Tuple<Cell, bool>(C2, false)
                         );
                 else
                     return new Tuple<Tuple<Cell, bool>, Tuple<Cell, bool>>(
-                        new Tuple<Cell, bool>(c1, story.Last().Item1), 
-                        new Tuple<Cell, bool>(c2, story.Last().Item2)
+                        new Tuple<Cell, bool>(C1, _story.Last().Item1), 
+                        new Tuple<Cell, bool>(C2, _story.Last().Item2)
                         );
             }
         }
@@ -87,7 +87,7 @@ namespace SpacialPrisonerDilemma.Model
         /// </summary>
         public void Clear()
         {
-            story.Clear();
+            _story.Clear();
         }
     }
 }

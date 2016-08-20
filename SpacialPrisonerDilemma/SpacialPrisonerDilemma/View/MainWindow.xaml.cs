@@ -35,7 +35,7 @@ namespace SpacialPrisonerDilemma.View
             ValueError
         }
         
-        private bool _canvalidate;
+        private readonly bool _canvalidate;
         /// <summary>
         /// Konstruktor okna głównego
         /// </summary>

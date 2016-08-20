@@ -8,10 +8,10 @@ namespace SPD.Engine
 {
     public class PointMatrix
     {
-        public float NoneBetrayed { get; }
-        public float WasBetrayed { get; }
-        public float BetrayedOther { get; }
-        public float BothBetrayed { get; }
+        public float NoneBetrayed { get; private set; }
+        public float WasBetrayed { get; private set; }
+        public float BetrayedOther { get; private set; }
+        public float BothBetrayed { get; private set; }
 
         public PointMatrix(float none, float was, float betrayed, float both)
         {

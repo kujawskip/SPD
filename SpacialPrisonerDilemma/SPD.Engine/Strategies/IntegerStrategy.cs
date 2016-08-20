@@ -9,7 +9,7 @@ namespace SPD.Engine.Strategies
 {
     class IntegerStrategy : IStrategy
     {
-        public int BetrayalThreshold { get; }
+        public int BetrayalThreshold { get; private set; }
 
         public int StrategyCode
         {

@@ -44,7 +44,7 @@ namespace SpacialPrisonerDilemma.Model
             return Strategy.Decide(this, opponent);
         }
 
-        Mutex m = new Mutex();
+        readonly Mutex _m = new Mutex();
         public float points;
         /// <summary>
         /// Ilość zdobytych przez komórkę punktów
@@ -53,16 +53,16 @@ namespace SpacialPrisonerDilemma.Model
         {
             get
             {
-                m.WaitOne();
+                _m.WaitOne();
                 var res = points;
-                m.ReleaseMutex();
+                _m.ReleaseMutex();
                 return res;
             }
             internal set
             {
-                m.WaitOne();
+                _m.WaitOne();
                 points = value;
-                m.ReleaseMutex();
+                _m.ReleaseMutex();
             }
         }
 
@@ -71,8 +71,8 @@ namespace SpacialPrisonerDilemma.Model
         /// </summary>
         public void UpdatePoints()
         {
-            var Lasts = GetNeighbours().Select(x => SPD.Singleton.GetSkirmish(this, x).Last);
-            foreach(var last in Lasts)
+            var lasts = GetNeighbours().Select(x => SPD.Singleton.GetSkirmish(this, x).Last);
+            foreach(var last in lasts)
             {
                 bool myDecision;
                 bool opponentsDecision;
@@ -105,10 +105,11 @@ namespace SpacialPrisonerDilemma.Model
         /// <returns>Najlepsza strategia</returns>
         public static IStrategy GetBest(Cell c, IEnumerable<Cell> cellList)
         {
-            var max = cellList.Max(y => y.Points);
+            var enumerable = cellList as Cell[] ?? cellList.ToArray();
+            var max = enumerable.Max(y => y.Points);
             if (c.Points == max) return c.Strategy;
             if (c.GetNeighbours().All(x => x.Strategy == c.Strategy)) return c.Strategy;
-            var best = cellList.Where(x => x.Points == cellList.Max(y => y.Points)).Select(x => x.Strategy).Distinct();
+            var best = enumerable.Where(x => x.Points == enumerable.Max(y => y.Points)).Select(x => x.Strategy).Distinct();
             return best.First();
         }
 
@@ -118,15 +119,14 @@ namespace SpacialPrisonerDilemma.Model
         /// <returns>Najlepsza strategia</returns>
         public IStrategy OptimizeStrategy()
         {
-            var str = GetBest(this, this.GetNeighbours().Concat(new Cell[] { this }));
+            var str = GetBest(this, GetNeighbours().Concat(new[] { this }));
             return str;
         }
 
         internal Cell Clone()
         {
-            var C = new Cell(Strategy);
-            C.Points = this.Points;
-            return C;
+           
+            return new Cell(Strategy) {Points = Points};
         }
 
         internal void Clear()

@@ -21,10 +21,10 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center">Więzień pierwszy</TextBlock>
@@ -49,16 +49,17 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="NeighbourBox" Grid.Row="1" Margin="8" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
-                <ComboBox Name="ShapeBox" Grid.Row="1" Grid.Column="1" Margin="8" Width="80"/>
                 <TextBlock HorizontalAlignment="Center" Height="23" Text="Sąsiedztwo" Margin="8"/>
-                <TextBlock HorizontalAlignment="Center" Height="23" Text="Geometria" Grid.Column="1" Margin="8"/>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" Height="23" Text="Geometria" Grid.Column="1" Margin="8"/>
+                <ComboBox Name="NeighbourBox" Grid.Row="1" Grid.Column="0" Margin="8" Width="80" SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox Name="ShapeBox" Grid.Row="1" Grid.Column="1" Margin="8" Width="80"/>
+               
             </Grid>
         </GroupBox>
         <Menu HorizontalAlignment="Left">
             <MenuItem Header="Opcje">
-                <MenuItem Header="Zmień czcionke" Click="Font_OnClick"></MenuItem>
-                <MenuItem Header="Zmień kolory" Click="Color_OnClick"></MenuItem>
+                <MenuItem Header="Zmień czcionke" Click="Font_OnClick" />
+                <MenuItem Header="Zmień kolory" Click="Color_OnClick" />
             </MenuItem>
         </Menu>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">

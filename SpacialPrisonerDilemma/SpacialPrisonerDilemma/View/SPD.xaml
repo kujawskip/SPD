@@ -12,7 +12,7 @@
         <Style x:Key="plotStyle" TargetType="FrameworkElement">
             <Setter Property="FrameworkElement.ContextMenu">
                 <Setter.Value>
-                    <StaticResource ResourceKey="cm"></StaticResource>
+                    <StaticResource ResourceKey="cm" />
                 </Setter.Value>
             </Setter>
         </Style>
@@ -27,8 +27,8 @@
             <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" Height="357" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="390">
                 <Canvas.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick"></MenuItem>
-                        <MenuItem Name="CicSave" Header="Zapisz jako plik cic" Click="CicSave_OnClick"></MenuItem>
+                        <MenuItem Name="ImageSave"  Header="Zapisz jako obrazek" Click="ImageSave_OnClick" />
+                        <MenuItem Name="CicSave" Header="Zapisz jako plik cic" Click="CicSave_OnClick" />
                     </ContextMenu>
                 </Canvas.ContextMenu>
             </Canvas>

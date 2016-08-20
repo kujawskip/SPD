@@ -23,7 +23,7 @@ namespace SpacialPrisonerDilemma.View
         private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private InitialConditions _condition;
-		private int Mode;
+		private readonly int Mode;
         private Operation _selectedOperation;
         
         /// <summary>

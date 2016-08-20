@@ -11,10 +11,10 @@ namespace SPD.Engine
 {
     public class SPD
     {
-        public PointMatrix Matrix { get; }
-        public int CurrentIteration { get; private set; } = 0;
-        public int Width { get; }
-        public int Height { get; }
+        public PointMatrix Matrix { get; private set; }
+        public int CurrentIteration { get; private set; };
+        public int Width { get; private set; }
+        public int Height { get;private set; }
 
         ConcurrentDictionary<Coord, IStrategy> _strategies;
 
@@ -26,9 +26,9 @@ namespace SPD.Engine
 
         ConcurrentDictionary<Coord, Tuple<Coord, bool>[]> _decisions = new ConcurrentDictionary<Coord, Tuple<Coord, bool>[]>();
 
-        public int StepsPerIteration { get; }
+        public int StepsPerIteration { get; private set; }
 
-        public int ThreadCount { get; }
+        public int ThreadCount { get; private set; }
 
         public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1)
         {
@@ -38,7 +38,7 @@ namespace SPD.Engine
             Matrix = m;
             ThreadCount = threadNum;
             StepsPerIteration = stepNum;
-
+            CurrentIteration = 0;
             var concernes = new List<Coord>[ThreadCount];
             for (int i = 0; i < ThreadCount; i++)
                 concernes[i] = new List<Coord>();

@@ -27,7 +27,7 @@ namespace SpacialPrisonerDilemma.View
         /// Metoda zwraca prostokąty zawierające kolory wykresu
         /// </summary>
 		/// <param name="stateCount"> Ilość kolorów </param>
-		/// <param name="SF>Predykat wyboru kolorów</param>"
+		/// <param name="SF">Predykat wyboru kolorów</param>"
         /// <returns>Lista prostokątów</returns>
         public static List<Image> GetBrushRectangles(int stateCount,StateTransformation SF)
         {

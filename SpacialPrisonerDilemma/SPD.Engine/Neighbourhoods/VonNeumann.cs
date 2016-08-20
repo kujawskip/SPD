@@ -8,8 +8,8 @@ namespace SPD.Engine.Neighbourhoods
 {
     class VonNeumann:INeighbourhood
     {
-        int _width;
-        int _height;
+        readonly int _width;
+        readonly int _height;
         public VonNeumann(int width, int height)
         {
             _width = width;
@@ -44,8 +44,8 @@ namespace SPD.Engine.Neighbourhoods
 
     public class VonNeumannTorus : INeighbourhood
     {
-        int _width;
-        int _height;
+        readonly int _width;
+        readonly int _height;
         public VonNeumannTorus(int width, int height)
         {
             _width = width;

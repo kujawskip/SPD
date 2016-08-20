@@ -8,8 +8,8 @@ namespace SPD.Engine
 {
     public class Coord : IEquatable<Coord>
     {
-        public int X { get; }
-        public int Y { get; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
         public Coord(int x, int y)
         {
             X = x;
@@ -23,8 +23,8 @@ namespace SPD.Engine
 
     public class CoordPair : IEquatable<CoordPair>
     {
-        public Coord C1 { get; }
-        public Coord C2 { get; }
+        public Coord C1 { get; private set; }
+        public Coord C2 { get; private set; }
         public CoordPair(Coord c1, Coord c2)
         {
             C1 = c1; C2 = c2;

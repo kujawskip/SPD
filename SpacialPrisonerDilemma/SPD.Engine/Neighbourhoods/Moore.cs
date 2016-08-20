@@ -8,8 +8,8 @@ namespace SPD.Engine.Neighbourhoods
 {
     public class Moore : INeighbourhood
     {
-        int _width;
-        int _height;
+        readonly int _width;
+        readonly int _height;
 
         public Moore(int width, int height)
         {
@@ -60,8 +60,8 @@ namespace SPD.Engine.Neighbourhoods
 
     public class MooreTorus : INeighbourhood
     {
-        int _width;
-        int _height;
+        readonly int _width;
+        readonly int _height;
 
         public MooreTorus(int width, int height)
         {
