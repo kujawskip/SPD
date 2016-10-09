@@ -1,22 +1,26 @@
-﻿using SPD.Engine.Neighbourhoods;
-using SPD.Engine.Strategies;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpacialPrisonerDilemma.Engine.Neighbourhoods;
+using SpacialPrisonerDilemma.Engine.Strategies;
 
-namespace SPD.Engine
+namespace SpacialPrisonerDilemma.Engine
 {
     public class SPD
     {
         public PointMatrix Matrix { get; private set; }
-        public int CurrentIteration { get; private set; };
+        public int CurrentIteration { get; private set; }
         public int Width { get; private set; }
         public int Height { get;private set; }
 
-        ConcurrentDictionary<Coord, IStrategy> _strategies;
+        public Engine.Coord[] Neighbours(int x, int y)
+        {
+            return _neighbours[new Coord(x, y)];
+        }
+        ConcurrentDictionary<Coord, IStrategy> _strategies = new ConcurrentDictionary<Coord, IStrategy>();
 
         ConcurrentDictionary<Coord, float> _points = new ConcurrentDictionary<Coord, float>();
 
@@ -30,8 +34,9 @@ namespace SPD.Engine
 
         public int ThreadCount { get; private set; }
 
-        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1)
+        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,bool Torus=false)
         {
+          //  throw new NotFiniteNumberException("Geometry");
             if (threadNum <= 0) throw new ArgumentException();
             Width = initialConfiguration.GetLength(0);
             Height = initialConfiguration.GetLength(1);

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPD.Engine.Neighbourhoods
+namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
 {
-    class VonNeumann:INeighbourhood
+    public class VonNeumann:INeighbourhood
     {
         readonly int _width;
         readonly int _height;

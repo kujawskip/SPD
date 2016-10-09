@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPD.Engine.Strategies
+namespace SpacialPrisonerDilemma.Engine.Strategies
 {
     public interface IStrategy
     {

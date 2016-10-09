@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPD.Engine
+namespace SpacialPrisonerDilemma.Engine
 {
     public class PointMatrix
     {
@@ -15,7 +15,7 @@ namespace SPD.Engine
 
         public PointMatrix(float none, float was, float betrayed, float both)
         {
-            throw new NotImplementedException("Validation");
+           // throw new NotImplementedException("Validation");
             NoneBetrayed = none;
             WasBetrayed = was;
             BetrayedOther = betrayed;

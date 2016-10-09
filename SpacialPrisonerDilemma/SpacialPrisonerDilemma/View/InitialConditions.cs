@@ -121,7 +121,7 @@ namespace SpacialPrisonerDilemma.View
 
         }
 
-        internal static InitialConditions FromCellArray(Cell[,] cells, string getFileName="FileLoaded")
+        internal static InitialConditions FromCellArray(Tuple<int,float>[,] cells, string getFileName="FileLoaded")
         {
             InitialConditionsGrid icg = InitialConditionsGrid.FromCellArray(cells);
             

@@ -1,12 +1,12 @@
-﻿using SPD.Engine.Strategies;
+﻿using SpacialPrisonerDilemma.Engine.Strategies;
 
-namespace SPD.Engine
+namespace SpacialPrisonerDilemma.Engine
 {
     public class SPDResult
     {
-        private int[,] strategyConfig;
-        private float[,] v1;
-        private bool v2;
+        public int[,] strategyConfig;
+        public float[,] v1;
+        public bool v2;
 
         public SPDResult(float[,] v1, int[,] strategyConfig, bool v2)
         {

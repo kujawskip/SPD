@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPD.Engine.Strategies
+namespace SpacialPrisonerDilemma.Engine.Strategies
 {
-    class IntegerStrategy : IStrategy
+    public class IntegerStrategy : IStrategy
     {
         public int BetrayalThreshold { get; private set; }
 

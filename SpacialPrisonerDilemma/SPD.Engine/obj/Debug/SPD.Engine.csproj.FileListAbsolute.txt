@@ -1,0 +1,4 @@
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SPD.Engine\bin\Debug\SPD.Engine.dll
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SPD.Engine\bin\Debug\SPD.Engine.pdb
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SPD.Engine\obj\Debug\SPD.Engine.dll
+C:\Users\Patryk\SPD\SpacialPrisonerDilemma\SPD.Engine\obj\Debug\SPD.Engine.pdb

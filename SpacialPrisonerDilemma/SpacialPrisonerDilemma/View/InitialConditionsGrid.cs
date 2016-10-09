@@ -219,7 +219,7 @@ namespace SpacialPrisonerDilemma.View
             return ig;
         }
 
-        internal static InitialConditionsGrid FromCellArray(Cell[,] cells)
+        internal static InitialConditionsGrid FromCellArray(Tuple<int,float>[,] cells)
         {
             InitialConditionCell[,] arr = new InitialConditionCell[cells.GetLength(0),cells.GetLength(1)];
             var list = new List<List<InitialConditionCell>>();
@@ -227,7 +227,7 @@ namespace SpacialPrisonerDilemma.View
             for(int i=0;i<cells.GetLength(0);i++)
                 for (int j = 0; j < cells.GetLength(1); j++)
                 {
-                    int k = ((IntegerStrategy) cells[i, j].Strategy).Treshold;
+                    int k = (new Engine.Strategies.IntegerStrategy(cells[i,j].Item1)).BetrayalThreshold;
                     arr[i,j] = new InitialConditionCell(i,j,k,k);
                     list[k].Add(arr[i, j]);
                 }

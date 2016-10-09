@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SPD.Engine
+namespace SpacialPrisonerDilemma.Engine
 {
     public class Coord : IEquatable<Coord>
     {
@@ -18,6 +18,32 @@ namespace SPD.Engine
         public bool Equals(Coord other)
         {
             return X == other.X && Y == other.Y;
+        }
+
+        public override bool Equals(object other)
+        {
+            return (other is Coord) && Equals(other as Coord);
+        }
+
+        public override int GetHashCode()
+        {
+            return X ^ Y;
+        }
+
+        public static bool operator ==(Coord X, Coord Y)
+        {
+            return X.Equals(Y);
+        }
+
+        public static bool operator !=(Coord X, Coord Y)
+        {
+            return !(X == Y);
+        }
+
+
+        public override string ToString()
+        {
+            return string.Format("({0},{1})", X, Y);
         }
     }
 
@@ -33,6 +59,11 @@ namespace SPD.Engine
         public bool Equals(CoordPair other)
         {
             return (C1.Equals(other.C1) && C2.Equals(other.C2)) || (C1.Equals(other.C2) && C2.Equals(other.C1));
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[{0},{1}]", C1, C2);
         }
     }
 }

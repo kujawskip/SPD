@@ -17,10 +17,13 @@ using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Wpf;
 using SpacialPrisonerDilemma.Annotations;
+using SpacialPrisonerDilemma.Engine;
+using SpacialPrisonerDilemma.Engine.Neighbourhoods;
 using SpacialPrisonerDilemma.Model;
 using CategoryAxis = OxyPlot.Axes.CategoryAxis;
 using ColumnSeries = OxyPlot.Series.ColumnSeries;
 using LinearAxis = OxyPlot.Axes.LinearAxis;
+
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -29,7 +32,7 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class SPD : INotifyPropertyChanged
     {
-        private readonly SpacialPrisonerDilemma.Model.SPD _spd;
+        private readonly Engine.SPD _spd;
         private readonly int _width;
         private readonly int _height;
         readonly int[,] _strategies;
@@ -144,7 +147,7 @@ namespace SpacialPrisonerDilemma.View
         {
             var category = _iterations.Count;
 
-            var d = CalculateModels(_spd.GetStateByIteration(category));
+            var d = CalculateModels(GetStateByIteration(category));
 
             
             _iterations.Add(new Tuple<int, String>(category, ""));
@@ -187,7 +190,7 @@ namespace SpacialPrisonerDilemma.View
         /// <summary>
         /// Metoda wyliczająca dane do wykresów na podstawie stanu automatu
         /// </summary>
-        double[][] CalculateModels(Cell[,] cells)
+        double[][] CalculateModels(Tuple<int,float>[,] cells)
         {
             var result = new double[Enum.GetValues(typeof(WhenBetray)).Length];
             var count = new double[result.Length];
@@ -202,12 +205,12 @@ namespace SpacialPrisonerDilemma.View
                 for (var j = 0; j < cells.GetLength(1); j++)
                 {
                     var c = cells[i, j];
-                    var integerStrategy = c.Strategy as IntegerStrategy;
+                    var integerStrategy = new Engine.Strategies.IntegerStrategy(c.Item1);
 
                     if (integerStrategy != null)
                     {
-                        var k = integerStrategy.Treshold;
-                        double d = c.Points / _spd[i, j].GetNeighbours().Length;
+                        var k = integerStrategy.BetrayalThreshold;
+                        double d = (double)c.Item2/_spd.Neighbours(i,j).Length;
                         result[k] += d;
                         count[k]++;
                         
@@ -229,6 +232,16 @@ namespace SpacialPrisonerDilemma.View
             count = count.Select(d => 100 * d / d2).ToArray();
             return new[] { count, result };
         }
+
+        public Dictionary<int, Engine.Strategies.IStrategy> GenerateIntegerStrategies(int count)
+        {
+            Dictionary<int, Engine.Strategies.IStrategy> result = new Dictionary<int, Engine.Strategies.IStrategy>();
+            for (int i = 0; i <= count; i++)
+            {
+                result.Add(i, new Engine.Strategies.IntegerStrategy(i));
+            }
+            return result;
+        }
         /// <summary>
         /// Konstruktor okna realizującego symulacje
         /// </summary>
@@ -239,12 +252,16 @@ namespace SpacialPrisonerDilemma.View
         public SPD(double[] PayValues, int[,] strategies, bool torus, bool vonneumann)
         {
             DataContext = this;
-            
+            float[,] fakePoints = new float[strategies.GetLength(0), strategies.GetLength(1)];
+            AddHistory(strategies,fakePoints);
             _sumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
             for (int i = 0; i < _sumPoints.Length; i++) _sumPoints[i] = 0;
             var payValues = PayValues;
             _strategies = strategies;
-            _spd = Model.SPD.Singleton;
+            _spd =
+                new Engine.SPD(
+                    new PointMatrix((float) payValues[3], (float) payValues[2], (float) payValues[1],
+                        (float)payValues[0]), vonneumann ? (INeighbourhood)new Moore(strategies.GetLength(0), strategies.GetLength(1)) : (INeighbourhood)new VonNeumann(strategies.GetLength(0), strategies.GetLength(1)), strategies, GenerateIntegerStrategies(vonneumann ? 5 : 9), 10, 16);
             Speed = 1;
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
@@ -271,7 +288,7 @@ namespace SpacialPrisonerDilemma.View
                  SumModel.Axes.Add(new CategoryAxis { ItemsSource = _iterations, LabelField = "Item2" });
             SumModel.Axes.Add(new LinearAxis { MinimumPadding = 0, AbsoluteMinimum = 0 });
             SumModel.Series.Add(new ColumnSeries { ColumnWidth = 10, IsStacked = true });
-            Model.SPD.Initialize(_strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0], !vonneumann, torus);
+       
 
             UpdateModels();
 
@@ -339,14 +356,14 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="width">Ile kolumn automatu będzie wyrysowanych</param>
         /// <param name="height">Ile wierszy automatu będzie wyrysowanych</param>
         /// <returns>Wyrysowany wykres</returns>
-        private DrawingImage GenerateImage(SpacialPrisonerDilemma.Model.SPD spd, int x, int y, int width, int height)
+        private DrawingImage GenerateImage(Engine.SPD spd, int x, int y, int width, int height)
         {
             var cellWidth = Canvas.Width / width;
             var cellHeight = Canvas.Height / height;
             
 
             var dg = new DrawingGroup();
-            var C = spd.GetStateByIteration(Iteration);
+            var C = GetStateByIteration(Iteration);
             for (var i = x; i < x + width; i++)
             {
                 for (var j = y; j < y + height; j++)
@@ -356,7 +373,7 @@ namespace SpacialPrisonerDilemma.View
                     var gd = new GeometryDrawing
                     {
                         Brush =
-                            GetBrush(((IntegerStrategy) C[i, j].Strategy).Treshold),
+                            GetBrush(new Engine.Strategies.IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);
@@ -376,9 +393,72 @@ namespace SpacialPrisonerDilemma.View
 
         readonly int _delay = 16;
 
-        Task<Tuple<int, bool>> _iteration;
+        Task<SPDResult> _iteration;
         private Task Looper;
         private bool _over = true;
+
+        public Tuple<int,float>[,] GetStateByIteration(int iteration)
+        {
+            return History[iteration];
+        }
+
+        private List<Tuple<int,float>[,]> History = new List<Tuple<int,float>[,]>();
+        public void AddHistory(int[,] strategies, float[,] points)
+        {
+            Tuple<int,float>[,] state = new Tuple<int,float>[strategies.GetLength(0), strategies.GetLength(1)];
+            for (int i = 0; i < strategies.GetLength(0); i++)
+            {
+                for (int j = 0; j < strategies.GetLength(1); j++)
+                {
+                    state[i, j] = new Tuple<int,float>(strategies[i, j], points[i, j]);
+                }
+            }
+            History.Add(state);
+        }
+
+        public int GetVariance(int iteration)
+        {
+            int variance = 0;
+            if (iteration == 0) return variance;
+            var state1 = GetStateByIteration(iteration - 1);
+            var state2 = GetStateByIteration(iteration);
+            for (int i = 0; i < state1.GetLength(0); i++)
+            {
+                for (int j = 0; j < state1.GetLength(1); j++)
+                {
+                    variance += state1[i, j].Item1 == state2[i, j].Item1 ? 0 : 1;
+                }
+            }
+            return variance;
+        }
+
+        private void SPDSynchronousLooper()
+        {
+             while (_cont && _over)
+             {
+
+
+
+                 var i = _spd.Iterate();
+                if (_over) AddHistory(i.strategyConfig,i.v1);
+                if (_over) UpdateImage();
+                if (_over) OnPropertyChanged("StateCount");
+                if (_over) if (Iteration == StateCount - 1) Iteration++;
+              
+              
+                if (_over) InsertVariationColumn(GetVariance(History.Count-1));
+                if (_over) UpdateModels();
+                
+                if (!i.v2) continue;
+                var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
+                    MessageBoxButton.YesNo);
+                if (b == MessageBoxResult.Yes)
+                {
+                    _over = false;
+                }
+               
+            }
+        }
         /// <summary>
         /// Metoda realizująca pętle symulacji
         /// </summary>
@@ -392,14 +472,16 @@ namespace SpacialPrisonerDilemma.View
                 _iteration = Task.Run(async () => await _spd.IterateAsync());
                 await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
                 var i = await _iteration;
+                if (_over) AddHistory(i.strategyConfig,i.v1);
                 if (_over) UpdateImage();
                 if (_over) OnPropertyChanged("StateCount");
                 if (_over) if (Iteration == StateCount - 1) Iteration++;
                 if (_over) await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
-                if (_over) InsertVariationColumn(i.Item1);
+              
+                if (_over) InsertVariationColumn(GetVariance(History.Count-1));
                 if (_over) UpdateModels();
                 
-                if (!i.Item2) continue;
+                if (!i.v2) continue;
                 var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
                     MessageBoxButton.YesNo);
                 if (b == MessageBoxResult.Yes)
@@ -419,6 +501,11 @@ namespace SpacialPrisonerDilemma.View
                 columnSeries.Items.Add(new ColumnItem(x, i));
             ChangeModel.InvalidatePlot(true);
 
+        }
+
+        private void StartSynchronousSPD()
+        {
+            SPDSynchronousLooper();
         }
         private async Task StartSPD()
         {
@@ -469,6 +556,8 @@ namespace SpacialPrisonerDilemma.View
             StartStop.Content = "Start";
             StartStop.IsEnabled = true;
         }
+
+        private bool Threading = false;
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -476,15 +565,16 @@ namespace SpacialPrisonerDilemma.View
             if (_cont)
             {
 
-                StartStop.Content = "Stop";
-                await StartSPD();
+                 StartStop.Content = "Stop";
+                 if (Threading) await StartSPD();
+                 else StartSynchronousSPD();
 
             }
             else
             {
                 StartStop.Content = "Zatrzymywanie...";
                 StartStop.IsEnabled = false;
-                await WaitForIteration();
+                if(Threading) await WaitForIteration();
             }
 
            
@@ -539,7 +629,7 @@ namespace SpacialPrisonerDilemma.View
             var sfd = new SaveFileDialog { Filter = "Initial Condition (*.cic)|*.cic" };
             var v = sfd.ShowDialog();
             if (!v.HasValue || !v.Value) return;
-            var c = _spd.GetStateByIteration(_iter);
+            var c = GetStateByIteration(_iter);
             var ifc = InitialConditions.FromCellArray(c, Path.GetFileName(sfd.FileName));
             var bf = new BinaryFormatter();
             var fs = new FileStream(sfd.FileName, FileMode.Create);
