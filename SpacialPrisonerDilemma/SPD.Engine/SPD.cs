@@ -54,8 +54,11 @@ namespace SpacialPrisonerDilemma.Engine
                 for(int y=0; y<Height; y++)
                 {
                     var key = new Coord(x, y);
-                    _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]], (c, s) => possibleStrategies[initialConfiguration[x, y]]);
-                    _neighbours.AddOrUpdate(key, neighbourhood.GetNeighbours(key).ToArray(), (a, b) => neighbourhood.GetNeighbours(key).ToArray());
+                    _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]],
+                        (c, s) => possibleStrategies[initialConfiguration[x, y]]);
+                    var neigh = neighbourhood.GetNeighbours(key).ToArray();
+                    _neighbours.AddOrUpdate(key, neigh.ToArray(),
+                        (a, b) => b.Union(neigh).ToArray());
                     concernes[index].Add(key);
                     index = (index + 1) % ThreadCount;
                 }
@@ -234,9 +237,17 @@ namespace SpacialPrisonerDilemma.Engine
                 foreach (var n in neighbours)
                 {
                     var b = s.Decide(n);
-                    var nextVal = new Tuple<Coord, bool>[] { new Tuple<Coord, bool>(n, b) };
+                    var nextVal = new[] { new Tuple<Coord, bool>(n, b) };
                     _decisions.AddOrUpdate(c, k => nextVal,
                         (k, v) => v.Concat(nextVal).ToArray());
+                    IStrategy opps;
+                    if(!_strategies.TryGetValue(n, out opps))
+                        throw new NotSupportedException();
+                    var oppb = opps.Decide(c);
+                    var oppNextVal = new[] {new Tuple<Coord, bool>(c, oppb)};
+                    _decisions.AddOrUpdate(n, oppNextVal, 
+                        (k, v) => v.Concat(oppNextVal).ToArray());
+
                 }
             }
         }

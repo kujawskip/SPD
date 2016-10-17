@@ -258,10 +258,20 @@ namespace SpacialPrisonerDilemma.View
             for (int i = 0; i < _sumPoints.Length; i++) _sumPoints[i] = 0;
             var payValues = PayValues;
             _strategies = strategies;
+
+#if DEBUG
+            var threadNum = 1;
+#else
+            var threadNum = 16;
+#endif
             _spd =
                 new Engine.SPD(
                     new PointMatrix((float) payValues[3], (float) payValues[2], (float) payValues[1],
-                        (float)payValues[0]), vonneumann ? (INeighbourhood)new Moore(strategies.GetLength(0), strategies.GetLength(1)) : (INeighbourhood)new VonNeumann(strategies.GetLength(0), strategies.GetLength(1)), strategies, GenerateIntegerStrategies(vonneumann ? 5 : 9), 10, 16);
+                        (float) payValues[0]),
+                    vonneumann
+                        ? (INeighbourhood) new Moore(strategies.GetLength(0), strategies.GetLength(1))
+                        : (INeighbourhood) new VonNeumann(strategies.GetLength(0), strategies.GetLength(1)), strategies,
+                    GenerateIntegerStrategies(vonneumann ? 5 : 9), 10, threadNum);
             Speed = 1;
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
