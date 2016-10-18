@@ -38,7 +38,7 @@ namespace SpacialPrisonerDilemma.View
         readonly int[,] _strategies;
         private int _iter;
         private int _speed;
-
+        private int _strategyCount;
         private PlotModel _pointsmodel;
         private PlotModel _countmodel;
         /// <summary>
@@ -192,7 +192,7 @@ namespace SpacialPrisonerDilemma.View
         /// </summary>
         double[][] CalculateModels(Tuple<int,float>[,] cells)
         {
-            var result = new double[Enum.GetValues(typeof(WhenBetray)).Length];
+            var result = new double[_strategyCount];
             var count = new double[result.Length];
             var sum = new double[result.Length];
             for (var i = 0; i < result.Length; i++)
@@ -259,19 +259,21 @@ namespace SpacialPrisonerDilemma.View
             var payValues = PayValues;
             _strategies = strategies;
 
-#if DEBUG
-            var threadNum = 1;
-#else
+
+        
             var threadNum = 16;
-#endif
+
+            _strategyCount = vonneumann ? 6 :10;
             _spd =
                 new Engine.SPD(
                     new PointMatrix((float) payValues[3], (float) payValues[2], (float) payValues[1],
                         (float) payValues[0]),
-                    vonneumann
-                        ? (INeighbourhood) new Moore(strategies.GetLength(0), strategies.GetLength(1))
-                        : (INeighbourhood) new VonNeumann(strategies.GetLength(0), strategies.GetLength(1)), strategies,
-                    GenerateIntegerStrategies(vonneumann ? 5 : 9), 10, threadNum);
+                    torus?vonneumann
+                        ? (INeighbourhood) new VonNeumannTorus(strategies.GetLength(0), strategies.GetLength(1))
+                        : (INeighbourhood)new MooreTorus(strategies.GetLength(0), strategies.GetLength(1)) : vonneumann
+                        ? (INeighbourhood)new VonNeumann(strategies.GetLength(0), strategies.GetLength(1))
+                        : (INeighbourhood)new Moore(strategies.GetLength(0), strategies.GetLength(1)), strategies,
+                    GenerateIntegerStrategies(_strategyCount), 10, threadNum);
             Speed = 1;
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
@@ -412,6 +414,11 @@ namespace SpacialPrisonerDilemma.View
             return History[iteration];
         }
 
+        public int strategyNumberFromCode(int code)
+        {
+            if (code >= 100) return code/100;
+            return code;
+        }
         private List<Tuple<int,float>[,]> History = new List<Tuple<int,float>[,]>();
         public void AddHistory(int[,] strategies, float[,] points)
         {
@@ -420,7 +427,7 @@ namespace SpacialPrisonerDilemma.View
             {
                 for (int j = 0; j < strategies.GetLength(1); j++)
                 {
-                    state[i, j] = new Tuple<int,float>(strategies[i, j], points[i, j]);
+                    state[i, j] = new Tuple<int, float>(strategyNumberFromCode(strategies[i, j]), points[i, j]);
                 }
             }
             History.Add(state);
@@ -567,7 +574,7 @@ namespace SpacialPrisonerDilemma.View
             StartStop.IsEnabled = true;
         }
 
-        private bool Threading = false;
+        private bool Threading = true;
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
