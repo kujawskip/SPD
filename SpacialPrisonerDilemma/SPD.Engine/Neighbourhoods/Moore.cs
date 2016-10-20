@@ -10,11 +10,13 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
     {
         readonly int _width;
         readonly int _height;
+        readonly int _dist;
 
-        public Moore(int width, int height)
+        public Moore(int width, int height, int distance=1)
         {
             _width = width;
             _height = height;
+            _dist = distance;
         }
         public IEnumerable<Coord> GetNeighbours(Coord c)
         {
@@ -24,17 +26,20 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
         public IEnumerable<Coord> GetNeighbours(int x, int y)
         {
             if (!IsValid(x, y)) throw new ArgumentException();
-            if (IsValid(x, y - 1)) yield return new Coord(x, y - 1);
-            if (IsValid(x + 1, y - 1)) yield return new Coord(x + 1, y - 1);
+            for (int i = 1; i <= _dist; i++)
+            {
+                if (IsValid(x, y - i)) yield return new Coord(x, y - i);
+                if (IsValid(x + i, y - i)) yield return new Coord(x + i, y - i);
 
-            if (IsValid(x + 1, y)) yield return new Coord(x + 1, y);
-            if (IsValid(x + 1, y + 1)) yield return new Coord(x + 1, y + 1);
+                if (IsValid(x + i, y)) yield return new Coord(x + i, y);
+                if (IsValid(x + i, y + i)) yield return new Coord(x + i, y + i);
 
-            if (IsValid(x, y + 1)) yield return new Coord(x, y + 1);
-            if (IsValid(x - 1, y + 1)) yield return new Coord(x - 1, y + 1);
+                if (IsValid(x, y + i)) yield return new Coord(x, y + i);
+                if (IsValid(x - i, y + i)) yield return new Coord(x - i, y + i);
 
-            if (IsValid(x - 1, y)) yield return new Coord(x - 1, y);
-            if (IsValid(x - 1, y - 1)) yield return new Coord(x - 1, y - 1);
+                if (IsValid(x - i, y)) yield return new Coord(x - i, y);
+                if (IsValid(x - i, y - i)) yield return new Coord(x - i, y - i);
+            }
         }
 
         bool IsValid(int x, int y)
@@ -45,11 +50,14 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
         public IEnumerable<Coord> GetHalfNeighbours(int x, int y)
         {
             if (!IsValid(x, y)) throw new ArgumentException();
-            if (IsValid(x, y - 1)) yield return new Coord(x, y - 1);
-            if (IsValid(x + 1, y - 1)) yield return new Coord(x + 1, y - 1);
+            for (int i = 1; i <= _dist; i++)
+            {
+                if (IsValid(x, y - i)) yield return new Coord(x, y - i);
+                if (IsValid(x + i, y - i)) yield return new Coord(x + i, y - i);
 
-            if (IsValid(x + 1, y)) yield return new Coord(x + 1, y);
-            if (IsValid(x + 1, y + 1)) yield return new Coord(x + 1, y + 1);
+                if (IsValid(x + i, y)) yield return new Coord(x + i, y);
+                if (IsValid(x + i, y + i)) yield return new Coord(x + i, y + i);
+            }
         }
 
         public IEnumerable<Coord> GetHalfNeighbours(Coord c)
@@ -62,11 +70,13 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
     {
         readonly int _width;
         readonly int _height;
+        private readonly int _dist;
 
-        public MooreTorus(int width, int height)
+        public MooreTorus(int width, int height, int distance = 1)
         {
             _width = width;
             _height = height;
+            _dist = distance;
         }
 
         public IEnumerable<Coord> GetNeighbours(int x, int y)
@@ -75,17 +85,21 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
             var sx = x + _width;
             var sy = y + _height;
 
-            yield return new Coord(x, (sy - 1) % _height);
-            yield return new Coord((sx + 1) % _width, (sy - 1) % _height);
+            for(int i=1; i<=_dist; i++)
+            {
 
-            yield return new Coord((sx + 1) % _width, y);
-            yield return new Coord((sx + 1) % _width, (sy + 1) % _height);
+                yield return new Coord(x, (sy - i) % _height);
+                yield return new Coord((sx + i) % _width, (sy - i) % _height);
 
-            yield return new Coord(x, (sy + 1) % _height);
-            yield return new Coord((sx - 1) % _width, (sy + 1) % _height);
+                yield return new Coord((sx + i) % _width, y);
+                yield return new Coord((sx + i) % _width, (sy + i) % _height);
 
-            yield return new Coord((sx - 1) % _width, y);
-            yield return new Coord((sx - 1) % _width, (sy - 1) % _height);
+                yield return new Coord(x, (sy + i) % _height);
+                yield return new Coord((sx - i) % _width, (sy + i) % _height);
+
+                yield return new Coord((sx - i) % _width, y);
+                yield return new Coord((sx - i) % _width, (sy - i) % _height);
+            }
         }
 
         public IEnumerable<Coord> GetNeighbours(Coord c)
@@ -104,11 +118,15 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
             var sx = x + _width;
             var sy = y + _height;
 
-            yield return new Coord(x, (sy - 1) % _height);
-            yield return new Coord((sx + 1) % _width, (sy - 1) % _height);
+            for (int i = 1; i <= _dist; i++)
+            {
 
-            yield return new Coord((sx + 1) % _width, y);
-            yield return new Coord((sx + 1) % _width, (sy + 1) % _height);
+                yield return new Coord(x, (sy - i) % _height);
+                yield return new Coord((sx + i) % _width, (sy - i) % _height);
+
+                yield return new Coord((sx + i) % _width, y);
+                yield return new Coord((sx + i) % _width, (sy + i) % _height);
+            }
         }
 
         public IEnumerable<Coord> GetHalfNeighbours(Coord c)
