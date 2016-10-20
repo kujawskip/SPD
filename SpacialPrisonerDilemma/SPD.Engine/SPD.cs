@@ -11,7 +11,7 @@ namespace SpacialPrisonerDilemma.Engine
 {
     public class SPD
     {
-        public PointMatrix Matrix { get; private set; }
+        public Func<Coord,PointMatrix> Matrix { get; private set; }
         public int CurrentIteration { get; private set; }
         public int Width { get; private set; }
         public int Height { get;private set; }
@@ -34,13 +34,13 @@ namespace SpacialPrisonerDilemma.Engine
 
         public int ThreadCount { get; private set; }
 
-        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,bool Torus=false)
+        public SPD(Func<Coord, PointMatrix> mFunc, INeighbourhood neighbourhood, int[,] initialConfiguration,
+            IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1)
         {
-          //  throw new NotFiniteNumberException("Geometry");
             if (threadNum <= 0) throw new ArgumentException();
             Width = initialConfiguration.GetLength(0);
             Height = initialConfiguration.GetLength(1);
-            Matrix = m;
+            Matrix = mFunc;
             ThreadCount = threadNum;
             StepsPerIteration = stepNum;
             CurrentIteration = 0;
@@ -50,8 +50,8 @@ namespace SpacialPrisonerDilemma.Engine
 
             int index = 0;
 
-            for(int x=0; x<Width; x++)
-                for(int y=0; y<Height; y++)
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
                 {
                     var key = new Coord(x, y);
                     _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]],
@@ -66,6 +66,12 @@ namespace SpacialPrisonerDilemma.Engine
                 _threadConcernes.AddOrUpdate(i, concernes[i].ToArray(), (a, b) => concernes[i].ToArray());
 
             ProcessHistory(initialConfiguration);
+        }
+
+        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,bool torus=false)
+            :this((coord)=>m, neighbourhood, initialConfiguration, possibleStrategies, stepNum, threadNum)
+        {
+          
         }
 
 
@@ -216,11 +222,20 @@ namespace SpacialPrisonerDilemma.Engine
                     var opp = _decisions.GetOrAdd(d.Item1, co => new Tuple<Coord, bool>[0]).First(dd => dd.Item1 == c);
                     float f1;
                     float f2;
-                    Matrix.GetPoints(d.Item2, opp.Item2, out f1, out f2);
+                    GetPointsOf(d, opp, out f1, out f2);
                     _points.AddOrUpdate(c, f1, (a, b) => b + f1);
                     _points.AddOrUpdate(opp.Item1, f2, (a, b) => b + f2);
                 }
             }
+        }
+
+        private void GetPointsOf(Tuple<Coord,bool> c1, Tuple<Coord, bool> c2, out float p1, out float p2)
+        {
+            var pm1 = Matrix(c1.Item1);
+            var pm2 = Matrix(c2.Item1);
+            float temp;
+            pm1.GetPoints(c1.Item2, c2.Item2, out p1, out temp);
+            pm2.GetPoints(c1.Item2, c2.Item2, out temp, out p2);
         }
 
         private void DecideForMany(int obj)
