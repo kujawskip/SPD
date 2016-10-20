@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Coord.cs" />
     <Compile Include="Neighbourhoods\INeighbourhood.cs" />
+    <Compile Include="Neighbourhoods\Mixed.cs" />
     <Compile Include="Neighbourhoods\Moore.cs" />
     <Compile Include="Neighbourhoods\VonNeumann.cs" />
     <Compile Include="PointMatrix.cs" />
