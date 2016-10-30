@@ -11,7 +11,7 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
         readonly int _width;
         readonly int _height;
         readonly int _dist;
-        public VonNeumann(int width, int height, int distance)
+        public VonNeumann(int width, int height, int distance=1)
         {
             _width = width;
             _height = height;
@@ -55,7 +55,7 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
         readonly int _width;
         readonly int _height;
         readonly int _dist;
-        public VonNeumannTorus(int width, int height, int distance)
+        public VonNeumannTorus(int width, int height, int distance=1)
         {
             _width = width;
             _height = height;

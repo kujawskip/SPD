@@ -20,8 +20,10 @@ using SpacialPrisonerDilemma.Annotations;
 using SpacialPrisonerDilemma.Engine;
 using SpacialPrisonerDilemma.Engine.Neighbourhoods;
 using SpacialPrisonerDilemma.Model;
+using SPD.Engine.Neighbourhoods;
 using CategoryAxis = OxyPlot.Axes.CategoryAxis;
 using ColumnSeries = OxyPlot.Series.ColumnSeries;
+using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
 using LinearAxis = OxyPlot.Axes.LinearAxis;
 
 
@@ -32,7 +34,7 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class SPD : INotifyPropertyChanged
     {
-        private readonly Engine.SPD _spd;
+        private readonly global::SPD.Engine.SPD _spd;
         private readonly int _width;
         private readonly int _height;
         readonly int[,] _strategies;
@@ -205,7 +207,7 @@ namespace SpacialPrisonerDilemma.View
                 for (var j = 0; j < cells.GetLength(1); j++)
                 {
                     var c = cells[i, j];
-                    var integerStrategy = new Engine.Strategies.IntegerStrategy(c.Item1);
+                    var integerStrategy = new IntegerStrategy(c.Item1);
 
                     if (integerStrategy != null)
                     {
@@ -238,7 +240,7 @@ namespace SpacialPrisonerDilemma.View
             Dictionary<int, Engine.Strategies.IStrategy> result = new Dictionary<int, Engine.Strategies.IStrategy>();
             for (int i = 0; i <= count; i++)
             {
-                result.Add(i, new Engine.Strategies.IntegerStrategy(i));
+                result.Add(i, new IntegerStrategy(i));
             }
             return result;
         }
@@ -265,7 +267,7 @@ namespace SpacialPrisonerDilemma.View
 
             _strategyCount = vonneumann ? 6 :10;
             _spd =
-                new Engine.SPD(
+                new global::SPD.Engine.SPD(
                     new PointMatrix((float) payValues[3], (float) payValues[2], (float) payValues[1],
                         (float) payValues[0]),
                     torus?vonneumann
@@ -368,7 +370,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="width">Ile kolumn automatu będzie wyrysowanych</param>
         /// <param name="height">Ile wierszy automatu będzie wyrysowanych</param>
         /// <returns>Wyrysowany wykres</returns>
-        private DrawingImage GenerateImage(Engine.SPD spd, int x, int y, int width, int height)
+        private DrawingImage GenerateImage(global::SPD.Engine.SPD spd, int x, int y, int width, int height)
         {
             var cellWidth = Canvas.Width / width;
             var cellHeight = Canvas.Height / height;
@@ -385,7 +387,7 @@ namespace SpacialPrisonerDilemma.View
                     var gd = new GeometryDrawing
                     {
                         Brush =
-                            GetBrush(new Engine.Strategies.IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
+                            GetBrush(new IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);

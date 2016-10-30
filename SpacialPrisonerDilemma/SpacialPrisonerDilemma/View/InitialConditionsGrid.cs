@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpacialPrisonerDilemma.Model;
+using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -227,7 +228,7 @@ namespace SpacialPrisonerDilemma.View
             for(int i=0;i<cells.GetLength(0);i++)
                 for (int j = 0; j < cells.GetLength(1); j++)
                 {
-                    int k = (new Engine.Strategies.IntegerStrategy(cells[i,j].Item1)).BetrayalThreshold;
+                    int k = (new IntegerStrategy(cells[i,j].Item1)).BetrayalThreshold;
                     arr[i,j] = new InitialConditionCell(i,j,k,k);
                     list[k].Add(arr[i, j]);
                 }
