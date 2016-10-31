@@ -12,7 +12,7 @@ using System.Windows.Media;
 using Microsoft.Win32;
 using SpacialPrisonerDilemma.Model;
 using System.Windows.Controls.Primitives;
-using SpacialPrisonerDilemma.Engine;
+using SPD.Engine;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -50,7 +50,7 @@ namespace SpacialPrisonerDilemma.View
             {
                 return _condition.Matrices.Select((PointMatrix x,int t)=>(new MatrixDescription(){Description=x.ToString(),Color=BrushRectangles[t]}))
                 .ToList();
-                return null;
+                
             }
         }
         private Operation _selectedOperation;

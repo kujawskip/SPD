@@ -3,9 +3,8 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Neighbourhoods;
-using SpacialPrisonerDilemma.Engine.Strategies;
+using SPD.Engine.Neighbourhoods;
+using SPD.Engine.Strategies;
 
 namespace SPD.Engine
 {
@@ -45,7 +44,7 @@ namespace SPD.Engine
             OptimizationKind optimizationKind = OptimizationKind.Absolute)
         {
             if (threadNum <= 0) throw new ArgumentException();
-            OptimizatioKind = optimizationKind;
+            OptimizationKind = optimizationKind;
             Width = initialConfiguration.GetLength(0);
             Height = initialConfiguration.GetLength(1);
             Matrix = mFunc;
@@ -85,13 +84,13 @@ namespace SPD.Engine
         {
         }
 
-        public Func<Coord, PointMatrix> Matrix { get; }
+        public Func<Coord, PointMatrix> Matrix { get; private set; }
         public int CurrentIteration { get; private set; }
-        public int Width { get; }
-        public int Height { get; }
-        public int StepsPerIteration { get; }
-        public int ThreadCount { get; }
-        public OptimizationKind OptimizatioKind { get; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        public int StepsPerIteration { get; private set; }
+        public int ThreadCount { get; private set; }
+        public OptimizationKind OptimizationKind { get; private set; }
         public Coord[] Neighbours(int x, int y)
         {
             return _neighbours[new Coord(x, y)];
@@ -175,7 +174,7 @@ namespace SPD.Engine
         {
             var result = _strategies.GetOrAdd(c, default(IStrategy));
             var treshold = _points.GetOrAdd(c, 0);
-            if (OptimizatioKind == OptimizationKind.Absolute)
+            if (OptimizationKind == OptimizationKind.Absolute)
             {
                 foreach (var n in _neighbours.GetOrAdd(c, new Coord[0]))
                 {
@@ -346,7 +345,9 @@ namespace SPD.Engine
         public int NoneBetrayedCount { get; set; }
         public int BothBetrayedCount { get; set; }
 
-        public SituationMatrix Add(SituationMatrix other) =>
+        public SituationMatrix Add(SituationMatrix other)
+        {
+            return 
             new SituationMatrix
             {
                 WasBetrayedCount = WasBetrayedCount + other.WasBetrayedCount,
@@ -354,5 +355,6 @@ namespace SPD.Engine
                 BothBetrayedCount = BothBetrayedCount + other.BothBetrayedCount,
                 NoneBetrayedCount = NoneBetrayedCount + other.NoneBetrayedCount
             };
+        }
     }
 }

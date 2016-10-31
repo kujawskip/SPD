@@ -1,6 +1,4 @@
 ﻿using System.Collections.Concurrent;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Strategies;
 
 namespace SPD.Engine.Strategies
 {
@@ -10,10 +8,7 @@ namespace SPD.Engine.Strategies
 
         public int StrategyCode
         {
-            get
-            {
-                return BetrayalThreshold * 100;
-            }
+            get { return BetrayalThreshold*100; }
         }
 
         ConcurrentDictionary<long, int> val = new ConcurrentDictionary<long, int>();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using SpacialPrisonerDilemma.Engine.Strategies;
 using SpacialPrisonerDilemma.Model;
 using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
 

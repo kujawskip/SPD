@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Neighbourhoods;
+using SPD.Engine;
 using SPD.Engine.Neighbourhoods;
 
 namespace SpacialPrisonerDilemma.View
@@ -262,8 +261,8 @@ namespace SpacialPrisonerDilemma.View
             double[] d = Validate();
         
             PointMatrix baseMatrix = new PointMatrix((float) d[3],(float) d[2],(float) d[1],(float) d[0]);
-            SPD spd = new SPD(AdvancedPointMatrix?pointMatrix:PointMatrixPick.SingularMatrixCondition(baseMatrix,_ic.Grid.CellGrid.GetLength(0)), Transform(_ic.Grid), GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value), GetNeighbourhood((Neighbourhoods)NeighbourBox.SelectedItem, (Shape)ShapeBox.SelectedItem, (int)Slider1.Value, _ic.Grid.CellGrid.GetLength(0), _ic.Grid.CellGrid.GetLength(1)));
-            spd.ShowDialog();
+            SPDView spdView = new SPDView(AdvancedPointMatrix?pointMatrix:PointMatrixPick.SingularMatrixCondition(baseMatrix,_ic.Grid.CellGrid.GetLength(0)), Transform(_ic.Grid), GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value), GetNeighbourhood((Neighbourhoods)NeighbourBox.SelectedItem, (Shape)ShapeBox.SelectedItem, (int)Slider1.Value, _ic.Grid.CellGrid.GetLength(0), _ic.Grid.CellGrid.GetLength(1)));
+            spdView.ShowDialog();
         }
 
         private bool _advancedMatrixAccepted;

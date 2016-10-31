@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Neighbourhoods;
 
 namespace SPD.Engine.Neighbourhoods
 {
