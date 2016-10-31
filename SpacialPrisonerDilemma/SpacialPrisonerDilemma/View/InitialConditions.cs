@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using SpacialPrisonerDilemma.Model;
 
 namespace SpacialPrisonerDilemma.View
@@ -9,7 +12,7 @@ namespace SpacialPrisonerDilemma.View
     /// Klasa reprezentująca układ początkowy
     /// </summary>
     [Serializable]
-    internal class InitialConditions
+    public class InitialConditions
     {
         internal InitialConditionsGrid Grid;
         internal String Name;
@@ -21,9 +24,14 @@ namespace SpacialPrisonerDilemma.View
         {
             Transformations = new Dictionary<Tuple<int, bool>, StateTransformation>
             {
-                {new Tuple<int, bool>(10, false), x => (x)},
-                {new Tuple<int, bool>(6, false), x => (x >= 5 ? 9 : x)}
+                {new Tuple<int, bool>(SPDAssets.MAX, false), x => (x)},
+              
             };
+            for (int i = 1; i < SPDAssets.MAX; i++)
+            {
+                var i1 = i;
+                Transformations.Add(new Tuple<int, bool>(i, false), (x) => (x >= (i1 - 1) ? SPDAssets.MAX - 1 : x));
+            }
             Dictionary<Tuple<int, bool>, StateTransformation> tempDictionary =
                 new Dictionary<Tuple<int, bool>, StateTransformation>();
             foreach (var kv in Transformations.Where(kv => !kv.Key.Item2))
@@ -34,12 +42,17 @@ namespace SpacialPrisonerDilemma.View
             foreach (var kv in tempDictionary)
             {
                 Transformations.Add(kv.Key, kv.Value);
-
             }
         }
-		public static StateTransformation GetTransformation(int i)
+		public static StateTransformation GetTransformation(int i=SPDAssets.MAX)
 		{
-			return Transformations[new Tuple<int,bool>(i,false)];
+
+		    var T = new Tuple<int, bool>(i, false);
+		    if (Transformations.ContainsKey(T))
+		    {
+		        return Transformations[T];
+		    }
+		    return GetTransformation();
 		}
         /// <summary>
         /// Metoda generująca losowy układ
@@ -47,7 +60,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar układu</param>
         /// <param name="stateCount">Ilość możliwych wartości komórek</param>
         /// <returns>Układ początkowy</returns>
-        internal static InitialConditions GenerateRandom(int size=100,int stateCount=10)
+        internal static InitialConditions GenerateRandom(int size=100,int stateCount=SPDAssets.MAX)
         {
             Random r = new Random();
             var Grid = InitialConditionsGrid.GenerateRandom(r, size, stateCount);
@@ -59,6 +72,7 @@ namespace SpacialPrisonerDilemma.View
             };
             return ic;
         }
+      
         /// <summary>
         /// Metoda factory generująca koło
         /// </summary>
@@ -66,7 +80,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar</param>
         /// <param name="stateCount">Ilość możliwych wartości komórek</param>
         /// <returns>Układ początkowy z kołem</returns>
-        internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = 30)
+        internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = SPDAssets.MAX)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size,stateCount);
             ig.Transform(Transformations[new Tuple<int, bool>(stateCount, reversed)],stateCount);
@@ -84,7 +98,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar</param>
         /// <param name="stateCount">Ilośæ możliwych wartości komórek</param>
         /// <returns>Układ początkowy z donutem</returns>
-        internal static InitialConditions DonutFactory(bool reversed=false,int size=30,int stateCount=10)
+        internal static InitialConditions DonutFactory(bool reversed=false,int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size,stateCount);
             ig.Transform(Transformations[new Tuple<int, bool>(stateCount, reversed)],stateCount);
@@ -103,7 +117,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar</param>
         /// <param name="stateCount">Ilośæ możliwych wartości komórek</param>
         /// <returns>Układ początkowy z przekątną</returns>
-        internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30,int stateCount=10)
+        internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size,stateCount);
             ig.Transform(Transformations[new Tuple<int, bool>(stateCount,reversed)],stateCount);

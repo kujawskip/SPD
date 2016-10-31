@@ -29,7 +29,8 @@ namespace SpacialPrisonerDilemma.View
         {
            SPDAssets.ChangeFont(Box.SelectedItem.ToString());
             Canvas.Children.Clear();
-            Canvas.Children.Add(new Image {Source = SPDAssets.GenerateLegend(Canvas.Height)});
+            var D = SPDAssets.GenerateLegend(Canvas.Height);
+            Canvas.Children.Add(D);
             SPDAssets.ChangeFont(_typeFace);
 
         }

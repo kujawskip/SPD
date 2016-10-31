@@ -29,12 +29,12 @@ namespace SpacialPrisonerDilemma.View
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
-        internal InitialCondition(bool vonneumann = false,InitialConditions condition=null)
+        internal InitialCondition(int _mode=SPDAssets.MAX,InitialConditions condition=null)
         {
             
             InitializeComponent();
-         
-			Mode = vonneumann?6:10;
+
+            Mode = _mode;
             _selectedOperation = Operation.None;
             ComboBox.ItemsSource = SPDAssets.GetBrushRectangles(Mode,InitialConditions.GetTransformation(Mode));
             ComboBox.SelectedIndex = 0;
@@ -54,13 +54,10 @@ namespace SpacialPrisonerDilemma.View
                         new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
-            var image2 = new Image
-            {
-                Source = SPDAssets.GenerateLegend(Legend.Height,Mode,InitialConditions.GetTransformation(Mode)),
-                Stretch = Stretch.Fill
-            };
+            var D = SPDAssets.GenerateLegend(Legend.Height, Mode, InitialConditions.GetTransformation(Mode));
+            D.Stretch = Stretch.Fill;
        
-            Legend.Children.Add(image2);
+            Legend.Children.Add(D);
             if (condition != null) Condition = condition;
         }
         /// <summary>
@@ -72,28 +69,9 @@ namespace SpacialPrisonerDilemma.View
             Fill,
             Check
         }
-        private DrawingImage GenerateImage(InitialConditionsGrid grid, int x, int y, int width, int height)
+        private DrawingImage GenerateImage( int x, int y, int width, int height)
         {
-            var cellWidth = Canvas.Width/width;
-            var cellHeight = Canvas.Height/height;
-          
-           
-            var dg = new DrawingGroup();
-            for (var i = x; i < x + width; i++)
-            {
-                for (var j = y; j < y + height; j++)
-                {
-                  
-                    var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
-                    var gd = new GeometryDrawing
-                    {
-                        Brush = SPDAssets.GetBrush(Condition.Grid.CellGrid[i, j].Value),
-                        Geometry = rg
-                    };
-                    dg.Children.Add(gd);
-                }
-            }
-            return new DrawingImage(dg);
+            return Condition.Grid.GenerateImage(x, y, width, height, Canvas.Width, Canvas.Height);
         }
       
         private void NotifyPropertyChanged(string s)
@@ -124,7 +102,7 @@ namespace SpacialPrisonerDilemma.View
             Canvas.Children.Add(new Image
             {
                 Source =
-                    GenerateImage(Condition.Grid, _x,_y, (int)(Condition.Grid.CellGrid.GetLength(0)*_scale),
+                    GenerateImage( _x,_y, (int)(Condition.Grid.CellGrid.GetLength(0)*_scale),
                         (int)(Condition.Grid.CellGrid.GetLength(1)*_scale))
                
             });

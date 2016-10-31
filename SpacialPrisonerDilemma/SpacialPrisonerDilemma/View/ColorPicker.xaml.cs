@@ -1,7 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using SpacialPrisonerDilemma.Model;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -13,22 +11,25 @@ namespace SpacialPrisonerDilemma.View
     {
         public int Id { get; set; }
         private int _id;
-        public ColorPicker(int index)
+        private readonly int _stateCount;
+        public ColorPicker(int index,int stateCount)
         {
             InitializeComponent();
+            _stateCount = stateCount;
             Box.Items.Add(ColorPicking.RegularPickingFactory());
             Box.Items.Add(ColorPicking.ReverseRegularPickingFactory());
             Box.Items.Add(ColorPicking.GrayScaleFactory());
             Box.Items.Add(ColorPicking.RainbowFactory());
             Box.Items.Add(ColorPicking.CitrusFactory());
             Box.SelectedIndex = index;
+            
             Id = index;
             _id = index;
         }
 
         public void ChangeColors(ColorPicking p)
         {
-            for (int i = 0; i < Enum.GetValues(typeof(WhenBetray)).Length; i++)
+            for (int i = 0; i < SPDAssets.MAX; i++)
             {
                 SPDAssets.ModifyColor(p.GenerateBrush(i), p.GenerateOxyColor(i), i);
             }
@@ -53,9 +54,10 @@ namespace SpacialPrisonerDilemma.View
         {
             ChangeColors(Box.SelectedItem as ColorPicking);
             _id = Box.SelectedIndex;
-            Image I = new Image { Source = SPDAssets.GenerateLegend(Canvas.Height) };
+            var D = SPDAssets.GenerateLegend(Canvas.Height, _stateCount);
+           
             Canvas.Children.Clear();
-            Canvas.Children.Add(I);
+            Canvas.Children.Add(D);
             ChangeColors(Box.Items[Id] as ColorPicking);
         }
     }

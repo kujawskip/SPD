@@ -10,8 +10,9 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public class ColorPicking
     {
-        private readonly Func<int, byte>[] _functions;
+        private readonly Func<Tuple<int,int>, byte>[] _functions;
         private readonly String _s;
+        private int size;
         /// <summary>
         /// Opis wyboru
         /// </summary>
@@ -30,7 +31,9 @@ namespace SpacialPrisonerDilemma.View
             if (l < 0)
             { //nadfiolet
 
-                r = g = b = 0;
+                r = 11;
+                g = 0;
+                b = 11;
 
             }
             else if (l < 20)
@@ -99,11 +102,11 @@ namespace SpacialPrisonerDilemma.View
         /// <returns>Wybór kolorów cytrusowych</returns>
         public static ColorPicking CitrusFactory()
         {
-            Func<int, byte>[] f = {
+            Func<Tuple<int,int>, byte>[] f = {
                 p => 255,
-                p => (byte) ((9-p)<4?64*(9-p):(p==0)?180:(p==5)?230:250),
-                p => (byte) ((9-p)<6?255 - 2*p + ((p==5)?10:0) :255 - 60*((9-p)-5)),
-                p => (byte) ((9-p)<6?2*p -  ((p==5)?10:0) :200 + 12*((9-p)-5))
+                p => (byte) ((p.Item2-1-p.Item1)<(p.Item2/2)-1?64*(p.Item2 -1 - p.Item1):(p.Item1==0)?180:(p.Item1==p.Item2/2)?230:250),
+                p => (byte) ((p.Item2-1-p.Item1)<(p.Item2/2)+1?255 - 2*p.Item1 + ((p.Item1==p.Item2/2)?10:0) :255 - 60*((p.Item2-1-p.Item1)-p.Item2/2)),
+                p => (byte) ((p.Item2-1-p.Item1)<(p.Item2/2)+1?2*p.Item1 -  ((p.Item1==p.Item2/2)?10:0) :200 + 12*((p.Item2-1-p.Item1)-p.Item2/2))
             };
           
             String s = "Kolory cytrusowe";
@@ -115,11 +118,11 @@ namespace SpacialPrisonerDilemma.View
         /// <returns>Wybór kolorów têczy</returns>
         public static ColorPicking RainbowFactory()
         {
-            Func<int, byte>[] f = {
+            Func<Tuple<int,int>, byte>[] f = {
                 p => 255,
-                p => (byte) kolory_teczy(p*11).Item1,
-                p => (byte) kolory_teczy(p*11).Item2,
-                p => (byte) kolory_teczy(p*11).Item3
+                p => (byte) (((double)kolory_teczy((int)((double)p.Item1/p.Item2*110)).Item1)*(Math.Truncate((double)p.Item1*110/p.Item2))),
+                p => (byte) (((double)kolory_teczy((int)((double)p.Item1/p.Item2*110)).Item2)*(Math.Truncate((double)p.Item1*110/p.Item2))),
+                p => (byte)(((double)kolory_teczy((int)((double)p.Item1/p.Item2*110)).Item3)*(Math.Truncate((double)p.Item1*110/p.Item2)))
             };
             String s = "Kolory têczy";
             return new ColorPicking(f, s);
@@ -130,11 +133,11 @@ namespace SpacialPrisonerDilemma.View
         /// <returns>Wybór odcieni szaroœci</returns>
         public static ColorPicking GrayScaleFactory()
         {
-            Func<int, byte>[] f = {
+            Func<Tuple<int,int>, byte>[] f = {
                 p => 255,
-                p => (byte) (((double) 255*p/11)),
-                p => (byte) (((double) 255*p/11)),
-                p => (byte) (((double) 255*p/11))
+                p => (byte) (((double) 255*p.Item1/(p.Item2+1))),
+                p => (byte) (((double) 255*p.Item1/(p.Item2+1))),
+                p => (byte) (((double) 255*p.Item1/(p.Item2+1)))
             };
             String s = "Odcienie szaroœci";
             return new ColorPicking(f, s);
@@ -145,11 +148,11 @@ namespace SpacialPrisonerDilemma.View
         /// <returns>Wybór odwrotnoœci kolorów standardowych</returns>
         public static ColorPicking ReverseRegularPickingFactory()
         {
-            Func<int, byte>[] f = {
+            Func<Tuple<int,int>, byte>[] f = {
                 p => 255,
-                p =>(byte)(255 -  (byte) (256 - 15*p > 255 ? 30 : 255 - 10*p)),
-                p => (byte) (50*p > 255 ? 0 :255- 50*p),
-                p => (byte) (255 - 25*p)
+                p =>(byte)(255 -  (byte) ((256 - p.Item2*p.Item1 > 255 ? 0 : 255 - p.Item1*p.Item2))),
+                p => (byte) (50*p.Item1 > 255 ? 0 :255- 50*p.Item1),
+                p => (byte) (255 - 250*p.Item1/p.Item2)
             };
 
 
@@ -165,11 +168,11 @@ namespace SpacialPrisonerDilemma.View
         /// <returns>Wybór kolorów standardowych</returns>
         public static ColorPicking RegularPickingFactory()
         {
-            Func<int, byte>[] f = {
+            Func<Tuple<int,int>, byte>[] f = {
                 p => 255,
-                p => (byte) (256 - 15*p > 255 ? 0 : 255 - 10*p),
-                p => (byte) (50*p > 255 ? 255 : 50*p),
-                p => (byte) (25*p)
+                p => (byte) (256 - p.Item2*p.Item1 > 255 ? 0 : 255 - p.Item1*p.Item2),
+                p => (byte) (50*p.Item1 > 255 ? 255 : 50*p.Item1),
+                p => (byte) (25*p.Item1)
             };
 
 
@@ -179,10 +182,11 @@ namespace SpacialPrisonerDilemma.View
             var s = "Standardowy zestaw kolorów";
             return new ColorPicking(f, s);
         }
-        private ColorPicking(Func<int, byte>[] functions, string name)
+        private ColorPicking(Func<Tuple<int,int>, byte>[] functions, string name)
         {
             _functions = functions.ToArray();
             _s = name;
+            size = SPDAssets.MAX;
         }
         /// <summary>
         /// Metoda generuje oxycolor o indeksie i wg. metody wyboru
@@ -194,10 +198,10 @@ namespace SpacialPrisonerDilemma.View
             var T = GenerateColor(i);
             return OxyColor.FromArgb(T.Item1, T.Item2, T.Item3, T.Item4);
         }
-        
+       
         private Tuple<byte, byte, byte, byte> GenerateColor(int i)
         {
-            return new Tuple<byte, byte, byte, byte>(_functions[0](i), _functions[1](i), _functions[2](i), _functions[3](i));
+            return new Tuple<byte, byte, byte, byte>(_functions[0](new Tuple<int, int>(i, size)), _functions[1](new Tuple<int, int>(i, size)), _functions[2](new Tuple<int, int>(i, size)), _functions[3](new Tuple<int, int>(i, size)));
         }
         /// <summary>
         /// Metoda generuje brush o indeksie i wg. metody wyboru

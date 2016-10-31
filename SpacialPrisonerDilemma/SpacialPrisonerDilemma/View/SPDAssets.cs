@@ -15,13 +15,14 @@ namespace SpacialPrisonerDilemma.View
     {
         private static Brush[] _brushArray;
         private static OxyColor[] _oxyArray;
+        public const int MAX = 62;
         /// <summary>
         /// Metoda zwraca prostokąty zawierające kolory wykresu
         /// </summary>
         /// <returns>Lista prostokątów</returns>
-		public static List<Image> GetBrushRectangles()
+		public static List<Image> GetBrushRectangles(int count=MAX)
         {
-			return GetBrushRectangles(10,(x)=>(x));
+			return GetBrushRectangles(count,(x)=>(x));
         }
 		 /// <summary>
         /// Metoda zwraca prostokąty zawierające kolory wykresu
@@ -54,7 +55,7 @@ namespace SpacialPrisonerDilemma.View
         /// Metoda inicjalizująca generująca pędzle i OxyColory
         /// </summary>
         /// <param name="count">Ilość kolorów do wygenerowania</param>
-        public static void CreateBrushes(int count)
+        public static void CreateBrushes(int count=MAX)
         {
 
             _brushArray = new Brush[count];
@@ -111,7 +112,7 @@ namespace SpacialPrisonerDilemma.View
         public static void InitialiseDescriptions()
         {
             var des = new List<string> {"Zawsze zdradzaj"};
-            for (var i = 1; i < 9; i++)
+            for (var i = 1; i < MAX-1; i++)
             {
                 des.Add(string.Format("Zdradzaj gdy {0} sąsiad{1} zdradza", i, i == 1 ? "" : "ów"));
             }
@@ -125,47 +126,74 @@ namespace SpacialPrisonerDilemma.View
 		/// <param name="stateCount">Ilość kolorów</param>
 		/// <param name="SF">Predykat wyboru kolorów</param>
         /// <returns>Obrazek legendy</returns>
-        public static DrawingImage GenerateLegend(double height,int stateCount,StateTransformation SF)
+        public static Image GenerateLegend(double height,int stateCount,StateTransformation SF)
         {
 
             var dg = new DrawingGroup();
-            for (var i = 0; i < stateCount; i++)
-            {
-                var rg = new RectangleGeometry(new Rect(new Point(0,i * (height / stateCount)), new Point(20,-8+ (i + 1) * (height / stateCount))));
-                var text = new FormattedText(_descriptions[SF(i)],
+            var text = new FormattedText(_descriptions[SF(0)],
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface(_font),
-                    15,
+                    (-3.0 * stateCount + 810) / 52,
                     Brushes.Black);
+            var gd2 = new GeometryDrawing
+            {
+                Pen = new Pen(Brushes.Black, 1),
+                Brush = Brushes.Black,
+                Geometry = text.BuildGeometry(new Point(22, 0))
+            };
+            dg.Children.Add(gd2);
+            text = new FormattedText(_descriptions[SF(stateCount - 1)],
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface(_font),
+                    (-3.0 * stateCount + 810) / 52,
+                    Brushes.Black);
+            gd2 = new GeometryDrawing
+            {
+                Pen = new Pen(Brushes.Black, 1),
+                Brush = Brushes.Black,
+                Geometry = text.BuildGeometry(new Point(22, (stateCount - 1)* (height / stateCount)))
+            };
+            dg.Children.Add(gd2);
+            for (var i = 0; i < stateCount; i++)
+            {
+                var rg = new RectangleGeometry(new Rect(new Point(0,i * (height / stateCount)), new Point(20,(i + 1) * (height / stateCount))));
+                
                 var gd = new GeometryDrawing
                 {
                     Brush = GetBrush(SF(i)),
                     Geometry = rg,
-                    Pen = new Pen(Brushes.Black, 2)
+                    Pen = new Pen(Brushes.Black, 0)
                 };
-                var gd2 = new GeometryDrawing
-                {
-                    Pen = new Pen(Brushes.Black, 2),
-                    Brush = Brushes.Black,
-                    Geometry = text.BuildGeometry(new Point(22,i*(height/stateCount)))
-                };
+              
                 dg.Children.Add(gd);
-                dg.Children.Add(gd2);
+                
             }
             var d = new DrawingImage(dg);
             d.Freeze();
-            return d;
+		     return new Image()
+		     {
+		         Source = d,
+                 
+		     };
+            
         }
         /// <summary>
         /// Metoda generuje obrazek legendy
         /// </summary>
         /// <param name="height">Wysokość canvasa dla legendy</param>
         /// <returns>Obrazek legendy</returns>
-        public static DrawingImage GenerateLegend(double height)
+        public static Image GenerateLegend(double height)
         {
 
-            return GenerateLegend(height,10,x=>x);
+            return GenerateLegend(height,MAX,x=>x);
+        }
+
+        public static Image GenerateLegend(double height, int stateCount)
+        {
+            return GenerateLegend(height,stateCount,(x)=>(x>=(stateCount-1)?SPDAssets.MAX-1:x))
+            ;
         }
     }
 }
