@@ -25,6 +25,7 @@ using SPD.Engine.Neighbourhoods;
 using CategoryAxis = OxyPlot.Axes.CategoryAxis;
 using ColumnSeries = OxyPlot.Series.ColumnSeries;
 using ContextMenu = System.Windows.Controls.ContextMenu;
+using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
 using LinearAxis = OxyPlot.Axes.LinearAxis;
 using MenuItem = System.Windows.Controls.MenuItem;
 using MessageBox = System.Windows.MessageBox;
@@ -38,7 +39,7 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class SPD : INotifyPropertyChanged
     {
-        private readonly Engine.SPD _spd;
+        private readonly global::SPD.Engine.SPD _spd;
         private readonly int _width;
         private readonly int _height;
         readonly int[,] _strategies;
@@ -212,7 +213,9 @@ namespace SpacialPrisonerDilemma.View
                 for (var j = 0; j < cells.GetLength(1); j++)
                 {
                     var c = cells[i, j];
+
                     var integerStrategy = (Engine.Strategies.IntegerStrategy) _strategyDictionary[c.Item1];
+
 
                     if (integerStrategy != null)
                     {
@@ -246,7 +249,7 @@ namespace SpacialPrisonerDilemma.View
             Dictionary<int, Engine.Strategies.IStrategy> result = new Dictionary<int, Engine.Strategies.IStrategy>();
             for (int i = 0; i < count-1; i++)
             {
-                result.Add(i, new Engine.Strategies.IntegerStrategy(i));
+                result.Add(i, new IntegerStrategy(i));
             }
             result.Add(SPDAssets.MAX-1,new Engine.Strategies.IntegerStrategy(count-1));
             return result;
@@ -280,10 +283,12 @@ namespace SpacialPrisonerDilemma.View
             _strategyDictionary = GenerateIntegerStrategies(_strategyCount);
             
             _spd =
+
                 new Engine.SPD(
                     Matrix.Function,
                     neighbourhood, strategies,
                   _strategyDictionary, 10, threadNum);
+
             Speed = 1;
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
@@ -396,7 +401,7 @@ namespace SpacialPrisonerDilemma.View
                     var gd = new GeometryDrawing
                     {
                         Brush =
-                            GetBrush(new Engine.Strategies.IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
+                            GetBrush(new IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);
