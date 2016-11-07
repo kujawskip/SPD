@@ -25,13 +25,32 @@ namespace SpacialPrisonerDilemma.View
         private InitialConditions _condition;
 		private readonly int Mode;
         private Operation _selectedOperation;
-        
+        private int _tooltip;
+
+        public int ToolTipID
+        {
+            get { return _tooltip; }
+            set
+            {
+                _tooltip = value;
+                NotifyPropertyChanged("ToolTipID");
+                NotifyPropertyChanged("ToolTipDescription");
+            }
+        }
+        public string ToolTipDescription
+        {
+            get
+            {
+                if (ToolTipID < 0) return "";
+                return SPDAssets.GetDescription(ToolTipID, Mode);
+            }
+        }
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
         internal InitialCondition(int _mode=SPDAssets.MAX,InitialConditions condition=null)
         {
-            
+            _tooltip = -1;
             InitializeComponent();
 
             Mode = _mode;
@@ -71,7 +90,7 @@ namespace SpacialPrisonerDilemma.View
         }
         private DrawingImage GenerateImage( int x, int y, int width, int height)
         {
-            return Condition.Grid.GenerateImage(x, y, width, height, Canvas.Width, Canvas.Height);
+            return Condition.Grid.GenerateImage(x, y, width, height, Canvas.Width, Canvas.Height,ToolTipID);
         }
       
         private void NotifyPropertyChanged(string s)
@@ -264,6 +283,49 @@ namespace SpacialPrisonerDilemma.View
             }
             _selectedOperation = Operation.None;
             
+        }
+
+        private void Legend_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.GetPosition(Legend);
+            var d = p.Y / (Legend.ActualHeight / (Mode));
+            bool b = (int)d == ToolTipID;
+            ToolTipID = (int)d;
+            if (!b) UpdateScreen();
+        }
+
+        private void Legend_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ToolTipID = -1;
+            UpdateScreen();
+        }
+
+        private void Canvas_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.GetPosition(Canvas);
+            var X = p.X / _scale;
+            var Y = p.Y / _scale;
+            X = X - _x;
+            Y = Y - _y;
+            X = X / Canvas.Width;
+            X = X * Condition.Grid.CellGrid.GetLength(0);
+            if (X >= Condition.Grid.CellGrid.GetLength(0)) return;
+            Y = Y / Canvas.Height;
+            Y = Y * Condition.Grid.CellGrid.GetLength(0);
+            if (Y >= Condition.Grid.CellGrid.GetLength(0)) return;
+            var C = Condition.Grid.CellGrid;
+
+            var c = C[(int)X, (int)Y];
+            var b = c.Value == ToolTipID;
+            ToolTipID = c.Value;
+            if (!b) UpdateScreen();
+
+        }
+
+        private void Canvas_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ToolTipID = -1;
+            UpdateScreen();
         }
     }
 }

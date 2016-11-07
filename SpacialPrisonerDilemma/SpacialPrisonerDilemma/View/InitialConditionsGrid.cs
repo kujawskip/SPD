@@ -15,7 +15,7 @@ namespace SpacialPrisonerDilemma.View
     [Serializable]
     public class InitialConditionsGrid 
     {
-        public DrawingImage GenerateImage(int x, int y, int width, int height, double CanvasWidth, double CanvasHeight)
+        public DrawingImage GenerateImage(int x, int y, int width, int height, double CanvasWidth, double CanvasHeight,int replace=-1)
         {
             var cellWidth = CanvasWidth / width;
             var cellHeight = CanvasHeight / height;
@@ -30,7 +30,7 @@ namespace SpacialPrisonerDilemma.View
                     var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
                     var gd = new GeometryDrawing
                     {
-                        Brush = SPDAssets.GetBrush(this.CellGrid[i, j].Value),
+                        Brush = CellGrid[i,j].Value==replace?new SolidColorBrush(Color.FromRgb(0,0,0)):SPDAssets.GetBrush(this.CellGrid[i, j].Value),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);

@@ -137,6 +137,8 @@ namespace SpacialPrisonerDilemma.View
                 NotifyPropertyChanged("MatrixCount");
                 NotifyPropertyChanged("MatrixDescriptions");
                 NotifyPropertyChanged("StandardPointCounting");
+                NotifyPropertyChanged("CanAdd");
+                NotifyPropertyChanged("CanDelete");
             }
         }
 
@@ -316,6 +318,7 @@ namespace SpacialPrisonerDilemma.View
         private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             TryValidate();
+            NotifyPropertyChanged("CanAdd");
         }
 
         private bool TryValidate(string text, out double var1, out double var2)
@@ -399,6 +402,21 @@ namespace SpacialPrisonerDilemma.View
             }
         }
 
+        public bool CanAdd
+        {
+            get
+            {
+                if (!_canvalidate) return false;
+                 var D = Validate();
+                if (D == null) return false;
+                var Matrix = new PointMatrix((float) D[3],(float) D[2],(float) D[1],(float) D[0]);
+                return MatrixDescriptions.Count(M => M.Description == Matrix.ToString())==0;
+            }
+        }
+        public bool CanDelete
+        {
+            get { return MatrixDescriptions.Count > 1; }
+        }
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var D = Validate();
@@ -413,6 +431,42 @@ namespace SpacialPrisonerDilemma.View
                 _comboBox.ItemsSource = BrushRectangles;
                 Condition = Condition;
             }
+        }
+
+        private void MenuItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MatricesListBox.SelectedIndex == -1) return;
+            var MatrixDescription = (MatricesListBox.SelectedItems[0] as MatrixDescription);
+            var L = Condition.Matrices;
+            var M = Condition.Matrices.Where(m => m.ToString() != MatrixDescription.Description).ToList();
+            for (int i = 0; i < Condition.Indices.GetLength(0); i++)
+            {
+                for (int j = 0; j < Condition.Indices.GetLength(1); j++)
+                {
+                    var I = Condition.Indices[i, j];
+                    if (Condition.Matrices[I].ToString() == MatrixDescription.Description)
+                    {
+                        Condition.Indices[i, j] = 0;
+
+                    }
+                    else
+                    {
+                        Condition.Indices[i, j] = M.FindIndex(m => m.ToString() == L[I].ToString());
+
+                    }
+                }
+            }
+            Condition.Matrices = M;
+            BrushRectangles = SPDAssets.GetBrushRectangles(MatrixCount);
+            _comboBox.ItemsSource = BrushRectangles;
+            Condition = Condition;
+
+
+        }
+
+        private void _comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

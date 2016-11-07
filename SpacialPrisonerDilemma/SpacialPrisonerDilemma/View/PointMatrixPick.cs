@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 using SPD.Engine;
 
 namespace SpacialPrisonerDilemma.View
@@ -77,6 +80,42 @@ namespace SpacialPrisonerDilemma.View
                 }
             }
             return Condition;
+        }
+
+        public DrawingImage GenerateImage(int x,int y,int width,int height,double CanvasWidth,double CanvasHeight)
+        {
+            var IC = CreateICFromPick(this);
+            var di = IC.Grid.GenerateImage(x, y, width, height, CanvasWidth, CanvasHeight);
+            DrawingGroup dg = di.Drawing as DrawingGroup;
+            if (dg == null) return di;
+            int h = 20;
+            for (int i = 0; i < Matrices.Count; i++)
+            {
+                RectangleGeometry rg =
+                    new RectangleGeometry(new Rect(new Point(0, 10 + CanvasHeight + h*i),
+                        new Point(10, 10 + CanvasHeight + h*(i + 1))));
+                var gd = new GeometryDrawing
+                {
+                    Brush = SPDAssets.GetBrush(i),
+                    Geometry = rg,
+                    Pen = new Pen(Brushes.Black, 0.5)
+                };
+                var text = new FormattedText(Matrices[i].ToString(),
+                   CultureInfo.CurrentCulture,
+                   FlowDirection.LeftToRight,
+                   new Typeface(SPDAssets.GetFont()),
+                   10,
+                   Brushes.Black);
+                var gd2 = new GeometryDrawing
+                {
+                    Pen = new Pen(Brushes.Black, 1),
+                    Brush = Brushes.Black,
+                    Geometry = text.BuildGeometry(new Point(11, 10 + (h/2) + CanvasHeight + h * i))
+                };
+                dg.Children.Add(gd);
+                dg.Children.Add(gd2);
+            }
+            return new DrawingImage(dg);
         }
         public static InitialConditions CreateICFromPick(PointMatrixPick Condition)
         {

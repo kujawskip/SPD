@@ -60,10 +60,11 @@ namespace SpacialPrisonerDilemma.View
 
             _brushArray = new Brush[count];
             _oxyArray = new OxyColor[count];
+            var cp = ColorPicking.RegularPickingFactory(count);
             for (var p = 0; p < count; p++)
             {
-                _brushArray[p] = new SolidColorBrush(Color.FromRgb((byte)(256 - 15 * p > 255 ? 0 : 255 - 10 * p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p)));
-                _oxyArray[p] = OxyColor.FromRgb((byte)(256 - 15 * p > 255 ? 0 : 255 - 10 * p), (byte)(50 * p > 255 ? 255 : 50 * p), (byte)(25 * p));
+                _brushArray[p] = cp.GenerateBrush(p);
+                _oxyArray[p] = cp.GenerateOxyColor(p);
             }
         }
         /// <summary>
@@ -119,6 +120,11 @@ namespace SpacialPrisonerDilemma.View
             des.Add("Zawsze wybaczaj");
             _descriptions = des.ToArray();
         }
+
+        public static string GetDescription(int index, int count)
+        {
+            return _descriptions[index == count - 1 ? MAX - 1 : index];
+        }
 		 /// <summary>
         /// Metoda generuje obrazek legendy
         /// </summary>
@@ -130,7 +136,7 @@ namespace SpacialPrisonerDilemma.View
         {
 
             var dg = new DrawingGroup();
-            var text = new FormattedText(_descriptions[SF(0)],
+            var text = new FormattedText(GetDescription(SF(0),stateCount),
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface(_font),
@@ -143,7 +149,7 @@ namespace SpacialPrisonerDilemma.View
                 Geometry = text.BuildGeometry(new Point(22, 0))
             };
             dg.Children.Add(gd2);
-            text = new FormattedText(_descriptions[SF(stateCount - 1)],
+            text = new FormattedText(GetDescription(SF(stateCount - 1),stateCount),
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface(_font),
@@ -192,7 +198,7 @@ namespace SpacialPrisonerDilemma.View
 
         public static Image GenerateLegend(double height, int stateCount)
         {
-            return GenerateLegend(height,stateCount,(x)=>(x>=(stateCount-1)?SPDAssets.MAX-1:x))
+            return GenerateLegend(height,stateCount,(x)=>(x))
             ;
         }
     }

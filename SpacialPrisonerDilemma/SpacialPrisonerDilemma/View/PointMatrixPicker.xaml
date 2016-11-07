@@ -35,13 +35,21 @@
         </Grid>
         <StackPanel Orientation="Vertical" Margin="528,76,0,0" Grid.ColumnSpan="2">
             <ListBox Name="MatricesListBox"  ItemsSource="{Binding MatrixDescriptions}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Usuń" Click="MenuItemDelete_Click" IsEnabled="{Binding CanDelete}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding Color.Source}"/>
                             <TextBlock Text="{Binding Description}"></TextBlock>
+                            
                         </StackPanel>
+                        
                     </DataTemplate>
+                    
                 </ListBox.ItemTemplate>
 
             </ListBox>
@@ -59,7 +67,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Content="+" HorizontalAlignment="Left" Height="21" Width="18" Click="ButtonBase_OnClick" />
+                    <Button Content="+" HorizontalAlignment="Left" Height="21" Width="18" Click="ButtonBase_OnClick" IsEnabled="{Binding CanAdd}" />
                     <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center">Więzień pierwszy</TextBlock>
                     <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap">Więzień drugi</TextBlock>
@@ -75,7 +83,7 @@
             </GroupBox>
         </StackPanel>
 
-        <ComboBox Name="_comboBox" ItemTemplate="{StaticResource CmbTemplate}" HorizontalAlignment="Left" Height="23" Margin="386,57,0,0" VerticalAlignment="Top" Width="87"/>
+        <ComboBox Name="_comboBox" ItemTemplate="{StaticResource CmbTemplate}" HorizontalAlignment="Left" Height="23" Margin="386,57,0,0" VerticalAlignment="Top" Width="87" SelectionChanged="_comboBox_SelectionChanged"/>
         <ComboBox x:Name="ComboBoxCopy"  HorizontalAlignment="Left" Height="20" Margin="20,23,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ComboBox_SelectionChanged"/>
         <RadioButton GroupName="Operation" Checked="RadioPixel_OnChecked" Unchecked="RadioPixel_OnChecked" Name="RadioPixel"  Content="Zmiana komórki" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="386,154,0,0"/>
         <RadioButton GroupName="Operation" Checked="RadioPixel_OnChecked" Unchecked="RadioPixel_OnChecked" Name="RadioFill" Content="Zastąpienie koloru" HorizontalAlignment="Left" Height="32" Margin="386,127,0,0" VerticalAlignment="Top" Width="123"/>

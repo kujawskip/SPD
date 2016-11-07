@@ -47,12 +47,7 @@ namespace SpacialPrisonerDilemma.View
 		public static StateTransformation GetTransformation(int i=SPDAssets.MAX)
 		{
 
-		    var T = new Tuple<int, bool>(i, false);
-		    if (Transformations.ContainsKey(T))
-		    {
-		        return Transformations[T];
-		    }
-		    return GetTransformation();
+		    return (x) => x;
 		}
         /// <summary>
         /// Metoda generująca losowy układ
@@ -64,7 +59,7 @@ namespace SpacialPrisonerDilemma.View
         {
             Random r = new Random();
             var Grid = InitialConditionsGrid.GenerateRandom(r, size, stateCount);
-            Grid.Transform(Transformations[new Tuple<int, bool>(stateCount,false)],stateCount);
+            Grid.Transform(GetTransformation(stateCount),stateCount);
             var ic = new InitialConditions
             {
                 Name = "Losowy" + r.Next(),
@@ -83,7 +78,7 @@ namespace SpacialPrisonerDilemma.View
         internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = SPDAssets.MAX)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size,stateCount);
-            ig.Transform(Transformations[new Tuple<int, bool>(stateCount, reversed)],stateCount);
+            ig.Transform(GetTransformation(stateCount),stateCount);
             var ic = new InitialConditions
             {
                 Name = "Koło " + (reversed ? "- odwrócone kolory" : ""),
@@ -101,7 +96,7 @@ namespace SpacialPrisonerDilemma.View
         internal static InitialConditions DonutFactory(bool reversed=false,int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size,stateCount);
-            ig.Transform(Transformations[new Tuple<int, bool>(stateCount, reversed)],stateCount);
+            ig.Transform(GetTransformation(stateCount),stateCount);
             var ic = new InitialConditions
             {
                 Name = "Donut " + (reversed ? "- odwrócone kolory" : ""),
@@ -120,7 +115,7 @@ namespace SpacialPrisonerDilemma.View
         internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size,stateCount);
-            ig.Transform(Transformations[new Tuple<int, bool>(stateCount,reversed)],stateCount);
+            ig.Transform(GetTransformation(stateCount),stateCount);
             var ic = new InitialConditions
             {
                 Name = "Przekątna " + (reversed ? "- odwrócone kolory" : ""),

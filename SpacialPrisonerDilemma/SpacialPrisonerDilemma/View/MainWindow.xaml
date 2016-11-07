@@ -62,7 +62,7 @@
 
 
 
-                    <Slider VerticalAlignment="Center" x:Name="Slider1" Width="80"  Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"  Maximum="3" Margin="8"/>
+                    <Slider VerticalAlignment="Center" x:Name="Slider1" Width="80"  Minimum="1" TickFrequency="1" IsSnapToTickEnabled="True"  Maximum="3" Margin="8" ValueChanged="Slider1_ValueChanged"/>
                 </StackPanel>
                 <ComboBox Name="ShapeBox" Grid.Row="1" Grid.Column="2" Margin="8" Width="80"/>
 

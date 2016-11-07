@@ -26,6 +26,8 @@ namespace SpacialPrisonerDilemma.View
             Płaski,
             Torus
         }
+
+      
         private ValidationErrors _error;
         private int _colorPickerIndex;
         private InitialConditions _ic;
@@ -99,19 +101,22 @@ namespace SpacialPrisonerDilemma.View
         }
         public MainWindow()
         {
-
+            SPDAssets.CreateBrushes();
+            SPDAssets.ChangeFont("Arial");
+            SPDAssets.InitialiseDescriptions();
+            _colorPicking = ColorPicking.RegularPickingFactory(10);
             InitializeComponent();
+
             InitialConditions.Initialise();
             ShapeBox.ItemsSource = Enum.GetValues(typeof(Shape));
             NeighbourBox.ItemsSource = Enum.GetValues(typeof(Neighbourhoods));
             ShapeBox.SelectedItem = Shape.Płaski;
             NeighbourBox.SelectedItem = Neighbourhoods.Moore;
+
             DataContext = this;
             Error = ValidationErrors.None;
             _canvalidate = true;
-            SPDAssets.CreateBrushes();
-            SPDAssets.ChangeFont("Arial");
-            SPDAssets.InitialiseDescriptions();
+        
 
         }
 
@@ -303,8 +308,10 @@ namespace SpacialPrisonerDilemma.View
             }
             _ic = ic.Condition;
             NotifyPropertyChanged("NoError");
+            NotifyPropertyChanged("NoAdvancedError");
         }
 
+        private ColorPicking _colorPicking;
         private void Color_OnClick(object sender, RoutedEventArgs e)
         {
             var cp = new ColorPicker(_colorPickerIndex, 2+GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value));
@@ -312,21 +319,33 @@ namespace SpacialPrisonerDilemma.View
             if (b.HasValue && b.Value)
             {
                 _colorPickerIndex = cp.Id;
-                
+                _colorPicking = cp.Box.SelectedItem as ColorPicking;
+
             }
         }
 
         private void Font_OnClick(object sender, RoutedEventArgs e)
         {
-           var fp = new FontPicker(SPDAssets.GetFont());
+            var fp = new FontPicker(SPDAssets.GetFont(), 2 + GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value));
            fp.ShowDialog();
           
+        }
+
+        private void UpdateColors()
+        {
+            if (NeighbourBox == null) return;
+            if (Slider1 == null) return;
+            if (_colorPicking == null) return;
+            if (NeighbourBox.SelectedItem == null) return;
+            _colorPicking.ChangeSize(2+GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value));
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _ic = null;
             NotifyPropertyChanged("NoError");
+            UpdateColors();
+
         }
 
         private void AdvancedMatrix_OnClick(object sender, RoutedEventArgs e)
@@ -345,6 +364,11 @@ namespace SpacialPrisonerDilemma.View
                 AdvancedMatrixAccepted = true;
                 pointMatrix = picker.Condition;
             }
+        }
+
+        private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateColors();
         }
     }
 

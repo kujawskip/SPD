@@ -16,11 +16,11 @@ namespace SpacialPrisonerDilemma.View
         {
             InitializeComponent();
             _stateCount = stateCount;
-            Box.Items.Add(ColorPicking.RegularPickingFactory());
-            Box.Items.Add(ColorPicking.ReverseRegularPickingFactory());
-            Box.Items.Add(ColorPicking.GrayScaleFactory());
-            Box.Items.Add(ColorPicking.RainbowFactory());
-            Box.Items.Add(ColorPicking.CitrusFactory());
+            Box.Items.Add(ColorPicking.RegularPickingFactory(stateCount));
+            Box.Items.Add(ColorPicking.ReverseRegularPickingFactory(stateCount));
+            Box.Items.Add(ColorPicking.GrayScaleFactory(stateCount));
+            Box.Items.Add(ColorPicking.RainbowFactory(stateCount));
+            Box.Items.Add(ColorPicking.CitrusFactory(stateCount));
             Box.SelectedIndex = index;
             
             Id = index;
@@ -29,10 +29,7 @@ namespace SpacialPrisonerDilemma.View
 
         public void ChangeColors(ColorPicking p)
         {
-            for (int i = 0; i < SPDAssets.MAX; i++)
-            {
-                SPDAssets.ModifyColor(p.GenerateBrush(i), p.GenerateOxyColor(i), i);
-            }
+            p.ModifyColors();
 
         }
         private void Akceptuj_Click(object sender, RoutedEventArgs e)
