@@ -160,12 +160,14 @@ namespace SpacialPrisonerDilemma.View
             {
                 properties.Add("ErrorMessage");
                 properties.Add("NoError");
+                properties.Add("NoAdvancedError");
 
             }
-            if (s == "NoError")
+            if (s == "NoError"||s == "NoAdvancedError")
             {
                 properties.Add("ShowErrorMessage");
             }
+           
             foreach (var p in properties)
             {
                 NotifyPropertyChanged(p);

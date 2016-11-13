@@ -117,6 +117,7 @@ namespace SpacialPrisonerDilemma.View
         }
         private void UpdateScreen()
         {
+            if (Canvas == null) return;
             Canvas.Children.Clear();
             Canvas.Children.Add(new Image
             {

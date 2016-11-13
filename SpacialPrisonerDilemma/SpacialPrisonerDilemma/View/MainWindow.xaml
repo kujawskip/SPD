@@ -14,33 +14,38 @@
         </Grid.RowDefinitions>
 
         <GroupBox Header="Macierz wypłat" Margin="16" Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="96*" />
-                    <ColumnDefinition Width="66*" />
-                    <ColumnDefinition Width="80*" />
-                    <ColumnDefinition Width="81*" />
-                </Grid.ColumnDefinitions>
-                <Button Content="Zaawansowane" Grid.Row="1" Click="AdvancedMatrix_OnClick" IsEnabled="{Binding NoError}"/>
-                <CheckBox IsChecked="{Binding AdvancedPointMatrix}" Grid.Row="1" Grid.Column="1">Aktywne</CheckBox>
-                <TextBlock   TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="82,18,14,20" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="0"/>
-                <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="36,4,35,4" HorizontalAlignment="Center" Width="90">Więzień pierwszy</TextBlock>
-                <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve" Margin="0,18,8,19" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap" Height="16" Width="73">Więzień drugi</TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="2" Margin="4">Zdradza</TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="3" Margin="4">Nie zdradza</TextBlock>
-                <TextBlock Grid.Row="2" Grid.Column="1" Margin="4">Zdradza</TextBlock>
-                <TextBlock Grid.Row="3" Grid.Column="1" Margin="4">Nie zdradza</TextBlock>
-                <TextBox Grid.Row="2" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
-                <TextBox Grid.Row="3" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
-                <TextBox Grid.Row="2" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
-                <TextBox Grid.Row="3" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
-            </Grid>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" >
+                    <Button Content="Zaawansowane"  Click="AdvancedMatrix_OnClick" IsEnabled="{Binding NoError}"/>
+                    <CheckBox IsChecked="{Binding AdvancedPointMatrix}" Grid.Row="0" Grid.Column="1">Aktywne</CheckBox>
+                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="93*" />
+                        <ColumnDefinition Width="70*" />
+                        <ColumnDefinition Width="79*" />
+                        <ColumnDefinition Width="81*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0"   TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red"  Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="31,4,35,4" HorizontalAlignment="Center" Width="94">Więzień pierwszy</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve" Margin="0,10,8,10" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap" Height="32" Width="73">Więzień&#x0a;drugi</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Margin="4">Zdradza</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="3" Margin="4">Nie zdradza</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="4">Zdradza</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="4">Nie zdradza</TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
+                </Grid>
+            </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="2" Header="Opcje obliczeń" Margin="16">
             <Grid>
