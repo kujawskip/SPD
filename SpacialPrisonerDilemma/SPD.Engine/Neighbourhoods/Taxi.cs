@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SPD.Engine.Neighbourhoods
 {
-    class Taxi:INeighbourhood
+    public class Taxi:INeighbourhood
     {
         readonly int _width;
         readonly int _height;
@@ -63,7 +63,7 @@ namespace SPD.Engine.Neighbourhoods
         }
     }
 
-    class TaxiTorus:INeighbourhood
+    public class TaxiTorus:INeighbourhood
     {
         readonly int _width;
         readonly int _height;

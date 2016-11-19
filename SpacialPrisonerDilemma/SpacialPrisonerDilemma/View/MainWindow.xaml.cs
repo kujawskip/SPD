@@ -19,7 +19,8 @@ namespace SpacialPrisonerDilemma.View
         {
             Moore,
             VonNeumann,
-            Mixed
+            Mixed,
+            Taxi
         }
         public enum Shape
         {
@@ -67,6 +68,8 @@ namespace SpacialPrisonerDilemma.View
                     return (2 * Size + 1) * (2 * Size + 1) - 1;
                 case Neighbourhoods.VonNeumann:
                     return 4 * Size;
+                case Neighbourhoods.Taxi:
+                   return 2*Size*(Size + 1);
             }
             throw new ArgumentException("Unrecognisable neighbourhood");
         }
@@ -94,6 +97,15 @@ namespace SpacialPrisonerDilemma.View
                             return new VonNeumann(_width, _height, Size);
                         case Shape.Torus:
                             return new VonNeumannTorus(_width, _height, Size);
+                    }
+                    break;
+                case Neighbourhoods.Taxi:
+                    switch (_shape)
+                    {
+                        case Shape.Płaski:
+                            return new Taxi(_width, _height, Size);
+                        case Shape.Torus:
+                            return new TaxiTorus(_width, _height, Size);
                     }
                     break;
             }
@@ -163,7 +175,11 @@ namespace SpacialPrisonerDilemma.View
                 properties.Add("NoAdvancedError");
 
             }
-            if (s == "NoError"||s == "NoAdvancedError")
+            if (s == "NoError")
+            {
+                properties.Add("NoAdvancedError");
+            }
+            if (s == "NoAdvancedError")
             {
                 properties.Add("ShowErrorMessage");
             }
