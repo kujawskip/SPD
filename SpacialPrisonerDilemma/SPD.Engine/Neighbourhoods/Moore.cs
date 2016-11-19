@@ -25,19 +25,10 @@ namespace SPD.Engine.Neighbourhoods
         public IEnumerable<Coord> GetNeighbours(int x, int y)
         {
             if (!IsValid(x, y)) throw new ArgumentException();
-            for (int i = 1; i <= _dist; i++)
+            for (var xi = -_dist; xi <= _dist; xi++)
+            for (var yi = -_dist; yi <= _dist; yi++)
             {
-                if (IsValid(x, y - i)) yield return new Coord(x, y - i);
-                if (IsValid(x + i, y - i)) yield return new Coord(x + i, y - i);
-
-                if (IsValid(x + i, y)) yield return new Coord(x + i, y);
-                if (IsValid(x + i, y + i)) yield return new Coord(x + i, y + i);
-
-                if (IsValid(x, y + i)) yield return new Coord(x, y + i);
-                if (IsValid(x - i, y + i)) yield return new Coord(x - i, y + i);
-
-                if (IsValid(x - i, y)) yield return new Coord(x - i, y);
-                if (IsValid(x - i, y - i)) yield return new Coord(x - i, y - i);
+                if (IsValid(x + xi, y + yi) && !(xi == 0 && yi == 0)) yield return new Coord(x + xi, y + yi);
             }
         }
 
@@ -49,13 +40,16 @@ namespace SPD.Engine.Neighbourhoods
         public IEnumerable<Coord> GetHalfNeighbours(int x, int y)
         {
             if (!IsValid(x, y)) throw new ArgumentException();
-            for (int i = 1; i <= _dist; i++)
+            for (int xi = 0; xi <= _dist; xi++)
+            for (int yi = -_dist; yi < 0; yi++)
             {
-                if (IsValid(x, y - i)) yield return new Coord(x, y - i);
-                if (IsValid(x + i, y - i)) yield return new Coord(x + i, y - i);
-
-                if (IsValid(x + i, y)) yield return new Coord(x + i, y);
-                if (IsValid(x + i, y + i)) yield return new Coord(x + i, y + i);
+                if (xi == 0 && yi == 0) continue;
+                if (IsValid(x + xi, y + yi)) yield return new Coord(x + xi, y + yi);
+            }
+            for (int xi = 1; xi <= _dist; xi++)
+            for (int yi = 0; yi <= _dist; yi++)
+            {
+                if (IsValid(x + xi, y + yi)) yield return new Coord(x + xi, y + yi);
             }
         }
 
@@ -84,20 +78,11 @@ namespace SPD.Engine.Neighbourhoods
             var sx = x + _width;
             var sy = y + _height;
 
-            for(int i=1; i<=_dist; i++)
+            for (var xi = -_dist; xi <= _dist; xi++)
+            for (var yi = -_dist; yi <= _dist; yi++)
             {
-
-                yield return new Coord(x, (sy - i) % _height);
-                yield return new Coord((sx + i) % _width, (sy - i) % _height);
-
-                yield return new Coord((sx + i) % _width, y);
-                yield return new Coord((sx + i) % _width, (sy + i) % _height);
-
-                yield return new Coord(x, (sy + i) % _height);
-                yield return new Coord((sx - i) % _width, (sy + i) % _height);
-
-                yield return new Coord((sx - i) % _width, y);
-                yield return new Coord((sx - i) % _width, (sy - i) % _height);
+                if (IsValid(x + xi, y + yi) && !(xi == 0 && yi == 0))
+                    yield return new Coord((xi + sx) % _width, (yi + sy) % _height);
             }
         }
 
@@ -117,14 +102,16 @@ namespace SPD.Engine.Neighbourhoods
             var sx = x + _width;
             var sy = y + _height;
 
-            for (int i = 1; i <= _dist; i++)
+            for (int xi = 0; xi <= _dist; xi++)
+            for (int yi = -_dist; yi < 0; yi++)
             {
-
-                yield return new Coord(x, (sy - i) % _height);
-                yield return new Coord((sx + i) % _width, (sy - i) % _height);
-
-                yield return new Coord((sx + i) % _width, y);
-                yield return new Coord((sx + i) % _width, (sy + i) % _height);
+                if (xi == 0 && yi == 0) continue;
+                yield return new Coord((x + xi + sx) % _width, (y + yi + sy) % _height);
+            }
+            for (int xi = 1; xi <= _dist; xi++)
+            for (int yi = 0; yi <= _dist; yi++)
+            {
+                yield return new Coord((xi + sx) % _width, (yi + sy) % _height);
             }
         }
 
