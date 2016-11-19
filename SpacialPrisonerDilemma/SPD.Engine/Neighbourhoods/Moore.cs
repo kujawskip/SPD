@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Neighbourhoods;
 
 namespace SPD.Engine.Neighbourhoods
 {
@@ -10,6 +8,8 @@ namespace SPD.Engine.Neighbourhoods
         readonly int _width;
         readonly int _height;
         readonly int _dist;
+       
+        
 
         public Moore(int width, int height, int distance=1)
         {
@@ -52,7 +52,10 @@ namespace SPD.Engine.Neighbourhoods
                 if (IsValid(x + xi, y + yi)) yield return new Coord(x + xi, y + yi);
             }
         }
-
+        public override string ToString()
+        {
+            return string.Format("Moore({0})", _dist);
+        }
         public IEnumerable<Coord> GetHalfNeighbours(Coord c)
         {
             return GetHalfNeighbours(c.X, c.Y);
@@ -65,6 +68,7 @@ namespace SPD.Engine.Neighbourhoods
         readonly int _height;
         private readonly int _dist;
 
+        
         public MooreTorus(int width, int height, int distance = 1)
         {
             _width = width;
@@ -118,6 +122,11 @@ namespace SPD.Engine.Neighbourhoods
         public IEnumerable<Coord> GetHalfNeighbours(Coord c)
         {
             return GetHalfNeighbours(c.X, c.Y);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("MooreTorus({0})", _dist);
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
+namespace SPD.Engine.Neighbourhoods
 {
     public class VonNeumann:INeighbourhood
     {
@@ -48,6 +45,10 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
         {
             return GetHalfNeighbours(c.X, c.Y);
         }
+        public override string ToString()
+        {
+            return string.Format("VonNeumann({0})", _dist);
+        }
     }
 
     public class VonNeumannTorus : INeighbourhood
@@ -61,7 +62,10 @@ namespace SpacialPrisonerDilemma.Engine.Neighbourhoods
             _height = height;
             _dist = distance;
         }
-
+        public override string ToString()
+        {
+            return string.Format("VonNeumannTorus({0})", _dist);
+        }
         public IEnumerable<Coord> GetNeighbours(int x, int y)
         {
             if (x < 0 || y < 0 || x >= _width || y >= _width) throw new ArgumentException();

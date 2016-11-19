@@ -2,10 +2,12 @@
 using System.Linq;
 using SpacialPrisonerDilemma.Engine;
 using SpacialPrisonerDilemma.Engine.Neighbourhoods;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SPD.Engine.Neighbourhoods
 {
-    class Mixed:INeighbourhood
+    public class Mixed:INeighbourhood
     {
         private INeighbourhood[] n;
         public Mixed(params INeighbourhood[] neighbourhoods)
@@ -31,6 +33,11 @@ namespace SPD.Engine.Neighbourhoods
         public IEnumerable<Coord> GetHalfNeighbours(Coord c)
         {
             return GetHalfNeighbours(c.X, c.Y);
+        }
+
+        public override string ToString()
+        {
+            return n.Aggregate("", (s, x) => string.Format("{0}+{1}", s, x));
         }
     }
 }

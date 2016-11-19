@@ -1,6 +1,4 @@
-﻿using SpacialPrisonerDilemma.Engine.Strategies;
-
-namespace SpacialPrisonerDilemma.Engine
+﻿namespace SPD.Engine
 {
     public class SPDResult
     {

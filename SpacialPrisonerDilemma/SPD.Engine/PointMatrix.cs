@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SpacialPrisonerDilemma.Engine
+namespace SPD.Engine
 {
     public class PointMatrix
     {
@@ -22,6 +18,10 @@ namespace SpacialPrisonerDilemma.Engine
             BothBetrayed = both;
         }
 
+        public override String ToString()
+        {
+            return string.Format("[{0},{1},{2},{3}]", NoneBetrayed, WasBetrayed, BetrayedOther, BothBetrayed);
+        }
         public void GetPoints(bool firstBetrayed, bool secondBetrayed, out float firstPoints, out float secondPoints)
         {
             if (firstBetrayed && secondBetrayed) firstPoints = secondPoints = BothBetrayed;

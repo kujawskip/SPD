@@ -10,13 +10,15 @@ namespace SpacialPrisonerDilemma.View
     public partial class FontPicker
     {
         private String _typeFace;
+        private int _statecount;
         /// <summary>
         /// Konstruktor klasy wyboru czcionki
         /// </summary>
         /// <param name="tf">Nazwa aktualnie wybranej czcionki</param>
-        public FontPicker(string tf)
+        public FontPicker(string tf,int stateCount)
         {
             _typeFace = tf;
+            _statecount = stateCount;
             InitializeComponent();
             foreach (var v in new[] {"Arial", "Helvetica", "Times New Roman"}) Box.Items.Add(v);
             if (Box.Items.Contains(tf))
@@ -29,7 +31,8 @@ namespace SpacialPrisonerDilemma.View
         {
            SPDAssets.ChangeFont(Box.SelectedItem.ToString());
             Canvas.Children.Clear();
-            Canvas.Children.Add(new Image {Source = SPDAssets.GenerateLegend(Canvas.Height)});
+            var D = SPDAssets.GenerateLegend(Canvas.Height, _statecount);
+            Canvas.Children.Add(D);
             SPDAssets.ChangeFont(_typeFace);
 
         }

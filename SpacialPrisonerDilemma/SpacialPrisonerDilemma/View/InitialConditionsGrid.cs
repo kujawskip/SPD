@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
+using System.Windows.Media;
 using SpacialPrisonerDilemma.Model;
 using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
+
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -10,8 +13,31 @@ namespace SpacialPrisonerDilemma.View
     /// Klasa implementująca macierz układu początkowego
     /// </summary>
     [Serializable]
-     internal class InitialConditionsGrid 
+    public class InitialConditionsGrid 
     {
+        public DrawingImage GenerateImage(int x, int y, int width, int height, double CanvasWidth, double CanvasHeight,int replace=-1)
+        {
+            var cellWidth = CanvasWidth / width;
+            var cellHeight = CanvasHeight / height;
+
+
+            var dg = new DrawingGroup();
+            for (var i = x; i < x + width; i++)
+            {
+                for (var j = y; j < y + height; j++)
+                {
+
+                    var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
+                    var gd = new GeometryDrawing
+                    {
+                        Brush = CellGrid[i,j].Value==replace?new SolidColorBrush(Color.FromRgb(0,0,0)):SPDAssets.GetBrush(this.CellGrid[i, j].Value),
+                        Geometry = rg
+                    };
+                    dg.Children.Add(gd);
+                }
+            }
+            return new DrawingImage(dg);
+        }
         /// <summary>
         /// Metoda generująca macierz losowego układu
         /// </summary>
@@ -19,7 +45,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar układu</param>
         /// <param name="stateCount">Ilość stanów</param>
         /// <returns>Macierz układu</returns>
-        internal static InitialConditionsGrid GenerateRandom(Random r,int size=100,int stateCount=10)
+        internal static InitialConditionsGrid GenerateRandom(Random r,int size=100,int stateCount=SPDAssets.MAX)
         {
             int x = size;
             int y = size;
@@ -83,7 +109,7 @@ namespace SpacialPrisonerDilemma.View
         /// </summary>
         /// <param name="s">Funkcja transformująca</param>
         /// <param name="stateCount">Ilość możliwych wartości</param>
-        internal void Transform(StateTransformation s,int stateCount=10)
+        internal void Transform(StateTransformation s,int stateCount=SPDAssets.MAX)
         {
             for(int i=0;i<stateCount;i++) Fill(i,s(i));
         }
@@ -93,7 +119,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar układu</param>
         /// <param name="stateCount">Ilość możliwych wartości</param>
         /// <returns>Układ początkowy z donutem</returns>
-        internal static InitialConditionsGrid DonutFactory(int size=30,int stateCount=10)
+        internal static InitialConditionsGrid DonutFactory(int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size,size];
             List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[stateCount];
@@ -129,10 +155,10 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar układu</param>
         /// <param name="stateCount">Ilość możliwych wartości</param>
         /// <returns>Układ początkowy z kołem</returns>
-        internal static InitialConditionsGrid CircleFactory(int size=30,int stateCount=10)
+        internal static InitialConditionsGrid CircleFactory(int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size, size];
-            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[(int)WhenBetray.Never + 1];
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[SPDAssets.MAX];
             for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
@@ -195,7 +221,7 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar układu</param>
         /// <param name="stateCount">Ilość możliwych wartości</param>
         /// <returns>Układ początkowy z przekątną</returns>
-        internal static InitialConditionsGrid DiagonalFactory(int size=30,int stateCount=10)
+        internal static InitialConditionsGrid DiagonalFactory(int size=30,int stateCount=SPDAssets.MAX)
         {
             InitialConditionCell[,] ic = new InitialConditionCell[size, size];
             List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[stateCount];
@@ -224,7 +250,7 @@ namespace SpacialPrisonerDilemma.View
         {
             InitialConditionCell[,] arr = new InitialConditionCell[cells.GetLength(0),cells.GetLength(1)];
             var list = new List<List<InitialConditionCell>>();
-            for(int i=0;i<(Enum.GetValues(typeof(WhenBetray))).Length;i++) list.Add(new List<InitialConditionCell>());
+            for(int i=0;i<SPDAssets.MAX;i++) list.Add(new List<InitialConditionCell>());
             for(int i=0;i<cells.GetLength(0);i++)
                 for (int j = 0; j < cells.GetLength(1); j++)
                 {

@@ -1,4 +1,4 @@
 namespace SpacialPrisonerDilemma.View
 {
-    internal delegate int StateTransformation(int parameter);
+    public delegate int StateTransformation(int parameter);
 }

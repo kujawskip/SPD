@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,19 +79,27 @@
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ColorPicking.cs" />
+    <Compile Include="View\PointMatrixPick.cs" />
+    <Compile Include="View\PointMatrixPicker.xaml.cs">
+      <DependentUpon>PointMatrixPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FontPicker.xaml.cs">
       <DependentUpon>FontPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InitialConditionCell.cs" />
     <Compile Include="View\InitialConditions.cs" />
-    <Compile Include="View\SPD.xaml.cs">
-      <DependentUpon>SPD.xaml</DependentUpon>
+    <Compile Include="View\SPDView.xaml.cs">
+      <DependentUpon>SPDView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SPDAssets.cs" />
     <Compile Include="View\StateTransformation.cs" />
     <Page Include="View\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PointMatrixPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\FontPicker.xaml">
       <SubType>Designer</SubType>
@@ -116,7 +125,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\SPD.xaml">
+    <Page Include="View\SPDView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

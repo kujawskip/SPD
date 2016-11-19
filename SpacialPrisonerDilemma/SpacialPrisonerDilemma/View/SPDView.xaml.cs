@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,28 +17,26 @@ using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Wpf;
 using SpacialPrisonerDilemma.Annotations;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Neighbourhoods;
-using SpacialPrisonerDilemma.Model;
+using SPD.Engine;
 using SPD.Engine.Neighbourhoods;
+using SPD.Engine.Strategies;
 using CategoryAxis = OxyPlot.Axes.CategoryAxis;
 using ColumnSeries = OxyPlot.Series.ColumnSeries;
 using ContextMenu = System.Windows.Controls.ContextMenu;
-using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
 using LinearAxis = OxyPlot.Axes.LinearAxis;
 using MenuItem = System.Windows.Controls.MenuItem;
 using MessageBox = System.Windows.MessageBox;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
-
 
 namespace SpacialPrisonerDilemma.View
 {
     /// <summary>
-    /// Interaction logic for SPD.xaml
+    /// Interaction logic for SPDView.xaml
     /// </summary>
-    public partial class SPD : INotifyPropertyChanged
+    public partial class SPDView : INotifyPropertyChanged
     {
-        private readonly global::SPD.Engine.SPD _spd;
+        private readonly SPD.Engine.SPD _spd;
         private readonly int _width;
         private readonly int _height;
         readonly int[,] _strategies;
@@ -125,7 +122,7 @@ namespace SpacialPrisonerDilemma.View
 
         private readonly List<Tuple<int, String>> _iterations;
 
-        private void SavePlot(OxyPlot.PlotModel PlotKey,string path="")
+        private void SavePlot(PlotModel PlotKey,string path="")
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
@@ -214,7 +211,7 @@ namespace SpacialPrisonerDilemma.View
                 {
                     var c = cells[i, j];
 
-                    var integerStrategy = (Engine.Strategies.IntegerStrategy) _strategyDictionary[c.Item1];
+                    var integerStrategy = (IntegerStrategy) _strategyDictionary[c.Item1];
 
 
                     if (integerStrategy != null)
@@ -244,18 +241,18 @@ namespace SpacialPrisonerDilemma.View
             return new[] { count, result };
         }
 
-        public Dictionary<int, Engine.Strategies.IStrategy> GenerateIntegerStrategies(int count)
+        public Dictionary<int, IStrategy> GenerateIntegerStrategies(int count)
         {
-            Dictionary<int, Engine.Strategies.IStrategy> result = new Dictionary<int, Engine.Strategies.IStrategy>();
-            for (int i = 0; i < count-1; i++)
+            Dictionary<int, IStrategy> result = new Dictionary<int, IStrategy>();
+            for (int i = 0; i < count; i++)
             {
                 result.Add(i, new IntegerStrategy(i));
             }
-            result.Add(SPDAssets.MAX-1,new Engine.Strategies.IntegerStrategy(count-1));
+            
             return result;
         }
 
-        private Dictionary<int, Engine.Strategies.IStrategy> _strategyDictionary;
+        private Dictionary<int, IStrategy> _strategyDictionary;
         /// <summary>
         /// Konstruktor okna realizującego symulacje
         /// </summary>
@@ -263,8 +260,9 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="strategies">Tablica zawierająca początkowe strategie w automacie</param>
         /// <param name="torus">Zmienna informująca czy obliczenia automatu realizowane są na torusie</param>
         /// <param name="vonneumann">Zmienna informująca czy obliczenia automatu realizowane są z sąsiedztwem Von Neumanna</param>
-        public SPD(PointMatrixPick Matrix, int[,] strategies, int _neighboursCount, INeighbourhood _neighbourhood)
+        public SPDView(PointMatrixPick Matrix, int[,] strategies, int _neighboursCount, INeighbourhood _neighbourhood)
         {
+            _tooltip = -1;
             _strategyCount = 2 + _neighboursCount;
             _sumPointsHistory = new List<double[]>();
             _sumPoints = new double[_strategyCount];
@@ -284,10 +282,10 @@ namespace SpacialPrisonerDilemma.View
             
             _spd =
 
-                new Engine.SPD(
+                new SPD.Engine.SPD(
                     Matrix.Function,
                     neighbourhood, strategies,
-                  _strategyDictionary, 10, threadNum);
+                  _strategyDictionary, 10, threadNum, Matrix.ModifiedPointCounting ? SPD.Engine.OptimizationKind.Relative : SPD.Engine.OptimizationKind.Absolute);
 
             Speed = 1;
             PointsModel = new PlotModel();
@@ -324,8 +322,7 @@ namespace SpacialPrisonerDilemma.View
 
             var D =  SPDAssets.GenerateLegend(Legenda.Height, _strategyCount);
 
-            D.Width = Legenda.Width;
-            D.Height = Canvas.Height;
+           
             _width = _strategies.GetLength(0);
             _height = _strategies.GetLength(1);
             var image2 = new Image
@@ -383,8 +380,9 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="y">Współrzędna Y lewej górnej komórki wykresu do wyświetlenia</param>
         /// <param name="width">Ile kolumn automatu będzie wyrysowanych</param>
         /// <param name="height">Ile wierszy automatu będzie wyrysowanych</param>
+        /// <param name="iteration">Dla której iteracji wygenerować wykres (-1 oznacza najbardziej aktualną)</param>
         /// <returns>Wyrysowany wykres</returns>
-        private DrawingImage GenerateImage(Engine.SPD spd, int x, int y, int width, int height,int iteration=-1)
+        private DrawingImage GenerateImage(SPD.Engine.SPD spd, int x, int y, int width, int height,int iteration=-1)
         {
             var cellWidth = Canvas.Width / width;
             var cellHeight = Canvas.Height / height;
@@ -397,17 +395,20 @@ namespace SpacialPrisonerDilemma.View
                 for (var j = y; j < y + height; j++)
                 {
                     var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
-                  
+                    var c = new IntegerStrategy(C[i, j].Item1);
                     var gd = new GeometryDrawing
                     {
                         Brush =
-                            GetBrush(new IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
+                            c.BetrayalThreshold==ToolTipID?new SolidColorBrush(Color.FromRgb(0,0,0)):GetBrush(c.BetrayalThreshold),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);
                 }
             }
-            return new DrawingImage(dg);
+            var result = new DrawingImage(dg);
+          
+            return result;
+
         }
 
         private volatile bool _cont;
@@ -694,7 +695,11 @@ namespace SpacialPrisonerDilemma.View
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
                 var path = _dialog.SelectedPath;
-               // SaveImageToFile(path+"//")
+                SaveImageToFile(path + "//matrix.png",
+                    new Image()
+                    {
+                        Source = pointMatrixPick.GenerateImage(0, 0, _width, _height, Canvas.Width, Canvas.Height)
+                    });
                 SaveImageToFile(path + "//end.png",new Image(){Source=GenerateImage(_spd, 0, 0, _width, _height)});
                 SaveImageToFile(path + "//start.png", new Image() { Source = GenerateImage(_spd, 0, 0, _width, _height, 0) });
                 SavePlot(PointsModel, path+"//PointsModel.png");
@@ -719,6 +724,75 @@ namespace SpacialPrisonerDilemma.View
                 
                 xml.Close();
             }
+        }
+
+        private int _tooltip;
+        public int ToolTipID
+        {
+            get { return _tooltip; }
+            set
+            {
+                _tooltip = value;
+                OnPropertyChanged("ToolTipID");
+                OnPropertyChanged("ToolTipDescription");
+            }
+        }
+        public string ToolTipDescription
+        {
+            get
+            {
+                if (ToolTipID < 0) return "";
+                return SPDAssets.GetDescription(ToolTipID, Mode);
+            }
+        }
+
+        public int Mode
+        {
+            get { return _strategyCount; }
+        }
+
+        
+        private void Legenda_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.GetPosition(Legenda);
+            var d = p.Y / (Legenda.ActualHeight / (Mode));
+            bool b = (int)d == ToolTipID;
+            ToolTipID = (int)d;
+            if (!b) UpdateImage();
+        }
+
+        private void Legenda_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ToolTipID = -1;
+            UpdateImage();
+        }
+
+        private void Canvas_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.GetPosition(Canvas);
+            var X = p.X/_scale;
+            var Y = p.Y/_scale;
+            X = X - _x;
+            Y = Y - _y;
+            X = X/Canvas.Width;
+            X = X*_width;
+            if (X >= _strategies.GetLength(0)) return;
+            Y = Y/Canvas.Height;
+            Y = Y*_height;
+            if (Y >= _strategies.GetLength(1)) return;
+            var C = GetStateByIteration(Iteration);
+            
+            var c = C[(int)X, (int)Y];
+            var b = c.Item1 == ToolTipID;
+            ToolTipID = c.Item1;
+            if (!b) UpdateImage();
+
+        }
+
+        private void Canvas_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ToolTipID = -1;
+            UpdateImage();
         }
     }
 }

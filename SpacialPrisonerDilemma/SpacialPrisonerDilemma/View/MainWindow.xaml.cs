@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using SPD.Engine;
+using SPD.Engine.Neighbourhoods;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -15,13 +18,16 @@ namespace SpacialPrisonerDilemma.View
         public enum Neighbourhoods
         {
             Moore,
-            VonNeumann
+            VonNeumann,
+            Mixed
         }
         public enum Shape
         {
             Płaski,
             Torus
         }
+
+      
         private ValidationErrors _error;
         private int _colorPickerIndex;
         private InitialConditions _ic;
@@ -34,26 +40,83 @@ namespace SpacialPrisonerDilemma.View
             ParseError,
             ValueError
         }
-        
+
+        private bool _advancedPointMatrix;
+        private PointMatrixPick pointMatrix;
+        public bool AdvancedPointMatrix
+        {
+            get { return _advancedPointMatrix; }
+            set
+            {
+                _advancedPointMatrix = value; 
+                NotifyPropertyChanged("NoAdvancedError");
+                NotifyPropertyChanged("AdvancedPointMatrix");
+            }
+        }
         private readonly bool _canvalidate;
         /// <summary>
         /// Konstruktor okna głównego
         /// </summary>
+        int GetNeighboursCount(Neighbourhoods _neighbourhood, int Size)
+        {
+            switch (_neighbourhood)
+            {
+                case Neighbourhoods.Mixed:
+                    return GetNeighboursCount(Neighbourhoods.Moore, Size) + GetNeighboursCount(Neighbourhoods.VonNeumann, Size);
+                case Neighbourhoods.Moore:
+                    return (2 * Size + 1) * (2 * Size + 1) - 1;
+                case Neighbourhoods.VonNeumann:
+                    return 4 * Size;
+            }
+            throw new ArgumentException("Unrecognisable neighbourhood");
+        }
+
+        INeighbourhood GetNeighbourhood(Neighbourhoods _neighbourhood, Shape _shape, int Size, int _width, int _height)
+        {
+            switch (_neighbourhood)
+            {
+                case Neighbourhoods.Mixed:
+                    return
+                        new Mixed(GetNeighbourhood(Neighbourhoods.Moore, _shape, Size,_width,_height), GetNeighbourhood(Neighbourhoods.VonNeumann, _shape, Size,_width,_height));
+                case Neighbourhoods.Moore:
+                    switch (_shape)
+                    {
+                        case Shape.Płaski:
+                            return new Moore(_width, _height, Size);
+                        case Shape.Torus:
+                            return new MooreTorus(_width, _height, Size);
+                    }
+                    break;
+                case Neighbourhoods.VonNeumann:
+                    switch (_shape)
+                    {
+                        case Shape.Płaski:
+                            return new VonNeumann(_width, _height, Size);
+                        case Shape.Torus:
+                            return new VonNeumannTorus(_width, _height, Size);
+                    }
+                    break;
+            }
+            throw new ArgumentException("Unrecognisable neighbourhood");
+        }
         public MainWindow()
         {
-
+            SPDAssets.CreateBrushes();
+            SPDAssets.ChangeFont("Arial");
+            SPDAssets.InitialiseDescriptions();
+            _colorPicking = ColorPicking.RegularPickingFactory(10);
             InitializeComponent();
+
             InitialConditions.Initialise();
             ShapeBox.ItemsSource = Enum.GetValues(typeof(Shape));
             NeighbourBox.ItemsSource = Enum.GetValues(typeof(Neighbourhoods));
             ShapeBox.SelectedItem = Shape.Płaski;
             NeighbourBox.SelectedItem = Neighbourhoods.Moore;
+
             DataContext = this;
             Error = ValidationErrors.None;
             _canvalidate = true;
-            SPDAssets.CreateBrushes(10);
-            SPDAssets.ChangeFont("Arial");
-            SPDAssets.InitialiseDescriptions();
+        
 
         }
 
@@ -67,7 +130,7 @@ namespace SpacialPrisonerDilemma.View
             }
         }
 
-        private static readonly string[] ErrorMessages = { "", "Błąd przetwarzania", "Błąd wartości" };
+        public static readonly string[] ErrorMessages = { "", "Błąd przetwarzania", "Błąd wartości" };
         /// <summary>
         /// Opis błędu walidacji
         /// </summary>
@@ -97,12 +160,14 @@ namespace SpacialPrisonerDilemma.View
             {
                 properties.Add("ErrorMessage");
                 properties.Add("NoError");
+                properties.Add("NoAdvancedError");
 
             }
-            if (s == "NoError")
+            if (s == "NoError"||s == "NoAdvancedError")
             {
                 properties.Add("ShowErrorMessage");
             }
+           
             foreach (var p in properties)
             {
                 NotifyPropertyChanged(p);
@@ -201,10 +266,28 @@ namespace SpacialPrisonerDilemma.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double[] d = Validate();
-            SPD spd = new SPD(d, Transform(_ic.Grid),(Shape)ShapeBox.SelectedItem == Shape.Torus,Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem);
-            spd.ShowDialog();
+        
+            PointMatrix baseMatrix = new PointMatrix((float) d[3],(float) d[2],(float) d[1],(float) d[0]);
+            SPDView spdView = new SPDView(AdvancedPointMatrix?pointMatrix:PointMatrixPick.SingularMatrixCondition(baseMatrix,_ic.Grid.CellGrid.GetLength(0)), Transform(_ic.Grid), GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value), GetNeighbourhood((Neighbourhoods)NeighbourBox.SelectedItem, (Shape)ShapeBox.SelectedItem, (int)Slider1.Value, _ic.Grid.CellGrid.GetLength(0), _ic.Grid.CellGrid.GetLength(1)));
+            spdView.ShowDialog();
         }
-       
+
+        private bool _advancedMatrixAccepted;
+        public bool AdvancedMatrixAccepted
+        {
+            get { return _advancedMatrixAccepted; }
+            set { _advancedMatrixAccepted = value;
+                NotifyPropertyChanged("NoAdvancedError");
+            }
+        }
+
+        public bool NoAdvancedError
+        {
+            get
+            {
+                return NoError && (!AdvancedPointMatrix || AdvancedMatrixAccepted);
+            }
+        }
         private int[,] Transform(InitialConditionsGrid ig)
         {
             var ar = ig.CellGrid;
@@ -218,35 +301,76 @@ namespace SpacialPrisonerDilemma.View
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var ic = new InitialCondition(Neighbourhoods.VonNeumann==(Neighbourhoods)NeighbourBox.SelectedItem,_ic);
+            var ic = new InitialCondition(2+GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem,(int)Slider1.Value),_ic);
             var b = ic.ShowDialog();
             if (!b.HasValue || !b.Value) return;
+            if (pointMatrix != null && ic.Condition.Grid.CellGrid.GetLength(0) != pointMatrix.Size)
+            {
+                AdvancedMatrixAccepted = false;
+            }
             _ic = ic.Condition;
             NotifyPropertyChanged("NoError");
+            NotifyPropertyChanged("NoAdvancedError");
         }
 
+        private ColorPicking _colorPicking;
         private void Color_OnClick(object sender, RoutedEventArgs e)
         {
-           var cp = new ColorPicker(_colorPickerIndex);
+            var cp = new ColorPicker(_colorPickerIndex, 2+GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value));
             var b = cp.ShowDialog();
             if (b.HasValue && b.Value)
             {
                 _colorPickerIndex = cp.Id;
-                
+                _colorPicking = cp.Box.SelectedItem as ColorPicking;
+
             }
         }
 
         private void Font_OnClick(object sender, RoutedEventArgs e)
         {
-           var fp = new FontPicker(SPDAssets.GetFont());
+            var fp = new FontPicker(SPDAssets.GetFont(), 2 + GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value));
            fp.ShowDialog();
           
+        }
+
+        private void UpdateColors()
+        {
+            if (NeighbourBox == null) return;
+            if (Slider1 == null) return;
+            if (_colorPicking == null) return;
+            if (NeighbourBox.SelectedItem == null) return;
+            _colorPicking.ChangeSize(2+GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value));
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _ic = null;
             NotifyPropertyChanged("NoError");
+            UpdateColors();
+
+        }
+
+        private void AdvancedMatrix_OnClick(object sender, RoutedEventArgs e)
+        {
+            AdvancedPointMatrix = true;
+            var d = Validate();
+            if (d == null)
+            {
+                MessageBox.Show("Podstawowa Macierz musi być poprawna przed przejściem do zaawansowanych ustawień");
+            }
+            var D = d.Select(x=>(float)x).ToArray();
+            PointMatrixPicker picker = new PointMatrixPicker(new PointMatrix(D[3],D[2],D[1],D[0]),_ic.Grid.CellGrid.GetLength(0),pointMatrix);
+            var b = picker.ShowDialog();
+            if (b.HasValue && b.Value)
+            {
+                AdvancedMatrixAccepted = true;
+                pointMatrix = picker.Condition;
+            }
+        }
+
+        private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            UpdateColors();
         }
     }
 
