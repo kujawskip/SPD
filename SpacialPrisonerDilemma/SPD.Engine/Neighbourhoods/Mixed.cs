@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SpacialPrisonerDilemma.Engine;
-using SpacialPrisonerDilemma.Engine.Neighbourhoods;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPD.Engine.Neighbourhoods
 {
