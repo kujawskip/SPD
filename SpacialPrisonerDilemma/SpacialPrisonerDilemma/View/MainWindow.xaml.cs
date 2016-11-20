@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -205,9 +206,11 @@ namespace SpacialPrisonerDilemma.View
         }
         private bool ValidatesToPair(string text)
         {
+            string pattern = Regex.Escape("(") + Regex.Escape(" ") + "*" + "[0-9]+(" + Regex.Escape(".") +
+                             "[0-9]*)? , [0-9]+(" + Regex.Escape(".") +
+                             "[0-9]*)?" + Regex.Escape(" ") + "*" + Regex.Escape(")");
             return Regex.Match(text,
-                Regex.Escape("(") + Regex.Escape(" ") + "*" + "[0-9]+(" + Regex.Escape(".") + "[0-9]*)? , [0-9]+(" + Regex.Escape(".") +
-                "[0-9]*)?" + Regex.Escape(" ") + "*" + Regex.Escape(")")).Success;
+                pattern).Success;
         }
         private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -220,10 +223,20 @@ namespace SpacialPrisonerDilemma.View
             var2 = -1;
             if (!ValidatesToPair(text)) return false;
             var array = text.Substring(1, text.Length - 2).Split(',');
+            
             bool flag = double.TryParse(array[0].Trim(), out var1);
-            if (!flag) return false;
-            flag = double.TryParse(array[1].Trim(), out var2);
-            if (!flag) return false;
+
+            if (!flag)
+            {
+                flag = double.TryParse(array[0].Replace(".", ",").Trim(), out var1);
+                if(!flag) return false;
+            }
+            flag = double.TryParse(array[1].Trim(),out var2);
+            if (!flag)
+            {
+                flag = double.TryParse(array[1].Replace(".", ",").Trim(), out var2);
+                if (!flag) return false;
+            }
             return true;
 
         }
@@ -254,7 +267,7 @@ namespace SpacialPrisonerDilemma.View
                 array[i + 1] = d2;
                 i += 2;
             }
-            if (array[1]!=array[0] || array[4]!=array[5] || 2*array[4]<=(array[2]+array[3]) || !(array[3]<array[1]&&array[1]<array[4]&&array[4]<array[2]))
+            if (array[1]!=array[0] || array[4]!=array[5] || 2*array[4]<=(array[2]+array[3]) || !(array[3]<=array[1]&&array[1]<=array[4]&&array[4]<=array[2]))
                 {
                     
                     Error = ValidationErrors.ValueError;
