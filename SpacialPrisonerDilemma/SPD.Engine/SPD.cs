@@ -32,14 +32,14 @@ namespace SPD.Engine
         private readonly ConcurrentDictionary<Coord, Coord[]> _neighbours = new ConcurrentDictionary<Coord, Coord[]>();
         private readonly ConcurrentDictionary<Coord, Coord[]> _fullNeighbours = new ConcurrentDictionary<Coord, Coord[]>();
 
-        private ConcurrentDictionary<Coord, IStrategy> _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
+        private readonly ConcurrentDictionary<Coord, IStrategy> _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
 
         private readonly ConcurrentDictionary<Coord, float> _points = new ConcurrentDictionary<Coord, float>();
         private ConcurrentDictionary<Coord, IStrategy> _strategies = new ConcurrentDictionary<Coord, IStrategy>();
 
         private readonly ConcurrentDictionary<int, Coord[]> _threadConcernes = new ConcurrentDictionary<int, Coord[]>();
 
-        private ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]> _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
+        private readonly ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]> _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
         public SPD(Func<Coord, PointMatrix> mFunc, INeighbourhood neighbourhood, int[,] initialConfiguration,
             IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,
             OptimizationKind optimizationKind = OptimizationKind.Absolute)
@@ -115,13 +115,16 @@ namespace SPD.Engine
 #endif
             Parallel.For(0, ThreadCount, ClearForMany);
             Parallel.For(0, ThreadCount, OptimizeForMany);
-            _strategies = _newStrategies;
+            foreach (var newStrategy in _newStrategies)
+            {
+                _strategies.AddOrUpdate(newStrategy.Key, newStrategy.Value, (a, b) => newStrategy.Value);
+            }
+            _newStrategies.Clear();
             var strategyConfig = ExtractToArray(_strategies);
             var result = new SPDResult(ExtractToArray(_points), strategyConfig, ProcessHistory(strategyConfig));
             _points.Clear();
             _decisions.Clear();
-            _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
-            _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
+            _situationHistory.Clear();
             CurrentIteration++;
             return result;
         }
@@ -178,7 +181,7 @@ namespace SPD.Engine
 
         private IStrategy GetBestFor(Coord c)
         {
-            var result = _strategies.GetOrAdd(c, default(IStrategy));
+            var result = _strategies.GetOrAdd(c, default(IStrategy)).GetCopy();
             var treshold = _points.GetOrAdd(c, 0);
             if (OptimizationKind == OptimizationKind.Absolute)
             {

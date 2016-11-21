@@ -19,11 +19,11 @@ namespace SPD.Engine.Strategies
         {
             BetrayalThreshold = threshold;
             _isAggressive = threshold == 0;
-            val.AddOrUpdate(0, 0, (a, b) => 0);
+            val.Clear();
         }
         public void Clear()
         {
-            val.AddOrUpdate(0, 0, (a, b) => 0);
+            val.Clear();
             _isAggressive = BetrayalThreshold == 0;
         }
 
@@ -46,7 +46,7 @@ namespace SPD.Engine.Strategies
         public void EndStep()
         {
             _isAggressive = val.GetOrAdd(0,0) >= BetrayalThreshold;
-            val.AddOrUpdate(0, 0, (a, b) => 0);
+            val.Clear();
         }
 
         public override string ToString()
