@@ -276,8 +276,11 @@ namespace SpacialPrisonerDilemma.View
             
             _strategies = strategies;
             neighbourhood = _neighbourhood;
-            
+#if DEBUG
+            var threadNum = 1; //debugging purposes DON'T remove
+#else
             var threadNum = 16;
+#endif
             _strategyDictionary = GenerateIntegerStrategies(_strategyCount);
             
             _spd =
