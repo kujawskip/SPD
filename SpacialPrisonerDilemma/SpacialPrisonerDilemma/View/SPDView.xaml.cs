@@ -700,6 +700,7 @@ namespace SpacialPrisonerDilemma.View
                     {
                         Source = pointMatrixPick.GenerateImage(0, 0, _width, _height, Canvas.Width, Canvas.Height)
                     });
+                SaveImageToFile(path+"//legend.png",SPDAssets.GenerateLegend(Legenda.Height,_strategyCount));
                 SaveImageToFile(path + "//end.png",new Image(){Source=GenerateImage(_spd, 0, 0, _width, _height)});
                 SaveImageToFile(path + "//start.png", new Image() { Source = GenerateImage(_spd, 0, 0, _width, _height, 0) });
                 SavePlot(PointsModel, path+"//PointsModel.png");
