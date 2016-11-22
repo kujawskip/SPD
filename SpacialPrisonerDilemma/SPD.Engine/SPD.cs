@@ -30,15 +30,16 @@ namespace SPD.Engine
         private readonly List<Tuple<int, int[,]>> _history = new List<Tuple<int, int[,]>>();
 
         private readonly ConcurrentDictionary<Coord, Coord[]> _neighbours = new ConcurrentDictionary<Coord, Coord[]>();
+        private readonly ConcurrentDictionary<Coord, Coord[]> _fullNeighbours = new ConcurrentDictionary<Coord, Coord[]>();
 
-        private ConcurrentDictionary<Coord, IStrategy> _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
+        private readonly ConcurrentDictionary<Coord, IStrategy> _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
 
         private readonly ConcurrentDictionary<Coord, float> _points = new ConcurrentDictionary<Coord, float>();
         private ConcurrentDictionary<Coord, IStrategy> _strategies = new ConcurrentDictionary<Coord, IStrategy>();
 
         private readonly ConcurrentDictionary<int, Coord[]> _threadConcernes = new ConcurrentDictionary<int, Coord[]>();
 
-        private ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]> _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
+        private readonly ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]> _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
         public SPD(Func<Coord, PointMatrix> mFunc, INeighbourhood neighbourhood, int[,] initialConfiguration,
             IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,
             OptimizationKind optimizationKind = OptimizationKind.Absolute)
@@ -63,9 +64,11 @@ namespace SPD.Engine
                     var key = new Coord(x, y);
                     _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]],
                         (c, s) => possibleStrategies[initialConfiguration[x, y]]);
-                    var neigh = neighbourhood.GetNeighbours(key).ToArray();
+                    var neigh = neighbourhood.GetHalfNeighbours(key).ToArray();//GetNeighbours(key).ToArray();
                     _neighbours.AddOrUpdate(key, neigh.ToArray(),
                         (a, b) => b.Union(neigh).ToArray());
+                    var neigh2 = neighbourhood.GetNeighbours(key).ToArray();
+                    _fullNeighbours.AddOrUpdate(key, neigh2, (a, b) => b.Union(neigh2).ToArray());
                     concernes[index].Add(key);
                     index = (index + 1) % ThreadCount;
                 }
@@ -107,15 +110,21 @@ namespace SPD.Engine
                 Parallel.For(0, ThreadCount, PosprocessForMany);
                 Parallel.For(0, ThreadCount, EndStepMany);
             }
+#if DEBUG
+            Console.WriteLine();
+#endif
             Parallel.For(0, ThreadCount, ClearForMany);
             Parallel.For(0, ThreadCount, OptimizeForMany);
-            _strategies = _newStrategies;
+            foreach (var newStrategy in _newStrategies)
+            {
+                _strategies.AddOrUpdate(newStrategy.Key, newStrategy.Value, (a, b) => newStrategy.Value);
+            }
+            _newStrategies.Clear();
             var strategyConfig = ExtractToArray(_strategies);
             var result = new SPDResult(ExtractToArray(_points), strategyConfig, ProcessHistory(strategyConfig));
             _points.Clear();
             _decisions.Clear();
-            _newStrategies = new ConcurrentDictionary<Coord, IStrategy>();
-            _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
+            _situationHistory.Clear();
             CurrentIteration++;
             return result;
         }
@@ -172,11 +181,11 @@ namespace SPD.Engine
 
         private IStrategy GetBestFor(Coord c)
         {
-            var result = _strategies.GetOrAdd(c, default(IStrategy));
+            var result = _strategies.GetOrAdd(c, default(IStrategy)).GetCopy();
             var treshold = _points.GetOrAdd(c, 0);
             if (OptimizationKind == OptimizationKind.Absolute)
             {
-                foreach (var n in _neighbours.GetOrAdd(c, new Coord[0]))
+                foreach (var n in _fullNeighbours.GetOrAdd(c, new Coord[0]))
                 {
                     var p = _points.GetOrAdd(n, 0);
                     if (p > treshold)
@@ -252,13 +261,13 @@ namespace SPD.Engine
                     float f1, f2;
                     GetPointsOf(d, opp, out f1, out f2);
                     _points.AddOrUpdate(c, f1, (a, b) => b + f1);
-                    _points.AddOrUpdate(opp.Item1, f2, (a, b) => b + f2);
+                    //_points.AddOrUpdate(opp.Item1, f2, (a, b) => b + f2);
                     SituationMatrix s1, s2;
                     GetSituationKind(d.Item2, opp.Item2, out s1, out s2);
                     var t1 = new Tuple<Coord, SituationMatrix>(opp.Item1, s1);
-                    var t2 = new Tuple<Coord, SituationMatrix>(c, s2);
+                    //var t2 = new Tuple<Coord, SituationMatrix>(c, s2);
                     _situationHistory.AddOrUpdate(c, new[] {t1}, (k, v) => UpdateSituation(v, t1));
-                    _situationHistory.AddOrUpdate(opp.Item1, new[] {t2}, (k, v) => UpdateSituation(v, t2));
+                    //_situationHistory.AddOrUpdate(opp.Item1, new[] {t2}, (k, v) => UpdateSituation(v, t2));
                 }
             }
         }
@@ -307,6 +316,9 @@ namespace SPD.Engine
             float temp;
             pm1.GetPoints(c1.Item2, c2.Item2, out p1, out temp);
             pm2.GetPoints(c1.Item2, c2.Item2, out temp, out p2);
+#if DEBUG
+            //Console.WriteLine($"{c1.Item1}:{p1} - {c2.Item1}:{p2}");
+#endif
         }
 
         private void DecideForMany(int obj)

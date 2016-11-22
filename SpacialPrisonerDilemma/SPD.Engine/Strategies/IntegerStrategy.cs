@@ -13,17 +13,18 @@ namespace SPD.Engine.Strategies
 
         ConcurrentDictionary<long, int> val = new ConcurrentDictionary<long, int>();
 
-        bool _isAggressive = false;
+        private bool _isAggressive;
 
         public IntegerStrategy(int threshold)
         {
             BetrayalThreshold = threshold;
-            val.AddOrUpdate(0, 0, (a, b) => 0);
+            _isAggressive = threshold == 0;
+            val.Clear();
         }
         public void Clear()
         {
-            val.AddOrUpdate(0, 0, (a, b) => 0);
-            _isAggressive = false;
+            val.Clear();
+            _isAggressive = BetrayalThreshold == 0;
         }
 
         public bool Decide(Coord opponent)
@@ -45,7 +46,14 @@ namespace SPD.Engine.Strategies
         public void EndStep()
         {
             _isAggressive = val.GetOrAdd(0,0) >= BetrayalThreshold;
-            val.AddOrUpdate(0, 0, (a, b) => 0);
+            val.Clear();
+        }
+
+        public override string ToString()
+        {
+            int v;
+            val.TryGetValue(0, out v);
+            return $"Threshold {BetrayalThreshold}, betrayed by {v}";
         }
     }
 }
