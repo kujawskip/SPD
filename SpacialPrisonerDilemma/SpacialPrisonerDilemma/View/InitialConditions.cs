@@ -47,7 +47,7 @@ namespace SpacialPrisonerDilemma.View
 		public static StateTransformation GetTransformation(int i=SPDAssets.MAX,bool reversed=false)
 		{
 
-		    if (reversed) return (x) => (i - x);
+		    if (reversed) return (x) => (i - 1  - x);
 		    return (x) => x;
 		}
         /// <summary>
