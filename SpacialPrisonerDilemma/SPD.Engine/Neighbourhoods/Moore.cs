@@ -8,8 +8,6 @@ namespace SPD.Engine.Neighbourhoods
         readonly int _width;
         readonly int _height;
         readonly int _dist;
-       
-        
 
         public Moore(int width, int height, int distance=1)
         {
@@ -85,8 +83,8 @@ namespace SPD.Engine.Neighbourhoods
             for (var xi = -_dist; xi <= _dist; xi++)
             for (var yi = -_dist; yi <= _dist; yi++)
             {
-                if (IsValid(x + xi, y + yi) && !(xi == 0 && yi == 0))
-                    yield return new Coord((xi + sx) % _width, (yi + sy) % _height);
+                if (xi == 0 && yi == 0) continue;
+                yield return new Coord((xi + sx) % _width, (yi + sy) % _height);
             }
         }
 
