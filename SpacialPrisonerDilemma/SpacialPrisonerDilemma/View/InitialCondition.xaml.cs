@@ -65,7 +65,7 @@ namespace SpacialPrisonerDilemma.View
                 _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
                 _conditions.Add(new Tuple<string, bool>("Circle", T), InitialConditions.CircleFactory);
                 _conditions.Add(new Tuple<string,bool>("Diagonal",T),InitialConditions.DiagonalFactory);
-
+                _conditions.Add(new Tuple<string, bool>("NowakMay", T), InitialConditions.NowakMayFactory);
             }
             _conditionNames.AddRange(
                 _conditions.Select(

@@ -149,6 +149,49 @@ namespace SpacialPrisonerDilemma.View
             };
             return ig;
         }
+
+        internal static InitialConditionsGrid NowakMayFactory(int size = 31, int StateCount = SPDAssets.MAX)
+        {
+            InitialConditionCell[,] ic = new InitialConditionCell[size, size];
+            List<InitialConditionCell>[] setLists = new List<InitialConditionCell>[SPDAssets.MAX];
+            for (int i = 0; i < setLists.Length; i++) setLists[i] = new List<InitialConditionCell>();
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
+                {
+                    int k=-1;
+                    if (size%2 == 0)
+                    {
+                        if (i == size/2 || i + 1 == size/2)
+                        {
+                            if (j == size / 2 || j + 1 == size / 2)
+                            {
+                                k = 0;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (i == size / 2)
+                        {
+                            if (j == size / 2 )
+                            {
+                                k = 0;
+                            }
+                        }
+                    }
+                    if (k < 0) k = StateCount - 1;
+                    InitialConditionCell c = new InitialConditionCell(i,j,k,k);
+                    ic[i, j] = c;
+                    setLists[c.Set].Add(c);
+                }
+            var sets = setLists.Select(a => a.ToArray()).ToArray();
+            InitialConditionsGrid ig = new InitialConditionsGrid
+            {
+                CellGrid = ic,
+                CellSets = sets
+            };
+            return ig;
+        }
         /// <summary>
         /// Metoda factory generująca koło
         /// </summary>
