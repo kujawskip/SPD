@@ -29,7 +29,7 @@ namespace SpacialPrisonerDilemma.View
             public string Description { get; set; }
             public Image Color { get; set; }
         }
-        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
+        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int,bool, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private PointMatrixPick _condition;
 		private readonly int Mode;
@@ -83,7 +83,7 @@ namespace SpacialPrisonerDilemma.View
            
             DataContext = this;
             _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
-            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,InitialConditions>>();
+            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,bool,InitialConditions>>();
             foreach (var T in new[] {false, true})
             {
                 _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
@@ -94,7 +94,7 @@ namespace SpacialPrisonerDilemma.View
             _conditionNames.AddRange(
                 _conditions.Select(
                     k =>
-                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10).Name,
+                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10,false).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
             _canvalidate = true;
@@ -180,13 +180,17 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+           ReCreateCondition();
+        }
+
+        public void ReCreateCondition()
+        {
             ResetScale();
             if (ComboBoxCopy.SelectedIndex < 0) return;
             Condition = PointMatrixPick.CreatePickFromIC(
                  _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount),Condition);
+                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount,false), Condition);
         }
-
         private void ResetScale()
         {
             _x = 0;
@@ -233,7 +237,7 @@ namespace SpacialPrisonerDilemma.View
 			}
             Condition = PointMatrixPick.CreatePickFromIC(
                           _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount), Condition);
+                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount,false), Condition);
         }
         private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {

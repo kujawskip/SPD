@@ -47,7 +47,7 @@ namespace SpacialPrisonerDilemma.View
 		public static StateTransformation GetTransformation(int i=SPDAssets.MAX,bool reversed=false)
 		{
 
-		    if (reversed) return (x) => (i - x);
+		    if (reversed) return (x) => (i - 1 - x);
 		    return (x) => x;
 		}
         /// <summary>
@@ -56,11 +56,13 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar układu</param>
         /// <param name="stateCount">Ilość możliwych wartości komórek</param>
         /// <returns>Układ początkowy</returns>
-        internal static InitialConditions GenerateRandom(int size=100,int stateCount=SPDAssets.MAX)
+        internal static InitialConditions GenerateRandom(int size=100,int stateCount=SPDAssets.MAX,bool twoState = false)
         {
             Random r = new Random();
-            var Grid = InitialConditionsGrid.GenerateRandom(r, size, stateCount);
-            Grid.Transform(GetTransformation(stateCount), stateCount);
+            var Grid = InitialConditionsGrid.GenerateRandom(r, size, twoState?2:stateCount);
+            Grid.Transform(GetTransformation(twoState ? 2 : stateCount), twoState ? 2 : stateCount);
+            if (twoState) Grid.Transform((x) => (x == 0 ? 0 : stateCount - 1), 2);
+            
             var ic = new InitialConditions
             {
                 Name = "Losowy" + r.Next(),
@@ -76,10 +78,12 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar</param>
         /// <param name="stateCount">Ilość możliwych wartości komórek</param>
         /// <returns>Układ początkowy z kołem</returns>
-        internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = SPDAssets.MAX)
+        internal static InitialConditions CircleFactory(bool reversed=false,int size=30,int stateCount = SPDAssets.MAX,bool twoState = false)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size,stateCount);
-            ig.Transform(GetTransformation(stateCount, reversed), stateCount);
+            InitialConditionsGrid ig = InitialConditionsGrid.CircleFactory(size, twoState ? 2 : stateCount);
+
+            ig.Transform(GetTransformation(twoState ? 2 : stateCount, reversed), twoState ? 2 : stateCount);
+            if (twoState) ig.Transform((x) => (x == 0 ? 0 : stateCount - 1), 2);
             var ic = new InitialConditions
             {
                 Name = "Koło " + (reversed ? "- odwrócone kolory" : ""),
@@ -94,10 +98,12 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar</param>
         /// <param name="stateCount">Ilośæ możliwych wartości komórek</param>
         /// <returns>Układ początkowy z donutem</returns>
-        internal static InitialConditions DonutFactory(bool reversed=false,int size=30,int stateCount=SPDAssets.MAX)
+        internal static InitialConditions DonutFactory(bool reversed = false, int size = 30, int stateCount = SPDAssets.MAX, bool twoState = false)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size,stateCount);
-            ig.Transform(GetTransformation(stateCount, reversed), stateCount);
+            InitialConditionsGrid ig = InitialConditionsGrid.DonutFactory(size, twoState ? 2 : stateCount);
+            ig.Transform(GetTransformation(twoState ? 2 : stateCount, reversed), twoState ? 2 : stateCount);
+            if (twoState) ig.Transform((x) => (x == 0 ? 0 : stateCount - 1), 2);
+
             var ic = new InitialConditions
             {
                 Name = "Donut " + (reversed ? "- odwrócone kolory" : ""),
@@ -113,10 +119,11 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="size">Rozmiar</param>
         /// <param name="stateCount">Ilośæ możliwych wartości komórek</param>
         /// <returns>Układ początkowy z przekątną</returns>
-        internal static InitialConditions DiagonalFactory(bool reversed=false,int size=30,int stateCount=SPDAssets.MAX)
+        internal static InitialConditions DiagonalFactory(bool reversed = false, int size = 30, int stateCount = SPDAssets.MAX, bool twoState = false)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size,stateCount);
-            ig.Transform(GetTransformation(stateCount, reversed), stateCount);
+            InitialConditionsGrid ig = InitialConditionsGrid.DiagonalFactory(size, twoState ? 2 : stateCount);
+            ig.Transform(GetTransformation(twoState ? 2 : stateCount, reversed), twoState ? 2 : stateCount);
+            if (twoState) ig.Transform((x) => (x == 0 ? 0 : stateCount - 1), 2);
             var ic = new InitialConditions
             {
                 Name = "Przekątna " + (reversed ? "- odwrócone kolory" : ""),
@@ -124,10 +131,11 @@ namespace SpacialPrisonerDilemma.View
             };
             return ic; 
         }
-        internal static InitialConditions NowakMayFactory(bool reversed = false, int size = 30, int stateCount = SPDAssets.MAX)
+        internal static InitialConditions NowakMayFactory(bool reversed = false, int size = 30, int stateCount = SPDAssets.MAX, bool twoState = false)
         {
-            InitialConditionsGrid ig = InitialConditionsGrid.NowakMayFactory(size, stateCount);
-            ig.Transform(GetTransformation(stateCount,reversed), stateCount);
+            InitialConditionsGrid ig = InitialConditionsGrid.NowakMayFactory(size, twoState ? 2 : stateCount);
+            ig.Transform(GetTransformation(twoState ? 2 : stateCount, reversed), twoState ? 2 : stateCount);
+            if (twoState) ig.Transform((x) => (x == 0 ? 0 : stateCount - 1), 2);
             var ic = new InitialConditions
             {
                 Name = "Eksperyment Nowaka i Maya " + (reversed ? "- odwrócone kolory" : ""),
