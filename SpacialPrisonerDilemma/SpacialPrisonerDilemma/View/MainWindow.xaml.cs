@@ -217,26 +217,21 @@ namespace SpacialPrisonerDilemma.View
             TryValidate();
         }
 
-        private bool TryValidate(string text, out double var1, out double var2)
+        private bool TryValidate(string text, out double var1 )
         {
             var1 = -1;
-            var2 = -1;
-            if (!ValidatesToPair(text)) return false;
-            var array = text.Substring(1, text.Length - 2).Split(',');
             
-            bool flag = double.TryParse(array[0].Trim(), out var1);
+           
+          
+            
+            bool flag = double.TryParse(text, out var1);
 
             if (!flag)
             {
-                flag = double.TryParse(array[0].Replace(".", ",").Trim(), out var1);
+                flag = double.TryParse(text.Replace(".", ",").Trim(), out var1);
                 if(!flag) return false;
             }
-            flag = double.TryParse(array[1].Trim(),out var2);
-            if (!flag)
-            {
-                flag = double.TryParse(array[1].Replace(".", ",").Trim(), out var2);
-                if (!flag) return false;
-            }
+            
             return true;
 
         }
@@ -249,13 +244,13 @@ namespace SpacialPrisonerDilemma.View
 
         private double[] Validate()
         {
-            double[] array = new double[6];
-            var sarray = new[] {BothBetray.Text, FirstBetrays.Text, NobodyBetrays.Text,SecondBetrays.Text};
+            double[] array = new double[4];
+            var sarray = new[] { FirstBetrays.Text, NobodyBetrays.Text,BothBetray.Text, SecondBetrays.Text };
             int i = 0;
             foreach (var s in sarray)
             {
                 double d1, d2;
-                bool flag = TryValidate(s, out d1, out d2);
+                bool flag = TryValidate(s, out d1);
                 if (!flag)
                 {
                    Error = ValidationErrors.ParseError;
@@ -264,32 +259,26 @@ namespace SpacialPrisonerDilemma.View
                 
                 if (i >= array.Length) continue;
                 array[i] = d1;
-                array[i + 1] = d2;
-                i += 2;
+
+                i++;
             }
-            if (array[1]!=array[0] || array[4]!=array[5] || 2*array[4]<=(array[2]+array[3]) || !(array[3]<=array[1]&&array[1]<=array[4]&&array[4]<=array[2]))
+            if (2*array[1]<=(array[3]+array[0]) || !(array[3]<=array[2]&&array[2]<=array[1]&&array[1]<=array[0]))
                 {
                     
                     Error = ValidationErrors.ValueError;
                     return null;
                 }
             Error = ValidationErrors.None;
-            return new []{array[1],array[2],array[3],array[4]};
+            return new []{array[2],array[0],array[3],array[1]};
         }
         private void SecondBetrays_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (ValidatesToPair(SecondBetrays.Text))
-            {
-                FirstBetrays.Text = SwitchText(SecondBetrays.Text);
-            }
+           
         }
 
         private void FirstBetrays_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (ValidatesToPair(FirstBetrays.Text))
-            {
-                SecondBetrays.Text = SwitchText(FirstBetrays.Text);
-            }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
