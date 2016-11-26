@@ -40,9 +40,10 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Margin="4">Zdradza</TextBlock>
                     <TextBlock Grid.Row="3" Grid.Column="0" Margin="4">Jest Zdradzany</TextBlock>
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">2</TextBox>
+                                        <TextBox Grid.Row="1" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">4</TextBox>
                     <TextBox Grid.Row="2" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">5</TextBox>
                     <TextBox Grid.Row="3" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">0</TextBox>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">4</TextBox>
+
                 </Grid>
             </StackPanel>
         </GroupBox>
