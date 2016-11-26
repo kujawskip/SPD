@@ -2,15 +2,15 @@
 {
     public class SPDResult
     {
-        public int[,] strategyConfig;
-        public float[,] v1;
-        public bool v2;
+        public int[,] StrategyConfig { get; set; }
+        public float[,] Points { get; set; }
+        public bool Stabilization { get; set; }
 
-        public SPDResult(float[,] v1, int[,] strategyConfig, bool v2)
+        public SPDResult(float[,] points, int[,] strategyConfig, bool stabilization)
         {
-            this.v1 = v1;
-            this.strategyConfig = strategyConfig;
-            this.v2 = v2;
+            this.Points = points;
+            this.StrategyConfig = strategyConfig;
+            this.Stabilization = stabilization;
         }
     }
 }
