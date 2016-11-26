@@ -327,16 +327,12 @@ namespace SpacialPrisonerDilemma.View
 
         private bool TryValidate(string text, out double var1)
         {
-            var1 = -1;
-            
-           
            
 
             bool flag = double.TryParse(text, out var1);
-
             if (!flag)
             {
-                flag = double.TryParse(text, out var1);
+                flag = double.TryParse(text.Replace(".", ",").Trim(), out var1);
                 if (!flag) return false;
             }
             

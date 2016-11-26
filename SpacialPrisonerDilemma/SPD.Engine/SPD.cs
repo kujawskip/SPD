@@ -96,7 +96,7 @@ namespace SPD.Engine
         public OptimizationKind OptimizationKind { get; private set; }
         public Coord[] Neighbours(int x, int y)
         {
-            return _neighbours[new Coord(x, y)];
+            return _fullNeighbours[new Coord(x, y)];
         }
         public async Task<SPDResult> IterateAsync()
         {

@@ -225,7 +225,7 @@ namespace SpacialPrisonerDilemma.View
                 }
             for (var i = 0; i < count.Length; i++)
             {
-                if ((count[i] - Double.Epsilon) <= 0) continue;
+                if ((count[i] - 100*Double.Epsilon) <= 0) continue;
                 result[i] /= count[i];
                 
 
