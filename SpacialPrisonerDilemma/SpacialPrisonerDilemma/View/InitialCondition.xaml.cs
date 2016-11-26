@@ -20,7 +20,7 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class InitialCondition : INotifyPropertyChanged
     {
-        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
+        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int,bool, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private InitialConditions _condition;
 		private readonly int Mode;
@@ -59,7 +59,7 @@ namespace SpacialPrisonerDilemma.View
             ComboBox.SelectedIndex = 0;
             DataContext = this;
             _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
-            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,InitialConditions>>();
+            _conditions = new Dictionary<Tuple<string, bool>, Func<bool, int, int, bool, InitialConditions>>();
             foreach (var T in new[] {false, true})
             {
                 _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
@@ -70,7 +70,7 @@ namespace SpacialPrisonerDilemma.View
             _conditionNames.AddRange(
                 _conditions.Select(
                     k =>
-                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10).Name,
+                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10,false).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
             var D = SPDAssets.GenerateLegend(Legend.Height, Mode, InitialConditions.GetTransformation(Mode));
@@ -111,6 +111,9 @@ namespace SpacialPrisonerDilemma.View
             }
         }
 
+        public bool IsTwoState
+        {
+            get; set; }
         public bool ConditionLoaded
         {
             get { return Condition != null; }
@@ -131,7 +134,7 @@ namespace SpacialPrisonerDilemma.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ResetScale();
-            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value,Mode);
+            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value,Mode,IsTwoState);
             ComboBoxCopy.SelectedIndex = -1;
         }
 
@@ -146,11 +149,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ResetScale();
-            if (ComboBoxCopy.SelectedIndex < 0) return;
-            Condition =
-                 _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode);
+            ReCreateCondition();
         }
 
         private void ResetScale()
@@ -188,16 +187,7 @@ namespace SpacialPrisonerDilemma.View
         }
 		private void RandomSize_DragCompleted(object sender, DragCompletedEventArgs e)
 		{
-            ResetScale();
-            if (Condition==null) return;
-			if (ComboBoxCopy.SelectedIndex < 0) 
-			{
-				Condition = InitialConditions.GenerateRandom((int)RandomSize.Value,Mode);
-                return;
-			}
-            Condition =
-                          _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode);
+            ReCreateCondition();
         }
         private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -327,6 +317,24 @@ namespace SpacialPrisonerDilemma.View
         {
             ToolTipID = -1;
             UpdateScreen();
+        }
+
+        void ReCreateCondition()
+        {
+            ResetScale();
+            
+            if (ComboBoxCopy.SelectedIndex < 0)
+            {
+                Condition = InitialConditions.GenerateRandom((int)RandomSize.Value, Mode, IsTwoState);
+                return;
+            }
+            Condition =
+                          _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
+                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode, IsTwoState);
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            ReCreateCondition();
         }
     }
 }

@@ -29,7 +29,7 @@ namespace SpacialPrisonerDilemma.View
             public string Description { get; set; }
             public Image Color { get; set; }
         }
-        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
+        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int,bool, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private PointMatrixPick _condition;
 		private readonly int Mode;
@@ -83,7 +83,7 @@ namespace SpacialPrisonerDilemma.View
            
             DataContext = this;
             _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
-            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,InitialConditions>>();
+            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,bool,InitialConditions>>();
             foreach (var T in new[] {false, true})
             {
                 _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
@@ -94,7 +94,7 @@ namespace SpacialPrisonerDilemma.View
             _conditionNames.AddRange(
                 _conditions.Select(
                     k =>
-                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10).Name,
+                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10,false).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
             _canvalidate = true;
@@ -180,13 +180,17 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+           ReCreateCondition();
+        }
+
+        public void ReCreateCondition()
+        {
             ResetScale();
             if (ComboBoxCopy.SelectedIndex < 0) return;
             Condition = PointMatrixPick.CreatePickFromIC(
                  _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount),Condition);
+                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount,false), Condition);
         }
-
         private void ResetScale()
         {
             _x = 0;
@@ -233,7 +237,7 @@ namespace SpacialPrisonerDilemma.View
 			}
             Condition = PointMatrixPick.CreatePickFromIC(
                           _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount), Condition);
+                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, Size, (int)MatrixCount,false), Condition);
         }
         private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -321,26 +325,21 @@ namespace SpacialPrisonerDilemma.View
             NotifyPropertyChanged("CanAdd");
         }
 
-        private bool TryValidate(string text, out double var1, out double var2)
+        private bool TryValidate(string text, out double var1)
         {
             var1 = -1;
-            var2 = -1;
-            if (!ValidatesToPair(text)) return false;
-            var array = text.Substring(1, text.Length - 2).Split(',');
+            
+           
+           
 
-            bool flag = double.TryParse(array[0].Trim(), out var1);
+            bool flag = double.TryParse(text, out var1);
 
             if (!flag)
             {
-                flag = double.TryParse(array[0].Replace(".", ",").Trim(), out var1);
+                flag = double.TryParse(text, out var1);
                 if (!flag) return false;
             }
-            flag = double.TryParse(array[1].Trim(), out var2);
-            if (!flag)
-            {
-                flag = double.TryParse(array[1].Replace(".", ",").Trim(), out var2);
-                if (!flag) return false;
-            }
+            
             return true;
 
         }
@@ -353,13 +352,13 @@ namespace SpacialPrisonerDilemma.View
 
         private double[] Validate()
         {
-            double[] array = new double[6];
-            var sarray = new[] { BothBetray.Text, FirstBetrays.Text, NobodyBetrays.Text, SecondBetrays.Text };
+            double[] array = new double[4];
+            var sarray = new[] { FirstBetrays.Text, NobodyBetrays.Text, BothBetray.Text, SecondBetrays.Text };
             int i = 0;
             foreach (var s in sarray)
             {
                 double d1, d2;
-                bool flag = TryValidate(s, out d1, out d2);
+                bool flag = TryValidate(s, out d1);
                 if (!flag)
                 {
                     Error = MainWindow.ValidationErrors.ParseError;
@@ -368,17 +367,17 @@ namespace SpacialPrisonerDilemma.View
 
                 if (i >= array.Length) continue;
                 array[i] = d1;
-                array[i + 1] = d2;
-                i += 2;
+
+                i++;
             }
-            if (array[1] != array[0] || array[4] != array[5] || 2 * array[4] <= (array[2] + array[3]) || !(array[3] <= array[1] && array[1] <= array[4] && array[4] <= array[2]))
+            if (2 * array[1] <= (array[3] + array[0]) || !(array[3] <= array[2] && array[2] <= array[1] && array[1] <= array[0]))
             {
 
                 Error = MainWindow.ValidationErrors.ValueError;
                 return null;
             }
             Error = MainWindow.ValidationErrors.None;
-            return new[] { array[1], array[2], array[3], array[4] };
+            return new[] { array[2], array[0], array[3], array[1] };
         }
 
         private string SwitchText(string text)

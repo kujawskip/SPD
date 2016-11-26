@@ -102,6 +102,7 @@ namespace SpacialPrisonerDilemma.View
             for (int i = 0; i < CellSets[index].Length; i++)
             {
                 CellSets[index][i].Value = value;
+                
             } 
         }
         /// <summary>
@@ -111,7 +112,24 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="stateCount">Ilość możliwych wartości</param>
         internal void Transform(StateTransformation s,int stateCount=SPDAssets.MAX)
         {
+
             for(int i=0;i<stateCount;i++) Fill(i,s(i));
+            List<List<InitialConditionCell>> cells = new List<List<InitialConditionCell>>();
+            while (cells.Count < stateCount)
+            {
+                cells.Add(new List<InitialConditionCell>());
+            }
+            for(int i =0;i<CellGrid.GetLength(0);i++)
+                for (int j = 0; j < CellGrid.GetLength(1); j++)
+                {
+                    CellGrid[i, j].Set = CellGrid[i, j].Value;
+                    while (cells.Count < CellGrid[i, j].Set+1)
+                    {
+                        cells.Add(new List<InitialConditionCell>());
+                    }
+                    cells[CellGrid[i, j].Set].Add(CellGrid[i, j]);
+                }
+            CellSets = cells.Select(x => x.ToArray()).ToArray();
         }
         /// <summary>
         /// Metoda factory generująca donut
@@ -274,7 +292,7 @@ namespace SpacialPrisonerDilemma.View
                 {
                     int k = Math.Abs(i - j);
                     int m = Math.Max(ic.GetLength(0), ic.GetLength(1));
-                    InitialConditionCell c = new InitialConditionCell(i, j, 0, k * (stateCount-1) / m);
+                    InitialConditionCell c = new InitialConditionCell(i, j, 0, k * (stateCount) / m);
                    
                     
                     ic[i, j] = c;

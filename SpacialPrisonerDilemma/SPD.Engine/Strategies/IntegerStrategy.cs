@@ -53,7 +53,7 @@ namespace SPD.Engine.Strategies
         {
             int v;
             val.TryGetValue(0, out v);
-            return $"Threshold {BetrayalThreshold}, betrayed by {v}";
+            return @"Threshold {BetrayalThreshold}, betrayed by {v}";
         }
     }
 }

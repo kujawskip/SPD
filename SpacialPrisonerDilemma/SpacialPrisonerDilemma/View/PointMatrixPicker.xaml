@@ -62,23 +62,22 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Content="+" HorizontalAlignment="Left" Height="21" Width="18" Click="ButtonBase_OnClick" IsEnabled="{Binding CanAdd}" />
-                    <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red" Margin="8" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="4" HorizontalAlignment="Center">Więzień pierwszy</TextBlock>
-                    <TextBlock Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" xml:space="preserve" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Right" TextWrapping="Wrap">Więzień drugi</TextBlock>
-                    <TextBlock Grid.Row="1" Grid.Column="2" Margin="4">Zdradza</TextBlock>
-                    <TextBlock Grid.Row="1" Grid.Column="3" Margin="4">Nie zdradza</TextBlock>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Margin="4">Zdradza</TextBlock>
-                    <TextBlock Grid.Row="3" Grid.Column="1" Margin="4">Nie zdradza</TextBlock>
-                    <TextBox Grid.Row="2" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">(2 , 2)</TextBox>
-                    <TextBox Grid.Row="3" Grid.Column="2" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">(5 , 0)</TextBox>
-                    <TextBox Grid.Row="2" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">(0 , 5)</TextBox>
-                    <TextBox Grid.Row="3" Grid.Column="3" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">(4 , 4)</TextBox>
+                    <Button Grid.Column="3" Content="+" HorizontalAlignment="Right" Height="21" Width="18" Click="ButtonBase_OnClick" IsEnabled="{Binding CanAdd}" />
+                    <TextBlock Grid.Column="2" Grid.Row="0"   TextWrapping="Wrap" Text="{Binding ErrorMessage}" Foreground="Red"  Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="4">Obydwaj Zdradzają</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="4">Nikt nie zdradza</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="4">Zdradza</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="4">Jest Zdradzany</TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="BothBetray">2</TextBox>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="FirstBetrays" LostFocus="FirstBetrays_OnLostFocus">5</TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="SecondBetrays" LostFocus="SecondBetrays_OnLostFocus">0</TextBox>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="4" TextAlignment="Center" TextChanged="TextBoxBase_OnTextChanged" Name="NobodyBetrays">4</TextBox>
                 </Grid>
             </GroupBox>
         </StackPanel>
