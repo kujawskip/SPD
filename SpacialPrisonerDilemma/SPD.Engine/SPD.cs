@@ -40,9 +40,7 @@ namespace SPD.Engine
         private readonly ConcurrentDictionary<int, Coord[]> _threadConcernes = new ConcurrentDictionary<int, Coord[]>();
 
         private readonly ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]> _situationHistory = new ConcurrentDictionary<Coord, Tuple<Coord, SituationMatrix>[]>();
-        public SPD(Func<Coord, PointMatrix> mFunc, INeighbourhood neighbourhood, int[,] initialConfiguration,
-            IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,
-            OptimizationKind optimizationKind = OptimizationKind.Absolute)
+        public SPD(Func<Coord, PointMatrix> mFunc, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1, OptimizationKind optimizationKind = OptimizationKind.Absolute)
         {
             if (threadNum <= 0) throw new ArgumentException();
             OptimizationKind = optimizationKind;
@@ -62,8 +60,8 @@ namespace SPD.Engine
                 for (var y = 0; y < Height; y++)
                 {
                     var key = new Coord(x, y);
-                    _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]],
-                        (c, s) => possibleStrategies[initialConfiguration[x, y]]);
+                    _strategies.AddOrUpdate(key, possibleStrategies[initialConfiguration[x, y]].GetCopy(),
+                        (c, s) => possibleStrategies[initialConfiguration[x, y]].GetCopy());
                     var neigh = neighbourhood.GetHalfNeighbours(key).ToArray();//GetNeighbours(key).ToArray();
                     _neighbours.AddOrUpdate(key, neigh.ToArray(),
                         (a, b) => b.Union(neigh).ToArray());
@@ -78,9 +76,7 @@ namespace SPD.Engine
             ProcessHistory(initialConfiguration);
         }
 
-        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration,
-            IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1,
-            OptimizationKind optimizationKind = OptimizationKind.Absolute)
+        public SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1, OptimizationKind optimizationKind = OptimizationKind.Absolute)
             : this(
                 coord => m, neighbourhood, initialConfiguration, possibleStrategies, stepNum, threadNum,
                 optimizationKind)

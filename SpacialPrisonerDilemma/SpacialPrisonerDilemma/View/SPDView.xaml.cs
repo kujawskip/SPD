@@ -483,7 +483,7 @@ namespace SpacialPrisonerDilemma.View
 
 
                  var i = _spd.Iterate();
-                if (_over) AddHistory(i.strategyConfig,i.v1);
+                if (_over) AddHistory(i.StrategyConfig,i.Points);
                 if (_over) UpdateImage();
                 if (_over) OnPropertyChanged("StateCount");
                 if (_over) if (Iteration == StateCount - 1) Iteration++;
@@ -492,7 +492,7 @@ namespace SpacialPrisonerDilemma.View
                 if (_over) InsertVariationColumn(GetVariance(History.Count-1));
                 if (_over) UpdateModels();
                 
-                if (!i.v2) continue;
+                if (!i.Stabilization) continue;
                 var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
                     MessageBoxButton.YesNo);
                 if (b == MessageBoxResult.Yes)
@@ -515,7 +515,7 @@ namespace SpacialPrisonerDilemma.View
                 _iteration = Task.Run(async () => await _spd.IterateAsync());
                 await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
                 var i = await _iteration;
-                if (_over) AddHistory(i.strategyConfig,i.v1);
+                if (_over) AddHistory(i.StrategyConfig,i.Points);
                 if (_over) UpdateImage();
                 if (_over) OnPropertyChanged("StateCount");
                 if (_over) if (Iteration == StateCount - 1) Iteration++;
@@ -524,7 +524,7 @@ namespace SpacialPrisonerDilemma.View
                 if (_over) InsertVariationColumn(GetVariance(History.Count-1));
                 if (_over) UpdateModels();
                 
-                if (!i.v2) continue;
+                if (!i.Stabilization) continue;
                 var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
                     MessageBoxButton.YesNo);
                 if (b == MessageBoxResult.Yes)
