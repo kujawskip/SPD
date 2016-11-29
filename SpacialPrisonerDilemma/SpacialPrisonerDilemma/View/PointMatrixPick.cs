@@ -20,14 +20,14 @@ namespace SpacialPrisonerDilemma.View
             get { return x => (Matrices[Indices[x.X, x.Y]]); }
         }
 
-        public static PointMatrixPick SingularMatrixCondition(PointMatrix M, int size)
+        public static PointMatrixPick SingularMatrixCondition(PointMatrix M, int size1,int size2)
         {
             PointMatrixPick p = new PointMatrixPick
             {
-                Indices = new int[size, size],
+                Indices = new int[size1, size2],
                 Matrices = new List<PointMatrix> {M}
             };
-            for (int i = 0; i < size; i++) for (int j = 0; j < size; j++) p.Indices[i, j] = 0;
+            for (int i = 0; i < size1; i++) for (int j = 0; j < size2; j++) p.Indices[i, j] = 0;
             return p;
         }
 

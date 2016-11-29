@@ -55,24 +55,28 @@ namespace SpacialPrisonerDilemma.View
         }
         private Operation _selectedOperation;
         private List<Image> BrushRectangles;
+
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
-       
+
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
-        internal PointMatrixPicker(PointMatrix matrix ,int Size,PointMatrixPick condition = null)
+        private int Size1, Size2;
+        internal PointMatrixPicker(PointMatrix matrix ,int Size1,int Size2,PointMatrixPick condition = null)
         {
            
             
-            _condition= condition ?? PointMatrixPick.SingularMatrixCondition(matrix, Size);
+            _condition= condition ?? PointMatrixPick.SingularMatrixCondition(matrix, Size1,Size2);
             BrushRectangles = SPDAssets.GetBrushRectangles((int)MatrixCount);
             if (Condition.Size != Size)
             {
                 _condition = Condition.Resize(Size);
             }
-            this.Size = Size;
+            this.Size1 = Size1;
+            this.Size2 = Size2;
+            Size = Math.Max(Size1, Size2);
             InitializeComponent();
            
             
@@ -393,18 +397,12 @@ namespace SpacialPrisonerDilemma.View
         }
         private void SecondBetrays_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (ValidatesToPair(SecondBetrays.Text))
-            {
-                FirstBetrays.Text = SwitchText(SecondBetrays.Text);
-            }
+            
         }
 
         private void FirstBetrays_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (ValidatesToPair(FirstBetrays.Text))
-            {
-                SecondBetrays.Text = SwitchText(FirstBetrays.Text);
-            }
+            
         }
 
         public bool CanAdd
@@ -471,7 +469,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void _comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+    
         }
     }
 }

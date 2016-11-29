@@ -286,7 +286,7 @@ namespace SpacialPrisonerDilemma.View
             double[] d = Validate();
         
             PointMatrix baseMatrix = new PointMatrix((float) d[3],(float) d[2],(float) d[1],(float) d[0]);
-            SPDView spdView = new SPDView(AdvancedPointMatrix?pointMatrix:PointMatrixPick.SingularMatrixCondition(baseMatrix,_ic.Grid.CellGrid.GetLength(0)), Transform(_ic.Grid), GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value), GetNeighbourhood((Neighbourhoods)NeighbourBox.SelectedItem, (Shape)ShapeBox.SelectedItem, (int)Slider1.Value, _ic.Grid.CellGrid.GetLength(0), _ic.Grid.CellGrid.GetLength(1)));
+            SPDView spdView = new SPDView(AdvancedPointMatrix?pointMatrix:PointMatrixPick.SingularMatrixCondition(baseMatrix,_ic.Grid.CellGrid.GetLength(0),_ic.Grid.CellGrid.GetLength(1)), Transform(_ic.Grid), GetNeighboursCount((Neighbourhoods)NeighbourBox.SelectedItem, (int)Slider1.Value), GetNeighbourhood((Neighbourhoods)NeighbourBox.SelectedItem, (Shape)ShapeBox.SelectedItem, (int)Slider1.Value, _ic.Grid.CellGrid.GetLength(0), _ic.Grid.CellGrid.GetLength(1)));
             spdView.ShowDialog();
         }
 
@@ -377,7 +377,7 @@ namespace SpacialPrisonerDilemma.View
                 MessageBox.Show("Podstawowa Macierz musi być poprawna przed przejściem do zaawansowanych ustawień");
             }
             var D = d.Select(x=>(float)x).ToArray();
-            PointMatrixPicker picker = new PointMatrixPicker(new PointMatrix(D[3],D[2],D[1],D[0]),_ic.Grid.CellGrid.GetLength(0),pointMatrix);
+            PointMatrixPicker picker = new PointMatrixPicker(new PointMatrix(D[3], D[2], D[1], D[0]), _ic.Grid.CellGrid.GetLength(0), _ic.Grid.CellGrid.GetLength(1), pointMatrix);
             var b = picker.ShowDialog();
             if (b.HasValue && b.Value)
             {

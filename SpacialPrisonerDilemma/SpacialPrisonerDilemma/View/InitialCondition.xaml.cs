@@ -236,6 +236,7 @@ namespace SpacialPrisonerDilemma.View
                 var fs = new FileStream(ofd.FileName,FileMode.Open);
                 var obj = bf.Deserialize(fs);
                 Condition = obj as InitialConditions;
+                fs.Close();
             }
         }
 
@@ -302,8 +303,8 @@ namespace SpacialPrisonerDilemma.View
             X = X * Condition.Grid.CellGrid.GetLength(0);
             if (X >= Condition.Grid.CellGrid.GetLength(0)) return;
             Y = Y / Canvas.Height;
-            Y = Y * Condition.Grid.CellGrid.GetLength(0);
-            if (Y >= Condition.Grid.CellGrid.GetLength(0)) return;
+            Y = Y * Condition.Grid.CellGrid.GetLength(1);
+            if (Y >= Condition.Grid.CellGrid.GetLength(1)) return;
             var C = Condition.Grid.CellGrid;
 
             var c = C[(int)X, (int)Y];
