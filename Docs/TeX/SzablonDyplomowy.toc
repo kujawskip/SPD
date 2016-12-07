@@ -24,19 +24,24 @@
 \contentsline {chapter}{\numberline {6}Wnioski}{53}
 \contentsline {chapter}{Dodatek \numberline {A}Analiza Biznesowa}{56}
 \contentsline {section}{\numberline {A.1}Cele biznesowe}{56}
-\contentsline {subsection}{\numberline {A.1.1}Wymagania funkcjonalne}{56}
-\contentsline {subsection}{\numberline {A.1.2}Wymagania niefunkcjonalne}{57}
-\contentsline {chapter}{Dodatek \numberline {B}Dokumentacja techniczna}{58}
-\contentsline {section}{\numberline {B.1}Diagramy klas}{58}
-\contentsline {subsection}{\numberline {B.1.1}Przestrze\'n nazw SPD.Engine}{58}
-\contentsline {subsection}{\numberline {B.1.2}Przestrze\'n nazw SPD.Engine.Neighbourhoods}{58}
-\contentsline {subsection}{\numberline {B.1.3}Przestrze\'n nazw SPD.Engine.Strategies}{58}
-\contentsline {subsection}{\numberline {B.1.4}Opis Klas}{58}
-\contentsline {subsubsection}{Interfejs IStrategy}{58}
-\contentsline {subsubsection}{Klasa IntegerStrategy}{59}
-\contentsline {subsubsection}{Klasa Coord}{60}
-\contentsline {subsubsection}{Klasa PointMatrix}{60}
-\contentsline {subsubsection}{Interfejs INeighbourhood}{60}
-\contentsline {subsubsection}{Klasa SPD}{61}
-\contentsline {subsubsection}{Klasa SPDResult}{62}
-\contentsline {subsection}{\numberline {B.1.5}Opis Algorytmu}{63}
+\contentsline {subsection}{\numberline {A.1.1}Wymagania Funkcjonalne}{56}
+\contentsline {subsection}{\numberline {A.1.2}Wymagania Niefunkcjonalne}{57}
+\contentsline {section}{\numberline {A.2}Testy Akceptacyjne}{57}
+\contentsline {section}{\numberline {A.3}Harmonogram Prac}{57}
+\contentsline {chapter}{Dodatek \numberline {B}Instrukja U\.zytkownika}{58}
+\contentsline {section}{\numberline {B.1}Interfejs U\.zytkownika}{58}
+\contentsline {section}{\numberline {B.2}Diagramy stan\'ow}{58}
+\contentsline {chapter}{Dodatek \numberline {C}Dokumentacja techniczna}{59}
+\contentsline {section}{\numberline {C.1}Diagramy klas}{59}
+\contentsline {subsection}{\numberline {C.1.1}Przestrze\'n nazw SPD.Engine}{59}
+\contentsline {subsection}{\numberline {C.1.2}Przestrze\'n nazw SPD.Engine.Neighbourhoods}{59}
+\contentsline {subsection}{\numberline {C.1.3}Przestrze\'n nazw SPD.Engine.Strategies}{59}
+\contentsline {subsection}{\numberline {C.1.4}Opis Klas}{59}
+\contentsline {subsubsection}{Interfejs IStrategy}{59}
+\contentsline {subsubsection}{Klasa IntegerStrategy}{60}
+\contentsline {subsubsection}{Klasa Coord}{61}
+\contentsline {subsubsection}{Klasa PointMatrix}{61}
+\contentsline {subsubsection}{Interfejs INeighbourhood}{61}
+\contentsline {subsubsection}{Klasa SPD}{62}
+\contentsline {subsubsection}{Klasa SPDResult}{63}
+\contentsline {subsection}{\numberline {C.1.5}Opis Algorytmu}{64}

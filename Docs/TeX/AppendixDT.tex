@@ -97,7 +97,7 @@ Jeden krok automatu wygl¹da nastêpuj¹co:
 \begin{itemize}
 \item Powórz stepCount razy
 \begin{itemize}
-\item Zleæ w¹tkom wykonanie funkcji Decide(podejmuj¹c¹ decyzjê czy zdradziæ czy nie) na przydzielonym im strategiach, zapamiêtaj decyzje strategii i zaczekaj, a¿ skoñcz¹
+\item Zleæ w¹tkom wykonanie funkcji Decide(podejmuj¹c¹ decyzjê czy zdradziæ czy nie) na przydzielonych im strategiach, zapamiêtaj decyzje strategii i zaczekaj, a¿ skoñcz¹
 \begin{itemize}
 \item Korzystaj¹c z INeighbourhood.GetHalfNeighbours sprawiamy, ¿e iteruj¹c po graczach a nastêpnie po po³owie ich s¹siadów ¿adnej pary s¹siadów nie przetworzymy dwukrotnie.
 \item Dla ka¿dego gracza podleg³ego w¹tkowi (gracz ten ma wspó³rzêdne c)
@@ -110,7 +110,7 @@ Jeden krok automatu wygl¹da nastêpuj¹co:
 \end{itemize}
 \end{itemize}
 \end{itemize}
-\item Zleæ w¹tkom wykonanie funkcji PostProcess(wykonuj¹c¹ dzia³ania odpowiedzialne za ustosunkowanie siê strategii do zaistnia³ej sytuacji) na przydzielonym im strategiach na podstawie wyników poprzedniego kroku, zapisz zdobyte przez strategie punkty (oraz kombinacje decyzji par na potrzeby optymalizacji wzglêdnej) i zaczekaj, a¿ skoñcz¹
+\item Zleæ w¹tkom wykonanie funkcji PostProcess(wykonuj¹c¹ dzia³ania odpowiedzialne za ustosunkowanie siê strategii do zaistnia³ej sytuacji) na przydzielonych im strategiach na podstawie wyników poprzedniego kroku, zapisz zdobyte przez strategie punkty (oraz kombinacje decyzji par na potrzeby optymalizacji wzglêdnej) i zaczekaj, a¿ skoñcz¹
 \begin{itemize}
 \item Korzystaj¹c z INeighbourhood.GetHalfNeighbours sprawiamy, ¿e iteruj¹c po graczach a nastêpnie po po³owie ich s¹siadów ¿adnej pary s¹siadów nie przetworzymy dwukrotnie.
 \item Dla ka¿dego gracza podleg³ego w¹tkowi  (gracz ten ma wspó³rzêdne c)
@@ -127,9 +127,9 @@ Jeden krok automatu wygl¹da nastêpuj¹co:
 \end{itemize}
 \end{itemize}
 \end{itemize}
-\item Zleæ w¹tkom wykonanie funkcji EndStep(czyszcz¹c¹ flagi i pamiêæ pomiêdzy ruchami graczy) na przydzielonym im strategiach i zaczekaj, a¿ skoñcz¹
+\item Zleæ w¹tkom wykonanie funkcji EndStep(czyszcz¹c¹ flagi i pamiêæ pomiêdzy ruchami graczy) na przydzielonych im strategiach i zaczekaj, a¿ skoñcz¹
 \end{itemize}
-\item Zleæ w¹tkom wykonanie funkcji Clear(czyszcz¹cej flagi i pamiêæ po wykonaniu wszystkich ruchów) na przydzielonym im strategiach i zaczekaj a¿ skoñcz¹.
+\item Zleæ w¹tkom wykonanie funkcji Clear(czyszcz¹cej flagi i pamiêæ po wykonaniu wszystkich ruchów) na przydzielonych im strategiach i zaczekaj a¿ skoñcz¹.
 \item Zleæ w¹tkom optymalizacjê strategii
 \begin{itemize}
 \item Na potrzeby oszczêdnoœci zu¿ycia procesora przy przeszukiwaniu s³owników w tym etapie wykorzystano INeighbourhood.GetNeighbours.
