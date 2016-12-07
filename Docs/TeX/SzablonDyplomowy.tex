@@ -183,7 +183,7 @@ W klasycznym dylemacie wiêŸnia mamy do czynienia z sytuacj¹, w której dwoje grac
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $x_1$ & & $x_2$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -220,12 +220,12 @@ W tej pracy zdecydowaliœmy siê na reprezentacjê przestrzennego dylematu wiêŸnia 
 \begin{definition}
 Automatem komórkowym $A$ nazywamy czwórkê $(\alpha,S,N,f)$, gdzie a oznacza regularn¹ siatkê z³o¿on¹ z jednakowych komórek, S skoñczony zbiór stanów w którym mo¿e znajdowaæ siê komórka, N skoñczony zbiór funkcji s¹siedztw n takich ¿e $\forall _{c \in \alpha} \ n(c) \subset \alpha$ i funkcja $f:S^m \rightarrow S$ nazywan¹ funkcj¹ przejœcia, opisuj¹c¹ w jaki sposób zmieniaj¹ siê stany komórek automatu (gdzie m okreœla iloœæ komórek bior¹cych udzia³ w ewaluacji funkcji przejœcia). Aby opis automatu komórkowego by³ pe³ny, nale¿y równie¿ okreœliæ uk³ad pocz¹tkowy - dla ka¿dej komórki automatu jej stan pocz¹tkowy.
 \end{definition}
-
 W zastosowanej w tej pracy reprezentacji zachodz¹ nastêpuj¹ce odniesienia miêdzy elementami przestrzennego dylematu wiêŸnia a automatem komórkowym: Gracz w dylemacie wiêŸnia odpowiada komórce w automacie komórkowym. Strategia tego gracza odpowiada zaœ stanowi komórki. S¹siedztwo w dylemacie wiêŸnia bezpoœrednio przek³ada siê na s¹siedztwo automatu komórkowego, a funkcj¹ przejœcia jest zadana liczbê rozgrywek dylematu wiêŸnia po których nastêpuje policzenie punktacji wg. zadanej macierzy wyp³at i aktualizacja strategii ka¿dej komórki na podstawie wyników jej s¹siadów.
 \subsection{Uogólnienie s¹siedztw}
 Tradycyjnie w dylemacie wiêŸnia rozpatruje siê jedynie s¹siedztwa von Neumanna i Moore’a. W naszej symulacji uogólniliœmy je do trzech przypadków:
 \begin{enumerate}
 \item Rozszerzone s¹siedztwo von Neumanna o zasiêgu $d$
+
 \begin{equation}
 S(x,y) = \bigcup_{i=1}^d \{(x+i,y) , (x-i, y), (x, y+i), (x, y-i) \}
 \end{equation}
@@ -284,10 +284,10 @@ Rozpatrujemy równie¿ wariant, w którym gracze w zale¿noœci od swojego po³o¿enia 
 \section{Algorytm Symulacji}
 Symulacja inicjalizowana jest nastêpuj¹cymi parametrami:
 \begin{itemize}
-\item Pocz¹tkowy uk³ad strategii, ozn $D(x,y)$ = strategia komórki o wspó³rzêdnych (x,y)
+\item Pocz¹tkowy uk³ad strategii, ozn $D(x,y)$ = strategia komórki o wspó³rzêdnych $(x,y)$
 \item D³ugoœæ rozgrywek, ozn $k$.
-\item Funkcja macierzy wyp³at $M(x,y)$ = macierz wyp³at dla gracza (x,y) lub $M$ = pojedyncza macierz wyp³at dla wariantu z jednorodn¹ macierz¹ wyp³at (wtedy $M(x,y)=M$)
-\item Funkcja s¹siedztwa $S(x,y)$ = \{(x’,y’); gracz (x’,y’) jest s¹siadem gracza (x,y)\}
+\item Funkcja macierzy wyp³at $M(x,y)$ = macierz wyp³at dla gracza $(x,y)$ lub $M$ = pojedyncza macierz wyp³at dla wariantu z jednorodn¹ macierz¹ wyp³at (wtedy $M(x,y)=M$)
+\item Funkcja s¹siedztwa $S(x,y)$ = \{$(x’,y’)$; gracz $(x’,y’)$ jest s¹siadem gracza $(x,y)$\}
 \item Rodzaj optymalizacji (istotny tylko w wariancie z niejednorodn¹ macierz¹ wyp³at)
 \end{itemize}
 Pomocniczo oznaczmy:
@@ -299,14 +299,14 @@ Krok automatu wygl¹da wtedy nastêpuj¹co:
 \begin{itemize}
 \item Powtórz $k$ razy:
 \begin{itemize}
-\item Dla ka¿dego (x,y)
+\item Dla ka¿dego $(x,y)$
 \begin{itemize}
 \item Dla ka¿dego $s \in S(x,y)$
 \begin{itemize}
 \item Niech $D_{(x,y)}(s)$ := decyzja $D(x,y)$ przeciw $s$
 \end{itemize}
 \end{itemize}
-\item Dla ka¿dego (x,y)
+\item Dla ka¿dego $(x,y)$
 \begin{itemize}
 \item Dla ka¿dego $s \in S(x,y)$
 \begin{itemize}
@@ -315,18 +315,16 @@ Krok automatu wygl¹da wtedy nastêpuj¹co:
 \end{itemize}
 \end{itemize}
 \end{itemize}
-\item Dla ka¿dego (x,y)
+\item Dla ka¿dego $(x,y)$
 \begin{itemize}
 \item WeŸmy $s$ takie, ¿e $s \in S(x,y) \land P(s)=max_{(x,y)\in S(x,y)} \ P(x,y)$
 \item $D(x,y):=D(s)$
 \item $P(x,y):=0$
 \end{itemize}
 \end{itemize}
-Szczegó³ow¹ implementacjê przewiduj¹c¹ wielow¹tkowoœæ oraz synchronizacjê w¹tków opisano w dokumentacji technicznej Szczegó³ow¹ implementacjê przewiduj¹c¹ wielow¹tkowoœæ oraz synchronizacjê w¹tków opisano w dokumentacji technicznej
-\vfill
+Szczegó³ow¹ implementacjê przewiduj¹c¹ wielow¹tkowoœæ oraz synchronizacjê w¹tków opisano w dokumentacji technicznej.
 
 \chapter{Analiza Dzia³ania Automatu Komórkowego}
-
 Wykorzystuj¹c przygotowan¹ aplikacjê opracowaliœmy schemat analizy empirycznej przestrzennego dylematu wiêŸnia w oparciu o popularne prace badawcze poœwiêcone tej tematyce. 
 Celem czêœci empirycznej by³o powtórzenie, a nastêpnie rozszerzenie badañ opisanych w \cite{NM,IM,W}.
 
@@ -335,7 +333,7 @@ Decyzja o wyborze wy¿ej wymienionych prac zosta³a podjêta po studium aktualnej l
 \section{Eksperyment Nowaka i Maya}
 \label{nm1}
 \cite{NM}
-Jednym z pierwszych eksperymentów dotycz¹cych przestrzennego dylematu wiêŸnia, by³ eksperyment wykonany przez M. Nowaka i R. May’a. Ich eksperyment rozwa¿a³ strategie „zawsze wybaczaj” i „zawsze zdradzaj”, roz³o¿one na planszy tak, by jedna strategia zawsze zdradzaj otoczona by³a ze wszystkich stron symetrycznie tylko i wy³¹cznie przez komórki o strategii „zawsze wybaczaj”.
+Jedn¹ z pierwszych prac dotycz¹cych przestrzennego dylematu wiêŸnia, by³ eksperyment wykonany przez M. Nowaka i R. May’a. Rozwa¿ali oni strategie „zawsze wybaczaj” i „zawsze zdradzaj”, roz³o¿one na planszy tak, by jedna strategia zawsze zdradzaj otoczona by³a ze wszystkich stron symetrycznie tylko i wy³¹cznie przez komórki o strategii „zawsze wybaczaj”.
 
 \begin{minipage}[t]{\linewidth}
 \centering
