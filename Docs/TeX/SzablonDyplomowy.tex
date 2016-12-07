@@ -4,6 +4,7 @@
 \usepackage{t1enc}
 \usepackage{a4wide}
 \usepackage{amsfonts}
+
 \usepackage{amsmath}
 \usepackage{enumerate}
 \usepackage{float}
@@ -394,7 +395,7 @@ Dla $b = 1.39$ obliczenia koñcz¹ siê po dwóch krokach automatu, osi¹gaj¹c uk³ad 
 \caption{Krok 1}
 \label{311_2}
 \end{figure}
-Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur - rysunki \ref{311_2A} i \ref{311_3} <--ODNOŒNIK zamiast dwukropka
+Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur - rysunki \ref{311_2A} i \ref{311_3}
 
 \begin{figure}[H]
 \centering
@@ -483,7 +484,7 @@ Uk³ad pocz¹tkowy zosta³ wylosowany z równym prawdopodobieñstwem dla ka¿dej strat
 \caption{Uk³ad pocz¹tkowy + Legenda}
 \label{fig:321_1}
 \end{figure}
-W omówieniu wniosków pierwotnego eksperymentu nie poruszono tematu macierzy wyp³at, co sugeruje, i¿ zjawisko klasteryzacji jest niezale¿ne od sposobu punktowania, tote¿ mo¿na wybraæ dowoln¹ spe³niaj¹c¹ warunki dylematu wiêŸnia. W toku naszych badañ wybrano macierz promuj¹c¹ zachowania agresywne (ze wzglêdu na punktowanie podwójnej zdrady) jak I podtrzymuj¹ca zachowania defensywne (wysokie punktowanie podwójnej kooperacji). Poni¿ej przedstawiono dok³adne wartoœci wybranej macierzy. <-- DOPILNOWAÆ ¯E PONI¯EJ
+W omówieniu wniosków pierwotnego eksperymentu nie poruszono tematu macierzy wyp³at, co sugeruje, i¿ zjawisko klasteryzacji jest niezale¿ne od sposobu punktowania, tote¿ mo¿na wybraæ dowoln¹ spe³niaj¹c¹ warunki dylematu wiêŸnia. W toku naszych badañ wybrano macierz promuj¹c¹ zachowania agresywne (ze wzglêdu na punktowanie podwójnej zdrady) jak I podtrzymuj¹ca zachowania defensywne (wysokie punktowanie podwójnej kooperacji). Poni¿ej przedstawiono dok³adne wartoœci wybranej macierzy. 
 
 \begin{center}
 \begin{tabular}{cc|cc|cc|}
@@ -547,33 +548,37 @@ Po szeœciu kolejnych przebiegach automatu pozosta³y cztery strategie o najni¿szy
 \end{minipage}
 \end{center}
 
-Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Strategia ta zostaje wyparta przez rozrastaj¹c¹ siê strategiê k=1, co widaæ na ostatecznym, ustabilizowanym uk³adzie: <---Odnoœnik do figury zamiast dwukropka
+Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Strategia ta zostaje wyparta przez rozrastaj¹c¹ siê strategiê k=1, co widaæ na ostatecznym, ustabilizowanym uk³adzie (rys. \ref{321_7}
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{321_7}
-\captionof{figure}{Krok 24 - Ostatni}
+
 \end{minipage}
-\end{center}
+\caption{Krok 24 - Ostatni}
+\label{321_7}
+\end{figure}
 \noindent
 
-Na poni¿szym wykresie niestabilnoœci uk³adu widaæ, ¿e po pierwszym utworzeniu siê struktur przestrzeni w kroku 1 iloœæ zmian strategii w ka¿dej iteracji mala³a znacz¹co. Sukcesywnie znika³y strategie inne ni¿ k=1. <--OPIS wykresu plus odnoœnik
+Wykres widoczny na rys. \ref{321_W1} przedstawia niestabilnoœæ uk³adu definiowan¹ jako liczbê komórek które zmieni³y strategiê w zadanym kroku. Mo¿na na nim zaobserwowaæ, ¿e po pierwszym utworzeniu siê struktur przestrzeni w kroku 1 iloœæ zmian strategii w ka¿dej iteracji mala³a znacz¹co. Sukcesywnie znika³y strategie inne ni¿ k=1. 
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{321_W1}
-\captionof{figure}{}
 \end{minipage}
-\end{center}
+\caption{}
+\label{321_W1}
+\end{figure}
 
-Strategia k=1 jest strategi¹ zbli¿on¹ do wzorcowej strategii „wet za wet”, z tym¿e, ¿e stosuje ona odpowiedzialnoœæ zbiorow¹ - przy jednej zdradzie mœci siê na wszystkich swoich s¹siadach. Pozwala jej to ¿erowaæ na bardziej pokojowych w sytuacjach zagro¿enia i jednoczeœnie kooperowaæ w sytuacji braku agresorów. Strategia k=2 osi¹ga podobny efekt, jednak¿e ze wzglêdu na wy¿szy próg mœciwoœci nie jest równie efektywna. Na poni¿szym wykresie przedstawiono procentowy udzia³ zdobytych przez ka¿d¹ strategiê punktów na przestrzeni kolejnych iteracji. <-- odnoœnik zamiast "poni¿szym"
+Strategia k=1 jest strategi¹ zbli¿on¹ do wzorcowej strategii „wet za wet”, z tym¿e, ¿e stosuje ona odpowiedzialnoœæ zbiorow¹ - przy jednej zdradzie mœci siê na wszystkich swoich s¹siadach. Pozwala jej to ¿erowaæ na bardziej pokojowych w sytuacjach zagro¿enia i jednoczeœnie kooperowaæ w sytuacji braku agresorów. Strategia k=2 osi¹ga podobny efekt, jednak¿e ze wzglêdu na wy¿szy próg mœciwoœci nie jest równie efektywna. Na rysunku \ref{321_W2} przedstawiono procentowy udzia³ zdobytych przez ka¿d¹ strategiê punktów na przestrzeni kolejnych iteracji. 
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{321_W2}
-\captionof{figure}{}
 \end{minipage}
-\end{center}
+\caption{}
+\label{321_W2}
+\end{figure}
 
 W ostatecznym rozrachunku sumy œrednich wartoœci punktowych dla pozosta³ych strategii s¹ bardzo do siebie zbli¿one, co doprowadza do widocznego na siatce impasu.
 
@@ -608,7 +613,7 @@ Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem s
 \captionof{figure}{Uk³ad macierzy}
 \end{minipage}
  \end{center}
- Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1} co widaæ poni¿ej. <-- dopilnowaæ ¿eby by³o poni¿ej
+ Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1} co widaæ poni¿ej. 
 \begin{figure}[H]
 \centering
  \begin{minipage}[t]{.4\textwidth}
@@ -621,26 +626,31 @@ Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem s
 \captionof{figure}{Krok 2}
 \end{minipage} 
 \end{figure}
-
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[H]\centering
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{411_2}
-\captionof{figure}{Krok 7. Pierwsza ró¿nica widoczna jest w siódmej iteracji, powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.}
-\end{minipage} -->spróbowaæ zmieœciæ 3 grafiki stronê wy¿ej
+\includegraphics[width=\linewidth]{411_2}
+\captionof{figure}{Krok 7}
+\label{411_2}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{411_3}
+\captionof{figure}{Krok 9}
+\label{411_3}
+\end{minipage}
+\end{figure}
+Pierwsza ró¿nica widoczna jest w siódmej iteracji (rys. \ref{411_2}), powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.
+Powsta³a w kroku dziewi¹tym struktura ((rys. \ref{411_3}) jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.
 
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{411_3}
-\captionof{figure}{Krok 9. Powsta³a struktura jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.}
-\end{minipage}
+\caption{Krok 11 - Ostatni.}
+\end{figure}
 
-\begin{minipage}[t]{\linewidth}
-\centering
-\includegraphics[scale=0.75]{411_3}
-\captionof{figure}{Krok 11 - Ostatni. Struktura nie rozros³a siê dalej, mimo ¿e znajduje siê w strefie $b$ = 1.4. Najprawdopodobniejszym wyt³umaczeniem na brak dalszego rozrostu jest to, ¿e struktura dostosowuje siê do uk³adu macierzy.}
-\end{minipage}
-
-By zweryfikowaæ hipotezê o wp³ywie ro¿norodnej macierzy wyp³at na obliczenie automatu zdecydowaliœmy siê zbadaæ uk³ad nie posiadaj¹cy tych samych osi symetrii co struktura fraktalna z pierwotnego eksperymentu.
+Struktura nie rozros³a siê dalej, mimo ¿e znajduje siê w strefie $b$ = 1.4. Najprawdopodobniejszym wyt³umaczeniem na brak dalszego rozrostu jest to, ¿e struktura dostosowuje siê do uk³adu macierzy.
+By zweryfikowaæ hipotezê o wp³ywie ró¿norodnej macierzy wyp³at na obliczenie automatu zdecydowaliœmy siê zbadaæ uk³ad nie posiadaj¹cy tych samych osi symetrii co struktura fraktalna z pierwotnego eksperymentu.
 Tak jak poprzednio zamieszczamy graficzn¹ reprezentacja rozmieszczenia macierzy wyp³at na siatce (Rysunek \ref{fig:421_M}), kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $(x_1,x_2,x_3,x_4)$
 
 \begin{figure}[H] 
@@ -648,40 +658,44 @@ Tak jak poprzednio zamieszczamy graficzn¹ reprezentacja rozmieszczenia macierzy 
 \includegraphics{412_M}
 \caption{}
 \label{fig:421_M}
-\end{figure} -->zmniejszyæ dla zmieszczenia albo rozbiæ na obrazek i legendê
+\end{figure}
+Uk³ad pocz¹tkowy strategii jest taki sam. Pierwsze ró¿nice pojawiaj¹ siê dopiero w czwartym kroku co przedstawiono na rys. \ref{412_1}
 
-Uk³ad pocz¹tkowy strategii jest taki sam. Pierwsze ró¿nice pojawiaj¹ siê dopiero w czwartym kroku co przedstawiono na -->odnoœnik.
-
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{412_1}
-\captionof{figure}{Krok 4. Powsta³a struktura ma zbli¿ony kszta³t, jednak¿e jest wiêksza. W nastêpnych krokach struktura rozrasta siê w podobny sposób do oryginalnej.}
-\end{minipage}
-
-\begin{minipage}[t]{\linewidth}
+\caption{Krok 4}
+\label{412_1}
+\end{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{412_2}
-\captionof{figure}{Krok 10. Du¿a zmiana wzglêdem pierwotnego eksperymentu. Uk³ad traci symetriê, co wynika z dostosowywania siê do uk³adu macierzy. Od tego momentu struktura przestaje przypominaæ fraktal.}
-\end{minipage}
-
-\begin{minipage}[t]{\linewidth}
+\caption{Krok 4}
+\label{412_2}
+\end{figure}
+Powsta³a struktura (rys. \ref{412_1}) ma zbli¿ony kszta³t, jednak¿e jest wiêksza. W nastêpnych krokach struktura rozrasta siê w podobny sposób do oryginalnej. W kroku 10 zachodzi du¿a zmiana wzglêdem pierwotnego eksperymentu (rys. \ref{412_2}). Uk³ad traci symetriê, co wynika z dostosowywania siê do uk³adu macierzy. Od tego momentu struktura przestaje przypominaæ fraktal.
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{412_3}
-\captionof{figure}{Krok 17. Ostateczne zatracenie struktury fraktalnej.}
-\end{minipage}
-
-\begin{minipage}[t]{\linewidth}
+\caption{Krok 17. Ostateczne zatracenie struktury fraktalnej.}
+\end{figure}
+Struktura uzyskana w kroku 27 (rys. \ref{412_4}) nie posiada osi symetrii pionowej ani poziomej jak oryginalny fraktal ale jest zbli¿ona do osi symetrii zlokalizowanej na przek¹tnej (o takim samym uk³adzie jak roz³o¿enie macierzy wyp³at).
+W kroku 60 (rys. \ref{412_5}) Uk³ad traci nawet t¹ szcz¹tkow¹ symetrie jak¹ posiada³ w wyniku zbli¿ania siê do krawêdzi siatki. Od tego momentu zmiany zachodziæ bêd¹ g³ównie na przek¹tnej.
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{412_4}
-\captionof{figure}{Krok 27. Struktura nie posiada osi symetrii pionowej ani poziomej jak oryginalny fraktal ale jest zbli¿ona do osi symetrii zlokalizowanej na przek¹tnej (o takim samym uk³adzie jak roz³o¿enie macierzy wyp³at).}
-\end{minipage}
-
-\begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{412_5}
-\captionof{figure}{Krok 60. Uk³ad traci nawet t¹ szcz¹tkow¹ symetrie jak¹ posiada³ w wyniku zbli¿ania siê do krawêdzi siatki. Od tego momentu zmiany zachodziæ bêd¹ g³ównie na przek¹tnej.}
+\includegraphics[width=\linewidth]{412_4}
+\captionof{figure}{Krok 27.}
+\label{412_4}
 \end{minipage}
-
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{412_5}
+\captionof{figure}{Krok 60. }
+\label{412_5}
+\end{minipage}
+\end{figure}
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_6}
@@ -694,11 +708,11 @@ Eksperyment ostatecznie potwierdzi³ hipotezê, ¿e roz³o¿enie macierzy wyp³at nawe
 \label{im2}
 \cite{IM}
 Podczas powtórzenia tego eksperymentu, wykorzystane zosta³y trzy macierze o bardzo zró¿nicowanych wartoœciach funkcji wyp³at, u³o¿one w koncentryczne krêgi dooko³a œrodka planszy. Wartoœci te zosta³y dobrane tak by zachêcaæ strategie le¿¹ce na granicy miêdzy dwoma ró¿nymi macierzami do przejmowania strategii od tych komórek, które le¿¹ dalej od centrum planszy:
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.75]{421_M}
-\captionof{figure}{Uk³ad macierzy}
-\end{minipage}
+\caption{Uk³ad macierzy}
+\end{figure}
 
 Wykorzystany zosta³ ponownie uk³ad pocz¹tkowy z rozdzia³u 3.2: \nameref{im1}: %odnoœniki
 \begin{figure}[H]
@@ -935,16 +949,16 @@ W tym eksperymencie równie¿ zaobserwowane wczeœniej zjawiska bêd¹ zachodziæ du¿o
 
 W kroku pierwszym dzia³ania automatu wiêkszoœæ uk³adu przyjmuje strategie k=0. Niewielka czêœæ posiada strategie k=1 i k=2. Pozosta³e strategiê maj¹ znacz¹co mniejsz¹ licznoœæ. Jest to ten sam efekt ekspansji strategii agresywnych, który mo¿na zauwa¿yæ w oryginalnym eksperymencie, przemno¿ony przez powiêkszone s¹siedztwo.
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{521_3}
 \captionof{figure}{Krok 2}
 \end{minipage}
-\end{center}
+
 
 Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1.
 
-\begin{figure}[H] \begin{minipage}[t]{.4\textwidth}
+\begin{figure}[H] \centering\begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{521_4}
 \centering
@@ -977,34 +991,31 @@ Na poni¿szym wykresie zobaczymy liczebnoœæ liczebnoœæ strategii ró¿nych typów ja
 Wykres liczebnoœci pokazuje zarówno pocz¹tkow¹ drastyczn¹ dominacje strategii "zawsze zdradzaj" jak i póŸniejsze wybicie siê strategii "zdradzaj gdy 1 s¹siad zdradza". Mimo rozszerzenie s¹siedztwa i pojawienia siê znacz¹cej liczby nowych strategii nadal utrzymuje siê trend zanikania tych o wysokim k.
 Dla s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy uk³ad pocz¹tkowy. Dla ustalenia uwagi strategia „zawsze zdradzaj” zosta³a zaznaczona na czarno.
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{522_1}
+\includegraphics[width=\linewidth]{522_1}
 \captionof{figure}{Krok 1}
 \end{minipage}
-\end{center}
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{522_2}
+\includegraphics[width=\linewidth]{522_2}
 \captionof{figure}{Krok 2}
 \end{minipage}
-\end{center}
+\end{figure}
 
 W kroku 1 widaæ znacz¹c¹ dominacje strategii "zawsze zdradzaj", jednak¿e ju¿ w kroku 2 strategia k=1 zaczyna dominowaæ.
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{522_3}
+\includegraphics[width=\linewidth]{522_3}
 \captionof{figure}{Krok 3}
 \end{minipage}
-\end{center}
-
-\begin{center} \begin{minipage}[t]{\linewidth}
+ \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{522_4}
+\includegraphics[width=\linewidth]{522_4}
 \captionof{figure}{Krok 6}
 \end{minipage}
-\end{center}
+\end{figure}
 
 W kolejnych krokach strategia k=0 zmniejsza swoj¹ liczebnoœæ. Ciekawym jest utworzenie siê nowej struktury "zawsze zdradzaj" w kroku 6, która nie istnia³a we wczeœniejszych krokach. Struktura ta odpowiada kszta³tem s¹siedztwu Moore'a o rozmiarze 3.
 \begin{figure}[H]
