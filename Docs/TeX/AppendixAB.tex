@@ -1,0 +1,27 @@
+\chapter{Analiza Biznesowa}
+Niniejszy dodatek powsta³ przed procesem implementacji na potrzeby przedmiotu Projek Zespo³owy i stanowi wyci¹g z pierwoten analizy biznesowej ograniczony do informacji pominiêtych w g³ównej czêœci pracy in¿ynierskiej. 
+\section{Cele biznesowe}
+\subsection{Wymagania funkcjonalne}
+Aplikacja zak³ada istnienie tylko jednego aktora – u¿ytkownika. Przewidujemy istnienie nastêpuj¹cych przypadków u¿ycia:
+\begin{itemize}
+\item Zdefiniowanie nowych warunków pocz¹tkowych symulacji (rêcznie komórka po komórce lub opisuj¹c zale¿noœæ strategii danej komórki od jej po³o¿enia)
+\item Wylosowanie nowych warunków pocz¹tkowych symulacji
+\item Wczytanie warunków pocz¹tkowych z pliku
+\item Wyœwietlanie stanu symulacji w formie graficznej
+\item Uruchomienie symulacji
+\item Zatrzymywanie symulacji
+\item Wyœwietlanie statystyk danej symulacji (iloœæ komórek o danej strategii, niestabilnoœæ uk³adu tj. iloœæ komórek, które zmieni³y strategie)
+\item Zmiana prêdkoœci symulacji (z ograniczeniem górnym)
+\item Podgl¹danie stanu symulacji z dowolnego poprzedniego pokolenia
+\item Funkcje zoom in oraz zoom out dla wizualizacji symulacji
+\item Mo¿liwoœæ eksportu wykresów do plików graficznych
+\item Mo¿liwoœæ wchodzenia w interakcje (do zdefiniowania) z wykresami opisuj¹cymi aktualny stan symulacji
+\item Zmiana ustawieñ wizualizacji (kolory, format wyœwietlania danych liczbowych na wykresach)
+\end{itemize}
+\subsection{Wymagania niefunkcjonalne}
+\begin{itemize}
+\item Usability – Przejrzysty interfejs u¿ytkownika. Aplikacja obs³ugiwana g³ównie za pomoc¹ myszki.
+\item Relability – Dzia³anie na systemie Windows o wersji 7 lub wy¿szej posiadaj¹cej dostêp do œrodowiska uruchomieniowego jêzyka wspólnego .NET wersji 4.5.
+\item Performance –P³ynnoœæ obs³ugi przy wielkoœci problemu 50x50 na komputerach o specyfikacji zbli¿onej do komputerów w pracowniach komputerowych wydzia³u MiNI PW. Wykorzystanie mo¿liwoœci procesów wielordzeniowych w trakcie obliczeñ.
+\item Security – Nie dotyczy, poniewa¿ aplikacja nie dokonuje przesy³ania danych miêdzy komputerami ani nie uwierzytelnia u¿ytkowników i nie przeprowadza obliczeñ na utajnionych danych.
+\end{itemize}

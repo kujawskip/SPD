@@ -14,25 +14,29 @@
 \contentsline {chapter}{\numberline {3}Analiza Dzia\IeC {\l }ania Automatu Kom\'orkowego}{14}
 \contentsline {section}{\numberline {3.1}Eksperyment Nowaka i Maya}{14}
 \contentsline {section}{\numberline {3.2}Eksperyment Ishidy i Moriego}{20}
-\contentsline {chapter}{\numberline {4}Przestrzenny Dylemat Wi\k e\'znia z R\'o\.znorodn\k a Macierz\k a Wyp\IeC {\l }at}{27}
-\contentsline {section}{\numberline {4.1}Eksperyment Nowaka i Maya}{27}
-\contentsline {section}{\numberline {4.2}Eksperyment Ishidy i Moriego}{34}
-\contentsline {chapter}{\numberline {5}Przestrzenny Dylemat Wi\k e\'znia o Uog\'olnionych S\k asiedztwach}{41}
-\contentsline {section}{\numberline {5.1}Eksperyment Nowaka i Maya}{41}
-\contentsline {section}{\numberline {5.2}Eksperyment Ishidy i Moriego}{45}
-\contentsline {section}{\numberline {5.3}Eksperyment Wanga}{51}
-\contentsline {chapter}{\numberline {6}Wnioski}{58}
-\contentsline {chapter}{Dodatek \numberline {A}Dokumentacja techniczna}{61}
-\contentsline {section}{\numberline {A.1}Diagram klas}{61}
-\contentsline {subsection}{\numberline {A.1.1}Przestrze\'n nazw SPD.Engine}{61}
-\contentsline {subsection}{\numberline {A.1.2}Przestrze\'n nazw SPD.Engine.Neighbourhoods}{61}
-\contentsline {subsection}{\numberline {A.1.3}Przestrze\'n nazw SPD.Engine.Strategies}{61}
-\contentsline {subsection}{\numberline {A.1.4}Opis Klas}{61}
-\contentsline {subsubsection}{Interfejs IStrategy}{61}
-\contentsline {subsubsection}{Klasa IntegerStrategy}{62}
-\contentsline {subsubsection}{Klasa Coord}{63}
-\contentsline {subsubsection}{Klasa PointMatrix}{63}
-\contentsline {subsubsection}{Interfejs INeighbourhood}{63}
-\contentsline {subsubsection}{Klasa SPD}{64}
-\contentsline {subsubsection}{Klasa SPDResult}{65}
-\contentsline {subsection}{\numberline {A.1.5}Opis Algorytmu}{66}
+\contentsline {chapter}{\numberline {4}Przestrzenny Dylemat Wi\k e\'znia z R\'o\.znorodn\k a Macierz\k a Wyp\IeC {\l }at}{26}
+\contentsline {section}{\numberline {4.1}Eksperyment Nowaka i Maya}{26}
+\contentsline {section}{\numberline {4.2}Eksperyment Ishidy i Moriego}{31}
+\contentsline {chapter}{\numberline {5}Przestrzenny Dylemat Wi\k e\'znia o Uog\'olnionych S\k asiedztwach}{37}
+\contentsline {section}{\numberline {5.1}Eksperyment Nowaka i Maya}{37}
+\contentsline {section}{\numberline {5.2}Eksperyment Ishidy i Moriego}{41}
+\contentsline {section}{\numberline {5.3}Eksperyment Wanga}{46}
+\contentsline {chapter}{\numberline {6}Wnioski}{53}
+\contentsline {chapter}{Dodatek \numberline {A}Analiza Biznesowa}{56}
+\contentsline {section}{\numberline {A.1}Cele biznesowe}{56}
+\contentsline {subsection}{\numberline {A.1.1}Wymagania funkcjonalne}{56}
+\contentsline {subsection}{\numberline {A.1.2}Wymagania niefunkcjonalne}{57}
+\contentsline {chapter}{Dodatek \numberline {B}Dokumentacja techniczna}{58}
+\contentsline {section}{\numberline {B.1}Diagramy klas}{58}
+\contentsline {subsection}{\numberline {B.1.1}Przestrze\'n nazw SPD.Engine}{58}
+\contentsline {subsection}{\numberline {B.1.2}Przestrze\'n nazw SPD.Engine.Neighbourhoods}{58}
+\contentsline {subsection}{\numberline {B.1.3}Przestrze\'n nazw SPD.Engine.Strategies}{58}
+\contentsline {subsection}{\numberline {B.1.4}Opis Klas}{58}
+\contentsline {subsubsection}{Interfejs IStrategy}{58}
+\contentsline {subsubsection}{Klasa IntegerStrategy}{59}
+\contentsline {subsubsection}{Klasa Coord}{60}
+\contentsline {subsubsection}{Klasa PointMatrix}{60}
+\contentsline {subsubsection}{Interfejs INeighbourhood}{60}
+\contentsline {subsubsection}{Klasa SPD}{61}
+\contentsline {subsubsection}{Klasa SPDResult}{62}
+\contentsline {subsection}{\numberline {B.1.5}Opis Algorytmu}{63}
