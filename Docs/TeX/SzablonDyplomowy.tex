@@ -387,26 +387,28 @@ Zdecydowaliœmy na czêœciow¹ zmianê parametrów - s¹siedztwo zosta³o roz³o¿one na 
 
 W wyniku eksperymentów (na s¹siedztwie Moore'a roz³o¿onym na p³aszczyŸnie) wysnuliœmy wniosek istnienia wartoœci brzegowej parametru $b$, powy¿ej której automat komórkowy odwzorowuje zachowanie zaobserwowane w oryginalnym eksperymencie Nowaka i Maya.
 
-Dla $b = 1.39$ obliczenia koñcz¹ siê po dwóch krokach automatu, osi¹gaj¹c nastêpuj¹cy uk³ad wynikowy: <---TODO:ODNOŒNIK
-
-\begin{minipage}[t]{\linewidth}
+Dla $b = 1.39$ obliczenia koñcz¹ siê po dwóch krokach automatu, osi¹gaj¹c uk³ad wynikowy widoczny na rysunku \ref{311_2}: 
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{311_2}
-\captionof{figure}{Krok 1}
-\end{minipage}
-Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur: <--ODNOŒNIK zamiast dwukropka
+\caption{Krok 1}
+\label{311_2}
+\end{figure}
+Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur - rysunki \ref{311_2A} i \ref{311_3} <--ODNOŒNIK zamiast dwukropka
 
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{311_2}
-\captionof{figure}{Krok 1}
-\end{minipage}
+\caption{Krok 1}
+\label{311_2A}
+\end{figure}
 
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{311_3}
 \captionof{figure}{Krok 2}
-\end{minipage}
+\label{311_3}
+\end{figure}
 Pocz¹tkowym etapem powstawania struktury jest rozszerzanie siê oryginalnego punktu do wiêkszych rozmiarów, zachowuj¹c dwie osie symetrii - pionow¹ i poziom¹ przechodz¹ce przez œrodek uk³adu.
 
 \begin{minipage}[t]{\linewidth}
@@ -476,7 +478,7 @@ Uk³ad pocz¹tkowy zosta³ wylosowany z równym prawdopodobieñstwem dla ka¿dej strat
 \hfill
 \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[width=.5\textwidth]{321_L}
+\includegraphics[width=.55\textwidth]{321_L}
 \end{minipage}
 \caption{Uk³ad pocz¹tkowy + Legenda}
 \label{fig:321_1}
@@ -716,7 +718,7 @@ Wykorzystany zosta³ ponownie uk³ad pocz¹tkowy z rozdzia³u 3.2: \nameref{im1}: %o
 \hfill
 \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[width=0.366\textwidth]{421_L}
+\includegraphics[width=0.55\textwidth]{321_L}
 \end{minipage}
 \caption{Uk³ad pocz¹tkowy + legenda}
 \end{figure}
@@ -950,19 +952,17 @@ W kroku pierwszym dzia³ania automatu wiêkszoœæ uk³adu przyjmuje strategie k=0. N
 
 Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1.
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H] \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{521_4}
+\includegraphics[width=\linewidth]{521_4}
 \captionof{figure}{Krok 3}
 \end{minipage}
-\end{center}
-
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{521_5}
+\includegraphics[width=\linewidth]{521_5}
 \captionof{figure}{Krok 5}
 \end{minipage}
-\end{center}
+\end{figure}
 
 Strategie pokojowe w praktyce ca³kowicie zaniknê³y, wszystkie pozosta³e strategie maj¹ k<5. Stopniowo strategie zanikaj¹, a¿ do prawie pe³nej dominacji strategii k=1:
 
