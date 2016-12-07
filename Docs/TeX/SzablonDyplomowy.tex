@@ -582,13 +582,13 @@ Zdecydowaliœmy siê na rozszerzenie oryginalnych eksperymentów poprzez dodanie ma
 \section{Eksperyment Nowaka i Maya}
 \label{nm2}
 \cite{NM}
-W tym eksperymencie zdecydowaliœmy siê na zró¿nicowanie parametru b w zale¿noœci od wspó³rzêdnej komórki. Dla przypomnienia poni¿ej umieszczono uogólnion¹ macierz wyp³at z pierwotnego eksperymentu:
+W tym eksperymencie zdecydowaliœmy siê na zró¿nicowanie parametru $b$ w zale¿noœci od wspó³rzêdnej komórki. Dla przypomnienia poni¿ej umieszczono uogólnion¹ macierz wyp³at z pierwotnego eksperymentu:
 
 \begin{center}
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $b$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -600,7 +600,7 @@ W tym eksperymencie zdecydowaliœmy siê na zró¿nicowanie parametru b w zale¿noœci
 \end{tabular}
 \end{center}
 
-Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem siê do œrodka uk³adu. Poni¿ej graficzna reprezentacja rozmieszczenia macierzy wyp³at na siatce, kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $(x_1,x_2,x_3,x_4)$
+Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem siê do œrodka uk³adu. Poni¿ej graficzna reprezentacja rozmieszczenia macierzy wyp³at na siatce, kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $[x_1,x_2,x_3,x_4]$
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -608,6 +608,7 @@ Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem s
 \captionof{figure}{Uk³ad macierzy}
 \end{minipage}
  \end{center}
+ Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1} co widaæ poni¿ej. <-- dopilnowaæ ¿eby by³o poni¿ej
 \begin{figure}[H]
 \centering
  \begin{minipage}[t]{.4\textwidth}
@@ -620,30 +621,26 @@ Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem s
 \captionof{figure}{Krok 2}
 \end{minipage} 
 \end{figure}
-Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1}. %poszukaæ odnoœników
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{411_2}
-\captionof{figure}{Krok 7}
-\end{minipage}
-Pierwsza ró¿nica widoczna jest w siódmej iteracji, powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.
+\captionof{figure}{Krok 7. Pierwsza ró¿nica widoczna jest w siódmej iteracji, powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.}
+\end{minipage} -->spróbowaæ zmieœciæ 3 grafiki stronê wy¿ej
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{411_3}
-\captionof{figure}{Krok 9}
+\captionof{figure}{Krok 9. Powsta³a struktura jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.}
 \end{minipage}
-Powsta³a w kroku dziewi¹tym struktura jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{411_3}
-\captionof{figure}{Krok 11 - Ostatni}
+\captionof{figure}{Krok 11 - Ostatni. Struktura nie rozros³a siê dalej, mimo ¿e znajduje siê w strefie $b$ = 1.4. Najprawdopodobniejszym wyt³umaczeniem na brak dalszego rozrostu jest to, ¿e struktura dostosowuje siê do uk³adu macierzy.}
 \end{minipage}
 
-Struktura zatrzyma³a siê na tym etapie, nie rozrastaj¹c siê dalej, mimo ¿e znajduje siê w strefie b = 1.4. Najprawdopodobniejszym wyt³umaczeniem na brak dalszego rozrostu jest to, ¿e struktura dostosowuje siê do uk³adu macierzy. By zweryfikowaæ tê hipotezê zdecydowaliœmy siê na uk³ad nie posiadaj¹cy tych samych osi symetrii co struktura fraktalna z pierwotnego eksperymentu.
-
+By zweryfikowaæ hipotezê o wp³ywie ro¿norodnej macierzy wyp³at na obliczenie automatu zdecydowaliœmy siê zbadaæ uk³ad nie posiadaj¹cy tych samych osi symetrii co struktura fraktalna z pierwotnego eksperymentu.
 Tak jak poprzednio zamieszczamy graficzn¹ reprezentacja rozmieszczenia macierzy wyp³at na siatce (Rysunek \ref{fig:421_M}), kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $(x_1,x_2,x_3,x_4)$
 
 \begin{figure}[H] 
@@ -651,51 +648,47 @@ Tak jak poprzednio zamieszczamy graficzn¹ reprezentacja rozmieszczenia macierzy 
 \includegraphics{412_M}
 \caption{}
 \label{fig:421_M}
-\end{figure}
+\end{figure} -->zmniejszyæ dla zmieszczenia albo rozbiæ na obrazek i legendê
 
-Uk³ad pocz¹tkowy strategii jest taki sam. Pierwsze ró¿nice pojawiaj¹ siê dopiero w czwartym kroku:
+Uk³ad pocz¹tkowy strategii jest taki sam. Pierwsze ró¿nice pojawiaj¹ siê dopiero w czwartym kroku co przedstawiono na -->odnoœnik.
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_1}
-\captionof{figure}{Krok 4}
+\captionof{figure}{Krok 4. Powsta³a struktura ma zbli¿ony kszta³t, jednak¿e jest wiêksza. W nastêpnych krokach struktura rozrasta siê w podobny sposób do oryginalnej.}
 \end{minipage}
-
-Powsta³a struktura ma zbli¿ony kszta³t, jednak¿e jest wiêksza. W nastêpnych krokach struktura rozrasta siê w podobny sposób do oryginalnej. Du¿a zmiana zachodzi w kroku dziesi¹tym:
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_2}
-\captionof{figure}{Krok 10}
+\captionof{figure}{Krok 10. Du¿a zmiana wzglêdem pierwotnego eksperymentu. Uk³ad traci symetriê, co wynika z dostosowywania siê do uk³adu macierzy. Od tego momentu struktura przestaje przypominaæ fraktal.}
 \end{minipage}
 
-Uk³ad traci tutaj symetriê, co wynika najpewniej z dostosowywania siê do uk³adu macierzy.  Od tego momentu struktura przestaje przypominaæ fraktal, co widaæ np. w kroku siedemnastym:
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_3}
-\captionof{figure}{Krok 17}
+\captionof{figure}{Krok 17. Ostateczne zatracenie struktury fraktalnej.}
 \end{minipage}
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_4}
-\captionof{figure}{Krok 27}
+\captionof{figure}{Krok 27. Struktura nie posiada osi symetrii pionowej ani poziomej jak oryginalny fraktal ale jest zbli¿ona do osi symetrii zlokalizowanej na przek¹tnej (o takim samym uk³adzie jak roz³o¿enie macierzy wyp³at).}
 \end{minipage}
-Struktura nie posiada osi symetrii pionowej ani poziomej jak oryginalny fraktal ale jest zbli¿ona do osi symetrii zlokalizowanej na przek¹tnej (o takim samym uk³adzie jak roz³o¿enie macierzy wyp³at).
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_5}
-\captionof{figure}{Krok 60}
+\captionof{figure}{Krok 60. Uk³ad traci nawet t¹ szcz¹tkow¹ symetrie jak¹ posiada³ w wyniku zbli¿ania siê do krawêdzi siatki. Od tego momentu zmiany zachodziæ bêd¹ g³ównie na przek¹tnej.}
 \end{minipage}
-Gdy uk³ad w wiêkszym stopniu zbli¿a siê do krawêdzi siatki zaczyna traciæ nawet t¹ szcz¹tkow¹ symetrie jak¹ posiada³. Od tego momentu zmiany w uk³adzie zachodziæ bêd¹ g³ównie na przek¹tnej.
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{412_6}
-\captionof{figure}{Krok 287}
+\captionof{figure}{Krok 287. Stabilizacja uk³adu.}
 \end{minipage}
-Wnioskiem, który mo¿na zauwa¿yæ jest to, ¿e roz³o¿enie macierzy wyp³at nawet o niewielkich ró¿nicach w wartoœciach mo¿e znacz¹co wp³yn¹æ na powstawanie i rozrastanie siê ró¿nych struktur.
+
+Eksperyment ostatecznie potwierdzi³ hipotezê, ¿e roz³o¿enie macierzy wyp³at nawet o niewielkich ró¿nicach w wartoœciach mo¿e znacz¹co wp³yn¹æ na powstawanie i rozrastanie siê struktur.
 
 \section{Eksperyment Ishidy i Moriego}
 \label{im2}
@@ -706,7 +699,6 @@ Podczas powtórzenia tego eksperymentu, wykorzystane zosta³y trzy macierze o bard
 \includegraphics[scale=0.75]{421_M}
 \captionof{figure}{Uk³ad macierzy}
 \end{minipage}
-
 
 Wykorzystany zosta³ ponownie uk³ad pocz¹tkowy z rozdzia³u 3.2: \nameref{im1}: %odnoœniki
 \begin{figure}[H]
