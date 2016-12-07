@@ -550,39 +550,27 @@ Po szeœciu kolejnych przebiegach automatu pozosta³y cztery strategie o najni¿szy
 \end{center}
 
 Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Strategia ta zostaje wyparta przez rozrastaj¹c¹ siê strategiê k=1, co widaæ na ostatecznym, ustabilizowanym uk³adzie (rys. \ref{321_7}
-
 \begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{321_7}
-
 \end{minipage}
 \caption{Krok 24 - Ostatni}
 \label{321_7}
 \end{figure}
-\noindent
-
 Wykres widoczny na rys. \ref{321_W1} przedstawia niestabilnoœæ uk³adu definiowan¹ jako liczbê komórek które zmieni³y strategiê w zadanym kroku. Mo¿na na nim zaobserwowaæ, ¿e po pierwszym utworzeniu siê struktur przestrzeni w kroku 1 iloœæ zmian strategii w ka¿dej iteracji mala³a znacz¹co. Sukcesywnie znika³y strategie inne ni¿ k=1. 
-
-\begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
-\centering
-\includegraphics[scale=0.75]{321_W1}
-\end{minipage}
+\begin{figure}[H]\centering
+\includegraphics[scale=0.6]{321_W1}
 \caption{}
 \label{321_W1}
 \end{figure}
-
 Strategia k=1 jest strategi¹ zbli¿on¹ do wzorcowej strategii „wet za wet”, z tym¿e, ¿e stosuje ona odpowiedzialnoœæ zbiorow¹ - przy jednej zdradzie mœci siê na wszystkich swoich s¹siadach. Pozwala jej to ¿erowaæ na bardziej pokojowych w sytuacjach zagro¿enia i jednoczeœnie kooperowaæ w sytuacji braku agresorów. Strategia k=2 osi¹ga podobny efekt, jednak¿e ze wzglêdu na wy¿szy próg mœciwoœci nie jest równie efektywna. Na rysunku \ref{321_W2} przedstawiono procentowy udzia³ zdobytych przez ka¿d¹ strategiê punktów na przestrzeni kolejnych iteracji. 
-
-\begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{321_W2}
-\end{minipage}
+\includegraphics[scale=0.6]{321_W2}
 \caption{}
 \label{321_W2}
 \end{figure}
-
 W ostatecznym rozrachunku sumy œrednich wartoœci punktowych dla pozosta³ych strategii s¹ bardzo do siebie zbli¿one, co doprowadza do widocznego na siatce impasu.
-
 \chapter{Przestrzenny Dylemat WiêŸnia z Ró¿norodn¹ Macierz¹ Wyp³at}
 Zdecydowaliœmy siê na rozszerzenie oryginalnych eksperymentów poprzez dodanie macierzy wyp³at w której wartoœci punktowe zale¿¹ bezpoœrednio od wspó³rzêdnych komórki na planszy automatu komórkowego.
 \section{Eksperyment Nowaka i Maya}
@@ -608,25 +596,29 @@ W tym eksperymencie zdecydowaliœmy siê na zró¿nicowanie parametru $b$ w zale¿noœ
 
 Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem siê do œrodka uk³adu. Poni¿ej graficzna reprezentacja rozmieszczenia macierzy wyp³at na siatce, kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $[x_1,x_2,x_3,x_4]$
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+ \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{411_M}
 \captionof{figure}{Uk³ad macierzy}
 \end{minipage}
- \end{center}
- Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1} co widaæ poni¿ej. 
+
+ Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1} co widaæ na rysunkach \ref{411_0} i \ref{411_1} 
 \begin{figure}[H]
 \centering
  \begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{411_0}
 \captionof{figure}{Krok 1}
+\label{411_0}
 \end{minipage}  \begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{411_1}
 \captionof{figure}{Krok 2}
+\label{411_1}
 \end{minipage} 
 \end{figure}
+Pierwsza ró¿nica widoczna jest w siódmej iteracji (rys. \ref{411_2}), powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.
+Powsta³a w kroku dziewi¹tym struktura ((rys. \ref{411_3}) jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.
 \begin{figure}[H]\centering
 \begin{minipage}[t]{.4\textwidth}
 \centering
@@ -641,8 +633,7 @@ Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem s
 \label{411_3}
 \end{minipage}
 \end{figure}
-Pierwsza ró¿nica widoczna jest w siódmej iteracji (rys. \ref{411_2}), powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.
-Powsta³a w kroku dziewi¹tym struktura ((rys. \ref{411_3}) jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.
+
 
 \begin{figure}[H]
 \centering
@@ -656,7 +647,7 @@ Tak jak poprzednio zamieszczamy graficzn¹ reprezentacja rozmieszczenia macierzy 
 
 \begin{figure}[H] 
 \centering
-\includegraphics{412_M}
+\includegraphics[scale=0.7]{412_M}
 \caption{}
 \label{fig:421_M}
 \end{figure}
@@ -664,15 +655,18 @@ Uk³ad pocz¹tkowy strategii jest taki sam. Pierwsze ró¿nice pojawiaj¹ siê dopiero
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.75]{412_1}
-\caption{Krok 4}
-\label{412_1}
-\end{figure}
-\begin{figure}[H]
+\begin{minipage}{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{412_2}
-\caption{Krok 4}
+\includegraphics[width=\linewidth]{412_1}
+\captionof{figure}{Krok 4}
+\label{412_1}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{412_2}
+\captionof{figure}{Krok 10}
 \label{412_2}
+\end{minipage}
 \end{figure}
 Powsta³a struktura (rys. \ref{412_1}) ma zbli¿ony kszta³t, jednak¿e jest wiêksza. W nastêpnych krokach struktura rozrasta siê w podobny sposób do oryginalnej. W kroku 10 zachodzi du¿a zmiana wzglêdem pierwotnego eksperymentu (rys. \ref{412_2}). Uk³ad traci symetriê, co wynika z dostosowywania siê do uk³adu macierzy. Od tego momentu struktura przestaje przypominaæ fraktal.
 \begin{figure}[H]
@@ -709,7 +703,7 @@ Eksperyment ostatecznie potwierdzi³ hipotezê, ¿e roz³o¿enie macierzy wyp³at nawe
 \label{im2}
 \cite{IM}
 Podczas powtórzenia tego eksperymentu, wykorzystane zosta³y trzy macierze o bardzo zró¿nicowanych wartoœciach funkcji wyp³at, u³o¿one w koncentryczne krêgi dooko³a œrodka planszy. Wartoœci te zosta³y dobrane tak by zachêcaæ strategie le¿¹ce na granicy miêdzy dwoma ró¿nymi macierzami do przejmowania strategii od tych komórek, które le¿¹ dalej od centrum planszy:
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{421_M}
 \caption{Uk³ad macierzy}
@@ -730,13 +724,14 @@ Wykorzystany zosta³ ponownie uk³ad pocz¹tkowy z rozdzia³u 3.2: \nameref{im1}: %o
 \caption{Uk³ad pocz¹tkowy}
 \end{figure}
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_1}
-\captionof{figure}{Krok 1. ponownie widaæ dominacje strategii o niskich wartoœciach k (w szczególnoœci strategii zawsze zdradzaj), jednak¿e w tym wypadku przetrwa³o wiêcej strategii preferuj¹cych rozwi¹zania pokojowe.}
+\captionof{figure}{Krok 1.}
+\label{421_1}
 \end{minipage}
-\end{center}
 
+W kroku 1 (rys. \ref{421_1} ) ponownie widaæ dominacjê strategii o niskich wartoœciach k (w szczególnoœci strategii zawsze zdradzaj), jednak¿e w tym wypadku przetrwa³o wiêcej strategii preferuj¹cych  rozwi¹zania pokojowe.
 W kolejnych krokach trend rozszerzenia siê strategii o niskich k utrzymuje siê, ponownie faworyzuj¹c strategiê "zdradzaj gdy 1 s¹siad zdradza". Tak jak w kroku wczeœniejszym, pod wp³ywem modyfikacji macierzy wyp³at strategie pokojowe d³u¿ej utrzymuj¹ siê w otoczeniu agresywniejszych strategii: Mo¿na zauwa¿yæ, ¿e strategie uk³adaj¹ siê w struktury odpowiadaj¹ce uk³adowi macierzy – tworz¹ one koncentryczne krêgi w oko³o œrodka siatki.
 
 \begin{figure}[H] \centering \begin{minipage}[t]{.4\textwidth}
@@ -753,58 +748,64 @@ W kolejnych krokach trend rozszerzenia siê strategii o niskich k utrzymuje siê, 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_4}
-\captionof{figure}{Krok 4. Mo¿na zaobserwowaæ powsta³e w przestrzeni stabilne struktury tych samych strategii. Dominuj¹c¹ strategi¹ jest strategia o k = 1 (,,zdradzaj gdy 1 s¹siad zdradza''). Iloœæ strategii o wysokich k jest niewielka co sugeruje, ¿e znikn¹ one lub pozostan¹ w niewielkich skupiskach.}
+\captionof{figure}{Krok 4. }
+\label{421_4}
 \end{minipage}
-
-\begin{center} \begin{minipage}[t]{\linewidth}
+W kroku 4 (rys. \ref{421_4} ) mo¿na zaobserwowaæ powsta³e w przestrzeni stabilne struktury tych samych strategii. Dominuj¹c¹ strategi¹ jest strategia o k = 1 (,,zdradzaj gdy 1 s¹siad zdradza''). Iloœæ strategii o wysokich k jest niewielka co sugeruje, ¿e znikn¹ one lub pozostan¹ w niewielkich skupiskach.
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{421_5}
-\captionof{figure}{Krok 5. Zgodnie z przewidywaniami strategia zawsze wybaczaj oraz inne strategie o wysokich k stopniowo zanikaj¹.}
+\includegraphics[width=\linewidth]{421_5}
+\captionof{figure}{Krok 5. }
+\label{421_5}
 \end{minipage}
-\end{center}
-
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{421_6}
+\includegraphics[width=\linewidth]{421_6}
 \captionof{figure}{Krok 6. Ostateczny zanik strategii o wysokich k}
 \end{minipage}
-\end{center}
+\end{figure}
 
-
-W kolejnych krokach znikaæ bêd¹ kolejne strategie o k wy¿szym ni¿ 3:
+W kroku 5 (rys. \ref{421_5}) zgodnie z przewidywaniami strategia zawsze wybaczaj oraz inne strategie o wysokich k stopniowo zanikaj¹.
+W kolejnych krokach (rys. \ref{421_7} , \ref{421_8} , \ref{421_9}) znikaæ bêd¹ kolejne strategie o k wy¿szym ni¿ 3:
 
 \begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{421_7}
 \captionof{figure}{Krok 8}
+\label{421_7}
 \end{minipage}
 \begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{421_8}
 \captionof{figure}{Krok 15}
+\label{421_8}
 \end{minipage}
 \end{figure}
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_9}
+\label{421_9}
 \captionof{figure}{Krok 27 - Ostatni}
 \end{minipage}
 
 Mimo tego, ¿e strategie pokojowe utrzymywa³y siê d³u¿ej, ni¿ w przypadku jednorodnej macierzy wyp³at, ponownie jesteœmy w stanie zaobserwowaæ dominacjê strategii, które maj¹ k niskie acz ró¿ne od 0. Stabilizacja uk³adu okaza³a siê byæ oscylacj¹ od momentu zanikniêcia strategii o k>3. Obliczenie wprowadzi³o wystarczaj¹cy szum, by zaniknê³a widoczna struktura uk³adu macierzy wyp³at.
 
-Poni¿ej przedstawiono procentowy stosunek liczby komórek o danej strategii do liczby wszystkich komórek w kolejnych iteracjach: --> odnoœnik
+Na rys. \ref{421_W1} przedstawiono procentowy stosunek liczby komórek o danej strategii do liczby wszystkich komórek w kolejnych iteracjach:
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_W1}
 \captionof{figure}{}
+\label{421_W1}
 \end{minipage}
 \end{center}
-Na nastêpuj¹cym wykresie przedstawiono procentowy udzia³ sum punktów danej strategii w ogólnych punktach zdobytych przez wszystkie strategie.
-Poni¿ej przedstawiono procentowy udzia³ poszczególnych strategii w kolejnych iteracjach: --> odnoœnik + ucina nam wykres wysuwaj¹c go poza dokument
+Na wykresie widocznym na rys. \ref{421_W2} przedstawiono procentowy udzia³ sum punktów danej strategii w ogólnych punktach zdobytych przez wszystkie strategie.
+Poni¿ej przedstawiono procentowy udzia³ poszczególnych strategii w kolejnych iteracjach:
+
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_W2}
 \captionof{figure}{}
+\label{421_W2}
 \end{minipage}
 
 Na wykresach idealnie widaæ rosn¹c¹ dominacjê strategii o niskim k, w szczególnoœci tych o k = 1 - liczebnoœæ tej strategii znacz¹co przewy¿sza licznoœci pozosta³ych. Zsumowane œrednie wartoœci punktów zdobytych przez tê strategiê zachowuj¹ sta³y trend wzrostowy.
@@ -851,35 +852,39 @@ Eksperyment powieliliœmy dla s¹siedztwa von Neumanna o rozmiarze 2 i 3 (dla para
 \captionof{figure}{Krok 3 - d = 2}
 \end{minipage}
 
-Szybsze rozrastanie siê struktur powoduje równie¿ szybsze osi¹gniêcie granic siatki: --> co widaæ na rysnkach x i y
+Szybsze rozrastanie siê struktur powoduje równie¿ szybsze osi¹gniêcie granic siatki co widaæ na rys. \ref{511_4} i \ref{511_5}
 
 \begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{511_4}
 \captionof{figure}{Krok 7 - d = 2}
+\label{511_4}
 \end{minipage}
 \begin{minipage}[t]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{511_5}
 \captionof{figure}{Krok 8 - d = 2}
+\label{511_5}
 \end{minipage}
 \end{figure}
 
-Szybszy rozrost powoduje, ¿e uk³ad w krótkim czasie destabilizuje co przedstawiono na --> odnoœnik
+Szybszy rozrost powoduje, ¿e uk³ad w krótkim czasie destabilizuje co przedstawiono na rys. \ref{511_6} 
 
- \begin{minipage}[t]{\linewidth}
+ \begin{figure}[H]
 \centering
 \includegraphics[scale=0.75]{511_6}
-\captionof{figure}{Krok 43 - d = 2}
-\end{minipage}
+\caption{Krok 43 - d = 2}
+\label{511_6}
+\end{figure}
 
 
-Brak mo¿liwoœci obliczeniowych nie pozwoli³ na odkrycie jak d³ugo zajmie ustabilizowanie uk³adu, jednak¿e dla obliczonych iteracji wykres niestabilnoœci uk³adu (obrazuj¹cy ile komórek zmieni³o strategiê w danej iteracji) sugeruje d³ugi, chaotyczny przebieg obliczeñ. Zamieszczono go poni¿ej. --> odnoœnik zamiast "poni¿ej"
+Brak mo¿liwoœci obliczeniowych nie pozwoli³ na odkrycie jak d³ugo zajmie ustabilizowanie uk³adu, jednak¿e dla obliczonych iteracji wykres niestabilnoœci uk³adu (obrazuj¹cy ile komórek zmieni³o strategiê w danej iteracji) sugeruje d³ugi, chaotyczny przebieg obliczeñ. Zamieszczono go na rys. \ref{511_W}
 
- \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{511_W}
 \captionof{figure}{}
+\label{511_W}
 \end{minipage}
 
 
@@ -930,23 +935,23 @@ Rozszerzyliœmy 3.2. \nameref{im1} opisuj¹cy klasteryzacjê strategii o dwa s¹sied
 \end{figure}
 
 W tym eksperymencie równie¿ zaobserwowane wczeœniej zjawiska bêd¹ zachodziæ du¿o szybciej z powodu wiêkszych s¹siedztw.
+W kroku pierwszym dzia³ania automatu (rys. \ref{521_2}) wiêkszoœæ uk³adu przyjmuje strategiê k=0. Niewielka czêœæ posiada strategie k=1 i k=2. Pozosta³e strategie maj¹ znacz¹co mniejsz¹ licznoœæ. Jest to ten sam efekt ekspansji strategii agresywnych, który mo¿na zauwa¿yæ w oryginalnym eksperymencie, wzmocniony przez powiêkszone s¹siedztwo. W kroku 2 (rys. \ref{521_3}), tak jak w poprzednich eksperymentach strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1. 
 
-\begin{minipage}[t]{\linewidth}
+\begin{figure}[H] \centering
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{521_2}
+\includegraphics[width=\linewidth]{521_2}
 \captionof{figure}{Krok 1}
+\label{521_2}
 \end{minipage}
-
-W kroku pierwszym dzia³ania automatu wiêkszoœæ uk³adu przyjmuje strategiê k=0. Niewielka czêœæ posiada strategie k=1 i k=2. Pozosta³e strategie maj¹ znacz¹co mniejsz¹ licznoœæ. Jest to ten sam efekt ekspansji strategii agresywnych, który mo¿na zauwa¿yæ w oryginalnym eksperymencie, wzmocniony przez powiêkszone s¹siedztwo.
-
-\begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{521_3}
+\includegraphics[width=\linewidth]{521_3}
 \captionof{figure}{Krok 2}
+\label{521_3}
 \end{minipage}
+\end{figure}
 
-
-Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1. --> dwie grafiki w jednej linii + merge komentarzy
 
 \begin{figure}[H] \centering\begin{minipage}[t]{.4\textwidth}
 \centering
@@ -960,24 +965,25 @@ Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardzie
 \captionof{figure}{Krok 5}
 \end{minipage}
 \end{figure}
+Strategie pokojowe zanik³y, wszystkie pozosta³e strategie maj¹ k<5. W kolejnych krokach równie¿ one bêd¹ stopniowo zanikaæ, a¿ do prawie pe³nej dominacji strategii k=1 (rys. \ref{521_6}) 
 
-Strategie pokojowe zanik³y, wszystkie pozosta³e strategie maj¹ k<5. W kolejnych krokach równie¿ one bêd¹ stopniowo zanikaæ, a¿ do prawie pe³nej dominacji strategii k=1. --> odnoœnik
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{521_6}
 \captionof{figure}{Krok fina³owy}
+\label{521_6}
 \end{minipage}
 \end{center}
 
-Na wykresie -->ODNOŒNIK przedstawiono procentowy udzia³ strategii w kolejnych iteracjach.
+Na wykresie widocznym na rys. \ref{521_W} przedstawiono procentowy udzia³ strategii w kolejnych iteracjach.
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H] 
 \centering
 \includegraphics[scale=0.75]{521_W}
-\captionof{figure}{}
-\end{minipage}
-\end{center}
+\caption{}
+\label{521_W}
+\end{figure}
 Wykres liczebnoœci pokazuje zarówno pocz¹tkow¹ drastyczn¹ dominacjê strategii ,,zawsze zdradzaj'' jak i póŸniejsze wybicie siê strategii ,,zdradzaj gdy 1 s¹siad zdradza''. Mimo rozszerzenia s¹siedztwa i pojawienia siê znacz¹cej liczby nowych strategii nadal utrzymuje siê trend zanikania tych o wysokim k.
 
 W celu zbadania s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy uk³ad pocz¹tkowy. Dla ustalenia uwagi strategia „zawsze zdradzaj” zosta³a zaznaczona na czarno.
@@ -994,8 +1000,6 @@ W celu zbadania s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy u
 \end{minipage}
 \end{figure}
 
---> zmieœciæ je obook siebie
-
 W kroku 1 widaæ znacz¹c¹ dominacje strategii ,,zawsze zdradzaj'', jednak¿e ju¿ w kroku 2 strategia k=1 zaczyna dominowaæ.
 
 \begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
@@ -1007,12 +1011,11 @@ W kroku 1 widaæ znacz¹c¹ dominacje strategii ,,zawsze zdradzaj'', jednak¿e ju¿ w
 \centering
 \includegraphics[width=\linewidth]{522_4}
 \captionof{figure}{Krok 6}
+\label{522_4}
 \end{minipage}
 \end{figure}
 
--->obrazki obok siebie
-
-W kolejnych krokach strategia k=0 zmniejsza swoj¹ liczebnoœæ. Ciekawym jest utworzenie siê nowej struktury "zawsze zdradzaj" w kroku 6, która nie istnia³a we wczeœniejszych krokach. Struktura ta odpowiada kszta³tem s¹siedztwu Moore'a o rozmiarze 3. --> ??
+W kolejnych krokach strategia k=0 zmniejsza swoj¹ liczebnoœæ. Mo¿na zauwa¿yæ utworzenie siê nowej struktury z³o¿onej z komórek o strategii "zawsze zdradzaj" w kroku 6 (rys. \ref{522_4}). Jej  regularny kwadratowy kszta³t odpowiada kszta³towi s¹siedztwa dlatego wnioskujemy, i¿ powsta³a w wyniku zwyciêstwa dok³adnie jednej komórki o strategii k=0 z poprzedniego pokolenia.
 \begin{figure}[H]
 \centering
 \begin{minipage}[b]{.4\textwidth}
@@ -1049,12 +1052,13 @@ Eksperyment J. Wanga polega³ na zbadaniu jaki wp³yw na obliczenia przestrzennego
 \end{tabular}
 \end{center}
 
-W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strategii zawsze zdradzaj i zawsze wybaczaj reprezentowanych odpowiednio kolorem granatowym i ¿ó³tym. Graficzna reprezentacja widoczna jest na --> odnoœnik
+W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strategii zawsze zdradzaj i zawsze wybaczaj reprezentowanych odpowiednio kolorem granatowym i ¿ó³tym. Graficzna reprezentacja widoczna jest na rys. \ref{531_1}
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{531_1}
 \captionof{figure}{Uk³ad pocz¹tkowy}
+\label{531_1}
 \end{minipage}
 \end{center}
 
@@ -1065,8 +1069,6 @@ W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strat
 \end{minipage}
 \end{center}
 
-[Z braku wystêpowania strategii k=1 i k=2 istnieje niezerowe prawdopodobieñstwo przetrwania strategii pokojowej.] --> przenieœæ do wniosków eksperymentu
-
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{531_3}
@@ -1074,13 +1076,14 @@ W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strat
 \end{minipage}
 \end{center}
 
-W [kolejnym --> odnoœnik] kroku w ywniku klasteryzacji powsta³y przestrzenne struktury. Strategie pokojowe mog¹ dziêki temu zyskiwaæ przewagê nad strategiami agresywnymi - strategia ,,zawsze zdradzaj'' otrzymuje punkty za ka¿d¹ strategiê wybaczaj¹c¹ w swoim s¹siedztwie ale nie za inne k=0. W wypadku powstania prostok¹tnej struktury w przestrzeni strategie zdradzaj¹ce maj¹ dostêp do 3 "¿ywicieli" podczas gdy strategie wybaczaj¹ce maj¹ do 5 wspieraj¹cych je komórek.
+W kroku drugim (rys. \ref{531_4}) w wyniku klasteryzacji powsta³y przestrzenne struktury. Strategie pokojowe mog¹ dziêki temu zyskiwaæ przewagê nad strategiami agresywnymi - strategia ,,zawsze zdradzaj'' otrzymuje punkty za ka¿d¹ strategiê wybaczaj¹c¹ w swoim s¹siedztwie ale nie za inne k=0. W wypadku powstania prostok¹tnej struktury w przestrzeni strategie zdradzaj¹ce maj¹ dostêp do 3 "¿ywicieli" podczas gdy strategie wybaczaj¹ce maj¹ do 5 wspieraj¹cych je komórek.
 \begin{figure}[H]
 \centering
 \begin{minipage}[b]{.4\textwidth}
 \centering
 \includegraphics[width=\linewidth]{531_4}
 \captionof{figure}{Krok 3}
+\label{531_4}
 \end{minipage} 
 \begin{minipage}[b]{.4\textwidth}
 \centering
@@ -1089,13 +1092,14 @@ W [kolejnym --> odnoœnik] kroku w ywniku klasteryzacji powsta³y przestrzenne str
 \end{minipage} 
 \end{figure}
 
-Zgodnie z wczeœniejsz¹ obserwacj¹, klastry strategii pokojowych rozszerzaj¹ siê, kosztem strategii agresywnej. W tym wypadku zajm¹ one prawie ca³¹ siatkê:
+Zgodnie z wczeœniejsz¹ obserwacj¹, klastry strategii pokojowych rozszerzaj¹ siê, kosztem strategii agresywnej. W kroku 95 (rys. \ref{531_6}) zajm¹ one prawie ca³¹ siatkê.
 \begin{figure}[H]
 \centering
 \begin{minipage}[b]{.4\textwidth}
 \centering
  \includegraphics[width=\linewidth]{531_6}
  \captionof{figure}{Krok 95}
+ \label{531_6}
  \end{minipage} 
  \begin{minipage}[b]{.4\textwidth}
  \centering
@@ -1145,8 +1149,8 @@ Dla macierzy
 \end{tabular}
 \end{center}
 
-Strategie wybaczaj¹ce musz¹ mieæ tylko jednego wiêcej s¹siada kooperuj¹cego ni¿ strategie zdradzaj¹ce by nad nimi dominowaæ, co u³atwia im klasteryzacjê. U¿yto tego samego uk³adu pocz¹tkowego co --> odnoœnik
-\begin{minipage}[t]{\linewidth}
+Strategie wybaczaj¹ce musz¹ mieæ tylko jednego wiêcej s¹siada kooperuj¹cego ni¿ strategie zdradzaj¹ce by nad nimi dominowaæ, co u³atwia im klasteryzacjê. U¿yto tego samego uk³adu pocz¹tkowego co w rys. \ref{531_1}
+\begin{minipage}[T]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{533_1}
 \captionof{figure}{Uk³ad pocz¹tkowy}

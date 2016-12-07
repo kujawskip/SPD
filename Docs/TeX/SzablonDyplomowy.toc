@@ -14,11 +14,11 @@
 \contentsline {chapter}{\numberline {3}Analiza Dzia\IeC {\l }ania Automatu Kom\'orkowego}{14}
 \contentsline {section}{\numberline {3.1}Eksperyment Nowaka i Maya}{14}
 \contentsline {section}{\numberline {3.2}Eksperyment Ishidy i Moriego}{20}
-\contentsline {chapter}{\numberline {4}Przestrzenny Dylemat Wi\k e\'znia z R\'o\.znorodn\k a Macierz\k a Wyp\IeC {\l }at}{27}
-\contentsline {section}{\numberline {4.1}Eksperyment Nowaka i Maya}{27}
-\contentsline {section}{\numberline {4.2}Eksperyment Ishidy i Moriego}{33}
-\contentsline {chapter}{\numberline {5}Przestrzenny Dylemat Wi\k e\'znia o Uog\'olnionych S\k asiedztwach}{40}
-\contentsline {section}{\numberline {5.1}Eksperyment Nowaka i Maya}{40}
-\contentsline {section}{\numberline {5.2}Eksperyment Ishidy i Moriego}{44}
-\contentsline {section}{\numberline {5.3}Eksperyment Wanga}{49}
-\contentsline {chapter}{\numberline {6}Wnioski}{56}
+\contentsline {chapter}{\numberline {4}Przestrzenny Dylemat Wi\k e\'znia z R\'o\.znorodn\k a Macierz\k a Wyp\IeC {\l }at}{26}
+\contentsline {section}{\numberline {4.1}Eksperyment Nowaka i Maya}{26}
+\contentsline {section}{\numberline {4.2}Eksperyment Ishidy i Moriego}{31}
+\contentsline {chapter}{\numberline {5}Przestrzenny Dylemat Wi\k e\'znia o Uog\'olnionych S\k asiedztwach}{37}
+\contentsline {section}{\numberline {5.1}Eksperyment Nowaka i Maya}{37}
+\contentsline {section}{\numberline {5.2}Eksperyment Ishidy i Moriego}{41}
+\contentsline {section}{\numberline {5.3}Eksperyment Wanga}{46}
+\contentsline {chapter}{\numberline {6}Wnioski}{53}
