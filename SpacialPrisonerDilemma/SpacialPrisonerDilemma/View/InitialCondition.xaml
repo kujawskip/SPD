@@ -1,7 +1,7 @@
 <Window x:Class="SpacialPrisonerDilemma.View.InitialCondition"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="InitialCondition" Height="452.866" Width="800.343">
+        Title="InitialCondition" Height="482.866" Width="800.343">
     <Window.Resources>
         <DataTemplate x:Key="CmbTemplate">
             <WrapPanel Margin="0 5 0 5" Height="30">
@@ -11,25 +11,28 @@
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Canvas Name="Canvas" MouseWheel="Canvas_OnMouseWheel" MouseDown="Canvas_OnMouseDown"  HorizontalAlignment="Left" Height="205" Margin="20,57,0,0" VerticalAlignment="Top" Width="205"/>
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="287,245,383.6,111.2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Button Content="Losowy" Margin="2" Padding="2" Click="Button_Click"/>
-                <Button Content="Akceptuj" IsEnabled="{Binding ConditionLoaded}" Margin="2" Padding="2" Grid.Row="1" Click="Button_Click_1"/>
-                <Button Content="Wczytaj" Margin="2" Padding="2" Grid.Column="1" Click="ButtonBase_OnClick1"/>
-                <Button Content="Zapisz" IsEnabled="{Binding ConditionLoaded}" Margin="2" Padding="2" Grid.Row="1" Grid.Column="1" Click="ButtonBase_OnClick2"/>
-            </Grid>
-        <Canvas Name="Legend" HorizontalAlignment="Left" Height="228" Margin="528,76,0,0" VerticalAlignment="Top" Width="149" MouseDown="Legend_OnMouseDown"/>
+        <Canvas Name="Canvas" ToolTip="{Binding ToolTipDescription}" MouseWheel="Canvas_OnMouseWheel" MouseMove="Canvas_OnMouseMove" MouseLeave="Canvas_OnMouseLeave" MouseDown="Canvas_OnMouseDown"  HorizontalAlignment="Left" Height="205" Margin="20,57,0,0" VerticalAlignment="Top" Width="205"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="287,245,383.6,111.2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            
+            </Grid.RowDefinitions>
+            <Button Content="Losowy" Margin="2" Padding="2" Click="Button_Click"/>
+            <Button Grid.Column="0" Content="Akceptuj" IsEnabled="{Binding ConditionLoaded}" Margin="2" Padding="2" Grid.Row="1" Click="Button_Click_1"/>
+            <Button Grid.Row="0" Content="Wczytaj" Margin="2" Padding="2" Grid.Column="1" Click="ButtonBase_OnClick1"/>
+            <Button Content="Zapisz" IsEnabled="{Binding ConditionLoaded}" Margin="2" Padding="2" Grid.Row="1" Grid.Column="1" Click="ButtonBase_OnClick2"/>
+            <CheckBox IsChecked="{Binding IsTwoState}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Unchecked="CheckBox_Checked" Checked="CheckBox_Checked">Tryb dwustanowy</CheckBox>
+        </Grid>
+        <Canvas Name="Legend" MouseLeave="Legend_OnMouseLeave" ToolTip="{Binding ToolTipDescription}" HorizontalAlignment="Left" MouseMove="Legend_OnMouseMove" Height="298" Margin="528,76,0,0" VerticalAlignment="Top" Width="149" MouseDown="Legend_OnMouseDown"/>
         <StackPanel Margin="29,291,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  Orientation="Horizontal">
             <Slider Name="RandomSize" Thumb.DragCompleted="RandomSize_DragCompleted" Height="21"  Minimum="2" Maximum="120" Width="200" TickFrequency="1" IsSnapToTickEnabled="True"/>
-            <TextBlock Text="{Binding ElementName=RandomSize, Path=Value}"></TextBlock>
+            <TextBlock Text="{Binding ElementName=RandomSize, Path=Value}" />
         </StackPanel>
         <ComboBox Name="ComboBox" ItemTemplate="{StaticResource CmbTemplate}" HorizontalAlignment="Left" Height="23" Margin="386,57,0,0" VerticalAlignment="Top" Width="87"/>
         <ComboBox x:Name="ComboBoxCopy"  HorizontalAlignment="Left" Height="20" Margin="20,23,0,0" VerticalAlignment="Top" Width="390" SelectionChanged="ComboBox_SelectionChanged"/>

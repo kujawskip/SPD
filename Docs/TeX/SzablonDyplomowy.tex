@@ -1,0 +1,1243 @@
+\documentclass[11pt, twoside, openany]{report}
+\usepackage[dvips]{graphicx,color,rotating}
+\usepackage[cp1250]{inputenc}
+\usepackage{t1enc}
+\usepackage{a4wide}
+\usepackage{amsfonts}
+
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage[MeX]{polski}
+\usepackage[T1]{fontenc}
+\usepackage{nameref}
+\usepackage{geometry}
+\usepackage{tabu}
+\usepackage[font={small,it}]{caption}
+\usepackage{multirow}
+\geometry{left=25mm,right=25mm,%
+bindingoffset=10mm, top=25mm, bottom=25mm}
+\usepackage{amssymb, latexsym}
+\usepackage{amsthm}
+\usepackage{palatino}
+\usepackage{array}
+\usepackage{pstricks}
+\usepackage{textcomp}
+\usepackage[titletoc]{appendix}
+\theoremstyle{definition}
+\newtheorem{theorem}{Twierdzenie}[section]
+\newtheorem{remark}{Uwaga}[section]
+\newtheorem{definition}{Definicja}[section]
+\newtheorem{alg}{Algorytm}[chapter]
+\newtheorem{prz}{Przypadek}[section]
+\newtheorem{np}{Przyk³ad}[section]
+\newtheorem{lemma}[theorem]{Lemat}
+\linespread{1.5}
+\newcommand*{\norm}[1]{\left\Vert{#1}\right\Vert}
+\newcommand*{\abs}[1]{\left\vert{#1}\right\vert}
+\newcommand*{\om}{\omega}
+
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=--}
+\setlist[itemize,3]{label=+}
+\setlist[itemize,4]{label=$\bullet$}
+\setlist[itemize,5]{label=--}
+\setlist[itemize,6]{label=+}
+\setlist[itemize,7]{label=$\bullet$}
+\setlist[itemize,8]{label=--}
+\setlist[itemize,9]{label=+}
+
+\renewlist{itemize}{itemize}{9}
+
+\author{B³a¿ej Bobko, Patryk Kujawski}
+\title{Symulacje Przestrzennego Dylematu WiêŸnia}
+
+\begin{document}
+
+% Za¿ó³æ gêœl¹ jaŸñ.
+\begin{titlepage}
+\pagestyle{empty}
+
+\noindent
+\begin{Large}
+\begin{table}[t]
+\centering
+\begin{tabular}[t]{lcr}
+ \includegraphics[width=70pt,height=70pt]{PW} & POLITECHNIKA WARSZAWSKA & \includegraphics[width=70pt,height=70pt]{MiNI}\\
+& WYDZIA£ MATEMATYKI & \\
+& I NAUK INFORMACYJNYCH &
+\end{tabular}
+\end{table}
+
+% \vfill
+\begin{center}PRACA DYPLOMOWA IN¯YNIERSKA
+\end{center}
+\begin{center}INFORMATYKA\end{center}\end{Large}
+% \vfill
+\begin{center}
+\Huge
+\textbf{Symulacje Przestrzennego Dylematu WiêŸnia}
+\end{center}
+% \vfill\vfill
+\vfill
+\begin{center}
+\Large
+Autorzy:\\
+\LARGE
+B³a¿ej Bobko, Patryk Kujawski
+\end{center}
+\vfill
+\begin{center}
+\Large
+Promotor: dr in¿. Agnieszka Jastrzêbska
+\end{center}
+\begin{center}
+\Large
+Opiekun naukowy: prof. nzw. dr hab. in¿. W³adys³aw Homenda
+\end{center}
+\vfill
+\begin{center}
+\large
+Warszawa, Grudzieñ 2016
+\end{center}
+\newpage
+\hfill
+\begin{table}[b]
+\centering
+\begin{tabular}[t]{ccc}
+............................................. & \hspace*{100pt} & .............................................\\
+podpis promotora & \hspace*{100pt} & podpis autora
+\end{tabular}
+\end{table}
+
+
+% \maketitle
+\end{titlepage}
+\thispagestyle{empty}
+\newpage
+\pagestyle{headings}
+\setcounter{page}{1}
+\hyphenation{Syl-ves-tra}
+\hyphenation{Syl-ves-ter-a}
+
+%\begin{abstract}
+
+%\end{abstract}
+
+%-----------Pocz¹tek czêœci zasadniczej-----------
+\tableofcontents
+\chapter{Wstêp}
+\section{Opis Problemu}
+Dylemat wiêŸnia jest najprostszym przyk³adem gry o sumie niezerowej jakie zamodelowano w toku rozwoju teorii gier. W podstawowej wersji ka¿dy z dwóch graczy stoi przed wyborem: kooperowaæ czy zdradziæ. Ostateczny wynik ka¿dego z nich zale¿y od kombinacji ich decyzji, gdzie najwiêksz¹ nagrodê otrzymuje zdradzaj¹cy kooperuj¹cego przeciwnika, zaœ drug¹ najwy¿sz¹ gdy obu graczy kooperowa³o. W wariancie tym mamy do czynienia z rozgrywk¹ jednokrotn¹ – ka¿dy z graczy podejmuje tylko jedn¹ decyzjê. Sytuacja staje siê nietrywialna gdy wprowadzimy rozgrywkê wielokrotn¹. Gracze podejmuj¹ decyzje w oparciu o poprzednie wybory swoje i przeciwnika oraz swój aktualny wynik. Mo¿na wiêc mówiæ o strategiach – sposobach podejmowania decyzji na podstawie aktualnej sytuacji w grze.
+
+Przestrzenny dylemat wiêŸnia jest rozszerzeniem powy¿szego problemu: gracze rozmieszczeni s¹ na siatce i rozgrywaj¹ dylemat wiêŸnia z wielokrotn¹ decyzj¹ z ka¿dym ze swoich s¹siadów. Nastêpnie porównuj¹ oni wyniki swoje i s¹siadów i przejmuj¹ strategiê, która w ich otoczeniu okaza³a siê byæ najbardziej korzystna.
+
+Przedmiotem niniejszej pracy jest symulacja oraz analiza przestrzennego dylematu wiêŸnia. W ramach projektu powsta³a aplikacja pozwalaj¹ca na wizualizacjê symulacji wielu rund gry dla zadanych ustawieñ parametrów: uk³adu pocz¹tkowego, macierzy wyp³at, iloœæ ruchów rozgrywki wielokrotnej. Na potrzeby pracy zakres strategii zosta³ ograniczony do trzech klas: zawsze zdradzaj, zawsze wybaczaj, zdradzaj jeœli k s¹siadów zdradzi³o w poprzednim ruchu, gdzie k jest wiêksze od 0 i mniejsze lub równe iloœci s¹siadów w uk³adzie. W ramach analizy merytorycznej dylematu wiêŸnia rozszerzono problematykê o nowe s¹siedztwa oraz o funkcjê macierzy wyp³at. Z u¿yciem programu do symulacji jako narzêdzia powtórzono eksperymenty Nowaka i May’a, Ishidy i Moriego oraz Wanga jak i sprawdzono czy ich wnioski maj¹ zastosowanie w wariantach rozszerzonych.
+\section{Motywacja Pracy}
+Teoria gier jest pe³na modeli, które choæ z pozoru wydaj¹ siê byæ proste, w rzeczywistoœci dobrze opisuj¹ z³o¿one zjawiska ekonomiczne i spo³eczne. Jednym z takich modeli jest dylemat wiêŸnia. Od momentu kiedy zosta³ po raz pierwszy formalnie zdefiniowany liczne badania z ró¿nych obszarów nauki od matematyki przez ekonomiê po socjologiê odnosi³y siê doñ, próbuj¹c dociec jaka strategia dzia³ania jest najlepsza i jak bardzo graj¹cy cz³owiek jest siê w stanie do tej optymalnej metody gry zbli¿yæ. Mnogoœæ i interdyscyplinarnoœæ zastosowañ dylematu wiêŸnia czyni¹ ten temat niezwykle interesuj¹cym, a rozliczne drogi modyfikacji, które mo¿na zastosowaæ na tej oryginalnej, prostej formule otwieraj¹ wiele ciekawych mo¿liwoœci badañ.
+\section{S³ownik Pojêæ}
+\begin{itemize}
+\item Decyzja - jedna z dwóch decyzji jakie mo¿e podj¹æ gracz spoœród opisanych przez dylemat wiêŸnia: “zdradzaj” lub “siedŸ cicho”
+\item Gracz - Fragment symulacji bêd¹cy pojedyncz¹ komórk¹. Inaczej nazywany komórk¹
+\item Iteracja - Patrz: pokolenie.
+\item Komórka - patrz: gracz
+\item Optymalizacja Strategii - proces w wyniku którego gracze podejmuj¹ decyzjê czy chc¹ zmieniæ swoje strategie. Jeœli tak to wybierana jest zawsze strategia tego s¹siada, który uzyska³ najlepszy wynik w ostatnim pokoleniu.
+\item Pokolenie - Jeden krok symulacji. Zdefiniowana w opcjach liczba rund sk³ada siê na jedno pokolenie. Miêdzy kolejnymi pokoleniami nastêpuje optymalizacja strategii. Inaczej nazywane iteracj¹
+\item Przestrzenny Dylemat WiêŸnia - Problem, dla którego tworzona jest symulacja. Inaczej nazywane SPD
+\item Rozgrywka - Fragment symulacji na który sk³ada siê dwóch graczy graj¹cych miêdzy sob¹ w dylemat wiêŸnia przez podan¹ w opcjach aplikacji liczbê rund. Wraz z nowym pokoleniem rozpoczynana jest nowa rozgrywka miêdzy s¹siadami
+\item Rozmieszczenie pocz¹tkowe - Patrz: Warunki pocz¹tkowe.
+\item Ruch - Podjêcie jednej decyzji w trakcie pojedynczej rozgrywki
+\item Runda - Wykonywanie jednego ruchu przez wszystkich graczy
+\item SPD - Patrz: Przestrzenny dylemat wiêŸnia
+\item Stan symulacji - aktualny uk³ad komórek w automacie komórkowym
+\item Strategia - Wzorzec podejmowania decyzji, który posiada ka¿dy gracz i na podstawie którego wykonuje ruchy w toku rozgrywek.
+\item Symulacja - realizacja automatu komórkowego opisanego przez SPD o podanych warunkach pocz¹tkowych
+\item S¹siedzi - Para komórek bêd¹ca w zadanym w opcjach aplikacji s¹siedztwie (Moore’a lub von Neumanna)
+\item Ustawienie pocz¹tkowe - Patrz: Warunki pocz¹tkowe.
+\item Warunki pocz¹tkowe - Pocz¹tkowe ustawienie uk³adu komórek w automacie komórkowym wraz z wymiarami jak równie¿ macierz nagród oraz definicja s¹siedztwa. Inaczej nazywany ustawieniem lub rozmieszczeniem pocz¹tkowym.
+\item Wizualizacja - graficzna reprezentacja aktualnego stanu symulacji
+\item Wynik gracza - suma punktów jakie uzyska³ gracz w toku rozgrywek ze swoimi s¹siadami w trakcie jednego pokolenia.
+\end{itemize}
+\section{Proces Implementacji}
+W stworzonym oprogramowaniu mo¿na rozró¿niæ dwa modu³y:
+\begin{itemize}
+\item GUI wykonane przez Patryka Kujawskiego, w sk³ad którego wchodzi³y:
+\begin{itemize}
+\item Mo¿liwoœæ zdefiniowania warunków pocz¹tkowych symulacji
+\item Wylosowanie warunków pocz¹tkowych
+\item Import i eksport warunków pocz¹tkowych z i do plików
+\item Wyœwietlanie stanu symulacji w formie graficznej
+\item Uruchamianie i zatrzymywanie symulacji
+\item Wyœwietlanie statystyk symulacji na wykresach
+\item Zmiana prêdkoœci symulacji
+\item Podgl¹d stanów symulacji z poprzednich pokoleñ
+\item Przybli¿anie i oddalanie graficznej reprezentacji stanu symulacji oraz wykresów
+\item Eksport wykresów i stanu symulacji do plików graficznych
+\item Wprowadzanie niejednorodnych macierzy wyp³at
+\end{itemize}
+\item Biblioteka obliczeniowa wykonana przez B³a¿eja Bobko, której zadaniem by³o:
+\begin{itemize}
+\item Dokonanie symulacji
+\item Optymalizacja symulacji z u¿yciem wielow¹tkowoœci
+\item Mo¿liwoœæ ³atwego rozszerzenia symulacji o nowo zdefiniowane strategie i s¹siedztwa
+\item Wykrywanie stabilizacji uk³adu
+\end{itemize}
+\item Sprawna integracja obu modu³ów oraz naprawianie b³êdów wymaga³y wspó³pracy obu osób w zespole.
+\end{itemize}
+
+Projekt wykonano z u¿yciem metodologii zwinnych w szczególnoœci czerpi¹c z metodyk scrum oraz kanban stawiaj¹c w ten sposób na komunikacjê w zespole, wiêkszoœæ dokumentacji powstawa³o post factum by dok³adnie opisywaæ zmiany kodu. Wymagania funkcjonalne przeanalizowano oraz na podstawie estymacji wymaganego czasu implementacji opracowano harmonogram sprintów zamieszczony w za³¹czniku „Analiza biznesowa”. W obrêbie sprintu (na poziomie mikrozarz¹dzania zadaniami) wykorzystano metodykê kanban. Wraz z rozwojem projektu sprinty skracano co u³atwia³o integracjê modu³ów oraz doraŸne zmniejszanie time-to-market, w tym wypadku – osi¹gniêcie wymagañ funkcjonalnych oraz terminów ustalonych z promotorem jako kamienie milowe.
+\vfill
+\chapter{Wprowadzenie Teoretyczne}
+\section{Kontekst Pojêciowy}
+\subsection{Dylemat WiêŸnia}
+W klasycznym dylemacie wiêŸnia mamy do czynienia z sytuacj¹, w której dwoje graczy podejmuje niezale¿nie od siebie decyzje, zaœ od ich kombinacji zale¿y nagroda punktowa dla ka¿dego z nich. Zale¿noœæ decyzji od nagrody opisana jest macierz¹ wyp³at, której ogólna postaæ widoczna jest poni¿ej.
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $x_1$ & & $x_2$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $x_1$ & & $x_3$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $x_3$ & & $x_4$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $x_2$ & & $x_4$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+Gdzie zachowane s¹ nastêpuj¹ce zale¿noœci miêdzy nagrodami:
+
+\begin{equation}
+2*x_1 > x_2 + x_3
+\end{equation}
+\begin{equation}
+x_2 < x_4 < x_1 < x_3
+\end{equation}
+\hfill \hfill
+\cite[rozdzia³ 12, s. 94-95]{PS}
+
+
+W wariancie z rozgrywk¹ wielokrotn¹ punkty miêdzy rozgrywkami siê sumuj¹.
+
+Poniewa¿ w macierzy wyp³at wystêpuj¹ cztery unikalne wartoœci, w tej pracy zosta³a przyjêta dla niej notacja czwórki liczb tj. $[x_1,x_2,x_3,x_4]$.
+\subsection{Przestrzenny Dylemat WiêŸnia}
+W przestrzennym dylemacie wiêŸnia rozmieszczamy graczy na siatce i ka¿dy z nich œciera siê ze swoimi s¹siadami (s¹siedztwo von Neumanna albo Moore’a) w rozgrywkach wielokrotnych. Wszystkie rozgrywki sk³adaj¹ siê z takiej samej iloœci decyzji oraz wszystkich graczy obowi¹zuje ta sama macierz wyp³at. Nastêpnie ka¿dy z graczy optymalizuje swoj¹ strategiê tzn. przejmuje strategiê najbardziej efektywnego s¹siada (lub zostaje przy swojej jeœli sam osi¹gn¹³ najlepszy wynik w swoim s¹siedztwie). Nastêpnie rozgrywki rozpoczynane s¹ od nowa (z zerowaniem punktów). Wariant ten jest ciekawy w szczególnoœci ze wzglêdu na sytuacjê w których dwoje s¹siadów rywalizuje korzystaj¹c z tej samej strategii co z powodu klastrowania siê strategii zdarza siê czêsto.
+
+Je¿eli zarówno strategie graczy jak i metoda wyboru nowej strategii s¹ ca³kowicie deterministyczne, przestrzenny dylemat wiêŸnia mo¿e byæ reprezentowany jako automat komórkowy. Stanem poszczególnej komórki jest strategia, a zasad¹ opisuj¹c¹ przejœcie automatu jest rozgrywka dylematu wiêŸnia oraz wybór strategii. Przedstawienie gry w ten sposób umo¿liwia studiowanie pojawiaj¹cych siê grup graczy o tych samych strategiach jako struktur w przestrzenii siatki komórek automatu.
+
+W tej pracy zdecydowaliœmy siê na reprezentacjê przestrzennego dylematu wiêŸnia jako automatu komórkowego.
+
+\subsection{Przestrzenny Dylemat WiêŸnia a Automaty Komórkowe}
+\begin{definition}
+Automatem komórkowym $A$ nazywamy czwórkê $(\alpha,S,N,f)$, gdzie a oznacza regularn¹ siatkê z³o¿on¹ z jednakowych komórek, S skoñczony zbiór stanów w którym mo¿e znajdowaæ siê komórka, N skoñczony zbiór funkcji s¹siedztw n takich ¿e $\forall _{c \in \alpha} \ n(c) \subset \alpha$ i funkcja $f:S^m \rightarrow S$ nazywan¹ funkcj¹ przejœcia, opisuj¹c¹ w jaki sposób zmieniaj¹ siê stany komórek automatu (gdzie m okreœla iloœæ komórek bior¹cych udzia³ w ewaluacji funkcji przejœcia). Aby opis automatu komórkowego by³ pe³ny, nale¿y równie¿ okreœliæ uk³ad pocz¹tkowy - dla ka¿dej komórki automatu jej stan pocz¹tkowy.
+\end{definition}
+W zastosowanej w tej pracy reprezentacji zachodz¹ nastêpuj¹ce odniesienia miêdzy elementami przestrzennego dylematu wiêŸnia a automatem komórkowym: Gracz w dylemacie wiêŸnia odpowiada komórce w automacie komórkowym. Strategia tego gracza odpowiada zaœ stanowi komórki. S¹siedztwo w dylemacie wiêŸnia bezpoœrednio przek³ada siê na s¹siedztwo automatu komórkowego, a funkcj¹ przejœcia jest zadana liczbê rozgrywek dylematu wiêŸnia po których nastêpuje policzenie punktacji wg. zadanej macierzy wyp³at i aktualizacja strategii ka¿dej komórki na podstawie wyników jej s¹siadów.
+\subsection{Uogólnienie s¹siedztw}
+Tradycyjnie w dylemacie wiêŸnia rozpatruje siê jedynie s¹siedztwa von Neumanna i Moore’a. W naszej symulacji uogólniliœmy je do trzech przypadków:
+\begin{enumerate}
+\item Rozszerzone s¹siedztwo von Neumanna o zasiêgu $d$
+
+\begin{equation}
+S(x,y) = \bigcup_{i=1}^d \{(x+i,y) , (x-i, y), (x, y+i), (x, y-i) \}
+\end{equation}
+Poni¿ej znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$:
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N11}
+\end{minipage}
+\caption{d=1}
+\label{N11}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N12}
+\end{minipage}
+\caption{d=2}
+\label{N12}
+\end{figure}
+\item Taksówkowe s¹siedztwo von Neumanna o zasiêgu $d$
+\begin{equation}
+S(x,y) = \{ (x’,y’) ; x’,y’ \in \mathbb{Z} \ i \ 0<d_{taxi}((x,y),(x',y'))\leq d\}
+\end{equation}
+Gdzie $d_{taxi}$ jest odleg³oœci¹ w metryce taksówkowej.
+
+Poni¿ej znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N21}
+\end{minipage}
+\caption{d=1}
+\label{N21}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N22}
+\end{minipage}
+\caption{d=2}
+\label{N22}
+\end{figure}
+\item Rozszerzone s¹siedztwo Moore’a o zasiêgu $d$
+\begin{equation}
+S(x,y) = \{ (x’,y’) ; x’,y’ \in \mathbb{Z} \ i \ 0<d_{max}((x,y),(x',y'))\leq d\}
+\end{equation}
+Gdzie $d_{max}$ jest odleg³oœci¹ w metryce maksimum.
+
+Na rysunkach \ref{N31} i \ref{N32} znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$:
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N31}
+\end{minipage}
+\caption{d=1}
+\label{N31}
+\end{figure}
+\begin{figure}[H]
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N32}
+\end{minipage}
+\caption{d=2}
+\label{N32}
+\end{figure}
+
+\end{enumerate}
+\subsection{Ró¿norodna Macierz Wyp³at}
+Rozpatrujemy równie¿ wariant, w którym gracze w zale¿noœci od swojego po³o¿enia podlegaj¹ ró¿nym macierzom wyp³at. Komplikuje siê wtedy krok optymalizacji strategii. Rozwa¿yliœmy dwa rozwi¹zania:
+\begin{enumerate}
+\item Gracze optymalizuj¹ strategie tylko na podstawie punktów s¹siadów.
+\item Gracze ewaluuj¹ ci¹g decyzji s¹siadów wzglêdem swojej macierzy wyp³at i na tej podstawie wy³aniaj¹ najbardziej efektywn¹.
+\end{enumerate}
+\section{Algorytm Symulacji}
+Symulacja inicjalizowana jest nastêpuj¹cymi parametrami:
+\begin{itemize}
+\item Pocz¹tkowy uk³ad strategii, ozn $D(x,y)$ = strategia komórki o wspó³rzêdnych $(x,y)$
+\item D³ugoœæ rozgrywek, ozn $k$.
+\item Funkcja macierzy wyp³at $M(x,y)$ = macierz wyp³at dla gracza $(x,y)$ lub $M$ = pojedyncza macierz wyp³at dla wariantu z jednorodn¹ macierz¹ wyp³at (wtedy $M(x,y)=M$)
+\item Funkcja s¹siedztwa $S(x,y)$ = \{$(x’,y’)$; gracz $(x’,y’)$ jest s¹siadem gracza $(x,y)$\}
+\item Rodzaj optymalizacji (istotny tylko w wariancie z niejednorodn¹ macierz¹ wyp³at)
+\end{itemize}
+Pomocniczo oznaczmy:
+\begin{itemize}
+\item $P(x,y)$ = punkty gracza o wspó³rzêdnych (x,y), pocz¹tkowo dla ka¿dego (x,y) $P(x,y)=0$
+\item $M_m(d_1, d_2)$ = iloœæ punktów jakie dostaje podejmuj¹cy decyzjê $d_1$ w sytuacji gdy przeciwnik podj¹³ decyzjê $d_2$ rozpatruj¹c macierz wyp³at $m$.
+\end{itemize}
+Krok automatu wygl¹da wtedy nastêpuj¹co:
+\begin{itemize}
+\item Powtórz $k$ razy:
+\begin{itemize}
+\item Dla ka¿dego $(x,y)$
+\begin{itemize}
+\item Dla ka¿dego $s \in S(x,y)$
+\begin{itemize}
+\item Niech $D_{(x,y)}(s)$ := decyzja $D(x,y)$ przeciw $s$
+\end{itemize}
+\end{itemize}
+\item Dla ka¿dego $(x,y)$
+\begin{itemize}
+\item Dla ka¿dego $s \in S(x,y)$
+\begin{itemize}
+\item Niech $d=D_{(x,y)}(s)$ i $d'=D_{(s)}(x,y)$
+\item $P(x,y)+=M_{M(x,y)}(d,d')$
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item Dla ka¿dego $(x,y)$
+\begin{itemize}
+\item WeŸmy $s$ takie, ¿e $s \in S(x,y) \land P(s)=max_{(x,y)\in S(x,y)} \ P(x,y)$
+\item $D(x,y):=D(s)$
+\item $P(x,y):=0$
+\end{itemize}
+\end{itemize}
+Szczegó³ow¹ implementacjê przewiduj¹c¹ wielow¹tkowoœæ oraz synchronizacjê w¹tków opisano w dokumentacji technicznej.
+
+\chapter{Analiza Dzia³ania Automatu Komórkowego}
+Wykorzystuj¹c przygotowan¹ aplikacjê opracowaliœmy schemat analizy empirycznej przestrzennego dylematu wiêŸnia w oparciu o popularne prace badawcze poœwiêcone tej tematyce. 
+Celem czêœci empirycznej by³o powtórzenie, a nastêpnie rozszerzenie badañ opisanych w \cite{NM,IM,W}.
+
+Decyzja o wyborze wy¿ej wymienionych prac zosta³a podjêta po studium aktualnej literatury z dziedziny dylematu wiêŸnia. Wybrane prace zwróci³y nasz¹ uwagê tym, ¿e stanowi¹ studium podstawowych zagadnieñ zwi¹zanych z tematem. Trudno o lepszy materia³ bazowy w trakcie badania w³asnoœci rozszerzonych wariantów przestrzennego dylematu wiêŸnia.
+
+\section{Eksperyment Nowaka i Maya}
+\label{nm1}
+\cite{NM}
+Jedn¹ z pierwszych prac dotycz¹cych przestrzennego dylematu wiêŸnia, by³ eksperyment wykonany przez M. Nowaka i R. May’a. Rozwa¿ali oni strategie „zawsze wybaczaj” i „zawsze zdradzaj”, roz³o¿one na planszy tak, by jedna strategia zawsze zdradzaj otoczona by³a ze wszystkich stron symetrycznie tylko i wy³¹cznie przez komórki o strategii „zawsze wybaczaj”.
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{311_1}
+\captionof{figure}{}
+\end{minipage}
+
+Siatka graczy w tej rozgrywce roz³o¿ona by³a na torusie z u¿yciem s¹siedztwa von Neumanna. Nowak i May zauwa¿yli, ¿e strategia zawsze zdradzaj propaguje siê, tworz¹c podobne do fraktalnych struktury.
+
+Eksperyment ten uwzglêdnia³ wykorzystanie nastêpuj¹cej macierzy wyp³at (zgodnie z modyfikacj¹ zaproponowan¹ w artykule Y.  Ishidy i T. Moriego) \cite{IM}:
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $b$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1$ & & $0$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $0$ & & $0$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $b$ & & $0$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+
+W celu spe³niania nierównoœci charakteryzuj¹cych przestrzenny dylemat wiêŸnia, parametr $b$ musi spe³niaæ nierównoœæ $1<b<2$.
+
+Zdecydowaliœmy na czêœciow¹ zmianê parametrów - s¹siedztwo zosta³o roz³o¿one na p³aszczyŸnie zamiast na torusie.
+
+W wyniku eksperymentów (na s¹siedztwie Moore'a roz³o¿onym na p³aszczyŸnie) wysnuliœmy wniosek istnienia wartoœci brzegowej parametru $b$, powy¿ej której automat komórkowy odwzorowuje zachowanie zaobserwowane w oryginalnym eksperymencie Nowaka i Maya.
+
+Dla $b = 1.39$ obliczenia koñcz¹ siê po dwóch krokach automatu, osi¹gaj¹c uk³ad wynikowy widoczny na rysunku \ref{311_2}: 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{311_2}
+\caption{Krok 1}
+\label{311_2}
+\end{figure}
+Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur - rysunki \ref{311_2A} i \ref{311_3}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{311_2}
+\caption{Krok 1}
+\label{311_2A}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{311_3}
+\captionof{figure}{Krok 2}
+\label{311_3}
+\end{figure}
+Pocz¹tkowym etapem powstawania struktury jest rozszerzanie siê oryginalnego punktu do wiêkszych rozmiarów, zachowuj¹c dwie osie symetrii - pionow¹ i poziom¹ przechodz¹ce przez œrodek uk³adu.
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{311_4}
+\captionof{figure}{Krok 3}
+\end{minipage}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{311_5}
+\captionof{figure}{Krok 4}
+\end{minipage}
+
+Nastêpnym etapem jest powstanie struktur w przestrzeni bêd¹cych kopiami tych z wczeœniejszych kroków, jako odnóg g³ównej struktury.
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{311_6}
+\captionof{figure}{Krok 7}
+\end{minipage}
+
+Czêœciowo powielone struktury wydzielaj¹ siê, umo¿liwiaj¹c rozrost struktur fraktalnych.
+
+\begin{figure}[H] 
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{311_7}
+\captionof{figure}{Krok 9}
+\end{minipage}
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{311_8}
+\captionof{figure}{Krok 17}
+\end{minipage}
+\end{figure}
+
+Po siedemnastu iteracjach struktury fraktalne jest zbyt du¿e by pomieœciæ siê na planszy. Mo¿e to powodowaæ zaburzenia we wczeœniej istniej¹cej symetrii i ostatecznie bêdzie powodem zakoñczenia obliczeñ automatu.
+
+
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{311_9}
+\captionof{figure}{Krok 34 - Ostatni}
+\end{minipage}
+\end{center}
+Fraktalna struktura zaburzy³a siê z powodu braku miejsca na planszy. Ostatecznie czêœciowa symetria zosta³a zachowana jednak¿e nie jest to koniecznoœæ. Jednym z powodów zaburzenia symetrii mo¿e byæ funkcja wyboru strategii podczas aktualizacji strategii – model teoretyczny nie rozs¹dza na jakiej podstawie nale¿y rozs¹dzaæ remisy. W takiej sytuacji wybór móg³by byæ losowy, ale w celu zachowania determinizmu koniecznego do istnienia automatu komórkowego, wedle naszej implementacji komórka wybiera najpierw siebie (jeœli posiada najwiêksz¹ iloœæ punktów), a potem s¹siada o najmniejszej wspó³rzêdnej X. W wypadku kolejnego remisu decyduje najmniejsza wspó³rzêdna Y. Doprowadza to do sytuacji, w której odpowiadaj¹ce sobie komórki znajduj¹ce siê po dwóch stronach osi symetrii mog¹ wybraæ do pobrania strategii komórki które nie odpowiadaj¹ sobie w ten sam sposób, co zaburza symetrycznoœæ uk³adu.
+\section{Eksperyment Ishidy i Moriego}
+\label{im1}
+
+\cite{IM} Drugi eksperyment oparty by³ na pracy Y. Ishidy i T. Moriego.  W tym eksperymencie badane by³y strategie postaci ,,Zdradzaj gdy k s¹siadów zdradza''. Wnioskiem z eksperymentów by³o zauwa¿enie zjawiska klastrowania siê strategii w przestrzeni(parafrazuj¹c 
+\cite{IM})
+
+\begin{quote}
+ "Przy w³aœciwym wyborze parametrów macierzy wyp³at, niektóre przestrzenne strategie rozpowszechniaj¹ siê, tworz¹c granice w dwuwymiarowej przestrzeni siatki. Po³¹czony obszar siatek z identycznymi strategiami mo¿e wyeliminowaæ inn¹ strategiê; jeœli niewielka czêœæ siatek w po³¹czonym obszarze zostanie zmieniona na strategiê inn¹ od tej w po³¹czonym obszarze, ta strategia powróci do oryginalnej."
+
+\end{quote}%
+W eksperymencie wykorzystano 10 strategii - Od k = 0 (strategia zawsze zdradzaj) do k = 9 (strategia zawsze wybaczaj), ka¿d¹ z nich przedstawiono innym kolorem.
+Uk³ad pocz¹tkowy zosta³ wylosowany z równym prawdopodobieñstwem dla ka¿dej strategii, na rysunku \ref{fig:321_1} widaæ jego graficzn¹ reprezentacjê.
+
+\begin{figure}[H] \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=1.4\textwidth]{321_1}
+\centering
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=.55\textwidth]{321_L}
+\end{minipage}
+\caption{Uk³ad pocz¹tkowy + Legenda}
+\label{fig:321_1}
+\end{figure}
+W omówieniu wniosków pierwotnego eksperymentu nie poruszono tematu macierzy wyp³at, co sugeruje, i¿ zjawisko klasteryzacji jest niezale¿ne od sposobu punktowania, tote¿ mo¿na wybraæ dowoln¹ spe³niaj¹c¹ warunki dylematu wiêŸnia. W toku naszych badañ wybrano macierz promuj¹c¹ zachowania agresywne (ze wzglêdu na punktowanie podwójnej zdrady) jak I podtrzymuj¹ca zachowania defensywne (wysokie punktowanie podwójnej kooperacji). Poni¿ej przedstawiono dok³adne wartoœci wybranej macierzy. 
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $4$ & & $5$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $4$ & & $0$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $0$ & & $2$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $5$ & & $2$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+
+Poni¿ej zamieszczono graficzn¹ reprezentacjê najwa¿niejszych kroków obliczenia wraz z komentarzem.
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{321_2}
+\captionof{figure}{Krok 1}
+\end{minipage}
+\end{center}
+\noindent
+W pierwszym kroku widoczny jest efekt znacz¹cej dominacji strategii o niskim k - strategia k=0 (zawsze zdradzaj) i k=1 (zdradzaj gdy jeden s¹siad zdradza) zajê³y wiêksz¹ czêœæ siatki. Pozosta³e strategie utworzy³y niewielkie struktury w przestrzeni, w szczególnoœci widoczna jest niewielka iloœæ strategii o wysokim k (reprezentowanych jasnymi barwami).
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{321_3}
+
+\captionof{figure}{Krok 2}
+\end{minipage}
+\end{center}
+
+W tym kroku prawie ca³kowicie zaniknê³y strategie o wysokich k jak równie¿ zwiêkszy³a siê liczba komórek ze strategi¹ k=1, kosztem znikaj¹cej strategii k=0. Jest to zwi¹zane z faktem, ¿e strategie te osi¹gaj¹ wiêcej punktów na interakcji miêdzy sob¹ w œrodku tworzonych przez siebie klastrów, ni¿ odpowiadaj¹ce struktury strategii „zawsze zdradzaj”.
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{321_4}
+\captionof{figure}{Krok 6}
+\end{minipage}
+\end{center}
+
+W tym kroku strategia k=1 sta³a siê dominuj¹c¹ iloœciowo strategi¹, posiadaj¹c znacz¹c¹ wiêkszoœæ komórek siatki. Doprowadzi³o to do prawie ca³kowitego zanikniêcia strategii o k>3 i zmniejszenia liczebnoœci strategii "zawsze zdradzaj".
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{321_5}
+\captionof{figure}{Krok 12}
+\end{minipage}
+\end{center}
+
+Po szeœciu kolejnych przebiegach automatu pozosta³y cztery strategie o najni¿szych wartoœciach k, z czego strategia k=3 wystêpuje tylko w jednym klastrze w przestrzeni. Strategia k=1 w niewielkim stopniu zwiêkszy³a swoj¹ liczebnoœæ kosztem pozosta³ych.
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{321_6}
+\captionof{figure}{Krok 23}
+\end{minipage}
+\end{center}
+
+Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Strategia ta zostaje wyparta przez rozrastaj¹c¹ siê strategiê k=1, co widaæ na ostatecznym, ustabilizowanym uk³adzie (rys. \ref{321_7}
+\begin{figure}[H]\centering \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{321_7}
+\end{minipage}
+\caption{Krok 24 - Ostatni}
+\label{321_7}
+\end{figure}
+Wykres widoczny na rys. \ref{321_W1} przedstawia niestabilnoœæ uk³adu definiowan¹ jako liczbê komórek które zmieni³y strategiê w zadanym kroku. Mo¿na na nim zaobserwowaæ, ¿e po pierwszym utworzeniu siê struktur przestrzeni w kroku 1 iloœæ zmian strategii w ka¿dej iteracji mala³a znacz¹co. Sukcesywnie znika³y strategie inne ni¿ k=1. 
+\begin{figure}[H]\centering
+\includegraphics[scale=0.6]{321_W1}
+\caption{}
+\label{321_W1}
+\end{figure}
+Strategia k=1 jest strategi¹ zbli¿on¹ do wzorcowej strategii „wet za wet”, z tym¿e, ¿e stosuje ona odpowiedzialnoœæ zbiorow¹ - przy jednej zdradzie mœci siê na wszystkich swoich s¹siadach. Pozwala jej to ¿erowaæ na bardziej pokojowych w sytuacjach zagro¿enia i jednoczeœnie kooperowaæ w sytuacji braku agresorów. Strategia k=2 osi¹ga podobny efekt, jednak¿e ze wzglêdu na wy¿szy próg mœciwoœci nie jest równie efektywna. Na rysunku \ref{321_W2} przedstawiono procentowy udzia³ zdobytych przez ka¿d¹ strategiê punktów na przestrzeni kolejnych iteracji. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{321_W2}
+\caption{}
+\label{321_W2}
+\end{figure}
+W ostatecznym rozrachunku sumy œrednich wartoœci punktowych dla pozosta³ych strategii s¹ bardzo do siebie zbli¿one, co doprowadza do widocznego na siatce impasu.
+\chapter{Przestrzenny Dylemat WiêŸnia z Ró¿norodn¹ Macierz¹ Wyp³at}
+Zdecydowaliœmy siê na rozszerzenie oryginalnych eksperymentów poprzez dodanie macierzy wyp³at w której wartoœci punktowe zale¿¹ bezpoœrednio od wspó³rzêdnych komórki na planszy automatu komórkowego.
+\section{Eksperyment Nowaka i Maya}
+\label{nm2}
+\cite{NM}
+W tym eksperymencie zdecydowaliœmy siê na zró¿nicowanie parametru $b$ w zale¿noœci od wspó³rzêdnej komórki. Dla przypomnienia poni¿ej umieszczono uogólnion¹ macierz wyp³at z pierwotnego eksperymentu:
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $b$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1$ & & $0$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $0$ & & $0$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $b$ & & $0$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+
+Pierwsz¹ metod¹ zró¿nicowania, by³o zwiêkszanie parametru b wraz ze zbli¿aniem siê do œrodka uk³adu. Poni¿ej graficzna reprezentacja rozmieszczenia macierzy wyp³at na siatce, kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $[x_1,x_2,x_3,x_4]$
+
+ \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{411_M}
+\captionof{figure}{Uk³ad macierzy}
+\end{minipage}
+
+ Pocz¹tkowe struktury w przestrzeni s¹ identyczne do tych z punktu 3.1 \nameref{nm1} co widaæ na rysunkach \ref{411_0} i \ref{411_1} 
+\begin{figure}[H]
+\centering
+ \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{411_0}
+\captionof{figure}{Krok 1}
+\label{411_0}
+\end{minipage}  \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{411_1}
+\captionof{figure}{Krok 2}
+\label{411_1}
+\end{minipage} 
+\end{figure}
+Pierwsza ró¿nica widoczna jest w siódmej iteracji (rys. \ref{411_2}), powsta³a struktura jest odrobinê inna. Wnioskujemy, ¿e wynika to z faktu, i¿ powielone obiekty s¹ na granicy zmiany macierzy.
+Powsta³a w kroku dziewi¹tym struktura ((rys. \ref{411_3}) jest znacz¹co inna, mniejsza ni¿ w oryginalnym eksperymencie. Struktura krêgu powsta³a naoko³o granic w uk³adzie macierzy.
+\begin{figure}[H]\centering
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{411_2}
+\captionof{figure}{Krok 7}
+\label{411_2}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{411_3}
+\captionof{figure}{Krok 9}
+\label{411_3}
+\end{minipage}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{411_3}
+\caption{Krok 11 - Ostatni.}
+\end{figure}
+
+Struktura nie rozros³a siê dalej, mimo ¿e znajduje siê w strefie $b$ = 1.4. Najprawdopodobniejszym wyt³umaczeniem na brak dalszego rozrostu jest to, ¿e struktura dostosowuje siê do uk³adu macierzy.
+By zweryfikowaæ hipotezê o wp³ywie ró¿norodnej macierzy wyp³at na obliczenie automatu zdecydowaliœmy siê zbadaæ uk³ad nie posiadaj¹cy tych samych osi symetrii co struktura fraktalna z pierwotnego eksperymentu.
+Tak jak poprzednio zamieszczamy graficzn¹ reprezentacja rozmieszczenia macierzy wyp³at na siatce (Rysunek \ref{fig:421_M}), kolory odpowiadaj¹ macierzom opisanym w legendzie notacj¹ $(x_1,x_2,x_3,x_4)$
+
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.7]{412_M}
+\caption{}
+\label{fig:421_M}
+\end{figure}
+Uk³ad pocz¹tkowy strategii jest taki sam. Pierwsze ró¿nice pojawiaj¹ siê dopiero w czwartym kroku co przedstawiono na rys. \ref{412_1}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{412_1}
+\captionof{figure}{Krok 4}
+\label{412_1}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{412_2}
+\captionof{figure}{Krok 10}
+\label{412_2}
+\end{minipage}
+\end{figure}
+Powsta³a struktura (rys. \ref{412_1}) ma zbli¿ony kszta³t, jednak¿e jest wiêksza. W nastêpnych krokach struktura rozrasta siê w podobny sposób do oryginalnej. W kroku 10 zachodzi du¿a zmiana wzglêdem pierwotnego eksperymentu (rys. \ref{412_2}). Uk³ad traci symetriê, co wynika z dostosowywania siê do uk³adu macierzy. Od tego momentu struktura przestaje przypominaæ fraktal.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{412_3}
+\caption{Krok 17. Ostateczne zatracenie struktury fraktalnej.}
+\end{figure}
+Struktura uzyskana w kroku 27 (rys. \ref{412_4}) nie posiada osi symetrii pionowej ani poziomej jak oryginalny fraktal ale jest zbli¿ona do osi symetrii zlokalizowanej na przek¹tnej (o takim samym uk³adzie jak roz³o¿enie macierzy wyp³at).
+W kroku 60 (rys. \ref{412_5}) Uk³ad traci nawet t¹ szcz¹tkow¹ symetrie jak¹ posiada³ w wyniku zbli¿ania siê do krawêdzi siatki. Od tego momentu zmiany zachodziæ bêd¹ g³ównie na przek¹tnej.
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{412_4}
+\captionof{figure}{Krok 27.}
+\label{412_4}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{412_5}
+\captionof{figure}{Krok 60. }
+\label{412_5}
+\end{minipage}
+\end{figure}
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{412_6}
+\captionof{figure}{Krok 287. Stabilizacja uk³adu.}
+\end{minipage}
+
+Eksperyment ostatecznie potwierdzi³ hipotezê, ¿e roz³o¿enie macierzy wyp³at nawet o niewielkich ró¿nicach w wartoœciach mo¿e znacz¹co wp³yn¹æ na powstawanie i rozrastanie siê struktur.
+
+\section{Eksperyment Ishidy i Moriego}
+\label{im2}
+\cite{IM}
+Podczas powtórzenia tego eksperymentu, wykorzystane zosta³y trzy macierze o bardzo zró¿nicowanych wartoœciach funkcji wyp³at, u³o¿one w koncentryczne krêgi dooko³a œrodka planszy. Wartoœci te zosta³y dobrane tak by zachêcaæ strategie le¿¹ce na granicy miêdzy dwoma ró¿nymi macierzami do przejmowania strategii od tych komórek, które le¿¹ dalej od centrum planszy:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{421_M}
+\caption{Uk³ad macierzy}
+\end{figure}
+
+Wykorzystany zosta³ ponownie uk³ad pocz¹tkowy z rozdzia³u 3.2: \nameref{im1}: %odnoœniki
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=1.4\textwidth]{321_1} 
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=0.55\textwidth]{321_L}
+\end{minipage}
+\caption{Uk³ad pocz¹tkowy}
+\end{figure}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{421_1}
+\captionof{figure}{Krok 1.}
+\label{421_1}
+\end{minipage}
+
+W kroku 1 (rys. \ref{421_1} ) ponownie widaæ dominacjê strategii o niskich wartoœciach k (w szczególnoœci strategii zawsze zdradzaj), jednak¿e w tym wypadku przetrwa³o wiêcej strategii preferuj¹cych  rozwi¹zania pokojowe.
+W kolejnych krokach trend rozszerzenia siê strategii o niskich k utrzymuje siê, ponownie faworyzuj¹c strategiê "zdradzaj gdy 1 s¹siad zdradza". Tak jak w kroku wczeœniejszym, pod wp³ywem modyfikacji macierzy wyp³at strategie pokojowe d³u¿ej utrzymuj¹ siê w otoczeniu agresywniejszych strategii: Mo¿na zauwa¿yæ, ¿e strategie uk³adaj¹ siê w struktury odpowiadaj¹ce uk³adowi macierzy – tworz¹ one koncentryczne krêgi w oko³o œrodka siatki.
+
+\begin{figure}[H] \centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{421_2}
+\captionof{figure}{Krok 2}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{421_3}
+\captionof{figure}{Krok 3}
+\end{minipage}
+\end{figure}
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{421_4}
+\captionof{figure}{Krok 4. }
+\label{421_4}
+\end{minipage}
+W kroku 4 (rys. \ref{421_4} ) mo¿na zaobserwowaæ powsta³e w przestrzeni stabilne struktury tych samych strategii. Dominuj¹c¹ strategi¹ jest strategia o k = 1 (,,zdradzaj gdy 1 s¹siad zdradza''). Iloœæ strategii o wysokich k jest niewielka co sugeruje, ¿e znikn¹ one lub pozostan¹ w niewielkich skupiskach.
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{421_5}
+\captionof{figure}{Krok 5. }
+\label{421_5}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{421_6}
+\captionof{figure}{Krok 6. Ostateczny zanik strategii o wysokich k}
+\end{minipage}
+\end{figure}
+
+W kroku 5 (rys. \ref{421_5}) zgodnie z przewidywaniami strategia zawsze wybaczaj oraz inne strategie o wysokich k stopniowo zanikaj¹.
+W kolejnych krokach (rys. \ref{421_7} , \ref{421_8} , \ref{421_9}) znikaæ bêd¹ kolejne strategie o k wy¿szym ni¿ 3:
+
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{421_7}
+\captionof{figure}{Krok 8}
+\label{421_7}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{421_8}
+\captionof{figure}{Krok 15}
+\label{421_8}
+\end{minipage}
+\end{figure}
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{421_9}
+\label{421_9}
+\captionof{figure}{Krok 27 - Ostatni}
+\end{minipage}
+
+Mimo tego, ¿e strategie pokojowe utrzymywa³y siê d³u¿ej, ni¿ w przypadku jednorodnej macierzy wyp³at, ponownie jesteœmy w stanie zaobserwowaæ dominacjê strategii, które maj¹ k niskie acz ró¿ne od 0. Stabilizacja uk³adu okaza³a siê byæ oscylacj¹ od momentu zanikniêcia strategii o k>3. Obliczenie wprowadzi³o wystarczaj¹cy szum, by zaniknê³a widoczna struktura uk³adu macierzy wyp³at.
+
+Na rys. \ref{421_W1} przedstawiono procentowy stosunek liczby komórek o danej strategii do liczby wszystkich komórek w kolejnych iteracjach:
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{421_W1}
+\captionof{figure}{}
+\label{421_W1}
+\end{minipage}
+\end{center}
+Na wykresie widocznym na rys. \ref{421_W2} przedstawiono procentowy udzia³ sum punktów danej strategii w ogólnych punktach zdobytych przez wszystkie strategie.
+Poni¿ej przedstawiono procentowy udzia³ poszczególnych strategii w kolejnych iteracjach:
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{421_W2}
+\captionof{figure}{}
+\label{421_W2}
+\end{minipage}
+
+Na wykresach idealnie widaæ rosn¹c¹ dominacjê strategii o niskim k, w szczególnoœci tych o k = 1 - liczebnoœæ tej strategii znacz¹co przewy¿sza licznoœci pozosta³ych. Zsumowane œrednie wartoœci punktów zdobytych przez tê strategiê zachowuj¹ sta³y trend wzrostowy.
+
+\chapter{Przestrzenny Dylemat WiêŸnia o Uogólnionych S¹siedztwach}
+Oryginalne eksperymenty \cite{NM, IM} zosta³y rozszerzone równie¿ o uogólnione s¹siedztwa, a tak¿e dodatkowo powtórzone zosta³y eksperymenty J. Wanga \cite{W} dotycz¹ce rozszerzonych s¹siedztw Moore’a.
+
+\section{Eksperyment Nowaka i Maya}
+Dla przypomnienia poni¿ej znajduje siê uogólniona macierz wyp³at oryginalnego eksperymentu:
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $b$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1$ & & $0$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $0$ & & $0$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $b$ & & $0$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+
+Eksperyment powieliliœmy dla s¹siedztwa von Neumanna o rozmiarze 2 i 3 (dla parametru $b$ = 1.4). W obu przypadkach struktura rozrasta siê szybciej, zgodnie z powiêkszonym s¹siedztwem:
+
+\begin{figure}[H] \centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{511_1}
+\captionof{figure}{Krok 1 - d = 2}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{511_2}
+\captionof{figure}{Krok 2 - d = 2}
+\end{minipage}
+\end{figure}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{511_3}
+\captionof{figure}{Krok 3 - d = 2}
+\end{minipage}
+
+Szybsze rozrastanie siê struktur powoduje równie¿ szybsze osi¹gniêcie granic siatki co widaæ na rys. \ref{511_4} i \ref{511_5}
+
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{511_4}
+\captionof{figure}{Krok 7 - d = 2}
+\label{511_4}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{511_5}
+\captionof{figure}{Krok 8 - d = 2}
+\label{511_5}
+\end{minipage}
+\end{figure}
+
+Szybszy rozrost powoduje, ¿e uk³ad w krótkim czasie destabilizuje co przedstawiono na rys. \ref{511_6} 
+
+ \begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{511_6}
+\caption{Krok 43 - d = 2}
+\label{511_6}
+\end{figure}
+
+
+Brak mo¿liwoœci obliczeniowych nie pozwoli³ na odkrycie jak d³ugo zajmie ustabilizowanie uk³adu, jednak¿e dla obliczonych iteracji wykres niestabilnoœci uk³adu (obrazuj¹cy ile komórek zmieni³o strategiê w danej iteracji) sugeruje d³ugi, chaotyczny przebieg obliczeñ. Zamieszczono go na rys. \ref{511_W}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{511_W}
+\captionof{figure}{}
+\label{511_W}
+\end{minipage}
+
+
+Dla uk³adu o rozmiarze s¹siedztwa 3 wspomniane wczeœniej efekty zachodz¹ jeszcze szybciej. Wnioskujemy, ¿e wynika to z szybszego rozrastania siê uk³adu.
+
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{512_1}
+\captionof{figure}{Krok 1 - d = 3}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{512_2}
+\captionof{figure}{Krok 2 - d = 3}
+\end{minipage}
+\end{figure}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{512_3}
+\captionof{figure}{Krok 2 - d = 3. Osi¹gniêcie granic siatki przez strukturê.}
+\end{minipage}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{512_4}
+\captionof{figure}{Krok 24 - d = 3. Ostateczna destabilizacja struktur.}
+\end{minipage}
+
+
+W tym przypadku równie¿ nie uda³o siê osi¹gn¹æ stabilizacji z powodu zbyt d³ugich obliczeñ.
+\section{Eksperyment Ishidy i Moriego}
+%odnoœniki
+Rozszerzyliœmy 3.2. \nameref{im1} opisuj¹cy klasteryzacjê strategii o dwa s¹siedztwa - s¹siedztwo Moore'a o rozmiarze 2 i s¹siedztwo Moore'a o rozmiarze 3. Wygenerowany zosta³ uk³ad pocz¹tkowy dla pierwszego s¹siedztwa. Poni¿ej znajduje siê graficzna reprezentacja wygenerowanego uk³adu pocz¹tkowego, kolory odpowiadaj¹ konkretnym strategiom.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{.4\textwidth}
+\centering 
+\includegraphics[width=1.4\textwidth]{521_1} 
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=0.366\textwidth]{521_L}
+\end{minipage}
+\caption{Uk³ad pocz¹tkowy}
+\end{figure}
+
+W tym eksperymencie równie¿ zaobserwowane wczeœniej zjawiska bêd¹ zachodziæ du¿o szybciej z powodu wiêkszych s¹siedztw.
+W kroku pierwszym dzia³ania automatu (rys. \ref{521_2}) wiêkszoœæ uk³adu przyjmuje strategiê k=0. Niewielka czêœæ posiada strategie k=1 i k=2. Pozosta³e strategie maj¹ znacz¹co mniejsz¹ licznoœæ. Jest to ten sam efekt ekspansji strategii agresywnych, który mo¿na zauwa¿yæ w oryginalnym eksperymencie, wzmocniony przez powiêkszone s¹siedztwo. W kroku 2 (rys. \ref{521_3}), tak jak w poprzednich eksperymentach strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1. 
+
+\begin{figure}[H] \centering
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{521_2}
+\captionof{figure}{Krok 1}
+\label{521_2}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{521_3}
+\captionof{figure}{Krok 2}
+\label{521_3}
+\end{minipage}
+\end{figure}
+
+
+\begin{figure}[H] \centering\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{521_4}
+\centering
+\captionof{figure}{Krok 3}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{521_5}
+\captionof{figure}{Krok 5}
+\end{minipage}
+\end{figure}
+Strategie pokojowe zanik³y, wszystkie pozosta³e strategie maj¹ k<5. W kolejnych krokach równie¿ one bêd¹ stopniowo zanikaæ, a¿ do prawie pe³nej dominacji strategii k=1 (rys. \ref{521_6}) 
+
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{521_6}
+\captionof{figure}{Krok fina³owy}
+\label{521_6}
+\end{minipage}
+\end{center}
+
+Na wykresie widocznym na rys. \ref{521_W} przedstawiono procentowy udzia³ strategii w kolejnych iteracjach.
+
+\begin{figure}[H] 
+\centering
+\includegraphics[scale=0.75]{521_W}
+\caption{}
+\label{521_W}
+\end{figure}
+Wykres liczebnoœci pokazuje zarówno pocz¹tkow¹ drastyczn¹ dominacjê strategii ,,zawsze zdradzaj'' jak i póŸniejsze wybicie siê strategii ,,zdradzaj gdy 1 s¹siad zdradza''. Mimo rozszerzenia s¹siedztwa i pojawienia siê znacz¹cej liczby nowych strategii nadal utrzymuje siê trend zanikania tych o wysokim k.
+
+W celu zbadania s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy uk³ad pocz¹tkowy. Dla ustalenia uwagi strategia „zawsze zdradzaj” zosta³a zaznaczona na czarno.
+
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{522_1}
+\captionof{figure}{Krok 1}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{522_2}
+\captionof{figure}{Krok 2}
+\end{minipage}
+\end{figure}
+
+W kroku 1 widaæ znacz¹c¹ dominacje strategii ,,zawsze zdradzaj'', jednak¿e ju¿ w kroku 2 strategia k=1 zaczyna dominowaæ.
+
+\begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{522_3}
+\captionof{figure}{Krok 3}
+\end{minipage}
+ \begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{522_4}
+\captionof{figure}{Krok 6}
+\label{522_4}
+\end{minipage}
+\end{figure}
+
+W kolejnych krokach strategia k=0 zmniejsza swoj¹ liczebnoœæ. Mo¿na zauwa¿yæ utworzenie siê nowej struktury z³o¿onej z komórek o strategii "zawsze zdradzaj" w kroku 6 (rys. \ref{522_4}). Jej  regularny kwadratowy kszta³t odpowiada kszta³towi s¹siedztwa dlatego wnioskujemy, i¿ powsta³a w wyniku zwyciêstwa dok³adnie jednej komórki o strategii k=0 z poprzedniego pokolenia.
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+ \includegraphics[width=\linewidth]{522_5}
+ \captionof{figure}{Krok 12}
+ \end{minipage} 
+ \begin{minipage}[b]{.4\textwidth}
+ \centering
+ \includegraphics[width=\linewidth]{522_6}
+ \captionof{figure}{Krok fina³owy}
+ \end{minipage} 
+\end{figure}
+
+W dalszym ci¹gu obliczeñ automatu znacz¹ca zmniejsza siê iloœæ strategii innych ni¿ k=1, doprowadzaj¹c do sytuacji gdy ta strategia jest jedyn¹ na koñcu obliczeñ.
+
+\section{Eksperyment Wanga}
+\cite{W}
+Eksperyment J. Wanga polega³ na zbadaniu jaki wp³yw na obliczenia przestrzennego dylematu wiêŸnia maj¹ rozszerzone s¹siedztwa. Wnioskiem z tego eksperymentu by³o, ¿e im wiêksze s¹siedztwo tym wiêksza szansa na klasteryzacja siê tych samych strategii. Efekt ten mia³ byæ proporcjonalny do prawdopodobieñstwa wyboru najlepszego s¹siada podczas aktualizacji strategii. W tej pracy rozwa¿ymy szczególny przypadek w którym to prawdopodobieñstwo zbiega do 1.
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $1.5$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1$ & & $0$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $0$ & & $0$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1.5$ & & $0$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+
+W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strategii zawsze zdradzaj i zawsze wybaczaj reprezentowanych odpowiednio kolorem granatowym i ¿ó³tym. Graficzna reprezentacja widoczna jest na rys. \ref{531_1}
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{531_1}
+\captionof{figure}{Uk³ad pocz¹tkowy}
+\label{531_1}
+\end{minipage}
+\end{center}
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{531_2}
+\captionof{figure}{Krok 1. Mo¿na zaobserwowaæ znany z eksperymentów Ishidy i Moriego efekt pocz¹tkowej dominacji strategii agresywnych.}
+\end{minipage}
+\end{center}
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{531_3}
+\captionof{figure}{Krok 2}
+\end{minipage}
+\end{center}
+
+W kroku drugim (rys. \ref{531_4}) w wyniku klasteryzacji powsta³y przestrzenne struktury. Strategie pokojowe mog¹ dziêki temu zyskiwaæ przewagê nad strategiami agresywnymi - strategia ,,zawsze zdradzaj'' otrzymuje punkty za ka¿d¹ strategiê wybaczaj¹c¹ w swoim s¹siedztwie ale nie za inne k=0. W wypadku powstania prostok¹tnej struktury w przestrzeni strategie zdradzaj¹ce maj¹ dostêp do 3 "¿ywicieli" podczas gdy strategie wybaczaj¹ce maj¹ do 5 wspieraj¹cych je komórek.
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{531_4}
+\captionof{figure}{Krok 3}
+\label{531_4}
+\end{minipage} 
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{531_5}
+\captionof{figure}{Krok 6}
+\end{minipage} 
+\end{figure}
+
+Zgodnie z wczeœniejsz¹ obserwacj¹, klastry strategii pokojowych rozszerzaj¹ siê, kosztem strategii agresywnej. W kroku 95 (rys. \ref{531_6}) zajm¹ one prawie ca³¹ siatkê.
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+ \includegraphics[width=\linewidth]{531_6}
+ \captionof{figure}{Krok 95}
+ \label{531_6}
+ \end{minipage} 
+ \begin{minipage}[b]{.4\textwidth}
+ \centering
+ \includegraphics[width=\linewidth]{531_7}
+ \captionof{figure}{Krok 96}
+ \end{minipage} 
+\end{figure}
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{531_8}
+\captionof{figure}{Krok 97 - fina³owy}
+\end{minipage}
+\end{center}
+
+Przetrwanie strategii agresywnych wynika z faktu, ¿e maj¹ one teraz przewagê s¹siadów, którzy s¹ ich "¿ywicielami". Powoduje to uzyskanie chwilowej przewagi przez agresorów. Przewaga ta zanika wraz z rozrostem struktur agresywnych. Powoduje to oscylacje miêdzy kilkoma kszta³tami, co widaæ w krokach 95, 96 i 97.
+
+Ten sam uk³ad dla s¹siedztwa Moore'a o rozmiarze 2 i 3 dzia³a zupe³nie inaczej.
+
+Dla s¹siedztwa o rozmiarze 2 w pierwszym kroku uzyskujemy uk³ad:
+
+\begin{center} \begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{532_1}
+\captionof{figure}{Krok 1}
+\end{minipage}
+\end{center}
+
+Licznoœæ strategii pokojowych jest ni¿sza, co powoduje, ¿e nie s¹ one w stanie osi¹gn¹æ masy krytycznej wystarczaj¹cej do sklastrowania siê. W nastêpnym kroku uk³ad jest ca³kowicie zajêty przez strategie agresywne. Dla s¹siedztwa Moore'a o rozmiarze 3 nie zachodzi nawet przejœciowy krok w którym pozostaj¹ przy ¿yciu strategie pokojowe.
+
+Obserwacje dokonane na podstawie przeprowadzonych przez nas eksperymentów zgodne s¹ z wnioskami eksperymentu Wanga - powiêkszenie s¹siedztwa zwiêksza efekt klastrowania siê strategii, co wp³ywa na pocz¹tkow¹ dominacjê strategii agresywnych - ich pocz¹tkowe klastrowanie siê powoduje, ¿e strategiom pokojowym brak wystarczaj¹co du¿ych struktur by przetrwaæ.
+
+Dla macierzy 
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|}
+\cline{3-6}
+& & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+\multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $1.01$    \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1$ & & $0$ &     \\ \cline{2-6}
+\multicolumn{1}{ |c  }{} &
+\multicolumn{1}{ |c| }{\multirow{2}{*}{Kooperacja}} & & $0$ & & $0$ \\ 
+\multicolumn{1}{ |c  }{}                        &
+\multicolumn{1}{ |c| }{} & $1.01$ & & $0$ & \\ \cline{1-6}
+\end{tabular}
+\end{center}
+
+Strategie wybaczaj¹ce musz¹ mieæ tylko jednego wiêcej s¹siada kooperuj¹cego ni¿ strategie zdradzaj¹ce by nad nimi dominowaæ, co u³atwia im klasteryzacjê. U¿yto tego samego uk³adu pocz¹tkowego co w rys. \ref{531_1}
+\begin{minipage}[T]{\linewidth}
+\centering
+\includegraphics[scale=0.75]{533_1}
+\captionof{figure}{Uk³ad pocz¹tkowy}
+\end{minipage}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{533_15}
+\captionof{figure}{Krok 1 - Moore o wielkoœci 1}
+\end{minipage} 
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{533_17}
+\captionof{figure}{Krok 1 - Moore o wielkoœci 2}
+\end{minipage} 
+\end{figure}
+
+Jak widaæ struktury strategii pokojowej s¹ wiêksze w przypadku s¹siedztwa o wiêkszym zasiêgu.
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{533_2} 
+\captionof{figure}{Krok 3 - Moore o wielkoœci 1}
+\end{minipage} 
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{533_3}
+\captionof{figure}{Krok 2 - Moore o wielkoœci 2}
+\end{minipage} 
+\end{figure}
+W tym przypadku struktury s¹ podobnego rozmiaru, jednak¿e s¹siedztwo wiêksze osi¹ga je krok wczeœniej. 
+\begin{figure}[H]
+\centering
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{533_4} 
+\captionof{figure}{Krok 12 - Moore o wielkoœci 1}
+\end{minipage} 
+\begin{minipage}[b]{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{533_5}
+\captionof{figure}{Krok 7 - Moore o wielkoœci 2}
+\end{minipage} 
+\end{figure}
+
+Uk³ad o wiêkszym s¹siedztwie znacz¹co szybciej osi¹gn¹³ stan stabilny - w kroku siódmym w przeciwieñstwie do kroku dwunastego w s¹siedztwie mniejszym. Efekt zwiêkszonego klastrowania widoczny jest równie¿ w zwiêkszonej strukturze strategii agresywnych.
+
+\chapter{Wnioski}
+%Teoria gier jest pe³na modeli, które choæ z pozoru wydaj¹ siê byæ proste, w rzeczywistoœci dobrze opisuj¹ z³o¿one zjawiska ekonomiczne i spo³eczne. Jednym z takich modeli jest dylemat wiêŸnia. Od momentu kiedy zosta³ po raz pierwszy formalnie zdefiniowany liczne badania z ró¿nych obszarów nauki od matematyki przez ekonomiê po socjologiê odnosi³y siê doñ, próbuj¹c dociec jaka strategia dzia³ania jest najlepsza i jak bardzo graj¹cy cz³owiek jest siê w stanie do tej optymalnej metody gry zbli¿yæ. Mnogoœæ i interdyscyplinarnoœæ zastosowañ dylematu wiêŸnia czyni¹ ten temat niezwykle interesuj¹cym, a rozliczne drogi modyfikacji, które mo¿na zastosowaæ na tej oryginalnej, prostej formule otwieraj¹ wiele ciekawych mo¿liwoœci badañ.
+
+\begin{thebibliography}{11}
+\bibitem[1]{NM} Martin A. Nowak, Robert M. May \emph{Evolutionary games and spatial chaos}, Nature, 1992, 359.6398: 826-829.
+\bibitem[2]{IM} Yoshiteru Ishida, Toshikatsu Mori \emph{Spatial strategies in a generalized spatial prisoner’s dilemma}, Artificial life and robotics, 2005, 9.3: 139-143.
+\bibitem[3]{W} Juan Wang, et al. \emph{Spatial prisoner’s dilemma games with increasing size of the interaction neighborhood on regular lattices.}, Chinese Science Bulletin, 2012, 57.7: 724-728.
+\bibitem[4]{PS} Phillip D. Straffin, \emph{Teoria Gier}, 83-88495-49-6, Wydawnictwo Naukowe SCHOLAR, Warszawa 2001.
+\end{thebibliography}
+\clearpage
+\pagestyle{empty}
+\noindent Warszawa, dnia ...............
+\vspace{5cm}
+\begin{center}
+\LARGE{Oœwiadczenie}
+\end{center}
+Oœwiadczamy, ¿e pracê magistersk¹ pod tytu³em: ,,Symulacje Przestrzennego Dylematu WiêŸnia'', której promotorem jest dr in¿. Agnieszka Jastrzêbska, wykonaliœmy samodzielnie, co poœwiadczamy w³asnorêcznymi podpisami.
+\vspace{2cm}
+\begin{flushright}
+...........................................
+\end{flushright}
+\begin{appendices}
+\input{AppendixDT}
+\end{appendices}
+\end{document}

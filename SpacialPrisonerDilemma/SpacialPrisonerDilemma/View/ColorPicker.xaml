@@ -4,9 +4,9 @@
         Title="ColorPicker" Height="549.254" Width="356.716">
     <Grid>
         <ComboBox Name="Box" Height="32" Margin="23,10,0,0" VerticalAlignment="Top" Width="242" SelectionChanged="Left_SelectionChanged"/>
-        <Canvas Name="Canvas" HorizontalAlignment="Left" Height="286" Margin="23,47,0,0" VerticalAlignment="Top" Width="292"/>
-        <Button Content="Akceptuj" Name="Akceptuj" HorizontalAlignment="Left" Height="36" Margin="35,428,0,0" VerticalAlignment="Top" Width="80" Click="Akceptuj_Click"/>
-        <Button Content="Anuluj" Name ="Anuluj" HorizontalAlignment="Left" Height="36" Margin="245,428,0,0" VerticalAlignment="Top" Width="70" Click="Anuluj_Click"/>
+        <Canvas Name="Canvas" HorizontalAlignment="Left" Height="404" Margin="23,47,0,0" VerticalAlignment="Top" Width="292"/>
+        <Button Content="Akceptuj" Name="Akceptuj" HorizontalAlignment="Left" Height="36" Margin="40,472,0,0" VerticalAlignment="Top" Width="80" Click="Akceptuj_Click"/>
+        <Button Content="Anuluj" Name ="Anuluj" HorizontalAlignment="Left" Height="36" Margin="245,472,0,0" VerticalAlignment="Top" Width="70" Click="Anuluj_Click"/>
 
     </Grid>
 </Window>

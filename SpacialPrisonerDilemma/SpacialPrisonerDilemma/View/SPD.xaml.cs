@@ -9,18 +9,28 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32;
+using System.Xml;
 using OxyPlot;
 using OxyPlot.Series;
 using OxyPlot.Wpf;
 using SpacialPrisonerDilemma.Annotations;
+using SpacialPrisonerDilemma.Engine;
+using SpacialPrisonerDilemma.Engine.Neighbourhoods;
 using SpacialPrisonerDilemma.Model;
+using SPD.Engine.Neighbourhoods;
 using CategoryAxis = OxyPlot.Axes.CategoryAxis;
 using ColumnSeries = OxyPlot.Series.ColumnSeries;
+using ContextMenu = System.Windows.Controls.ContextMenu;
+using IntegerStrategy = SPD.Engine.Strategies.IntegerStrategy;
 using LinearAxis = OxyPlot.Axes.LinearAxis;
+using MenuItem = System.Windows.Controls.MenuItem;
+using MessageBox = System.Windows.MessageBox;
+using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
+
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -29,13 +39,13 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class SPD : INotifyPropertyChanged
     {
-        private readonly SpacialPrisonerDilemma.Model.SPD _spd;
+        private readonly global::SPD.Engine.SPD _spd;
         private readonly int _width;
         private readonly int _height;
         readonly int[,] _strategies;
         private int _iter;
         private int _speed;
-
+        private int _strategyCount;
         private PlotModel _pointsmodel;
         private PlotModel _countmodel;
         /// <summary>
@@ -115,14 +125,14 @@ namespace SpacialPrisonerDilemma.View
 
         private readonly List<Tuple<int, String>> _iterations;
 
-        private void SavePlot(OxyPlot.PlotModel PlotKey)
+        private void SavePlot(OxyPlot.PlotModel PlotKey,string path="")
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
                 Filter = "PNG|*.png",
-                FileName = DateTime.Now.ToString("yy-MM-dd")+ DateTime.Now.GetHashCode() + ".png"
+                FileName = path==""?DateTime.Now.ToString("yy-MM-dd")+ DateTime.Now.GetHashCode() + ".png":path
             };
-            var b = sfd.ShowDialog();
+            var b = path==""?sfd.ShowDialog():true;
             if (!b.HasValue || !b.Value) return;
             using (var stream = File.Create(sfd.FileName))
             {
@@ -144,12 +154,9 @@ namespace SpacialPrisonerDilemma.View
         {
             var category = _iterations.Count;
 
-            var d = CalculateModels(_spd.GetStateByIteration(category));
+            var d = CalculateModels(GetStateByIteration(category));
 
-            var sum = SumPoints.ToArray();
-            double v = sum.Sum();
-            if (Math.Abs(v) < double.Epsilon*100) v = 1;
-            sum = sum.Select(k => 100*k/v).ToArray();
+            
             _iterations.Add(new Tuple<int, String>(category, ""));
 
             foreach (var s in GenerateColumns(category, d[0]))
@@ -165,6 +172,10 @@ namespace SpacialPrisonerDilemma.View
                     if (columnSeries != null)
                         columnSeries.Items.Add(s);
                 }
+                var sum = _sumPoints.ToArray();
+                double v = sum.Sum();
+                if (Math.Abs(v) < double.Epsilon * 100) v = 1;
+                sum = sum.Select(k => 100 * k / v).ToArray();
                 foreach (var s in GenerateColumns(category - 1, sum))
                 {
                     var columnSeries = SumModel.Series[0] as ColumnSeries;
@@ -182,13 +193,14 @@ namespace SpacialPrisonerDilemma.View
 
         }
 
-        private double[] SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
+        private readonly double[] _sumPoints;
+        private List<double[]> _sumPointsHistory;
         /// <summary>
         /// Metoda wyliczająca dane do wykresów na podstawie stanu automatu
         /// </summary>
-        double[][] CalculateModels(Cell[,] cells)
+        double[][] CalculateModels(Tuple<int,float>[,] cells)
         {
-            var result = new double[Enum.GetValues(typeof(WhenBetray)).Length];
+            var result = new double[_strategyCount];
             var count = new double[result.Length];
             var sum = new double[result.Length];
             for (var i = 0; i < result.Length; i++)
@@ -201,12 +213,14 @@ namespace SpacialPrisonerDilemma.View
                 for (var j = 0; j < cells.GetLength(1); j++)
                 {
                     var c = cells[i, j];
-                    var integerStrategy = c.Strategy as IntegerStrategy;
+
+                    var integerStrategy = (Engine.Strategies.IntegerStrategy) _strategyDictionary[c.Item1];
+
 
                     if (integerStrategy != null)
                     {
-                        var k = integerStrategy.Treshold;
-                        double d = c.Points / _spd[i, j].GetNeighbours().Length;
+                        var k = integerStrategy.BetrayalThreshold;
+                        double d = (double)c.Item2/_spd.Neighbours(i,j).Length;
                         result[k] += d;
                         count[k]++;
                         
@@ -224,10 +238,24 @@ namespace SpacialPrisonerDilemma.View
             var d2 = count.Sum();
             if (Math.Abs(d2) < double.Epsilon * 100) d2 = 1;
             result = result.Select(d => 100 * d / d1).ToArray();
-            for (int i = 0; i < result.Length; i++) SumPoints[i] += result[i];
+            for (int i = 0; i < result.Length; i++) _sumPoints[i] += result[i];
+            _sumPointsHistory.Add(_sumPoints);
             count = count.Select(d => 100 * d / d2).ToArray();
             return new[] { count, result };
         }
+
+        public Dictionary<int, Engine.Strategies.IStrategy> GenerateIntegerStrategies(int count)
+        {
+            Dictionary<int, Engine.Strategies.IStrategy> result = new Dictionary<int, Engine.Strategies.IStrategy>();
+            for (int i = 0; i < count-1; i++)
+            {
+                result.Add(i, new IntegerStrategy(i));
+            }
+            result.Add(SPDAssets.MAX-1,new Engine.Strategies.IntegerStrategy(count-1));
+            return result;
+        }
+
+        private Dictionary<int, Engine.Strategies.IStrategy> _strategyDictionary;
         /// <summary>
         /// Konstruktor okna realizującego symulacje
         /// </summary>
@@ -235,15 +263,32 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="strategies">Tablica zawierająca początkowe strategie w automacie</param>
         /// <param name="torus">Zmienna informująca czy obliczenia automatu realizowane są na torusie</param>
         /// <param name="vonneumann">Zmienna informująca czy obliczenia automatu realizowane są z sąsiedztwem Von Neumanna</param>
-        public SPD(double[] PayValues, int[,] strategies, bool torus, bool vonneumann)
+        public SPD(PointMatrixPick Matrix, int[,] strategies, int _neighboursCount, INeighbourhood _neighbourhood)
         {
+            _strategyCount = 2 + _neighboursCount;
+            _sumPointsHistory = new List<double[]>();
+            _sumPoints = new double[_strategyCount];
             DataContext = this;
+            pointMatrixPick = Matrix;
+            float[,] fakePoints = new float[strategies.GetLength(0), strategies.GetLength(1)];
+
+            AddHistory(strategies,fakePoints);
             
-            SumPoints = new double[Enum.GetValues(typeof (WhenBetray)).Length];
-            for (int i = 0; i < SumPoints.Length; i++) SumPoints[i] = 0;
-            var payValues = PayValues;
+            for (int i = 0; i < _sumPoints.Length; i++) _sumPoints[i] = 0;
+            
             _strategies = strategies;
-            _spd = Model.SPD.Singleton;
+            neighbourhood = _neighbourhood;
+            
+            var threadNum = 16;
+            _strategyDictionary = GenerateIntegerStrategies(_strategyCount);
+            
+            _spd =
+
+                new Engine.SPD(
+                    Matrix.Function,
+                    neighbourhood, strategies,
+                  _strategyDictionary, 10, threadNum);
+
             Speed = 1;
             PointsModel = new PlotModel();
             CountModel = new PlotModel();
@@ -270,16 +315,17 @@ namespace SpacialPrisonerDilemma.View
                  SumModel.Axes.Add(new CategoryAxis { ItemsSource = _iterations, LabelField = "Item2" });
             SumModel.Axes.Add(new LinearAxis { MinimumPadding = 0, AbsoluteMinimum = 0 });
             SumModel.Series.Add(new ColumnSeries { ColumnWidth = 10, IsStacked = true });
-            Model.SPD.Initialize(_strategies, 10, (float)payValues[3], (float)payValues[2], (float)payValues[1], (float)payValues[0], !vonneumann, torus);
+       
 
             UpdateModels();
 
             InitializeComponent();
             Iteration = 0;
 
+            var D =  SPDAssets.GenerateLegend(Legenda.Height, _strategyCount);
 
-
-            var image = new Image { Source = SPDAssets.GenerateLegend(Legenda.Height), Width = Legenda.Width, Height = Canvas.Height };
+            D.Width = Legenda.Width;
+            D.Height = Canvas.Height;
             _width = _strategies.GetLength(0);
             _height = _strategies.GetLength(1);
             var image2 = new Image
@@ -289,9 +335,9 @@ namespace SpacialPrisonerDilemma.View
             };
 
 
-            Canvas.SetTop(image, 0);
-            Canvas.SetLeft(image, 0);
-            Legenda.Children.Add(image);
+            Canvas.SetTop(D, 0);
+            Canvas.SetLeft(D, 0);
+            Legenda.Children.Add(D);
             Canvas.Children.Add(image2);
         }
         /// <summary>
@@ -338,22 +384,24 @@ namespace SpacialPrisonerDilemma.View
         /// <param name="width">Ile kolumn automatu będzie wyrysowanych</param>
         /// <param name="height">Ile wierszy automatu będzie wyrysowanych</param>
         /// <returns>Wyrysowany wykres</returns>
-        private DrawingImage GenerateImage(SpacialPrisonerDilemma.Model.SPD spd, int x, int y, int width, int height)
+        private DrawingImage GenerateImage(Engine.SPD spd, int x, int y, int width, int height,int iteration=-1)
         {
             var cellWidth = Canvas.Width / width;
             var cellHeight = Canvas.Height / height;
             
 
             var dg = new DrawingGroup();
+            var C = GetStateByIteration(iteration<0?Iteration:iteration);
             for (var i = x; i < x + width; i++)
             {
                 for (var j = y; j < y + height; j++)
                 {
                     var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
+                  
                     var gd = new GeometryDrawing
                     {
                         Brush =
-                            GetBrush(((IntegerStrategy) spd.GetStateByIteration(Iteration)[i, j].Strategy).Treshold),
+                            GetBrush(new IntegerStrategy(C[i,j].Item1).BetrayalThreshold),
                         Geometry = rg
                     };
                     dg.Children.Add(gd);
@@ -373,9 +421,83 @@ namespace SpacialPrisonerDilemma.View
 
         readonly int _delay = 16;
 
-        Task<Tuple<int, bool>> _iteration;
+        Task<SPDResult> _iteration;
         private Task Looper;
         private bool _over = true;
+
+        public Tuple<int,float>[,] GetStateByIteration(int iteration)
+        {
+            return History[iteration];
+        }
+
+        public int strategyNumberFromCode(int code)
+        {
+            if (code >= 100)
+            {
+                var I =
+                   
+                        _strategyDictionary.First(k => (k.Value.StrategyCode == code)).Key;
+                return I;
+            }
+            return code;
+        }
+        private List<Tuple<int,float>[,]> History = new List<Tuple<int,float>[,]>();
+        public void AddHistory(int[,] strategies, float[,] points)
+        {
+            Tuple<int,float>[,] state = new Tuple<int,float>[strategies.GetLength(0), strategies.GetLength(1)];
+            for (int i = 0; i < strategies.GetLength(0); i++)
+            {
+                for (int j = 0; j < strategies.GetLength(1); j++)
+                {
+                    state[i, j] = new Tuple<int, float>(strategyNumberFromCode(strategies[i, j]), points[i, j]);
+                }
+            }
+            History.Add(state);
+        }
+
+        public int GetVariance(int iteration)
+        {
+            int variance = 0;
+            if (iteration == 0) return variance;
+            var state1 = GetStateByIteration(iteration - 1);
+            var state2 = GetStateByIteration(iteration);
+            for (int i = 0; i < state1.GetLength(0); i++)
+            {
+                for (int j = 0; j < state1.GetLength(1); j++)
+                {
+                    variance += state1[i, j].Item1 == state2[i, j].Item1 ? 0 : 1;
+                }
+            }
+            return variance;
+        }
+
+        private void SPDSynchronousLooper()
+        {
+             while (_cont && _over)
+             {
+
+
+
+                 var i = _spd.Iterate();
+                if (_over) AddHistory(i.strategyConfig,i.v1);
+                if (_over) UpdateImage();
+                if (_over) OnPropertyChanged("StateCount");
+                if (_over) if (Iteration == StateCount - 1) Iteration++;
+              
+              
+                if (_over) InsertVariationColumn(GetVariance(History.Count-1));
+                if (_over) UpdateModels();
+                
+                if (!i.v2) continue;
+                var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
+                    MessageBoxButton.YesNo);
+                if (b == MessageBoxResult.Yes)
+                {
+                    _over = false;
+                }
+               
+            }
+        }
         /// <summary>
         /// Metoda realizująca pętle symulacji
         /// </summary>
@@ -389,14 +511,16 @@ namespace SpacialPrisonerDilemma.View
                 _iteration = Task.Run(async () => await _spd.IterateAsync());
                 await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
                 var i = await _iteration;
+                if (_over) AddHistory(i.strategyConfig,i.v1);
                 if (_over) UpdateImage();
                 if (_over) OnPropertyChanged("StateCount");
                 if (_over) if (Iteration == StateCount - 1) Iteration++;
                 if (_over) await Task.WhenAll(_iteration, Task.Delay((60 / Speed) * _delay));
-                if (_over) InsertVariationColumn(i.Item1);
+              
+                if (_over) InsertVariationColumn(GetVariance(History.Count-1));
                 if (_over) UpdateModels();
                 
-                if (!i.Item2) continue;
+                if (!i.v2) continue;
                 var b = MessageBox.Show("Wykryto stabilizacje,przerwać?", "Stabilizacja układu",
                     MessageBoxButton.YesNo);
                 if (b == MessageBoxResult.Yes)
@@ -405,7 +529,10 @@ namespace SpacialPrisonerDilemma.View
                 }
                
             }
-
+            if (!_over)
+            {
+                FinalSave.IsEnabled = true;
+            }
         }
        
         private void InsertVariationColumn(int x)
@@ -416,6 +543,11 @@ namespace SpacialPrisonerDilemma.View
                 columnSeries.Items.Add(new ColumnItem(x, i));
             ChangeModel.InvalidatePlot(true);
 
+        }
+
+        private void StartSynchronousSPD()
+        {
+            SPDSynchronousLooper();
         }
         private async Task StartSPD()
         {
@@ -443,8 +575,9 @@ namespace SpacialPrisonerDilemma.View
 
             if (Looper != null) Looper.Wait();
             if (_iteration != null) _iteration.Wait();
-            if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
             var pl = Model.SPD.ClearAndGetLog();
+            if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
+            
 
             if (pl.StepTimes.Length == 0) return;
              MessageBox.Show(string.Format("Mediana: {0}\nŚrednia: {1}\nMaksymalny czas kroku: {2}\nMinimalny czas kroku: {3}",
@@ -465,6 +598,8 @@ namespace SpacialPrisonerDilemma.View
             StartStop.Content = "Start";
             StartStop.IsEnabled = true;
         }
+
+        private bool Threading = true;
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -472,15 +607,16 @@ namespace SpacialPrisonerDilemma.View
             if (_cont)
             {
 
-                StartStop.Content = "Stop";
-                await StartSPD();
+                 StartStop.Content = "Stop";
+                 if (Threading) await StartSPD();
+                 else StartSynchronousSPD();
 
             }
             else
             {
                 StartStop.Content = "Zatrzymywanie...";
                 StartStop.IsEnabled = false;
-                await WaitForIteration();
+                if(Threading) await WaitForIteration();
             }
 
            
@@ -488,7 +624,8 @@ namespace SpacialPrisonerDilemma.View
 
         public event PropertyChangedEventHandler PropertyChanged;
         private PlotModel _summodel;
-       
+        private INeighbourhood neighbourhood;
+        private PointMatrixPick pointMatrixPick;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -507,11 +644,11 @@ namespace SpacialPrisonerDilemma.View
 
             var vis = new DrawingVisual();
             var cont = vis.RenderOpen();
-            cont.DrawImage(b.Source, new Rect(new Size(b.ActualWidth, b.ActualHeight)));
+            cont.DrawImage(b.Source, new Rect(new Size(b.Source.Width, b.Source.Height)));
             cont.Close();
 
-            var rtb = new RenderTargetBitmap((int)b.ActualWidth,
-                (int)b.ActualHeight, 96d, 96d, PixelFormats.Default);
+            var rtb = new RenderTargetBitmap((int)b.Source.Width,
+                (int)b.Source.Height, 96d, 96d, PixelFormats.Default);
             rtb.Render(vis);
 
             var encoder = new PngBitmapEncoder();
@@ -535,7 +672,7 @@ namespace SpacialPrisonerDilemma.View
             var sfd = new SaveFileDialog { Filter = "Initial Condition (*.cic)|*.cic" };
             var v = sfd.ShowDialog();
             if (!v.HasValue || !v.Value) return;
-            var c = _spd.GetStateByIteration(_iter);
+            var c = GetStateByIteration(_iter);
             var ifc = InitialConditions.FromCellArray(c, Path.GetFileName(sfd.FileName));
             var bf = new BinaryFormatter();
             var fs = new FileStream(sfd.FileName, FileMode.Create);
@@ -548,6 +685,40 @@ namespace SpacialPrisonerDilemma.View
             var s =( (sender as MenuItem).Parent as ContextMenu).PlacementTarget as PlotView;
             
             SavePlot(s.Model);
+        }
+
+        private void FinalSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog _dialog = new FolderBrowserDialog();
+            var dr  = _dialog.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                var path = _dialog.SelectedPath;
+               // SaveImageToFile(path+"//")
+                SaveImageToFile(path + "//end.png",new Image(){Source=GenerateImage(_spd, 0, 0, _width, _height)});
+                SaveImageToFile(path + "//start.png", new Image() { Source = GenerateImage(_spd, 0, 0, _width, _height, 0) });
+                SavePlot(PointsModel, path+"//PointsModel.png");
+                SavePlot(ChangeModel, path+"//ChangeModel.png");
+                SavePlot(SumModel, path+"//SumModel.png");
+                SavePlot(CountModel, path+"//CountModel.png");
+                XmlTextWriter xml = new XmlTextWriter(path + "//raport.txt", null);
+                xml.WriteElementString("Neighbourhood", neighbourhood.ToString());
+                xml.WriteElementString("StandardPointCalculation", (!pointMatrixPick.ModifiedPointCounting).ToString());
+                for (int i = 0; i < _sumPointsHistory.Count(); i++)
+                {
+                    xml.WriteStartElement("iteration" );
+                    xml.WriteElementString("number", i.ToString());
+                    for (int j = 0; j < _sumPointsHistory[i].Length; j++)
+                    {
+                        xml.WriteElementString("strategy", j.ToString());
+                        xml.WriteElementString("points", _sumPointsHistory[i][j].ToString());
+                    }
+                    xml.WriteEndElement();
+
+                }
+                
+                xml.Close();
+            }
         }
     }
 }

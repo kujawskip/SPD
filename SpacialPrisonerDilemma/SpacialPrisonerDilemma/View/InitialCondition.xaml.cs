@@ -20,47 +20,63 @@ namespace SpacialPrisonerDilemma.View
     /// </summary>
     public partial class InitialCondition : INotifyPropertyChanged
     {
-        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int, InitialConditions>> _conditions;
+        private readonly Dictionary<Tuple<string, bool>, Func<bool, int, int,bool, InitialConditions>> _conditions;
         private readonly List<Tuple<string, Tuple<string, bool>>> _conditionNames;
         private InitialConditions _condition;
-		private int Mode;
+		private readonly int Mode;
         private Operation _selectedOperation;
-        
+        private int _tooltip;
+
+        public int ToolTipID
+        {
+            get { return _tooltip; }
+            set
+            {
+                _tooltip = value;
+                NotifyPropertyChanged("ToolTipID");
+                NotifyPropertyChanged("ToolTipDescription");
+            }
+        }
+        public string ToolTipDescription
+        {
+            get
+            {
+                if (ToolTipID < 0) return "";
+                return SPDAssets.GetDescription(ToolTipID, Mode);
+            }
+        }
         /// <summary>
         /// Konstruktor okna warunków początkowych
         /// </summary>
-        internal InitialCondition(bool vonneumann = false,InitialConditions condition=null)
+        internal InitialCondition(int _mode=SPDAssets.MAX,InitialConditions condition=null)
         {
-            
+            _tooltip = -1;
             InitializeComponent();
-         
-			Mode = vonneumann?6:10;
+
+            Mode = _mode;
             _selectedOperation = Operation.None;
             ComboBox.ItemsSource = SPDAssets.GetBrushRectangles(Mode,InitialConditions.GetTransformation(Mode));
             ComboBox.SelectedIndex = 0;
             DataContext = this;
             _conditionNames = new List<Tuple<string,Tuple<string,bool> > >();
-            _conditions = new Dictionary<Tuple<string,bool>, Func<bool, int,int,InitialConditions>>();
+            _conditions = new Dictionary<Tuple<string, bool>, Func<bool, int, int, bool, InitialConditions>>();
             foreach (var T in new[] {false, true})
             {
                 _conditions.Add(new Tuple<string, bool>("Donut", T), InitialConditions.DonutFactory);
                 _conditions.Add(new Tuple<string, bool>("Circle", T), InitialConditions.CircleFactory);
                 _conditions.Add(new Tuple<string,bool>("Diagonal",T),InitialConditions.DiagonalFactory);
-
+                _conditions.Add(new Tuple<string, bool>("NowakMay", T), InitialConditions.NowakMayFactory);
             }
             _conditionNames.AddRange(
                 _conditions.Select(
                     k =>
-                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10).Name,
+                        new Tuple<string, Tuple<string, bool>>(k.Value(k.Key.Item2, 1,10,false).Name,
                             new Tuple<string, bool>(k.Key.Item1, k.Key.Item2))));
             ComboBoxCopy.ItemsSource = _conditionNames.Select(s=>s.Item1);
-            var image2 = new Image
-            {
-                Source = SPDAssets.GenerateLegend(Legend.Height,Mode,InitialConditions.GetTransformation(Mode)),
-                Stretch = Stretch.Fill
-            };
+            var D = SPDAssets.GenerateLegend(Legend.Height, Mode, InitialConditions.GetTransformation(Mode));
+            D.Stretch = Stretch.Fill;
        
-            Legend.Children.Add(image2);
+            Legend.Children.Add(D);
             if (condition != null) Condition = condition;
         }
         /// <summary>
@@ -72,28 +88,9 @@ namespace SpacialPrisonerDilemma.View
             Fill,
             Check
         }
-        private DrawingImage GenerateImage(InitialConditionsGrid grid, int x, int y, int width, int height)
+        private DrawingImage GenerateImage( int x, int y, int width, int height)
         {
-            var cellWidth = Canvas.Width/width;
-            var cellHeight = Canvas.Height/height;
-          
-           
-            var dg = new DrawingGroup();
-            for (var i = x; i < x + width; i++)
-            {
-                for (var j = y; j < y + height; j++)
-                {
-                  
-                    var rg = new RectangleGeometry(new Rect(new Point((i - x) * cellWidth, (j - y) * cellHeight), new Point((i - x + 1) * cellWidth, (j + 1 - y) * cellHeight)));
-                    var gd = new GeometryDrawing
-                    {
-                        Brush = SPDAssets.GetBrush(Condition.Grid.CellGrid[i, j].Value),
-                        Geometry = rg
-                    };
-                    dg.Children.Add(gd);
-                }
-            }
-            return new DrawingImage(dg);
+            return Condition.Grid.GenerateImage(x, y, width, height, Canvas.Width, Canvas.Height,ToolTipID);
         }
       
         private void NotifyPropertyChanged(string s)
@@ -114,17 +111,21 @@ namespace SpacialPrisonerDilemma.View
             }
         }
 
+        public bool IsTwoState
+        {
+            get; set; }
         public bool ConditionLoaded
         {
             get { return Condition != null; }
         }
         private void UpdateScreen()
         {
+            if (Canvas == null || Condition == null) return;
             Canvas.Children.Clear();
             Canvas.Children.Add(new Image
             {
                 Source =
-                    GenerateImage(Condition.Grid, _x,_y, (int)(Condition.Grid.CellGrid.GetLength(0)*_scale),
+                    GenerateImage( _x,_y, (int)(Condition.Grid.CellGrid.GetLength(0)*_scale),
                         (int)(Condition.Grid.CellGrid.GetLength(1)*_scale))
                
             });
@@ -133,7 +134,7 @@ namespace SpacialPrisonerDilemma.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ResetScale();
-            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
+            Condition = InitialConditions.GenerateRandom((int)RandomSize.Value,Mode,IsTwoState);
             ComboBoxCopy.SelectedIndex = -1;
         }
 
@@ -148,11 +149,7 @@ namespace SpacialPrisonerDilemma.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ResetScale();
-            if (ComboBoxCopy.SelectedIndex < 0) return;
-            Condition =
-                 _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                 _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode);
+            ReCreateCondition();
         }
 
         private void ResetScale()
@@ -190,16 +187,7 @@ namespace SpacialPrisonerDilemma.View
         }
 		private void RandomSize_DragCompleted(object sender, DragCompletedEventArgs e)
 		{
-            ResetScale();
-            if (Condition==null) return;
-			if (ComboBoxCopy.SelectedIndex < 0) 
-			{
-				Condition = InitialConditions.GenerateRandom((int)RandomSize.Value);
-                return;
-			}
-            Condition =
-                          _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
-                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode);
+            ReCreateCondition();
         }
         private void Canvas_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -248,6 +236,7 @@ namespace SpacialPrisonerDilemma.View
                 var fs = new FileStream(ofd.FileName,FileMode.Open);
                 var obj = bf.Deserialize(fs);
                 Condition = obj as InitialConditions;
+                fs.Close();
             }
         }
 
@@ -286,6 +275,67 @@ namespace SpacialPrisonerDilemma.View
             }
             _selectedOperation = Operation.None;
             
+        }
+
+        private void Legend_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.GetPosition(Legend);
+            var d = p.Y / (Legend.ActualHeight / (Mode));
+            bool b = (int)d == ToolTipID;
+            ToolTipID = (int)d;
+            if (!b) UpdateScreen();
+        }
+
+        private void Legend_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ToolTipID = -1;
+            UpdateScreen();
+        }
+
+        private void Canvas_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            var p = e.GetPosition(Canvas);
+            var X = p.X / _scale;
+            var Y = p.Y / _scale;
+            X = X - _x;
+            Y = Y - _y;
+            X = X / Canvas.Width;
+            X = X * Condition.Grid.CellGrid.GetLength(0);
+            if (X >= Condition.Grid.CellGrid.GetLength(0)) return;
+            Y = Y / Canvas.Height;
+            Y = Y * Condition.Grid.CellGrid.GetLength(1);
+            if (Y >= Condition.Grid.CellGrid.GetLength(1)) return;
+            var C = Condition.Grid.CellGrid;
+
+            var c = C[(int)X, (int)Y];
+            var b = c.Value == ToolTipID;
+            ToolTipID = c.Value;
+            if (!b) UpdateScreen();
+
+        }
+
+        private void Canvas_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ToolTipID = -1;
+            UpdateScreen();
+        }
+
+        void ReCreateCondition()
+        {
+            ResetScale();
+            
+            if (ComboBoxCopy.SelectedIndex < 0)
+            {
+                Condition = InitialConditions.GenerateRandom((int)RandomSize.Value, Mode, IsTwoState);
+                return;
+            }
+            Condition =
+                          _conditions[_conditionNames[ComboBoxCopy.SelectedIndex].Item2](
+                          _conditionNames[ComboBoxCopy.SelectedIndex].Item2.Item2, (int)RandomSize.Value, Mode, IsTwoState);
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            ReCreateCondition();
         }
     }
 }

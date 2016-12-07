@@ -10,8 +10,8 @@ namespace SpacialPrisonerDilemma.Tools
     public class PerformanceLog
     {
 
-        private List<DateTime> StepStarts;
-        private List<DateTime> StepEnds;
+        private readonly List<DateTime> StepStarts;
+        private readonly List<DateTime> StepEnds;
 
         /// <summary>
         /// Czas jaki zajęła alokacja SPD
@@ -26,12 +26,7 @@ namespace SpacialPrisonerDilemma.Tools
         {
             get
             {
-                var l = new List<TimeSpan>();
-                for(int i=0; i<StepEnds.Count; i++)
-                {
-                    l.Add(StepEnds[i] - StepStarts[i]);
-                }
-                return l.ToArray();
+                return StepEnds.Select((t, i) => t - StepStarts[i]).ToArray();
             }
         }
 

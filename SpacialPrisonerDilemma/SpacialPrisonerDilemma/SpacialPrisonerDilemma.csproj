@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SpacialPrisonerDilemma</RootNamespace>
     <AssemblyName>SpacialPrisonerDilemma</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,19 +80,27 @@
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ColorPicking.cs" />
+    <Compile Include="View\PointMatrixPick.cs" />
+    <Compile Include="View\PointMatrixPicker.xaml.cs">
+      <DependentUpon>PointMatrixPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FontPicker.xaml.cs">
       <DependentUpon>FontPicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InitialConditionCell.cs" />
     <Compile Include="View\InitialConditions.cs" />
-    <Compile Include="View\SPD.xaml.cs">
-      <DependentUpon>SPD.xaml</DependentUpon>
+    <Compile Include="View\SPDView.xaml.cs">
+      <DependentUpon>SPDView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SPDAssets.cs" />
     <Compile Include="View\StateTransformation.cs" />
     <Page Include="View\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PointMatrixPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\FontPicker.xaml">
       <SubType>Designer</SubType>
@@ -117,7 +126,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\SPD.xaml">
+    <Page Include="View\SPDView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,7 +166,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SPD.Engine\SPD.Engine.csproj">
+      <Project>{f1c16950-8e36-44d4-b0b9-628aeb3a8e99}</Project>
+      <Name>SPD.Engine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
