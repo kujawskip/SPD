@@ -7,6 +7,8 @@
 
 \usepackage{amsmath}
 \usepackage{enumerate}
+\usepackage{enumitem}
+\setlistdepth{9}
 \usepackage{float}
 \usepackage{verbatim}
 \usepackage[MeX]{polski}
@@ -24,6 +26,7 @@ bindingoffset=10mm, top=25mm, bottom=25mm}
 \usepackage{array}
 \usepackage{pstricks}
 \usepackage{textcomp}
+\usepackage[titletoc]{appendix}
 \theoremstyle{definition}
 \newtheorem{theorem}{Twierdzenie}[section]
 \newtheorem{remark}{Uwaga}[section]
@@ -36,6 +39,18 @@ bindingoffset=10mm, top=25mm, bottom=25mm}
 \newcommand*{\norm}[1]{\left\Vert{#1}\right\Vert}
 \newcommand*{\abs}[1]{\left\vert{#1}\right\vert}
 \newcommand*{\om}{\omega}
+
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=--}
+\setlist[itemize,3]{label=+}
+\setlist[itemize,4]{label=$\bullet$}
+\setlist[itemize,5]{label=--}
+\setlist[itemize,6]{label=+}
+\setlist[itemize,7]{label=$\bullet$}
+\setlist[itemize,8]{label=--}
+\setlist[itemize,9]{label=+}
+
+\renewlist{itemize}{itemize}{9}
 
 \author{B³a¿ej Bobko, Patryk Kujawski}
 \title{Symulacje Przestrzennego Dylematu WiêŸnia}
@@ -1222,5 +1237,7 @@ Oœwiadczamy, ¿e pracê magistersk¹ pod tytu³em: ,,Symulacje Przestrzennego Dylema
 \begin{flushright}
 ...........................................
 \end{flushright}
-
+\begin{appendices}
+\input{AppendixDT}
+\end{appendices}
 \end{document}
