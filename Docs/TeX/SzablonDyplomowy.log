@@ -1,22 +1,13 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2016.12.7)  7 DEC 2016 13:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.5)  7 DEC 2016 12:59
 entering extended mode
-**SzablonDyplomowy.tex
-(H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
-vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
-an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
-romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
-sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
-senglishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
-Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size11.clo"
-File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+**./SzablonDyplomowy.tex
+(SzablonDyplomowy.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@chapter=\count80
@@ -31,46 +22,46 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 99.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\dvips.def"
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\dvips.def"
+File: dvips.def 2016/07/10 v3.1a Driver-dependent file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
-Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: dvips.def on input line 130.
+Package color Info: Driver file: dvips.def on input line 147.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\rotating\rotating.sty"
-Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\rotating.sty"
+Package: rotating 2016/05/22 v2.16c rotated objects in LaTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \c@r@tfl@t=\count88
 \rotFPtop=\skip43
@@ -78,66 +69,66 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box26
 \rot@mess@toks=\toks15
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
-Package: inputenc 2008/03/30 v1.1d Input encoding file
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\cp1250.def"
-File: cp1250.def 2008/03/30 v1.1d Input encoding file
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\cp1250.def"
+File: cp1250.def 2015/03/17 v1.2c Input encoding file
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.sty"
 Package: t1enc 1994/06/01 Standard LaTeX package
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\a4wide\a4wide.sty"
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\a4wide\a4wide.sty
 Package: a4wide 1994/08/30
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ntgclass\a4.sty"
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\ntgclass\a4.sty
 Package: a4 2004/04/15 v1.2g A4 based page layout
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks18
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
-Package: amsmath 2000/07/18 v2.13 AMS math features
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/06/28 v2.15d AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
-Package: amstext 2000/06/29 v2.01
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
-File: amsgen.sty 1999/11/30 v2.0
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
 \ex@=\dimen105
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
-Package: amsbsy 1999/11/29 v1.2d
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen106
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
-Package: amsopn 1999/12/14 v2.01 operator names
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count89
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 199.
 \uproot@=\count90
 \leftroot@=\count91
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 297.
 \classnum@=\count92
 \DOTSCASE@=\count93
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box27
 \strutbox@=\box28
 \big@size=\dimen107
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \macc@depth=\count94
 \c@MaxMatrixCols=\count95
 \dotsspace@=\muskip10
@@ -158,14 +149,14 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \multlinegap=\skip46
 \multlinetaggap=\skip47
 \mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks24
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count101
 \float@exts=\toks25
@@ -173,69 +164,73 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks26
 \@floatcapt=\box30
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
-Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks27
 \verbatim@line=\toks28
 \verbatim@in@stream=\read1
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\polski\polski.sty"
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\polski.sty
 Package: polski 2008/02/24 v1.3.3 Polish language package
 
 Document language package `polski' v1.3.3 <2008/02/24>
    Inputenc package detected. Catcodes not changed.
-\l@nohyphenation=\language70
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty"
-Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+\l@nohyphenation=\language75
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2016/06/19 v1.99m Standard LaTeX package
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.def"
-File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2016/06/19 v1.99m Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
-Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\refcount.sty"
-Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\refcount.sty"
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
-Package: gettitlestring 2009/12/18 v1.3 Cleanup title references (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2010/02/22 v3.7 Keyval support for LaTeX options (HO)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
-Package: kvsetkeys 2010/03/01 v1.9 Key value parser (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
-Package: etexcmds 2010/01/28 v1.3 Prefix for e-TeX command names (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 ))))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2010/04/26 v1.7 LaTeX kernel commands for general use (HO)
-)
 \c@section@level=\count102
-LaTeX Info: Redefining \ref on input line 338.
-LaTeX Info: Redefining \pageref on input line 338.
+LaTeX Info: Redefining \ref on input line 355.
+LaTeX Info: Redefining \pageref on input line 355.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2010/01/28 v2.1 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
-Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count103
@@ -251,176 +246,281 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen121
 \Gm@dimlist=\toks29
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tabu\tabu.sty"
-Package: tabu 2010/10/28 v1.1 - flexible LaTeX tabulars (FC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\tabu\tabu.sty
+Package: tabu 2011/02/26 v2.8 - flexible LaTeX tabulars (FC)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen122
 \extrarowheight=\dimen123
 \NC@list=\toks30
 \extratabsurround=\skip48
 \backup@length=\skip49
 )
-\tabu@cnt=\count106
-\tabu@nbcols=\count107
-\tabu@X@cols=\count108
-\tabu@target=\dimen124
-\tabu@spreadtarget=\dimen125
-\tabu@naturalX=\dimen126
-\tabucolX=\dimen127
-\tabu@X@sum=\dimen128
-\tabu@box=\box31
-\tabu@everycr@tok=\toks31
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\varwidth.sty"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box31
+\sift@deathcycles=\count106
+\@vwid@loff=\dimen124
+\@vwid@roff=\dimen125
+)
+\c@taburow=\count107
+\tabu@nbcols=\count108
+\tabu@cnt=\count109
+\tabu@Xcol=\count110
+\tabu@alloc=\count111
+\tabu@nested=\count112
+\tabu@target=\dimen126
+\tabu@spreadtarget=\dimen127
+\tabu@naturalX=\dimen128
+\tabucolX=\dimen129
+\tabu@Xsum=\dimen130
+\extrarowdepth=\dimen131
+\abovetabulinesep=\dimen132
+\belowtabulinesep=\dimen133
+\tabustrutrule=\dimen134
+\tabu@thebody=\toks31
 \tabu@footnotes=\toks32
+\tabu@box=\box32
+\tabu@arstrutbox=\box33
+\tabu@hleads=\box34
+\tabu@vleads=\box35
 \tabu@cellskip=\skip50
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
-Package: caption 2010/01/09 v3.1m Customizing captions (AR)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
-Package: caption3 2010/01/14 v3.1m caption3 kernel (AR)
-\captionmargin=\dimen129
-\captionmargin@=\dimen130
-\captionwidth=\dimen131
-\caption@indent=\dimen132
-\caption@parindent=\dimen133
-\caption@hangindent=\dimen134
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen135
+\captionmargin@=\dimen136
+\captionwidth=\dimen137
+\caption@tempdima=\dimen138
+\caption@indent=\dimen139
+\caption@parindent=\dimen140
+\caption@hangindent=\dimen141
 )
-\c@ContinuedFloat=\count109
+\c@ContinuedFloat=\count113
 Package caption Info: float package is loaded.
 Package caption Info: rotating package is loaded.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
-\bigstrutjot=\dimen135
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+Package: multirow 2016/10/11 v2.1 Span multiple rows of a table
+\multirow@colwidth=\skip51
+\multirow@cnta=\count114
+\multirow@cntb=\count115
+\multirow@dima=\skip52
+\bigstrutjot=\dimen142
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
-Package: amssymb 2009/06/22 v3.00
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty"
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
-Package: amsthm 2004/08/06 v2.20
+("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks33
 \thm@bodyfont=\toks34
 \thm@headfont=\toks35
 \thm@notefont=\toks36
 \thm@headpunct=\toks37
-\thm@preskip=\skip51
-\thm@postskip=\skip52
-\thm@headsep=\skip53
+\thm@preskip=\skip53
+\thm@postskip=\skip54
+\thm@headsep=\skip55
 \dth@everypar=\toks38
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\palatino.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\palatino.sty"
 Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pstricks\pstricks.sty"
-Package: pstricks 2010/09/18 v0.47 LaTeX wrapper for `PSTricks' (RN,HV)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pstricks\pstricks.sty"
+Package: pstricks 2015/11/14 v0.62 LaTeX wrapper for `PSTricks' (RN,HV)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\pstricks\pstricks.tex"
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\pst-xkey.tex"
-File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
-Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
-\XKV@toks=\toks39
-\XKV@tempa@toks=\toks40
-\XKV@depth=\count110
-File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
-)))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\pstricks\pst-fp.tex"
-`pst-fp' v0.05, 2010/01/17 (hv)
-\pstFP@xs=\count111
-\pstFP@xia=\count112
-\pstFP@xib=\count113
-\pstFP@xfa=\count114
-\pstFP@xfb=\count115
-\pstFP@rega=\count116
-\pstFP@regb=\count117
-\pstFP@regs=\count118
-\pstFP@times=\count119
-)
-\psLoopIndex=\count120
-
-`PSTricks' v2.13  <2010/11/01> (tvz)
-\pst@dima=\dimen136
-\pst@dimb=\dimen137
-\pst@dimc=\dimen138
-\pst@dimd=\dimen139
-\pst@dimg=\dimen140
-\pst@dimh=\dimen141
-\pst@dimm=\dimen142
-\pst@dimn=\dimen143
-\pst@dimo=\dimen144
-\pst@dimp=\dimen145
-\pst@hbox=\box32
-\pst@boxg=\box33
-\pst@cnta=\count121
-\pst@cntb=\count122
-\pst@cntc=\count123
-\pst@cntd=\count124
-\pst@cntg=\count125
-\pst@cnth=\count126
-\pst@cntm=\count127
-\pst@cntn=\count128
-\pst@cnto=\count129
-\pst@cntp=\count130
-\@zero=\count131
-\pst@toks=\toks41
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\pstricks\pstricks.con")
-\psunit=\dimen146
-\psxunit=\dimen147
-\psyunit=\dimen148
-\pst@C@@rType=\count132
-\pslinewidth=\dimen149
-\psk@startLW=\dimen150
-\psk@endLW=\dimen151
-\pst@customdefs=\toks42
-\pslinearc=\dimen152
-\pst@symbolStep=\dimen153
-\pst@symbolWidth=\dimen154
-\everypsbox=\toks43
-\psframesep=\dimen155
-\pslabelsep=\dimen156
-\pst@shift=\dimen157
-\theoverlaybox=\box34
-)
-File: pstricks.tex 2010/11/01 v2.13 `PSTricks' (tvz,hv)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\pstricks\pst-fp.tex")
-File: pst-fp.tex 2010/11/01 v2.13 `PST-fp' (hv)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
-File: pdftex.def 2010/09/14 v0.05b Graphics/color for pdfTeX
-\Gread@gobject=\count133
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+\Gread@gobject=\count116
 )
-LaTeX Info: Redefining \color on input line 702.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pstricks.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\pst-xkey.tex"
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+\XKV@toks=\toks39
+\XKV@tempa@toks=\toks40
+)
+\XKV@depth=\count117
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pst-fp.tex"
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count118
+\pstFP@xia=\count119
+\pstFP@xib=\count120
+\pstFP@xfa=\count121
+\pstFP@xfb=\count122
+\pstFP@rega=\count123
+\pstFP@regb=\count124
+\pstFP@regs=\count125
+\pstFP@times=\count126
+)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-c
+ommon.tex
+\pgfutil@everybye=\toks41
+\pgfutil@tempdima=\dimen143
+\pgfutil@tempdimb=\dimen144
+
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-c
+ommon-lists.tex))
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.c
+ode.tex
+\pgfkeys@pathtoks=\toks42
+\pgfkeys@temptoks=\toks43
+
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeysfi
+ltered.code.tex
+\pgfkeys@tmptoks=\toks44
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\textcomp.sty"
-Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgffor.co
+de.tex
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.t
+ex
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathcalc.co
+de.tex
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathutil.co
+de.tex
+\pgf@x=\dimen145
+\pgf@xa=\dimen146
+\pgf@xb=\dimen147
+\pgf@xc=\dimen148
+\pgf@y=\dimen149
+\pgf@ya=\dimen150
+\pgf@yb=\dimen151
+\pgf@yc=\dimen152
+\c@pgf@counta=\count127
+\c@pgf@countb=\count128
+\c@pgf@countc=\count129
+\c@pgf@countd=\count130
+\pgfutil@tempcnta=\count131
+\pgfutil@tempcntb=\count132
+)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathparser.
+code.tex
+\pgfmath@dimen=\dimen153
+\pgfmath@count=\count133
+\pgfmath@box=\box36
+\pgfmath@toks=\toks45
+\pgfmath@stack@operand=\toks46
+\pgfmath@stack@operation=\toks47
+)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.code.tex
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.basic.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.trigonometric.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.random.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.comparison.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.base.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.round.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.misc.code.tex)
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctio
+ns.integerarithmetics.code.tex)))
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfloat.c
+ode.tex
+\c@pgfmathroundto@lastzeros=\count134
+))
+\pgffor@iter=\dimen154
+\pgffor@skip=\dimen155
+\pgffor@stack=\toks48
+\pgffor@toks=\toks49
+)
+\psLoopIndex=\count135
+
+`PSTricks' v2.70  <2016/09/23> (tvz)
+\pst@dima=\dimen156
+\pst@dimb=\dimen157
+\pst@dimc=\dimen158
+\pst@dimd=\dimen159
+\pst@dimg=\dimen160
+\pst@dimh=\dimen161
+\pst@dimm=\dimen162
+\pst@dimn=\dimen163
+\pst@dimo=\dimen164
+\pst@dimp=\dimen165
+\pst@hbox=\box37
+\pst@ibox=\box38
+\pst@boxg=\box39
+\pst@cnta=\count136
+\pst@cntb=\count137
+\pst@cntc=\count138
+\pst@cntd=\count139
+\pst@cntg=\count140
+\pst@cnth=\count141
+\pst@cntm=\count142
+\pst@cntn=\count143
+\pst@cnto=\count144
+\pst@cntp=\count145
+\@zero=\count146
+\pst@toks=\toks50
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pstricks.con")
+\psunit=\dimen166
+\psxunit=\dimen167
+\psyunit=\dimen168
+\pst@C@@rType=\count147
+\pslinewidth=\dimen169
+\psk@startLW=\dimen170
+\psk@endLW=\dimen171
+\pst@customdefs=\toks51
+\pslinearc=\dimen172
+\pst@symbolStep=\dimen173
+\pst@symbolWidth=\dimen174
+\pst@symbolLinewidth=\dimen175
+\everypsbox=\toks52
+\psframesep=\dimen176
+\pslabelsep=\dimen177
+\sh@wgridXunit=\dimen178
+\sh@wgridYunit=\dimen179
+\pst@shift=\dimen180
+)
+File: pstricks.tex 2016/09/23 v2.70 `PSTricks' (tvz,hv)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pst-fp.tex")
+File: pst-fp.tex 2016/09/23 v2.70 `PST-fp' (hv)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2016/06/19 v1.99m Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -432,68 +532,85 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             only a restricted character set as indicated.
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
-LaTeX Info: Redefining \oldstylenums on input line 266.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
 
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-\c@theorem=\count134
-\c@remark=\count135
-\c@definition=\count136
-\c@alg=\count137
-\c@prz=\count138
-\c@np=\count139
+\c@theorem=\count148
+\c@remark=\count149
+\c@definition=\count150
+\c@alg=\count151
+\c@prz=\count152
+\c@np=\count153
 
-(H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.aux)
+No file SzablonDyplomowy.aux.
+\openout1 = `SzablonDyplomowy.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
@@ -508,14 +625,13 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
-File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Try loading font information for T1+ppl on input line 42.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 *geometry* driver: auto-detecting
@@ -555,318 +671,518 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(C:\Users\Patryk\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count140
-\scratchdimen=\dimen158
-\scratchbox=\box35
-\nofMPsegments=\count141
-\nofMParguments=\count142
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count143
-\MPscratchDim=\dimen159
-\MPnumerator=\count144
-\everyMPtoPDFconversion=\toks45
+\scratchcounter=\count154
+\scratchdimen=\dimen181
+\scratchbox=\box40
+\nofMPsegments=\count155
+\nofMParguments=\count156
+\everyMPshowfont=\toks53
+\MPscratchCnt=\count157
+\MPscratchDim=\dimen182
+\MPnumerator=\count158
+\makeMPintoPDFobject=\count159
+\everyMPtoPDFconversion=\toks54
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 52.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+lasy on input line 52.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 <PW.png, id=1, 93.34875pt x 93.34875pt>
 File: PW.png Graphic file (type png)
  <use PW.png>
+Package pdftex.def Info: PW.png used on input line 53.
+(pdftex.def)             Requested size: 70.00282pt x 70.00282pt.
+
 <MiNI.png, id=2, 189.70876pt x 187.70125pt>
 File: MiNI.png Graphic file (type png)
  <use MiNI.png>
+Package pdftex.def Info: MiNI.png used on input line 53.
+(pdftex.def)             Requested size: 70.00008pt x 70.00114pt.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 66.
  [1
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!{C:/Users/Patryk/AppData/Local/MiKTeX/2.9/pdftex/config
+/pdftex.map}
 
 
 Non-PDF special ignored!
-Non-PDF special ignored! <H:/Inø/SPD/Docs/TeX/PW.png (PNG copy)> <H:/Inø/SPD/Do
-cs/TeX/MiNI.png (PNG copy)>] [2] (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.toc
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1.
+Non-PDF special ignored!
+Non-PDF special ignored! <./PW.png> <./MiNI.png>] [2]
+No file SzablonDyplomowy.toc.
+\tf@toc=\write3
+\openout3 = `SzablonDyplomowy.toc'.
 
 [1
 
-])
-\tf@toc=\write3
- [2]
+]
 Rozdzia\PlPrIeC {\l } 1.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 116.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 117.
-[3
+[2
 
 ]
 LaTeX Font Info:    Try loading font information for TS1+ppl on input line 127.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ts1ppl.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1ppl.fd"
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [4]
-[5] [6]
+) [3]
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 153.
+ [4] [5]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 179.
-[7
 
-] [8] <N11.png, id=46, 386.19281pt x 243.15843pt>
+LaTeX Warning: Citation `PS' on page 6 undefined on input line 206.
+
+[6
+
+] [7] <N11.png, id=43, 386.19281pt x 222.07968pt>
 File: N11.png Graphic file (type png)
  <use N11.png>
-<N12.png, id=47, 386.19281pt x 243.15843pt>
+Package pdftex.def Info: N11.png used on input line 237.
+(pdftex.def)             Requested size: 289.64388pt x 166.55934pt.
+
+<N12.png, id=45, 386.19281pt x 222.8325pt>
 File: N12.png Graphic file (type png)
  <use N12.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 245.
+Package pdftex.def Info: N12.png used on input line 244.
+(pdftex.def)             Requested size: 289.64388pt x 167.12396pt.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 245.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 251.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 245.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 251.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 245.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 251.
 
-<N21.png, id=52, 386.19281pt x 243.15843pt>
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 251.
+
+[8 <./N11.png> <./N12.png>] <N21.png, id=53, 386.19281pt x 223.58531pt>
 File: N21.png Graphic file (type png)
- <use N21.png>
-<N22.png, id=53, 386.19281pt x 243.15843pt>
+
+<use N21.png>
+Package pdftex.def Info: N21.png used on input line 260.
+(pdftex.def)             Requested size: 289.64388pt x 167.68855pt.
+ <N22.png, id=54, 386.19281pt x 222.07968pt>
 File: N22.png Graphic file (type png)
- <use N22.png> [10 <H:/Inø/SPD/Docs/TeX/N11.png (PNG copy)> <H:/Inø/SPD/Docs/Te
-X/N12.png (PNG copy)>]
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 262.
-
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 262.
+ <use N22.png>
+Package pdftex.def Info: N22.png used on input line 267.
+(pdftex.def)             Requested size: 289.64388pt x 166.55934pt.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 262.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 274.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 262.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 274.
 
-<N31.png, id=59, 386.19281pt x 243.15843pt>
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 274.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 274.
+
+
+LaTeX Warning: Reference `N31' on page 9 undefined on input line 278.
+
+
+LaTeX Warning: Reference `N32' on page 9 undefined on input line 278.
+
+<N31.png, id=55, 386.19281pt x 222.07968pt>
 File: N31.png Graphic file (type png)
  <use N31.png>
-<N32.png, id=60, 386.19281pt x 243.15843pt>
+Package pdftex.def Info: N31.png used on input line 283.
+(pdftex.def)             Requested size: 289.64388pt x 166.55934pt.
+
+<N32.png, id=56, 386.19281pt x 222.8325pt>
 File: N32.png Graphic file (type png)
- <use N32.png> [11 <H:/Inø/SPD/Docs/TeX/N21.png (PNG copy)> <H:/Inø/SPD/Docs/Te
-X/N22.png (PNG copy)>] [12 <H:/Inø/SPD/Docs/TeX/N31.png (PNG copy)> <H:/Inø/SPD
-/Docs/TeX/N32.png (PNG copy)>]
+ <use N32.png>
+Package pdftex.def Info: N32.png used on input line 291.
+(pdftex.def)             Requested size: 289.64388pt x 167.12396pt.
+ [9 <./N21.png> <./N22.png>]
+Underfull \vbox (badness 1735) has occurred while \output is active []
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 290.
+ [10 <./N31.png> <./N32.png>]
 
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 290.
-
-
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 290.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 310.
 
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 290.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 310.
 
 
-Overfull \hbox (2.50174pt too wide) in paragraph at lines 295--296
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 310.
+
+
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 310.
+
+
+Overfull \hbox (2.50174pt too wide) in paragraph at lines 315--316
 []$\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y\OT1/cmr/m/
 n/10.95 )$ \T1/ppl/m/n/10.95 = punk-ty gra-cza o wspÛ™-rz¶d-nych (x,y), po-cz°t
 -ko-wo dla kaª-de-go (x,y) $\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\OML/cmm/m
-/it/10.95 x; y\OT1/cmr/m/n/10.95 ) =$
+/it/10.95 x; y\OT1/cmr/m/n/10.95 ) =
  []
 
-[13]
-Overfull \hbox (3.34082pt too wide) in paragraph at lines 325--326
+
+Overfull \hbox (3.34082pt too wide) in paragraph at lines 345--346
 \T1/ppl/m/n/10.95 SzczegÛ™ow° im-ple-men-ta-cj¶ prze-wi-du-j°-c° wie-lo-w°t-ko-
 wo±¢ oraz syn-chro-ni-za-cj¶ w°t-kÛw opi-
  []
 
-[14]
+[11] [12]
 Rozdzia\PlPrIeC {\l } 3.
-<311_1.png, id=74, 293.59688pt x 268.75406pt>
+
+LaTeX Warning: Citation `NM' on page 13 undefined on input line 349.
+
+
+LaTeX Warning: Citation `IM' on page 13 undefined on input line 349.
+
+
+LaTeX Warning: Citation `W' on page 13 undefined on input line 349.
+
+
+LaTeX Warning: Citation `NM' on page 13 undefined on input line 355.
+
+<311_1.png, id=75, 293.59688pt x 268.75406pt>
 File: 311_1.png Graphic file (type png)
  <use 311_1.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 338--343
+Package pdftex.def Info: 311_1.png used on input line 360.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 358--363
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15
+ [13
 
 ]
+
+LaTeX Warning: Citation `IM' on page 14 undefined on input line 366.
+
 <311_2.png, id=79, 293.59688pt x 268.75406pt>
 File: 311_2.png Graphic file (type png)
  <use 311_2.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 372--378
+Package pdftex.def Info: 311_2.png used on input line 394.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 392--398
 [][]
  []
 
 
-Overfull \hbox (26.30826pt too wide) in paragraph at lines 372--378
+Overfull \hbox (26.30826pt too wide) in paragraph at lines 392--398
 \T1/ppl/m/n/10.95 Dla $\OML/cmm/m/it/10.95 b \OT1/cmr/m/n/10.95 = 1\OML/cmm/m/i
 t/10.95 :\OT1/cmr/m/n/10.95 40$ \T1/ppl/m/n/10.95 osi°-ga-my po-wsta-wa-nie zbl
 i-ªo-nych kszta™-tem do frak-tal-nych struk-tur: <--ODNOëNIK
  []
 
-[16 <H:/Inø/SPD/Docs/TeX/311_1.png>]
+[14 <./311_1.png>]
 File: 311_2.png Graphic file (type png)
  <use 311_2.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 379--384
+Package pdftex.def Info: 311_2.png used on input line 401.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 399--404
 [][] 
  []
 
 <311_3.png, id=84, 296.60812pt x 271.76532pt>
 File: 311_3.png Graphic file (type png)
  <use 311_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 385--391
+Package pdftex.def Info: 311_3.png used on input line 407.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 405--411
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17 <H:/Inø/SPD/Docs/TeX/311_2.png>] <311_4.png, id=90, 296.60812pt x 271.7653
-2pt>
+ [15 <./311_2.png>] <311_4.png, id=89, 296.60812pt x 271.76532pt>
 File: 311_4.png Graphic file (type png)
+ <use 311_4.png>
+Package pdftex.def Info: 311_4.png used on input line 414.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-<use 311_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 392--397
+Overfull \hbox (17.0pt too wide) in paragraph at lines 412--417
 [][] 
  []
 
-<311_5.png, id=91, 296.60812pt x 271.76532pt>
+<311_5.png, id=90, 296.60812pt x 271.76532pt>
 File: 311_5.png Graphic file (type png)
  <use 311_5.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 398--403
+Package pdftex.def Info: 311_5.png used on input line 420.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 418--423
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [18 <H:/Inø/SPD/Docs/TeX/311_3.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/311_4.png 
-(PNG copy)>] <311_6.png, id=95, 296.60812pt x 271.76532pt>
+ [16 <./311_3.png> <./311_4.png>] <311_6.png, id=94, 296.60812pt x 271.76532pt>
 File: 311_6.png Graphic file (type png)
- <use 311_6.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 406--411
+
+<use 311_6.png>
+Package pdftex.def Info: 311_6.png used on input line 428.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 426--431
 [][] 
  []
 
-<311_7.png, id=96, 296.60812pt x 271.76532pt>
+<311_7.png, id=95, 296.60812pt x 271.76532pt>
 File: 311_7.png Graphic file (type png)
  <use 311_7.png>
-<311_8.png, id=97, 296.60812pt x 271.76532pt>
+Package pdftex.def Info: 311_7.png used on input line 438.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<311_8.png, id=96, 296.60812pt x 271.76532pt>
 File: 311_8.png Graphic file (type png)
  <use 311_8.png>
+Package pdftex.def Info: 311_8.png used on input line 443.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19 <H:/Inø/SPD/Docs/TeX/311_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/311_6.png 
-(PNG copy)>] <311_9.png, id=101, 293.59688pt x 268.75406pt>
+ [17 <./311_5.png> <./311_6.png>] <311_9.png, id=101, 293.59688pt x 268.75406pt
+>
 File: 311_9.png Graphic file (type png)
- <use 311_9.png> [20 <H:/Inø/SPD/Docs/TeX/311_7.png (PNG copy)> <H:/Inø/SPD/Doc
-s/TeX/311_8.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/311_9.png>]
-Overfull \hbox (4.19841pt too wide) in paragraph at lines 448--449
-\T1/ppl/m/n/10.95 9 (stra-te-gia za-wsze wy-ba-czaj), kaª-d° z nich przed-sta-w
-io-no in-nym ko-lo-rem: <---ZMNIEJSZYÇ
+
+<use 311_9.png>
+Package pdftex.def Info: 311_9.png used on input line 454.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+ [18 <./311_7.png> <./311_8.png> <./311_9.png>]
+
+LaTeX Warning: Citation `IM' on page 19 undefined on input line 461.
+
+
+LaTeX Warning: Citation `IM' on page 19 undefined on input line 462.
+
+
+LaTeX Warning: Reference `fig:321_1' on page 19 undefined on input line 469.
+
+<321_1.png, id=106, 293.59688pt x 268.75406pt>
+File: 321_1.png Graphic file (type png)
+ <use 321_1.png>
+Package pdftex.def Info: 321_1.png used on input line 473.
+(pdftex.def)             Requested size: 248.39906pt x 227.3799pt.
+
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 473--475
+ [][] 
  []
 
-<321_L.png, id=106, 107.65219pt x 261.22594pt>
+<321_L.png, id=107, 107.65219pt x 261.22594pt>
 File: 321_L.png Graphic file (type png)
  <use 321_L.png>
+Package pdftex.def Info: 321_L.png used on input line 479.
+(pdftex.def)             Requested size: 88.71434pt x 215.27487pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21]
-<321_1.png, id=110, 293.59688pt x 268.75406pt>
-File: 321_1.png Graphic file (type png)
- <use 321_1.png> [22 <H:/Inø/SPD/Docs/TeX/321_L.png> <H:/Inø/SPD/Docs/TeX/321_1
-.png>]
-<321_2.png, id=116, 293.59688pt x 268.75406pt>
+ [19]
+<321_2.png, id=111, 293.59688pt x 268.75406pt>
 File: 321_2.png Graphic file (type png)
  <use 321_2.png>
-<321_3.png, id=117, 293.59688pt x 268.75406pt>
+Package pdftex.def Info: 321_2.png used on input line 506.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <./321_1.png> <./321_L.png>] <321_3.png, id=117, 293.59688pt x 268.75406pt
+>
 File: 321_3.png Graphic file (type png)
- <use 321_3.png>
-Underfull \vbox (badness 4254) has occurred while \output is active []
 
- [23 <H:/Inø/SPD/Docs/TeX/321_2.png>] <321_4.png, id=123, 293.59688pt x 268.754
-06pt>
+<use 321_3.png>
+Package pdftex.def Info: 321_3.png used on input line 515.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+ <321_4.png, id=118, 293.59688pt x 268.75406pt>
 File: 321_4.png Graphic file (type png)
+ <use 321_4.png>
+Package pdftex.def Info: 321_4.png used on input line 525.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
 
-<use 321_4.png> <321_5.png, id=124, 293.59688pt x 268.75406pt>
+[21 <./321_2.png> <./321_3.png>]
+<321_5.png, id=124, 293.59688pt x 268.75406pt>
 File: 321_5.png Graphic file (type png)
  <use 321_5.png>
-[24 <H:/Inø/SPD/Docs/TeX/321_3.png> <H:/Inø/SPD/Docs/TeX/321_4.png>]
-<321_6.png, id=130, 293.59688pt x 268.75406pt>
+Package pdftex.def Info: 321_5.png used on input line 534.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+<321_6.png, id=125, 293.59688pt x 268.75406pt>
 File: 321_6.png Graphic file (type png)
  <use 321_6.png>
-<321_7.png, id=131, 293.59688pt x 268.75406pt>
-File: 321_7.png Graphic file (type png)
- <use 321_7.png>
+Package pdftex.def Info: 321_6.png used on input line 543.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
 Underfull \vbox (badness 3849) has occurred while \output is active []
 
- [25 <H:/Inø/SPD/Docs/TeX/321_5.png> <H:/Inø/SPD/Docs/TeX/321_6.png>]
-<321_W1.png, id=137, 451.6875pt x 301.125pt>
+ [22 <./321_4.png> <./321_5.png>] <321_7.png, id=131, 293.59688pt x 268.75406pt
+>
+File: 321_7.png Graphic file (type png)
+
+<use 321_7.png>
+Package pdftex.def Info: 321_7.png used on input line 552.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+ <321_W1.png, id=132, 451.6875pt x 301.125pt>
 File: 321_W1.png Graphic file (type png)
- <use 321_W1.png> [26 <H:/Inø/SPD/Docs/TeX/321_7.png> <H:/Inø/SPD/Docs/TeX/321_
-W1.png>]
-<321_W2.png, id=143, 451.6875pt x 301.125pt>
+ <use 321_W1.png>
+Package pdftex.def Info: 321_W1.png used on input line 562.
+(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
+
+Underfull \vbox (badness 3209) has occurred while \output is active []
+
+ [23 <./321_6.png> <./321_7.png>] <321_W2.png, id=139, 451.6875pt x 301.125pt>
 File: 321_W2.png Graphic file (type png)
- <use 321_W2.png> [27 <H:/Inø/SPD/Docs/TeX/321_W2.png>]
+
+<use 321_W2.png>
+Package pdftex.def Info: 321_W2.png used on input line 571.
+(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
+ [24 <./321_W1.png> <./321_W2.png>] [25]
 Rozdzia\PlPrIeC {\l } 4.
+
+LaTeX Warning: Citation `NM' on page 26 undefined on input line 582.
+
 <411_M.png, id=148, 296.60812pt x 325.215pt>
 File: 411_M.png Graphic file (type png)
- <use 411_M.png> [28
+ <use 411_M.png>
+Package pdftex.def Info: 411_M.png used on input line 605.
+(pdftex.def)             Requested size: 222.45554pt x 243.91064pt.
+ [26
 
 ]
 <411_0.png, id=152, 296.60812pt x 271.76532pt>
 File: 411_0.png Graphic file (type png)
  <use 411_0.png>
+Package pdftex.def Info: 411_0.png used on input line 613.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
 <411_1.png, id=153, 296.60812pt x 271.76532pt>
 File: 411_1.png Graphic file (type png)
  <use 411_1.png>
+Package pdftex.def Info: 411_1.png used on input line 617.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+
+LaTeX Warning: Reference `nm1' on page 27 undefined on input line 621.
+
 <411_2.png, id=154, 296.60812pt x 271.76532pt>
 File: 411_2.png Graphic file (type png)
  <use 411_2.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 606--611
+Package pdftex.def Info: 411_2.png used on input line 625.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 623--629
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29 <H:/Inø/SPD/Docs/TeX/411_M.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/411_0.png 
-(PNG copy)> <H:/Inø/SPD/Docs/TeX/411_1.png (PNG copy)>]
-<411_3.png, id=159, 296.60812pt x 271.76532pt>
+ [27 <./411_M.png> <./411_0.png> <./411_1.png>]
+<411_3.png, id=158, 296.60812pt x 271.76532pt>
 File: 411_3.png Graphic file (type png)
  <use 411_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 612--617
-[][] 
+Package pdftex.def Info: 411_3.png used on input line 632.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 630--636
+[][]
  []
 
 File: 411_3.png Graphic file (type png)
 <use 411_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 618--623
+Package pdftex.def Info: 411_3.png used on input line 639.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 637--642
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (40.76506pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 28 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
+IA Z R”õNORODNÅ MACIERZÅ WYPäAT
+ []
+
+[28 <./411_2.png> <./411_3.png>]
+
+LaTeX Warning: Reference `fig:421_M' on page 29 undefined on input line 645.
+
+<412_M.png, id=162, 296.60812pt x 385.44pt>
+File: 412_M.png Graphic file (type png)
+ <use 412_M.png>
+Package pdftex.def Info: 412_M.png used on input line 649.
+(pdftex.def)             Requested size: 296.60739pt x 385.43906pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29]
+Overfull \hbox (2.17877pt too wide) in paragraph at lines 654--655
+[]\T1/ppl/m/n/10.95 Uk™ad po-cz°t-ko-wy stra-te-gii jest ta-ki sam. Pierw-sze r
+Ûª-ni-ce po-ja-wia-j° si¶ do-pie-ro w czwar-
+ []
+
+<412_1.png, id=167, 316.18124pt x 289.83281pt>
+File: 412_1.png Graphic file (type png)
+ <use 412_1.png>
+Package pdftex.def Info: 412_1.png used on input line 658.
+(pdftex.def)             Requested size: 237.13535pt x 217.37407pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 656--661
 [][] 
  []
 
@@ -879,23 +1195,50 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[30 <H:/Inø/SPD/Docs/TeX/411_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/411_3.png (
-PNG copy)>] <412_M.png, id=163, 296.60812pt x 385.44pt>
-File: 412_M.png Graphic file (type png)
- <use 412_M.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[30 <./412_M.png>] <412_2.png, id=171, 302.63063pt x 276.28218pt>
+File: 412_2.png Graphic file (type png)
 
- [31]
-Overfull \hbox (2.17877pt too wide) in paragraph at lines 634--635
-[]\T1/ppl/m/n/10.95 Uk™ad po-cz°t-ko-wy stra-te-gii jest ta-ki sam. Pierw-sze r
-Ûª-ni-ce po-ja-wia-j° si¶ do-pie-ro w czwar-
+<use 412_2.png>
+Package pdftex.def Info: 412_2.png used on input line 666.
+(pdftex.def)             Requested size: 226.97241pt x 207.21112pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 664--669
+[][] 
  []
 
-<412_1.png, id=167, 316.18124pt x 289.83281pt>
-File: 412_1.png Graphic file (type png)
- <use 412_1.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 636--641
-[][] 
+<412_3.png, id=172, 284.56313pt x 258.9675pt>
+File: 412_3.png Graphic file (type png)
+ <use 412_3.png>
+Package pdftex.def Info: 412_3.png used on input line 673.
+(pdftex.def)             Requested size: 213.42181pt x 194.22513pt.
+
+Overfull \hbox (62.24123pt too wide) in paragraph at lines 670--676
+\T1/ppl/m/n/10.95 dem-na-stym: [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31 <./412_1.png> <./412_2.png>] <412_4.png, id=176, 273.27094pt x 249.93375pt
+>
+File: 412_4.png Graphic file (type png)
+
+<use 412_4.png>
+Package pdftex.def Info: 412_4.png used on input line 679.
+(pdftex.def)             Requested size: 204.95268pt x 187.44984pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 677--683
+[][]
+ []
+
+<412_5.png, id=177, 287.57437pt x 261.22594pt>
+File: 412_5.png Graphic file (type png)
+ <use 412_5.png>
+Package pdftex.def Info: 412_5.png used on input line 686.
+(pdftex.def)             Requested size: 215.68025pt x 195.91896pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 684--690
+[][]
  []
 
 
@@ -907,107 +1250,150 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[32 <H:/Inø/SPD/Docs/TeX/412_M.png (PNG copy)>]
-<412_2.png, id=171, 302.63063pt x 276.28218pt>
-File: 412_2.png Graphic file (type png)
- <use 412_2.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 642--647
-[][] 
- []
+[32 <./412_3.png> <./412_4.png>]
+<412_6.png, id=183, 272.51813pt x 249.18094pt>
+File: 412_6.png Graphic file (type png)
+ <use 412_6.png>
+Package pdftex.def Info: 412_6.png used on input line 693.
+(pdftex.def)             Requested size: 204.38809pt x 186.88522pt.
 
-<412_3.png, id=172, 284.56313pt x 258.9675pt>
-File: 412_3.png Graphic file (type png)
- <use 412_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 648--653
-[][] 
+Overfull \hbox (17.0pt too wide) in paragraph at lines 691--697
+[][]
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Citation `IM' on page 33 undefined on input line 700.
 
- [33 <H:/Inø/SPD/Docs/TeX/412_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/412_2.png 
-(PNG copy)>] <412_4.png, id=176, 273.27094pt x 249.93375pt>
-File: 412_4.png Graphic file (type png)
- <use 412_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 654--659
-[][] 
+<421_M.png, id=184, 292.84406pt x 325.215pt>
+File: 421_M.png Graphic file (type png)
+ <use 421_M.png>
+Package pdftex.def Info: 421_M.png used on input line 704.
+(pdftex.def)             Requested size: 219.63249pt x 243.91064pt.
+
+Overfull \hbox (68.80006pt too wide) in paragraph at lines 700--707
+\T1/ppl/m/n/10.95 trum plan-szy: [] 
  []
 
-<412_5.png, id=177, 287.57437pt x 261.22594pt>
-File: 412_5.png Graphic file (type png)
- <use 412_5.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 660--665
-[][] 
+[33 <./412_5.png> <./412_6.png>]
+
+LaTeX Warning: Reference `im1' on page 34 undefined on input line 709.
+
+File: 321_1.png Graphic file (type png)
+<use 321_1.png>
+Package pdftex.def Info: 321_1.png used on input line 714.
+(pdftex.def)             Requested size: 248.39906pt x 227.3799pt.
+
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 714--715
+ [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+<421_L.png, id=188, 103.88812pt x 372.64218pt>
+File: 421_L.png Graphic file (type png)
+ <use 421_L.png>
+Package pdftex.def Info: 421_L.png used on input line 719.
+(pdftex.def)             Requested size: 64.93842pt x 232.94058pt.
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 34 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[34 <H:/Inø/SPD/Docs/TeX/412_3.png> <H:/Inø/SPD/Docs/TeX/412_4.png>]
-<412_6.png, id=183, 272.51813pt x 249.18094pt>
-File: 412_6.png Graphic file (type png)
- <use 412_6.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 666--671
+[34 <./421_M.png> <./421_L.png>]
+<421_1.png, id=193, 293.59688pt x 268.75406pt>
+File: 421_1.png Graphic file (type png)
+ <use 421_1.png>
+Package pdftex.def Info: 421_1.png used on input line 728.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+<421_2.png, id=194, 293.59688pt x 268.75406pt>
+File: 421_2.png Graphic file (type png)
+ <use 421_2.png>
+Package pdftex.def Info: 421_2.png used on input line 737.
+(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
+
+<421_3.png, id=195, 293.59688pt x 268.75406pt>
+File: 421_3.png Graphic file (type png)
+ <use 421_3.png>
+Package pdftex.def Info: 421_3.png used on input line 742.
+(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
+
+<421_4.png, id=196, 293.59688pt x 268.75406pt>
+File: 421_4.png Graphic file (type png)
+ <use 421_4.png>
+Package pdftex.def Info: 421_4.png used on input line 748.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 746--751
 [][] 
  []
 
-<421_M.png, id=184, 292.84406pt x 325.215pt>
-File: 421_M.png Graphic file (type png)
- <use 421_M.png>
-Overfull \hbox (68.80006pt too wide) in paragraph at lines 676--683
-\T1/ppl/m/n/10.95 trum plan-szy: [] 
- []
 
-[35 <H:/Inø/SPD/Docs/TeX/412_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/412_6.png (
-PNG copy)>]
-File: 321_1.png Graphic file (type png)
- <use 321_1.png>
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 689--690
- [][] 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<421_L.png, id=189, 103.88812pt x 372.64218pt>
-File: 421_L.png Graphic file (type png)
- <use 421_L.png>
-<421_1.png, id=190, 293.59688pt x 268.75406pt>
-File: 421_1.png Graphic file (type png)
- <use 421_1.png>
+ [35 <./421_1.png> <./421_2.png> <./421_3.png>]
+<421_5.png, id=204, 293.59688pt x 268.75406pt>
+File: 421_5.png Graphic file (type png)
+ <use 421_5.png>
+Package pdftex.def Info: 421_5.png used on input line 755.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+<421_6.png, id=205, 293.59688pt x 268.75406pt>
+File: 421_6.png Graphic file (type png)
+ <use 421_6.png>
+Package pdftex.def Info: 421_6.png used on input line 763.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 36 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[36 <H:/Inø/SPD/Docs/TeX/421_M.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/421_L.png>]
-<421_2.png, id=195, 293.59688pt x 268.75406pt>
-File: 421_2.png Graphic file (type png)
- <use 421_2.png>
-<421_3.png, id=196, 293.59688pt x 268.75406pt>
-File: 421_3.png Graphic file (type png)
- <use 421_3.png>
-<421_4.png, id=197, 293.59688pt x 268.75406pt>
-File: 421_4.png Graphic file (type png)
- <use 421_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 721--726
+[36 <./421_4.png> <./421_5.png>]
+<421_7.png, id=211, 293.59688pt x 268.75406pt>
+File: 421_7.png Graphic file (type png)
+ <use 421_7.png>
+Package pdftex.def Info: 421_7.png used on input line 773.
+(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
+
+<421_8.png, id=212, 293.59688pt x 268.75406pt>
+File: 421_8.png Graphic file (type png)
+ <use 421_8.png>
+Package pdftex.def Info: 421_8.png used on input line 778.
+(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
+
+<421_9.png, id=213, 293.59688pt x 268.75406pt>
+File: 421_9.png Graphic file (type png)
+ <use 421_9.png>
+Package pdftex.def Info: 421_9.png used on input line 784.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 782--787
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [37 <H:/Inø/SPD/Docs/TeX/421_1.png> <H:/Inø/SPD/Docs/TeX/421_2.png> <H:/Inø/SP
-D/Docs/TeX/421_3.png>] <421_5.png, id=204, 293.59688pt x 268.75406pt>
-File: 421_5.png Graphic file (type png)
- <use 421_5.png>
-<421_6.png, id=205, 293.59688pt x 268.75406pt>
-File: 421_6.png Graphic file (type png)
- <use 421_6.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [37 <./421_6.png> <./421_7.png> <./421_8.png>]
+<421_W1.png, id=220, 451.6875pt x 301.125pt>
+File: 421_W1.png Graphic file (type png)
+ <use 421_W1.png>
+Package pdftex.def Info: 421_W1.png used on input line 793.
+(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
+
+<421_W2.png, id=221, 451.6875pt x 301.125pt>
+File: 421_W2.png Graphic file (type png)
+ <use 421_W2.png>
+Package pdftex.def Info: 421_W2.png used on input line 802.
+(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
+
+Overfull \hbox (291.0054pt too wide) in paragraph at lines 798--805
+\T1/ppl/m/n/10.95 to-wy udzia™ po-szcze-gÛl-nych stra-te-gii w ko-lej-nych ite-
+ra-cjach: [] 
+ []
 
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
@@ -1015,90 +1401,136 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[38 <H:/Inø/SPD/Docs/TeX/421_4.png> <H:/Inø/SPD/Docs/TeX/421_5.png>]
-<421_7.png, id=211, 293.59688pt x 268.75406pt>
-File: 421_7.png Graphic file (type png)
- <use 421_7.png>
-<421_8.png, id=212, 293.59688pt x 268.75406pt>
-File: 421_8.png Graphic file (type png)
- <use 421_8.png>
-<421_9.png, id=213, 293.59688pt x 268.75406pt>
-File: 421_9.png Graphic file (type png)
- <use 421_9.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 757--762
-[][] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [39 <H:/Inø/SPD/Docs/TeX/421_6.png> <H:/Inø/SPD/Docs/TeX/421_7.png> <H:/Inø/SP
-D/Docs/TeX/421_8.png>] <421_W1.png, id=220, 451.6875pt x 301.125pt>
-File: 421_W1.png Graphic file (type png)
- <use 421_W1.png>
-<421_W2.png, id=221, 451.6875pt x 301.125pt>
-File: 421_W2.png Graphic file (type png)
- <use 421_W2.png>
-Overfull \hbox (291.0054pt too wide) in paragraph at lines 773--780
-\T1/ppl/m/n/10.95 to-wy udzia™ po-szcze-gÛl-nych stra-te-gii w ko-lej-nych ite-
-ra-cjach: [] 
- []
-
-
-Overfull \hbox (40.76506pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 40 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
-IA Z R”õNORODNÅ MACIERZÅ WYPäAT
- []
-
-[40 <H:/Inø/SPD/Docs/TeX/421_9.png> <H:/Inø/SPD/Docs/TeX/421_W1.png>] [41 <H:/I
-nø/SPD/Docs/TeX/421_W2.png>]
+[38 <./421_9.png> <./421_W1.png>] [39 <./421_W2.png>]
 Rozdzia\PlPrIeC {\l } 5.
-<511_1.png, id=232, 296.60812pt x 271.76532pt>
+
+LaTeX Warning: Citation `NM' on page 40 undefined on input line 809.
+
+
+LaTeX Warning: Citation `IM' on page 40 undefined on input line 809.
+
+
+LaTeX Warning: Citation `W' on page 40 undefined on input line 809.
+
+<511_1.png, id=231, 296.60812pt x 271.76532pt>
 File: 511_1.png Graphic file (type png)
  <use 511_1.png>
-<511_2.png, id=233, 296.60812pt x 271.76532pt>
+Package pdftex.def Info: 511_1.png used on input line 834.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<511_2.png, id=232, 296.60812pt x 271.76532pt>
 File: 511_2.png Graphic file (type png)
  <use 511_2.png>
+Package pdftex.def Info: 511_2.png used on input line 839.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
 Underfull \vbox (badness 1019) has occurred while \output is active []
 
- [42
+ [40
 
 ]
-<511_3.png, id=237, 296.60812pt x 271.76532pt>
+<511_3.png, id=236, 296.60812pt x 271.76532pt>
 File: 511_3.png Graphic file (type png)
  <use 511_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 819--824
+Package pdftex.def Info: 511_3.png used on input line 846.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 844--849
 [][] 
  []
 
-<511_4.png, id=238, 296.60812pt x 271.76532pt>
+<511_4.png, id=237, 296.60812pt x 271.76532pt>
 File: 511_4.png Graphic file (type png)
  <use 511_4.png>
-<511_5.png, id=239, 296.60812pt x 271.76532pt>
+Package pdftex.def Info: 511_4.png used on input line 854.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<511_5.png, id=238, 296.60812pt x 271.76532pt>
 File: 511_5.png Graphic file (type png)
- <use 511_5.png> [43 <H:/Inø/SPD/Docs/TeX/511_1.png (PNG copy)> <H:/Inø/SPD/Doc
-s/TeX/511_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_3.png (PNG copy)> <H:/Inø/
-SPD/Docs/TeX/511_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_5.png (PNG copy)>]
+ <use 511_5.png>
+Package pdftex.def Info: 511_5.png used on input line 859.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+ [41 <./511_1.png> <./511_2.png> <./511_3.png> <./511_4.png> <./511_5.png>]
 <511_6.png, id=243, 296.60812pt x 271.76532pt>
 File: 511_6.png Graphic file (type png)
  <use 511_6.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 841--846
+Package pdftex.def Info: 511_6.png used on input line 868.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 866--871
 [][] 
  []
 
 <511_W.png, id=244, 454.69875pt x 304.13625pt>
 File: 511_W.png Graphic file (type png)
  <use 511_W.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 850--855
+Package pdftex.def Info: 511_W.png used on input line 877.
+(pdftex.def)             Requested size: 341.02322pt x 228.10162pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 875--880
 [][] 
  []
 
 <512_1.png, id=245, 296.60812pt x 271.76532pt>
 File: 512_1.png Graphic file (type png)
  <use 512_1.png>
+Package pdftex.def Info: 512_1.png used on input line 886.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
 <512_2.png, id=246, 296.60812pt x 271.76532pt>
 File: 512_2.png Graphic file (type png)
  <use 512_2.png>
+Package pdftex.def Info: 512_2.png used on input line 891.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 42 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[42 <./511_6.png> <./511_W.png>]
+<512_3.png, id=250, 296.60812pt x 271.76532pt>
+File: 512_3.png Graphic file (type png)
+ <use 512_3.png>
+Package pdftex.def Info: 512_3.png used on input line 900.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<512_4.png, id=251, 296.60812pt x 271.76532pt>
+File: 512_4.png Graphic file (type png)
+ <use 512_4.png>
+Package pdftex.def Info: 512_4.png used on input line 909.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 907--912
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [43 <./512_1.png> <./512_2.png> <./512_3.png>]
+
+LaTeX Warning: Reference `im1' on page 44 undefined on input line 917.
+
+<521_1.png, id=255, 296.60812pt x 271.76532pt>
+File: 521_1.png Graphic file (type png)
+ <use 521_1.png>
+Package pdftex.def Info: 521_1.png used on input line 923.
+(pdftex.def)             Requested size: 248.39906pt x 227.60123pt.
+
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 923--924
+ [][] 
+ []
+
+<521_L.png, id=256, 73.77562pt x 270.25969pt>
+File: 521_L.png Graphic file (type png)
+ <use 521_L.png>
+Package pdftex.def Info: 521_L.png used on input line 928.
+(pdftex.def)             Requested size: 64.93842pt x 237.8911pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1107,32 +1539,31 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[44 <H:/Inø/SPD/Docs/TeX/511_6.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_W.png (
-PNG copy)>] <512_3.png, id=250, 296.60812pt x 271.76532pt>
-File: 512_3.png Graphic file (type png)
- <use 512_3.png>
-<512_4.png, id=251, 296.60812pt x 271.76532pt>
-File: 512_4.png Graphic file (type png)
- <use 512_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 882--887
-[][] 
- []
+[44 <./512_4.png>] <521_2.png, id=260, 296.60812pt x 271.76532pt>
+File: 521_2.png Graphic file (type png)
 
+<use 521_2.png>
+Package pdftex.def Info: 521_2.png used on input line 937.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ <521_3.png, id=261, 296.60812pt x 271.76532pt>
+File: 521_3.png Graphic file (type png)
+ <use 521_3.png>
+Package pdftex.def Info: 521_3.png used on input line 946.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[45 <./521_1.png> <./521_L.png> <./521_2.png>]
+<521_4.png, id=265, 296.60812pt x 271.76532pt>
+File: 521_4.png Graphic file (type png)
+ <use 521_4.png>
+Package pdftex.def Info: 521_4.png used on input line 955.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
- [45 <H:/Inø/SPD/Docs/TeX/512_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/512_2.png 
-(PNG copy)> <H:/Inø/SPD/Docs/TeX/512_3.png (PNG copy)>]
-<521_1.png, id=255, 296.60812pt x 271.76532pt>
-File: 521_1.png Graphic file (type png)
- <use 521_1.png>
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 898--899
- [][] 
- []
+<521_5.png, id=266, 296.60812pt x 271.76532pt>
+File: 521_5.png Graphic file (type png)
+ <use 521_5.png>
+Package pdftex.def Info: 521_5.png used on input line 962.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-<521_L.png, id=256, 73.77562pt x 270.25969pt>
-File: 521_L.png Graphic file (type png)
- <use 521_L.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1141,21 +1572,35 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[46 <H:/Inø/SPD/Docs/TeX/512_4.png (PNG copy)>]
-<521_2.png, id=260, 296.60812pt x 271.76532pt>
-File: 521_2.png Graphic file (type png)
- <use 521_2.png>
-<521_3.png, id=261, 296.60812pt x 271.76532pt>
-File: 521_3.png Graphic file (type png)
- <use 521_3.png> [47 <H:/Inø/SPD/Docs/TeX/521_1.png (PNG copy)> <H:/Inø/SPD/Doc
-s/TeX/521_L.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_2.png (PNG copy)>]
-<521_4.png, id=266, 296.60812pt x 271.76532pt>
-File: 521_4.png Graphic file (type png)
- <use 521_4.png>
-<521_5.png, id=267, 296.60812pt x 271.76532pt>
-File: 521_5.png Graphic file (type png)
- <use 521_5.png>
+[46 <./521_3.png> <./521_4.png>]
+<521_6.png, id=270, 296.60812pt x 271.76532pt>
+File: 521_6.png Graphic file (type png)
+ <use 521_6.png>
+Package pdftex.def Info: 521_6.png used on input line 971.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<521_W.png, id=271, 454.69875pt x 304.13625pt>
+File: 521_W.png Graphic file (type png)
+ <use 521_W.png>
+Package pdftex.def Info: 521_W.png used on input line 980.
+(pdftex.def)             Requested size: 341.02322pt x 228.10162pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [47 <./521_5.png> <./521_6.png>] <522_1.png, id=276, 296.60812pt x 271.76532pt
+>
+File: 522_1.png Graphic file (type png)
+
+<use 522_1.png>
+Package pdftex.def Info: 522_1.png used on input line 989.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ <522_2.png, id=277, 296.60812pt x 271.76532pt>
+File: 522_2.png Graphic file (type png)
+ <use 522_2.png>
+Package pdftex.def Info: 522_2.png used on input line 995.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Underfull \vbox (badness 2980) has occurred while \output is active []
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1163,23 +1608,36 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[48 <H:/Inø/SPD/Docs/TeX/521_3.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_4.png (
-PNG copy)>] <521_6.png, id=271, 296.60812pt x 271.76532pt>
-File: 521_6.png Graphic file (type png)
- <use 521_6.png>
-<521_W.png, id=272, 454.69875pt x 304.13625pt>
-File: 521_W.png Graphic file (type png)
- <use 521_W.png>
+[48 <./521_W.png> <./522_1.png>]
+<522_3.png, id=281, 296.60812pt x 271.76532pt>
+File: 522_3.png Graphic file (type png)
+ <use 522_3.png>
+Package pdftex.def Info: 522_3.png used on input line 1004.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<522_4.png, id=282, 296.60812pt x 271.76532pt>
+File: 522_4.png Graphic file (type png)
+ <use 522_4.png>
+Package pdftex.def Info: 522_4.png used on input line 1011.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [49 <H:/Inø/SPD/Docs/TeX/521_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_6.png 
-(PNG copy)>] <522_1.png, id=276, 296.60812pt x 271.76532pt>
-File: 522_1.png Graphic file (type png)
- <use 522_1.png>
-<522_2.png, id=277, 296.60812pt x 271.76532pt>
-File: 522_2.png Graphic file (type png)
- <use 522_2.png>
-Underfull \vbox (badness 1755) has occurred while \output is active []
+ [49 <./522_2.png> <./522_3.png>] <522_5.png, id=286, 296.60812pt x 271.76532pt
+>
+File: 522_5.png Graphic file (type png)
+
+<use 522_5.png>
+Package pdftex.def Info: 522_5.png used on input line 1021.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+ <522_6.png, id=287, 296.60812pt x 271.76532pt>
+File: 522_6.png Graphic file (type png)
+ <use 522_6.png>
+Package pdftex.def Info: 522_6.png used on input line 1026.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+
+LaTeX Warning: Citation `W' on page 50 undefined on input line 1034.
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1187,77 +1645,79 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[50 <H:/Inø/SPD/Docs/TeX/521_W.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_1.png (
-PNG copy)>] <522_3.png, id=281, 296.60812pt x 271.76532pt>
-File: 522_3.png Graphic file (type png)
- <use 522_3.png>
-<522_4.png, id=282, 296.60812pt x 271.76532pt>
-File: 522_4.png Graphic file (type png)
- <use 522_4.png>
+[50 <./522_4.png> <./522_5.png> <./522_6.png>]
+<531_1.png, id=291, 296.60812pt x 271.76532pt>
+File: 531_1.png Graphic file (type png)
+ <use 531_1.png>
+Package pdftex.def Info: 531_1.png used on input line 1057.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<531_2.png, id=292, 296.60812pt x 271.76532pt>
+File: 531_2.png Graphic file (type png)
+ <use 531_2.png>
+Package pdftex.def Info: 531_2.png used on input line 1064.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51 <H:/Inø/SPD/Docs/TeX/522_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_3.png 
-(PNG copy)>] <522_5.png, id=286, 296.60812pt x 271.76532pt>
-File: 522_5.png Graphic file (type png)
- <use 522_5.png>
-<522_6.png, id=287, 296.60812pt x 271.76532pt>
-File: 522_6.png Graphic file (type png)
- <use 522_6.png>
+ [51 <./531_1.png>] <531_3.png, id=296, 296.60812pt x 271.76532pt>
+File: 531_3.png Graphic file (type png)
+ <use 531_3.png>
+Package pdftex.def Info: 531_3.png used on input line 1073.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<531_4.png, id=297, 296.60812pt x 271.76532pt>
+File: 531_4.png Graphic file (type png)
+ <use 531_4.png>
+Package pdftex.def Info: 531_4.png used on input line 1083.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_5.png, id=298, 296.60812pt x 271.76532pt>
+File: 531_5.png Graphic file (type png)
+ <use 531_5.png>
+Package pdftex.def Info: 531_5.png used on input line 1088.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 52 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[52 <H:/Inø/SPD/Docs/TeX/522_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_5.png (
-PNG copy)> <H:/Inø/SPD/Docs/TeX/522_6.png (PNG copy)>]
-<531_1.png, id=291, 296.60812pt x 271.76532pt>
-File: 531_1.png Graphic file (type png)
- <use 531_1.png>
-<531_2.png, id=292, 296.60812pt x 271.76532pt>
-File: 531_2.png Graphic file (type png)
- <use 531_2.png>
+[52 <./531_2.png> <./531_3.png>]
+<531_6.png, id=302, 296.60812pt x 271.76532pt>
+File: 531_6.png Graphic file (type png)
+ <use 531_6.png>
+Package pdftex.def Info: 531_6.png used on input line 1098.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_7.png, id=303, 296.60812pt x 271.76532pt>
+File: 531_7.png Graphic file (type png)
+ <use 531_7.png>
+Package pdftex.def Info: 531_7.png used on input line 1103.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_8.png, id=304, 296.60812pt x 271.76532pt>
+File: 531_8.png Graphic file (type png)
+ <use 531_8.png>
+Package pdftex.def Info: 531_8.png used on input line 1109.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53 <H:/Inø/SPD/Docs/TeX/531_1.png (PNG copy)>]
-<531_3.png, id=297, 296.60812pt x 271.76532pt>
-File: 531_3.png Graphic file (type png)
- <use 531_3.png>
-<531_4.png, id=298, 296.60812pt x 271.76532pt>
-File: 531_4.png Graphic file (type png)
- <use 531_4.png>
-<531_5.png, id=299, 296.60812pt x 271.76532pt>
-File: 531_5.png Graphic file (type png)
- <use 531_5.png>
+ [53 <./531_4.png> <./531_5.png> <./531_6.png> <./531_7.png>]
+<532_1.png, id=309, 296.60812pt x 271.76532pt>
+File: 532_1.png Graphic file (type png)
+ <use 532_1.png>
+Package pdftex.def Info: 532_1.png used on input line 1121.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 54 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[54 <H:/Inø/SPD/Docs/TeX/531_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531_3.png (
-PNG copy)>] <531_6.png, id=303, 296.60812pt x 271.76532pt>
-File: 531_6.png Graphic file (type png)
- <use 531_6.png>
-<531_7.png, id=304, 296.60812pt x 271.76532pt>
-File: 531_7.png Graphic file (type png)
- <use 531_7.png>
-<531_8.png, id=305, 296.60812pt x 271.76532pt>
-File: 531_8.png Graphic file (type png)
- <use 531_8.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [55 <H:/Inø/SPD/Docs/TeX/531_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531_5.png 
-(PNG copy)> <H:/Inø/SPD/Docs/TeX/531_6.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531
-_7.png (PNG copy)>] <532_1.png, id=309, 296.60812pt x 271.76532pt>
-File: 532_1.png Graphic file (type png)
- <use 532_1.png>
-Overfull \hbox (34.57938pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 56 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
-IA O UOG”LNIONYCH SÅSIEDZTWACH
- []
-
-[56 <H:/Inø/SPD/Docs/TeX/531_8.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/532_1.png (
-PNG copy)>]
-Overfull \hbox (1.17903pt too wide) in paragraph at lines 1103--1104
+[54 <./531_8.png> <./532_1.png>]
+Overfull \hbox (1.17903pt too wide) in paragraph at lines 1128--1129
 []\T1/ppl/m/n/10.95 Obserwacje do-ko-na-ne na pod-sta-wie prze-pro-wa-dzo-nych 
 przez nas eks-pe-ry-men-tÛw zgod-
  []
@@ -1265,75 +1725,99 @@ przez nas eks-pe-ry-men-tÛw zgod-
 <533_1.png, id=313, 296.60812pt x 271.76532pt>
 File: 533_1.png Graphic file (type png)
  <use 533_1.png>
+Package pdftex.def Info: 533_1.png used on input line 1151.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
 <533_15.png, id=314, 261.97874pt x 250.68657pt>
 File: 533_15.png Graphic file (type png)
  <use 533_15.png>
+Package pdftex.def Info: 533_15.png used on input line 1160.
+(pdftex.def)             Requested size: 177.42868pt x 169.78372pt.
+
 <533_17.png, id=315, 262.73157pt x 250.68657pt>
 File: 533_17.png Graphic file (type png)
  <use 533_17.png>
+Package pdftex.def Info: 533_17.png used on input line 1165.
+(pdftex.def)             Requested size: 177.42868pt x 169.30174pt.
+
 Underfull \vbox (badness 3568) has occurred while \output is active []
 
- [57 <H:/Inø/SPD/Docs/TeX/533_1.png (PNG copy)>]
-<533_2.png, id=319, 249.93375pt x 228.10219pt>
+ [55 <./533_1.png>] <533_2.png, id=319, 249.93375pt x 228.10219pt>
 File: 533_2.png Graphic file (type png)
  <use 533_2.png>
+Package pdftex.def Info: 533_2.png used on input line 1175.
+(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+
 <533_3.png, id=320, 249.93375pt x 228.10219pt>
 File: 533_3.png Graphic file (type png)
  <use 533_3.png>
+Package pdftex.def Info: 533_3.png used on input line 1180.
+(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+
 <533_4.png, id=321, 254.45062pt x 232.61906pt>
 File: 533_4.png Graphic file (type png)
  <use 533_4.png>
+Package pdftex.def Info: 533_4.png used on input line 1189.
+(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
+
 <533_5.png, id=322, 254.45062pt x 232.61906pt>
 File: 533_5.png Graphic file (type png)
  <use 533_5.png>
+Package pdftex.def Info: 533_5.png used on input line 1194.
+(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 58 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+\T1/ppl/m/n/10.95 56 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[58 <H:/Inø/SPD/Docs/TeX/533_15.png> <H:/Inø/SPD/Docs/TeX/533_17.png> <H:/Inø/S
-PD/Docs/TeX/533_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/533_3.png (PNG copy)>]
-[59 <H:/Inø/SPD/Docs/TeX/533_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/533_5.png (
-PNG copy)>]
+[56 <./533_15.png> <./533_17.png> <./533_2.png> <./533_3.png>] [57 <./533_4.png
+> <./533_5.png>]
 Rozdzia\PlPrIeC {\l } 6.
-[60
+[58
 
-] [61
+] [59
 
 ]
-Overfull \hbox (7.60312pt too wide) in paragraph at lines 1195--1197
+Overfull \hbox (7.60312pt too wide) in paragraph at lines 1220--1222
 \T1/ppl/m/n/10.95 O±wiadczamy, ªe pra-c¶ ma-gi-ster-sk° pod ty-tu-™em: ,,Sy-mu-
 la-cje Prze-strzen-ne-go Dy-le-ma-tu Wi¶π-
  []
 
-[62
+[60
 
-] (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.aux) ) 
+] (SzablonDyplomowy.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 7858 strings out of 494019
- 110253 string characters out of 3143879
- 189321 words of memory out of 3000000
- 10867 multiletter control sequences out of 15000+200000
- 33191 words of font info for 76 fonts, out of 3000000 for 9000
- 716 hyphenation exceptions out of 8191
- 41i,13n,73p,929b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.
-9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
-plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on SzablonDyplomowy.pdf (64 pages, 1956628 bytes).
+ 13799 strings out of 493333
+ 227917 string characters out of 3139191
+ 281681 words of memory out of 3000000
+ 16974 multiletter control sequences out of 15000+200000
+ 31174 words of font info for 65 fonts, out of 3000000 for 9000
+ 1143 hyphenation exceptions out of 8191
+ 42i,13n,77p,931b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/pa
+latino/uplri8a.pfb>
+Output written on SzablonDyplomowy.pdf (62 pages, 1864886 bytes).
 PDF statistics:
  382 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -230,16 +230,22 @@ Tradycyjnie w dylemacie wiêŸnia rozpatruje siê jedynie s¹siedztwa von Neumanna i
 S(x,y) = \bigcup_{i=1}^d \{(x+i,y) , (x-i, y), (x, y+i), (x, y-i) \}
 \end{equation}
 Poni¿ej znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$:
-\begin{center}
- \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
-\includegraphics{N11}
-\captionof{figure}{}
+\begin{minipage}[t]{\linewidth}
 \centering
-\includegraphics{N12}
-\captionof{figure}{}
+\includegraphics[scale=.75]{N11}
 \end{minipage}
-\end{center}
+\caption{d=1}
+\label{N11}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N12}
+\end{minipage}
+\caption{d=2}
+\label{N12}
+\end{figure}
 \item Taksówkowe s¹siedztwo von Neumanna o zasiêgu $d$
 \begin{equation}
 S(x,y) = \{ (x’,y’) ; x’,y’ \in \mathbb{Z} \ i \ 0<d_{taxi}((x,y),(x',y'))\leq d\}
@@ -247,33 +253,47 @@ S(x,y) = \{ (x’,y’) ; x’,y’ \in \mathbb{Z} \ i \ 0<d_{taxi}((x,y),(x',y'))\leq d
 Gdzie $d_{taxi}$ jest odleg³oœci¹ w metryce taksówkowej.
 
 Poni¿ej znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$
-
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{figure}[H]
 \centering
-\includegraphics{N21}
-\captionof{figure}{}
+\begin{minipage}[t]{\linewidth}
 \centering
-\includegraphics{N22}
-\captionof{figure}{}
+\includegraphics[scale=.75]{N21}
 \end{minipage}
-\end{center}
+\caption{d=1}
+\label{N21}
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N22}
+\end{minipage}
+\caption{d=2}
+\label{N22}
+\end{figure}
 \item Rozszerzone s¹siedztwo Moore’a o zasiêgu $d$
 \begin{equation}
 S(x,y) = \{ (x’,y’) ; x’,y’ \in \mathbb{Z} \ i \ 0<d_{max}((x,y),(x',y'))\leq d\}
 \end{equation}
 Gdzie $d_{max}$ jest odleg³oœci¹ w metryce maksimum.
 
-Poni¿ej znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$:
-\begin{center}
- \begin{minipage}[t]{\linewidth}
+Na rysunkach \ref{N31} i \ref{N32} znajduje siê graficzna reprezentacja dla $d=1$ i $d=2$:
+\begin{figure}[H]
 \centering
-\includegraphics{N31}
-\captionof{figure}{}
+\begin{minipage}[t]{\linewidth}
 \centering
-\includegraphics{N32}
-\captionof{figure}{}
+\includegraphics[scale=.75]{N31}
 \end{minipage}
-\end{center}
+\caption{d=1}
+\label{N31}
+\end{figure}
+\begin{figure}[H]
+\begin{minipage}[t]{\linewidth}
+\centering
+\includegraphics[scale=.75]{N32}
+\end{minipage}
+\caption{d=2}
+\label{N32}
+\end{figure}
+
 \end{enumerate}
 \subsection{Ró¿norodna Macierz Wyp³at}
 Rozpatrujemy równie¿ wariant, w którym gracze w zale¿noœci od swojego po³o¿enia podlegaj¹ ró¿nym macierzom wyp³at. Komplikuje siê wtedy krok optymalizacji strategii. Rozwa¿yliœmy dwa rozwi¹zania:
@@ -443,25 +463,22 @@ Fraktalna struktura zaburzy³a siê z powodu braku miejsca na planszy. Ostatecznie
 
 \begin{quote}
  "Przy w³aœciwym wyborze parametrów macierzy wyp³at, niektóre przestrzenne strategie rozpowszechniaj¹ siê, tworz¹c granice w dwuwymiarowej przestrzeni siatki. Po³¹czony obszar siatek z identycznymi strategiami mo¿e wyeliminowaæ inn¹ strategiê; jeœli niewielka czêœæ siatek w po³¹czonym obszarze zostanie zmieniona na strategiê inn¹ od tej w po³¹czonym obszarze, ta strategia powróci do oryginalnej."
-\end{quote}
 
-W eksperymencie wykorzystano 10 strategii - Od k = 0 (strategia zawsze zdradzaj) do k = 9 (strategia zawsze wybaczaj), ka¿d¹ z nich przedstawiono innym kolorem: <---ZMNIEJSZYÆ LEGENDÊ i zrobiæ paintowe podpisy
-
-\begin{center} \begin{minipage}[t]{\linewidth}
-\centering
-\includegraphics{321_L}
-\captionof{figure}{Legenda}
-\end{minipage}
-\end{center}
-
+\end{quote}%
+W eksperymencie wykorzystano 10 strategii - Od k = 0 (strategia zawsze zdradzaj) do k = 9 (strategia zawsze wybaczaj), ka¿d¹ z nich przedstawiono innym kolorem.
 Uk³ad pocz¹tkowy zosta³ wylosowany z równym prawdopodobieñstwem dla ka¿dej strategii, na rysunku \ref{fig:321_1} widaæ jego graficzn¹ reprezentacjê.
 
-\begin{figure}[H] \begin{minipage}[t]{\linewidth}
+\begin{figure}[H] \begin{minipage}[t]{.4\textwidth}
 \centering
-\includegraphics[scale=0.75]{321_1}
-
+\includegraphics[width=1.4\textwidth]{321_1}
+\centering
 \end{minipage}
-\caption{}
+\hfill
+\begin{minipage}[t]{.4\textwidth}
+\centering
+\includegraphics[width=.5\textwidth]{321_L}
+\end{minipage}
+\caption{Uk³ad pocz¹tkowy + Legenda}
 \label{fig:321_1}
 \end{figure}
 W omówieniu wniosków pierwotnego eksperymentu nie poruszono tematu macierzy wyp³at, co sugeruje, i¿ zjawisko klasteryzacji jest niezale¿ne od sposobu punktowania, tote¿ mo¿na wybraæ dowoln¹ spe³niaj¹c¹ warunki dylematu wiêŸnia. W toku naszych badañ wybrano macierz promuj¹c¹ zachowania agresywne (ze wzglêdu na punktowanie podwójnej zdrady) jak I podtrzymuj¹ca zachowania defensywne (wysokie punktowanie podwójnej kooperacji). Poni¿ej przedstawiono dok³adne wartoœci wybranej macierzy. <-- DOPILNOWAÆ ¯E PONI¯EJ

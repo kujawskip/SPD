@@ -1,24 +1,24 @@
-\contentsline {chapter}{\numberline {1}Wst\k ep}{3}
-\contentsline {section}{\numberline {1.1}Opis Problemu}{3}
-\contentsline {section}{\numberline {1.2}Motywacja Pracy}{4}
-\contentsline {section}{\numberline {1.3}S\IeC {\l }ownik Poj\k e\'c}{4}
-\contentsline {section}{\numberline {1.4}Proces Implementacji}{5}
-\contentsline {chapter}{\numberline {2}Wprowadzenie Teoretyczne}{7}
-\contentsline {section}{\numberline {2.1}Kontekst Poj\k eciowy}{7}
-\contentsline {subsection}{\numberline {2.1.1}Dylemat Wi\k e\'znia}{7}
-\contentsline {subsection}{\numberline {2.1.2}Przestrzenny Dylemat Wi\k e\'znia}{8}
-\contentsline {subsection}{\numberline {2.1.3}Przestrzenny Dylemat Wi\k e\'znia a Automaty Kom\'orkowe}{8}
-\contentsline {subsection}{\numberline {2.1.4}Uog\'olnienie s\k asiedztw}{9}
-\contentsline {subsection}{\numberline {2.1.5}R\'o\.znorodna Macierz Wyp\IeC {\l }at}{12}
-\contentsline {section}{\numberline {2.2}Algorytm Symulacji}{13}
-\contentsline {chapter}{\numberline {3}Analiza Dzia\IeC {\l }ania Automatu Kom\'orkowego}{15}
-\contentsline {section}{\numberline {3.1}Eksperyment Nowaka i Maya}{15}
-\contentsline {section}{\numberline {3.2}Eksperyment Ishidy i Moriego}{21}
-\contentsline {chapter}{\numberline {4}Przestrzenny Dylemat Wi\k e\'znia z R\'o\.znorodn\k a Macierz\k a Wyp\IeC {\l }at}{28}
-\contentsline {section}{\numberline {4.1}Eksperyment Nowaka i Maya}{28}
-\contentsline {section}{\numberline {4.2}Eksperyment Ishidy i Moriego}{35}
-\contentsline {chapter}{\numberline {5}Przestrzenny Dylemat Wi\k e\'znia o Uog\'olnionych S\k asiedztwach}{42}
-\contentsline {section}{\numberline {5.1}Eksperyment Nowaka i Maya}{42}
-\contentsline {section}{\numberline {5.2}Eksperyment Ishidy i Moriego}{46}
-\contentsline {section}{\numberline {5.3}Eksperyment Wanga}{52}
-\contentsline {chapter}{\numberline {6}Wnioski}{60}
+\contentsline {chapter}{\numberline {1}Wst\k ep}{2}
+\contentsline {section}{\numberline {1.1}Opis Problemu}{2}
+\contentsline {section}{\numberline {1.2}Motywacja Pracy}{3}
+\contentsline {section}{\numberline {1.3}S\IeC {\l }ownik Poj\k e\'c}{3}
+\contentsline {section}{\numberline {1.4}Proces Implementacji}{4}
+\contentsline {chapter}{\numberline {2}Wprowadzenie Teoretyczne}{6}
+\contentsline {section}{\numberline {2.1}Kontekst Poj\k eciowy}{6}
+\contentsline {subsection}{\numberline {2.1.1}Dylemat Wi\k e\'znia}{6}
+\contentsline {subsection}{\numberline {2.1.2}Przestrzenny Dylemat Wi\k e\'znia}{7}
+\contentsline {subsection}{\numberline {2.1.3}Przestrzenny Dylemat Wi\k e\'znia a Automaty Kom\'orkowe}{7}
+\contentsline {subsection}{\numberline {2.1.4}Uog\'olnienie s\k asiedztw}{8}
+\contentsline {subsection}{\numberline {2.1.5}R\'o\.znorodna Macierz Wyp\IeC {\l }at}{10}
+\contentsline {section}{\numberline {2.2}Algorytm Symulacji}{11}
+\contentsline {chapter}{\numberline {3}Analiza Dzia\IeC {\l }ania Automatu Kom\'orkowego}{13}
+\contentsline {section}{\numberline {3.1}Eksperyment Nowaka i Maya}{13}
+\contentsline {section}{\numberline {3.2}Eksperyment Ishidy i Moriego}{19}
+\contentsline {chapter}{\numberline {4}Przestrzenny Dylemat Wi\k e\'znia z R\'o\.znorodn\k a Macierz\k a Wyp\IeC {\l }at}{26}
+\contentsline {section}{\numberline {4.1}Eksperyment Nowaka i Maya}{26}
+\contentsline {section}{\numberline {4.2}Eksperyment Ishidy i Moriego}{33}
+\contentsline {chapter}{\numberline {5}Przestrzenny Dylemat Wi\k e\'znia o Uog\'olnionych S\k asiedztwach}{40}
+\contentsline {section}{\numberline {5.1}Eksperyment Nowaka i Maya}{40}
+\contentsline {section}{\numberline {5.2}Eksperyment Ishidy i Moriego}{44}
+\contentsline {section}{\numberline {5.3}Eksperyment Wanga}{50}
+\contentsline {chapter}{\numberline {6}Wnioski}{58}
