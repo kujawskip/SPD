@@ -116,9 +116,9 @@ podpis promotora & \hspace*{100pt} & podpis autora
 \chapter{Wstêp}
 \section{Opis Problemu}
 Dylemat wiêŸnia jest najprostszym przyk³adem gry o sumie niezerowej jakie zamodelowano w toku rozwoju teorii gier. W podstawowej wersji ka¿dy z dwóch graczy stoi przed wyborem: kooperowaæ czy zdradziæ. Ostateczny wynik ka¿dego z nich zale¿y od kombinacji ich decyzji, gdzie najwiêksz¹ nagrodê otrzymuje zdradzaj¹cy kooperuj¹cego przeciwnika, zaœ drug¹ najwy¿sz¹ gdy obu graczy kooperowa³o. W wariancie tym mamy do czynienia z rozgrywk¹ jednokrotn¹ – ka¿dy z graczy podejmuje tylko jedn¹ decyzjê. Sytuacja staje siê nietrywialna gdy wprowadzimy rozgrywkê wielokrotn¹. Gracze podejmuj¹ decyzje w oparciu o poprzednie wybory swoje i przeciwnika oraz swój aktualny wynik. Mo¿na wiêc mówiæ o strategiach – sposobach podejmowania decyzji na podstawie aktualnej sytuacji w grze.
-\vfill
+
 Przestrzenny dylemat wiêŸnia jest rozszerzeniem powy¿szego problemu: gracze rozmieszczeni s¹ na siatce i rozgrywaj¹ dylemat wiêŸnia z wielokrotn¹ decyzj¹ z ka¿dym ze swoich s¹siadów. Nastêpnie porównuj¹ oni wyniki swoje i s¹siadów i przejmuj¹ strategiê, która w ich otoczeniu okaza³a siê byæ najbardziej korzystna.
-\vfill
+
 Przedmiotem niniejszej pracy jest symulacja oraz analiza przestrzennego dylematu wiêŸnia. W ramach projektu powsta³a aplikacja pozwalaj¹ca na wizualizacjê symulacji wielu rund gry dla zadanych ustawieñ parametrów: uk³adu pocz¹tkowego, macierzy wyp³at, iloœæ ruchów rozgrywki wielokrotnej. Na potrzeby pracy zakres strategii zosta³ ograniczony do trzech klas: zawsze zdradzaj, zawsze wybaczaj, zdradzaj jeœli k s¹siadów zdradzi³o w poprzednim ruchu, gdzie k jest wiêksze od 0 i mniejsze lub równe iloœci s¹siadów w uk³adzie. W ramach analizy merytorycznej dylematu wiêŸnia rozszerzono problematykê o nowe s¹siedztwa oraz o funkcjê macierzy wyp³at. Z u¿yciem programu do symulacji jako narzêdzia powtórzono eksperymenty Nowaka i May’a, Ishidy i Moriego oraz Wanga jak i sprawdzono czy ich wnioski maj¹ zastosowanie w wariantach rozszerzonych.
 \section{Motywacja Pracy}
 Teoria gier jest pe³na modeli, które choæ z pozoru wydaj¹ siê byæ proste, w rzeczywistoœci dobrze opisuj¹ z³o¿one zjawiska ekonomiczne i spo³eczne. Jednym z takich modeli jest dylemat wiêŸnia. Od momentu kiedy zosta³ po raz pierwszy formalnie zdefiniowany liczne badania z ró¿nych obszarów nauki od matematyki przez ekonomiê po socjologiê odnosi³y siê doñ, próbuj¹c dociec jaka strategia dzia³ania jest najlepsza i jak bardzo graj¹cy cz³owiek jest siê w stanie do tej optymalnej metody gry zbli¿yæ. Mnogoœæ i interdyscyplinarnoœæ zastosowañ dylematu wiêŸnia czyni¹ ten temat niezwykle interesuj¹cym, a rozliczne drogi modyfikacji, które mo¿na zastosowaæ na tej oryginalnej, prostej formule otwieraj¹ wiele ciekawych mo¿liwoœci badañ.
@@ -369,7 +369,7 @@ Eksperyment ten uwzglêdnia³ wykorzystanie nastêpuj¹cej macierzy wyp³at (zgodnie 
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $b$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -381,20 +381,20 @@ Eksperyment ten uwzglêdnia³ wykorzystanie nastêpuj¹cej macierzy wyp³at (zgodnie 
 \end{tabular}
 \end{center}
 
-W celu spe³niania nierównoœci charakteryzuj¹cych przestrzenny dylemat wiêŸnia, parametr b musi spe³niaæ nierównoœæ $1<b<2$.
+W celu spe³niania nierównoœci charakteryzuj¹cych przestrzenny dylemat wiêŸnia, parametr $b$ musi spe³niaæ nierównoœæ $1<b<2$.
 
-Zdecydowaliœmy na czêœciow¹ zmianê parametrów - s¹siedztwo zostaje roz³o¿one na p³aszczyŸnie zamiast na torusie.
+Zdecydowaliœmy na czêœciow¹ zmianê parametrów - s¹siedztwo zosta³o roz³o¿one na p³aszczyŸnie zamiast na torusie.
 
-W wyniku eksperymentów (na s¹siedztwie Moore'a roz³o¿onym na p³aszczyŸnie) wysnuliœmy wniosek istnienia wartoœæ krytyczn¹ parametru b, powy¿ej której automat komórkowy odwzorowuje zachowanie obecne w oryginalnym eksperymencie Nowaka i Maya.
+W wyniku eksperymentów (na s¹siedztwie Moore'a roz³o¿onym na p³aszczyŸnie) wysnuliœmy wniosek istnienia wartoœci brzegowej parametru $b$, powy¿ej której automat komórkowy odwzorowuje zachowanie zaobserwowane w oryginalnym eksperymencie Nowaka i Maya.
 
-Dla $b = 1.39$ obliczenia koñcz¹ siê po dwóch krokach automatu, osi¹gaj¹c nastêpuj¹cy uk³ad wynikowy:
+Dla $b = 1.39$ obliczenia koñcz¹ siê po dwóch krokach automatu, osi¹gaj¹c nastêpuj¹cy uk³ad wynikowy: <---TODO:ODNOŒNIK
 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{311_2}
 \captionof{figure}{Krok 1}
 \end{minipage}
-Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur:
+Dla $b = 1.40$ osi¹gamy powstawanie zbli¿onych kszta³tem do fraktalnych struktur: <--ODNOŒNIK zamiast dwukropka
 
 \begin{minipage}[t]{\linewidth}
 \centering
@@ -456,18 +456,16 @@ Po siedemnastu iteracjach struktury fraktalne jest zbyt du¿e by pomieœciæ siê na
 \end{minipage}
 \end{center}
 Fraktalna struktura zaburzy³a siê z powodu braku miejsca na planszy. Ostatecznie czêœciowa symetria zosta³a zachowana jednak¿e nie jest to koniecznoœæ. Jednym z powodów zaburzenia symetrii mo¿e byæ funkcja wyboru strategii podczas aktualizacji strategii – model teoretyczny nie rozs¹dza na jakiej podstawie nale¿y rozs¹dzaæ remisy. W takiej sytuacji wybór móg³by byæ losowy, ale w celu zachowania determinizmu koniecznego do istnienia automatu komórkowego, wedle naszej implementacji komórka wybiera najpierw siebie (jeœli posiada najwiêksz¹ iloœæ punktów), a potem s¹siada o najmniejszej wspó³rzêdnej X. W wypadku kolejnego remisu decyduje najmniejsza wspó³rzêdna Y. Doprowadza to do sytuacji, w której odpowiadaj¹ce sobie komórki znajduj¹ce siê po dwóch stronach osi symetrii mog¹ wybraæ do pobrania strategii komórki które nie odpowiadaj¹ sobie w ten sam sposób, co zaburza symetrycznoœæ uk³adu.
-\vfill
 \section{Eksperyment Ishidy i Moriego}
-\centering
 \label{im1}
-\cite{IM} Drugi eksperyment oparty by³ na pracy Y. Ishidy i T. Moriego.  W tym eksperymencie badane by³y strategie postaci "Zdradzaj gdy k s¹siadów zdradza".  Wnioskiem z eksperymentów by³o zauwa¿enie zjawiska klastrowania siê strategii w przestrzeni ( parafrazuj¹c 
+\cite{IM} Drugi eksperyment oparty by³ na pracy Y. Ishidy i T. Moriego.  W tym eksperymencie badane by³y strategie postaci ,,Zdradzaj gdy k s¹siadów zdradza''. Wnioskiem z eksperymentów by³o zauwa¿enie zjawiska klastrowania siê strategii w przestrzeni(parafrazuj¹c 
 \cite{IM})
 
 \begin{quote}
  "Przy w³aœciwym wyborze parametrów macierzy wyp³at, niektóre przestrzenne strategie rozpowszechniaj¹ siê, tworz¹c granice w dwuwymiarowej przestrzeni siatki. Po³¹czony obszar siatek z identycznymi strategiami mo¿e wyeliminowaæ inn¹ strategiê; jeœli niewielka czêœæ siatek w po³¹czonym obszarze zostanie zmieniona na strategiê inn¹ od tej w po³¹czonym obszarze, ta strategia powróci do oryginalnej."
-\end{quote}%
-W eksperymencie wykorzystano 10 strategii - Od k = 0 (strategia zawsze zdradzaj) do k = 9 (strategia zawsze wybaczaj), ka¿d¹ z nich przedstawiono innym kolorem
 
+\end{quote}%
+W eksperymencie wykorzystano 10 strategii - Od k = 0 (strategia zawsze zdradzaj) do k = 9 (strategia zawsze wybaczaj), ka¿d¹ z nich przedstawiono innym kolorem.
 Uk³ad pocz¹tkowy zosta³ wylosowany z równym prawdopodobieñstwem dla ka¿dej strategii, na rysunku \ref{fig:321_1} widaæ jego graficzn¹ reprezentacjê.
 
 \begin{figure}[H] \begin{minipage}[t]{.4\textwidth}
@@ -483,13 +481,13 @@ Uk³ad pocz¹tkowy zosta³ wylosowany z równym prawdopodobieñstwem dla ka¿dej strat
 \caption{Uk³ad pocz¹tkowy + Legenda}
 \label{fig:321_1}
 \end{figure}
-W omówieniu wniosków pierwotnego eksperymentu nie poruszono tematu macierzy wyp³at, co sugeruje, i¿ zjawisko klasteryzacji jest niezale¿ne od sposobu punktowania, tote¿ mo¿na wybraæ dowoln¹ spe³niaj¹c¹ warunki dylematu wiêŸnia. W toku naszych badañ wybrano zdecydowano siê na macierz promuj¹c¹ zachowania agresywne (ze wzglêdu na punktowanie podwójnej zdrady) jak I podtrzymuj¹ca zachowania defensywne (wysokie punktowanie podwójnej kooperacji). Poni¿ej przedstawiono dok³adne wartoœci wybranej macierzy.
+W omówieniu wniosków pierwotnego eksperymentu nie poruszono tematu macierzy wyp³at, co sugeruje, i¿ zjawisko klasteryzacji jest niezale¿ne od sposobu punktowania, tote¿ mo¿na wybraæ dowoln¹ spe³niaj¹c¹ warunki dylematu wiêŸnia. W toku naszych badañ wybrano macierz promuj¹c¹ zachowania agresywne (ze wzglêdu na punktowanie podwójnej zdrady) jak I podtrzymuj¹ca zachowania defensywne (wysokie punktowanie podwójnej kooperacji). Poni¿ej przedstawiono dok³adne wartoœci wybranej macierzy. <-- DOPILNOWAÆ ¯E PONI¯EJ
 
 \begin{center}
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $4$ & & $5$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -547,7 +545,7 @@ Po szeœciu kolejnych przebiegach automatu pozosta³y cztery strategie o najni¿szy
 \end{minipage}
 \end{center}
 
-Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Strategia ta zostaje wyparta przez rozrastaj¹c¹ siê strategiê k=1, co widaæ na ostatecznym, ustabilizowanym uk³adzie:
+Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Strategia ta zostaje wyparta przez rozrastaj¹c¹ siê strategiê k=1, co widaæ na ostatecznym, ustabilizowanym uk³adzie: <---Odnoœnik do figury zamiast dwukropka
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -557,7 +555,7 @@ Dwudziesta trzecia iteracja automatu to ostatnie wyst¹pienie strategii k=3. Stra
 \end{center}
 \noindent
 
-Na poni¿szym wykresie niestabilnoœci uk³adu widaæ, ¿e po pierwszym utworzeniu siê struktur przestrzeni w kroku 1 iloœæ zmian strategii w ka¿dej iteracji mala³a znacz¹co. Sukcesywnie znika³y strategie inne ni¿ k=1.
+Na poni¿szym wykresie niestabilnoœci uk³adu widaæ, ¿e po pierwszym utworzeniu siê struktur przestrzeni w kroku 1 iloœæ zmian strategii w ka¿dej iteracji mala³a znacz¹co. Sukcesywnie znika³y strategie inne ni¿ k=1. <--OPIS wykresu plus odnoœnik
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -566,7 +564,7 @@ Na poni¿szym wykresie niestabilnoœci uk³adu widaæ, ¿e po pierwszym utworzeniu si
 \end{minipage}
 \end{center}
 
-Strategia k=1 jest strategi¹ zbli¿on¹ do wzorcowej strategii „wet za wet” , z tym¿e, ¿e stosuje ona odpowiedzialnoœæ zbiorow¹ - przy jednej zdradzie mœci siê na wszystkich swoich s¹siadach. Doprowadza to do sytuacji, w której strategia ta mo¿e ¿erowaæ na bardziej pokojowych w sytuacjach obecnoœci agresorów w s¹siedztwie i jednoczeœnie kooperowaæ w sytuacji braku zagro¿eñ. Strategia k=2 osi¹ga podobny efekt, jednak¿e potrzebuje ona wiêcej agresorów w okolicy. Na poni¿szym wykresie przedstawiono procentowy udzia³ zdobytych przez ka¿d¹ strategiê punktów na przestrzeni kolejnych iteracji.
+Strategia k=1 jest strategi¹ zbli¿on¹ do wzorcowej strategii „wet za wet”, z tym¿e, ¿e stosuje ona odpowiedzialnoœæ zbiorow¹ - przy jednej zdradzie mœci siê na wszystkich swoich s¹siadach. Pozwala jej to ¿erowaæ na bardziej pokojowych w sytuacjach zagro¿enia i jednoczeœnie kooperowaæ w sytuacji braku agresorów. Strategia k=2 osi¹ga podobny efekt, jednak¿e ze wzglêdu na wy¿szy próg mœciwoœci nie jest równie efektywna. Na poni¿szym wykresie przedstawiono procentowy udzia³ zdobytych przez ka¿d¹ strategiê punktów na przestrzeni kolejnych iteracji. <-- odnoœnik zamiast "poni¿szym"
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.5)  7 DEC 2016 12:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.12.5)  7 DEC 2016 12:59
 entering extended mode
 **./SzablonDyplomowy.tex
 (SzablonDyplomowy.tex
@@ -608,7 +608,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 \c@prz=\count152
 \c@np=\count153
 
-(SzablonDyplomowy.aux)
+No file SzablonDyplomowy.aux.
 \openout1 = `SzablonDyplomowy.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -625,11 +625,12 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Try loading font information for T1+ppl on input line 42.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1ppl.fd"
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
@@ -746,42 +747,45 @@ Non-PDF special ignored!{C:/Users/Patryk/AppData/Local/MiKTeX/2.9/pdftex/config
 
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored! <./PW.png> <./MiNI.png>] [2] (SzablonDyplomowy.toc
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1.
-
-[1
-
-])
+Non-PDF special ignored! <./PW.png> <./MiNI.png>] [2]
+No file SzablonDyplomowy.toc.
 \tf@toc=\write3
 \openout3 = `SzablonDyplomowy.toc'.
 
- [2]
+[1
+
+]
 Rozdzia\PlPrIeC {\l } 1.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 116.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 117.
-[3
+[2
 
 ]
 LaTeX Font Info:    Try loading font information for TS1+ppl on input line 127.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1ppl.fd"
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [4] [5] [6]
+) [3]
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 153.
+ [4] [5]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 179.
-[7
 
-] [8] <N11.png, id=46, 386.19281pt x 222.07968pt>
+LaTeX Warning: Citation `PS' on page 6 undefined on input line 206.
+
+[6
+
+] [7] <N11.png, id=43, 386.19281pt x 222.07968pt>
 File: N11.png Graphic file (type png)
  <use N11.png>
 Package pdftex.def Info: N11.png used on input line 237.
 (pdftex.def)             Requested size: 289.64388pt x 166.55934pt.
 
-<N12.png, id=48, 386.19281pt x 222.8325pt>
+<N12.png, id=45, 386.19281pt x 222.8325pt>
 File: N12.png Graphic file (type png)
  <use N12.png>
 Package pdftex.def Info: N12.png used on input line 244.
@@ -799,13 +803,13 @@ LaTeX Warning: Command \textquoteright invalid in math mode on input line 251.
 
 LaTeX Warning: Command \textquoteright invalid in math mode on input line 251.
 
-[9 <./N11.png> <./N12.png>] <N21.png, id=56, 386.19281pt x 223.58531pt>
+[8 <./N11.png> <./N12.png>] <N21.png, id=53, 386.19281pt x 223.58531pt>
 File: N21.png Graphic file (type png)
 
 <use N21.png>
 Package pdftex.def Info: N21.png used on input line 260.
 (pdftex.def)             Requested size: 289.64388pt x 167.68855pt.
- <N22.png, id=57, 386.19281pt x 222.07968pt>
+ <N22.png, id=54, 386.19281pt x 222.07968pt>
 File: N22.png Graphic file (type png)
  <use N22.png>
 Package pdftex.def Info: N22.png used on input line 267.
@@ -823,21 +827,27 @@ LaTeX Warning: Command \textquoteright invalid in math mode on input line 274.
 
 LaTeX Warning: Command \textquoteright invalid in math mode on input line 274.
 
-<N31.png, id=58, 386.19281pt x 222.07968pt>
+
+LaTeX Warning: Reference `N31' on page 9 undefined on input line 278.
+
+
+LaTeX Warning: Reference `N32' on page 9 undefined on input line 278.
+
+<N31.png, id=55, 386.19281pt x 222.07968pt>
 File: N31.png Graphic file (type png)
  <use N31.png>
 Package pdftex.def Info: N31.png used on input line 283.
 (pdftex.def)             Requested size: 289.64388pt x 166.55934pt.
 
-<N32.png, id=59, 386.19281pt x 222.8325pt>
+<N32.png, id=56, 386.19281pt x 222.8325pt>
 File: N32.png Graphic file (type png)
  <use N32.png>
 Package pdftex.def Info: N32.png used on input line 291.
 (pdftex.def)             Requested size: 289.64388pt x 167.12396pt.
- [10 <./N21.png> <./N22.png>]
+ [9 <./N21.png> <./N22.png>]
 Underfull \vbox (badness 1735) has occurred while \output is active []
 
- [11 <./N31.png> <./N32.png>]
+ [10 <./N31.png> <./N32.png>]
 
 LaTeX Warning: Command \textquoteright invalid in math mode on input line 310.
 
@@ -864,9 +874,21 @@ Overfull \hbox (3.34082pt too wide) in paragraph at lines 345--346
 wo±¢ oraz syn-chro-ni-za-cj¶ w°t-kÛw opi-
  []
 
-[12] [13]
+[11] [12]
 Rozdzia\PlPrIeC {\l } 3.
-<311_1.png, id=78, 293.59688pt x 268.75406pt>
+
+LaTeX Warning: Citation `NM' on page 13 undefined on input line 349.
+
+
+LaTeX Warning: Citation `IM' on page 13 undefined on input line 349.
+
+
+LaTeX Warning: Citation `W' on page 13 undefined on input line 349.
+
+
+LaTeX Warning: Citation `NM' on page 13 undefined on input line 355.
+
+<311_1.png, id=75, 293.59688pt x 268.75406pt>
 File: 311_1.png Graphic file (type png)
  <use 311_1.png>
 Package pdftex.def Info: 311_1.png used on input line 360.
@@ -879,10 +901,13 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 358--363
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14
+ [13
 
 ]
-<311_2.png, id=82, 293.59688pt x 268.75406pt>
+
+LaTeX Warning: Citation `IM' on page 14 undefined on input line 366.
+
+<311_2.png, id=79, 293.59688pt x 268.75406pt>
 File: 311_2.png Graphic file (type png)
  <use 311_2.png>
 Package pdftex.def Info: 311_2.png used on input line 394.
@@ -892,7 +917,14 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 392--398
 [][]
  []
 
-[15 <./311_1.png>]
+
+Overfull \hbox (26.30826pt too wide) in paragraph at lines 392--398
+\T1/ppl/m/n/10.95 Dla $\OML/cmm/m/it/10.95 b \OT1/cmr/m/n/10.95 = 1\OML/cmm/m/i
+t/10.95 :\OT1/cmr/m/n/10.95 40$ \T1/ppl/m/n/10.95 osi°-ga-my po-wsta-wa-nie zbl
+i-ªo-nych kszta™-tem do frak-tal-nych struk-tur: <--ODNOëNIK
+ []
+
+[14 <./311_1.png>]
 File: 311_2.png Graphic file (type png)
  <use 311_2.png>
 Package pdftex.def Info: 311_2.png used on input line 401.
@@ -902,7 +934,7 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 399--404
 [][] 
  []
 
-<311_3.png, id=87, 296.60812pt x 271.76532pt>
+<311_3.png, id=84, 296.60812pt x 271.76532pt>
 File: 311_3.png Graphic file (type png)
  <use 311_3.png>
 Package pdftex.def Info: 311_3.png used on input line 407.
@@ -915,7 +947,7 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 405--411
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16 <./311_2.png>] <311_4.png, id=92, 296.60812pt x 271.76532pt>
+ [15 <./311_2.png>] <311_4.png, id=89, 296.60812pt x 271.76532pt>
 File: 311_4.png Graphic file (type png)
  <use 311_4.png>
 Package pdftex.def Info: 311_4.png used on input line 414.
@@ -925,7 +957,7 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 412--417
 [][] 
  []
 
-<311_5.png, id=93, 296.60812pt x 271.76532pt>
+<311_5.png, id=90, 296.60812pt x 271.76532pt>
 File: 311_5.png Graphic file (type png)
  <use 311_5.png>
 Package pdftex.def Info: 311_5.png used on input line 420.
@@ -938,7 +970,7 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 418--423
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [17 <./311_3.png> <./311_4.png>] <311_6.png, id=98, 296.60812pt x 271.76532pt>
+ [16 <./311_3.png> <./311_4.png>] <311_6.png, id=94, 296.60812pt x 271.76532pt>
 File: 311_6.png Graphic file (type png)
 
 <use 311_6.png>
@@ -949,13 +981,13 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 426--431
 [][] 
  []
 
-<311_7.png, id=99, 296.60812pt x 271.76532pt>
+<311_7.png, id=95, 296.60812pt x 271.76532pt>
 File: 311_7.png Graphic file (type png)
  <use 311_7.png>
 Package pdftex.def Info: 311_7.png used on input line 438.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
-<311_8.png, id=100, 296.60812pt x 271.76532pt>
+<311_8.png, id=96, 296.60812pt x 271.76532pt>
 File: 311_8.png Graphic file (type png)
  <use 311_8.png>
 Package pdftex.def Info: 311_8.png used on input line 443.
@@ -963,109 +995,160 @@ Package pdftex.def Info: 311_8.png used on input line 443.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [18 <./311_5.png> <./311_6.png>] <311_9.png, id=104, 293.59688pt x 268.75406pt
+ [17 <./311_5.png> <./311_6.png>] <311_9.png, id=101, 293.59688pt x 268.75406pt
 >
 File: 311_9.png Graphic file (type png)
 
 <use 311_9.png>
 Package pdftex.def Info: 311_9.png used on input line 454.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
- [19 <./311_7.png> <./311_8.png> <./311_9.png>]
-<321_1.png, id=109, 293.59688pt x 268.75406pt>
+ [18 <./311_7.png> <./311_8.png> <./311_9.png>]
+
+LaTeX Warning: Citation `IM' on page 19 undefined on input line 461.
+
+
+LaTeX Warning: Citation `IM' on page 19 undefined on input line 462.
+
+
+LaTeX Warning: Reference `fig:321_1' on page 19 undefined on input line 469.
+
+<321_1.png, id=106, 293.59688pt x 268.75406pt>
 File: 321_1.png Graphic file (type png)
  <use 321_1.png>
-Package pdftex.def Info: 321_1.png used on input line 475.
+Package pdftex.def Info: 321_1.png used on input line 473.
 (pdftex.def)             Requested size: 248.39906pt x 227.3799pt.
 
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 475--477
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 473--475
  [][] 
  []
 
-<321_L.png, id=110, 107.65219pt x 261.22594pt>
+<321_L.png, id=107, 107.65219pt x 261.22594pt>
 File: 321_L.png Graphic file (type png)
  <use 321_L.png>
-Package pdftex.def Info: 321_L.png used on input line 481.
+Package pdftex.def Info: 321_L.png used on input line 479.
 (pdftex.def)             Requested size: 88.71434pt x 215.27487pt.
- [20] [21 <./321_1.png> <./321_L.png>] <321_2.png, id=119, 293.59688pt x 268.75
-406pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]
+<321_2.png, id=111, 293.59688pt x 268.75406pt>
 File: 321_2.png Graphic file (type png)
-
-<use 321_2.png>
-Package pdftex.def Info: 321_2.png used on input line 508.
+ <use 321_2.png>
+Package pdftex.def Info: 321_2.png used on input line 506.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
- <321_3.png, id=120, 293.59688pt x 268.75406pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <./321_1.png> <./321_L.png>] <321_3.png, id=117, 293.59688pt x 268.75406pt
+>
 File: 321_3.png Graphic file (type png)
- <use 321_3.png>
-Package pdftex.def Info: 321_3.png used on input line 517.
+
+<use 321_3.png>
+Package pdftex.def Info: 321_3.png used on input line 515.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
-
-Underfull \vbox (badness 1590) has occurred while \output is active []
-
- [22 <./321_2.png>] <321_4.png, id=125, 293.59688pt x 268.75406pt>
+ <321_4.png, id=118, 293.59688pt x 268.75406pt>
 File: 321_4.png Graphic file (type png)
  <use 321_4.png>
-Package pdftex.def Info: 321_4.png used on input line 527.
+Package pdftex.def Info: 321_4.png used on input line 525.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
 
-<321_5.png, id=126, 293.59688pt x 268.75406pt>
+[21 <./321_2.png> <./321_3.png>]
+<321_5.png, id=124, 293.59688pt x 268.75406pt>
 File: 321_5.png Graphic file (type png)
  <use 321_5.png>
-Package pdftex.def Info: 321_5.png used on input line 536.
+Package pdftex.def Info: 321_5.png used on input line 534.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
- [23 <./321_3.png> <./321_4.png>] <321_6.png, id=133, 293.59688pt x 268.75406pt
->
-File: 321_6.png Graphic file (type png)
 
-<use 321_6.png>
-Package pdftex.def Info: 321_6.png used on input line 545.
-(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
- <321_7.png, id=134, 293.59688pt x 268.75406pt>
-File: 321_7.png Graphic file (type png)
- <use 321_7.png>
-Package pdftex.def Info: 321_7.png used on input line 554.
+<321_6.png, id=125, 293.59688pt x 268.75406pt>
+File: 321_6.png Graphic file (type png)
+ <use 321_6.png>
+Package pdftex.def Info: 321_6.png used on input line 543.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
 
 Underfull \vbox (badness 3849) has occurred while \output is active []
 
- [24 <./321_5.png> <./321_6.png>] <321_W1.png, id=140, 451.6875pt x 301.125pt>
-File: 321_W1.png Graphic file (type png)
+ [22 <./321_4.png> <./321_5.png>] <321_7.png, id=131, 293.59688pt x 268.75406pt
+>
+File: 321_7.png Graphic file (type png)
 
-<use 321_W1.png>
-Package pdftex.def Info: 321_W1.png used on input line 564.
+<use 321_7.png>
+Package pdftex.def Info: 321_7.png used on input line 552.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+ <321_W1.png, id=132, 451.6875pt x 301.125pt>
+File: 321_W1.png Graphic file (type png)
+ <use 321_W1.png>
+Package pdftex.def Info: 321_W1.png used on input line 562.
 (pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
- [25 <./321_7.png> <./321_W1.png>]
-<321_W2.png, id=146, 451.6875pt x 301.125pt>
+
+Underfull \vbox (badness 3209) has occurred while \output is active []
+
+ [23 <./321_6.png> <./321_7.png>] <321_W2.png, id=139, 451.6875pt x 301.125pt>
 File: 321_W2.png Graphic file (type png)
- <use 321_W2.png>
-Package pdftex.def Info: 321_W2.png used on input line 573.
+
+<use 321_W2.png>
+Package pdftex.def Info: 321_W2.png used on input line 571.
 (pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
- [26 <./321_W2.png>]
+ [24 <./321_W1.png> <./321_W2.png>] [25]
 Rozdzia\PlPrIeC {\l } 4.
-<411_M.png, id=151, 296.60812pt x 325.215pt>
+
+LaTeX Warning: Citation `NM' on page 26 undefined on input line 582.
+
+<411_M.png, id=148, 296.60812pt x 325.215pt>
 File: 411_M.png Graphic file (type png)
  <use 411_M.png>
-Package pdftex.def Info: 411_M.png used on input line 607.
+Package pdftex.def Info: 411_M.png used on input line 605.
 (pdftex.def)             Requested size: 222.45554pt x 243.91064pt.
- [27
+ [26
 
 ]
-<411_0.png, id=155, 296.60812pt x 271.76532pt>
+<411_0.png, id=152, 296.60812pt x 271.76532pt>
 File: 411_0.png Graphic file (type png)
  <use 411_0.png>
-Package pdftex.def Info: 411_0.png used on input line 615.
+Package pdftex.def Info: 411_0.png used on input line 613.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
-<411_1.png, id=156, 296.60812pt x 271.76532pt>
+<411_1.png, id=153, 296.60812pt x 271.76532pt>
 File: 411_1.png Graphic file (type png)
  <use 411_1.png>
-Package pdftex.def Info: 411_1.png used on input line 619.
+Package pdftex.def Info: 411_1.png used on input line 617.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
-<411_2.png, id=157, 296.60812pt x 271.76532pt>
+
+LaTeX Warning: Reference `nm1' on page 27 undefined on input line 621.
+
+<411_2.png, id=154, 296.60812pt x 271.76532pt>
 File: 411_2.png Graphic file (type png)
  <use 411_2.png>
-Package pdftex.def Info: 411_2.png used on input line 627.
+Package pdftex.def Info: 411_2.png used on input line 625.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 623--629
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27 <./411_M.png> <./411_0.png> <./411_1.png>]
+<411_3.png, id=158, 296.60812pt x 271.76532pt>
+File: 411_3.png Graphic file (type png)
+ <use 411_3.png>
+Package pdftex.def Info: 411_3.png used on input line 632.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 630--636
+[][]
+ []
+
+File: 411_3.png Graphic file (type png)
+<use 411_3.png>
+Package pdftex.def Info: 411_3.png used on input line 639.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 637--642
+[][] 
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1075,25 +1158,34 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[28 <./411_M.png> <./411_0.png> <./411_1.png>]
-<411_3.png, id=161, 296.60812pt x 271.76532pt>
-File: 411_3.png Graphic file (type png)
- <use 411_3.png>
-Package pdftex.def Info: 411_3.png used on input line 634.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
-File: 411_3.png Graphic file (type png)
- <use 411_3.png>
-Package pdftex.def Info: 411_3.png used on input line 641.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+[28 <./411_2.png> <./411_3.png>]
+
+LaTeX Warning: Reference `fig:421_M' on page 29 undefined on input line 645.
+
+<412_M.png, id=162, 296.60812pt x 385.44pt>
+File: 412_M.png Graphic file (type png)
+ <use 412_M.png>
+Package pdftex.def Info: 412_M.png used on input line 649.
+(pdftex.def)             Requested size: 296.60739pt x 385.43906pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29 <./411_2.png> <./411_3.png>] <412_M.png, id=166, 296.60812pt x 385.44pt>
-File: 412_M.png Graphic file (type png)
+ [29]
+Overfull \hbox (2.17877pt too wide) in paragraph at lines 654--655
+[]\T1/ppl/m/n/10.95 Uk™ad po-cz°t-ko-wy stra-te-gii jest ta-ki sam. Pierw-sze r
+Ûª-ni-ce po-ja-wia-j° si¶ do-pie-ro w czwar-
+ []
 
-<use 412_M.png>
-Package pdftex.def Info: 412_M.png used on input line 651.
-(pdftex.def)             Requested size: 296.60739pt x 385.43906pt.
+<412_1.png, id=167, 316.18124pt x 289.83281pt>
+File: 412_1.png Graphic file (type png)
+ <use 412_1.png>
+Package pdftex.def Info: 412_1.png used on input line 658.
+(pdftex.def)             Requested size: 237.13535pt x 217.37407pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 656--661
+[][] 
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1103,25 +1195,52 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[30] <412_1.png, id=170, 316.18124pt x 289.83281pt>
-File: 412_1.png Graphic file (type png)
- <use 412_1.png>
-Package pdftex.def Info: 412_1.png used on input line 660.
-(pdftex.def)             Requested size: 237.13535pt x 217.37407pt.
+[30 <./412_M.png>] <412_2.png, id=171, 302.63063pt x 276.28218pt>
+File: 412_2.png Graphic file (type png)
+
+<use 412_2.png>
+Package pdftex.def Info: 412_2.png used on input line 666.
+(pdftex.def)             Requested size: 226.97241pt x 207.21112pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 664--669
+[][] 
+ []
+
+<412_3.png, id=172, 284.56313pt x 258.9675pt>
+File: 412_3.png Graphic file (type png)
+ <use 412_3.png>
+Package pdftex.def Info: 412_3.png used on input line 673.
+(pdftex.def)             Requested size: 213.42181pt x 194.22513pt.
+
+Overfull \hbox (62.24123pt too wide) in paragraph at lines 670--676
+\T1/ppl/m/n/10.95 dem-na-stym: [] 
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [31 <./412_M.png>] <412_2.png, id=174, 302.63063pt x 276.28218pt>
-File: 412_2.png Graphic file (type png)
- <use 412_2.png>
-Package pdftex.def Info: 412_2.png used on input line 668.
-(pdftex.def)             Requested size: 226.97241pt x 207.21112pt.
+ [31 <./412_1.png> <./412_2.png>] <412_4.png, id=176, 273.27094pt x 249.93375pt
+>
+File: 412_4.png Graphic file (type png)
 
-<412_3.png, id=175, 284.56313pt x 258.9675pt>
-File: 412_3.png Graphic file (type png)
- <use 412_3.png>
-Package pdftex.def Info: 412_3.png used on input line 675.
-(pdftex.def)             Requested size: 213.42181pt x 194.22513pt.
+<use 412_4.png>
+Package pdftex.def Info: 412_4.png used on input line 679.
+(pdftex.def)             Requested size: 204.95268pt x 187.44984pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 677--683
+[][]
+ []
+
+<412_5.png, id=177, 287.57437pt x 261.22594pt>
+File: 412_5.png Graphic file (type png)
+ <use 412_5.png>
+Package pdftex.def Info: 412_5.png used on input line 686.
+(pdftex.def)             Requested size: 215.68025pt x 195.91896pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 684--690
+[][]
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1131,83 +1250,100 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[32 <./412_1.png> <./412_2.png>]
-<412_4.png, id=179, 273.27094pt x 249.93375pt>
-File: 412_4.png Graphic file (type png)
- <use 412_4.png>
-Package pdftex.def Info: 412_4.png used on input line 681.
-(pdftex.def)             Requested size: 204.95268pt x 187.44984pt.
-
-<412_5.png, id=180, 287.57437pt x 261.22594pt>
-File: 412_5.png Graphic file (type png)
- <use 412_5.png>
-Package pdftex.def Info: 412_5.png used on input line 688.
-(pdftex.def)             Requested size: 215.68025pt x 195.91896pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [33 <./412_3.png> <./412_4.png>] <412_6.png, id=186, 272.51813pt x 249.18094pt
->
+[32 <./412_3.png> <./412_4.png>]
+<412_6.png, id=183, 272.51813pt x 249.18094pt>
 File: 412_6.png Graphic file (type png)
-
-<use 412_6.png>
-Package pdftex.def Info: 412_6.png used on input line 695.
+ <use 412_6.png>
+Package pdftex.def Info: 412_6.png used on input line 693.
 (pdftex.def)             Requested size: 204.38809pt x 186.88522pt.
- <421_M.png, id=187, 292.84406pt x 325.215pt>
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 691--697
+[][]
+ []
+
+
+LaTeX Warning: Citation `IM' on page 33 undefined on input line 700.
+
+<421_M.png, id=184, 292.84406pt x 325.215pt>
 File: 421_M.png Graphic file (type png)
  <use 421_M.png>
-Package pdftex.def Info: 421_M.png used on input line 706.
+Package pdftex.def Info: 421_M.png used on input line 704.
 (pdftex.def)             Requested size: 219.63249pt x 243.91064pt.
+
+Overfull \hbox (68.80006pt too wide) in paragraph at lines 700--707
+\T1/ppl/m/n/10.95 trum plan-szy: [] 
+ []
+
+[33 <./412_5.png> <./412_6.png>]
+
+LaTeX Warning: Reference `im1' on page 34 undefined on input line 709.
+
+File: 321_1.png Graphic file (type png)
+<use 321_1.png>
+Package pdftex.def Info: 321_1.png used on input line 714.
+(pdftex.def)             Requested size: 248.39906pt x 227.3799pt.
+
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 714--715
+ [][] 
+ []
+
+<421_L.png, id=188, 103.88812pt x 372.64218pt>
+File: 421_L.png Graphic file (type png)
+ <use 421_L.png>
+Package pdftex.def Info: 421_L.png used on input line 719.
+(pdftex.def)             Requested size: 64.93842pt x 232.94058pt.
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 34 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[34 <./412_5.png> <./412_6.png>]
-File: 321_1.png Graphic file (type png)
- <use 321_1.png>
-Package pdftex.def Info: 321_1.png used on input line 716.
-(pdftex.def)             Requested size: 248.39906pt x 227.3799pt.
+[34 <./421_M.png> <./421_L.png>]
+<421_1.png, id=193, 293.59688pt x 268.75406pt>
+File: 421_1.png Graphic file (type png)
+ <use 421_1.png>
+Package pdftex.def Info: 421_1.png used on input line 728.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
 
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 716--717
- [][] 
+<421_2.png, id=194, 293.59688pt x 268.75406pt>
+File: 421_2.png Graphic file (type png)
+ <use 421_2.png>
+Package pdftex.def Info: 421_2.png used on input line 737.
+(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
+
+<421_3.png, id=195, 293.59688pt x 268.75406pt>
+File: 421_3.png Graphic file (type png)
+ <use 421_3.png>
+Package pdftex.def Info: 421_3.png used on input line 742.
+(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
+
+<421_4.png, id=196, 293.59688pt x 268.75406pt>
+File: 421_4.png Graphic file (type png)
+ <use 421_4.png>
+Package pdftex.def Info: 421_4.png used on input line 748.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 746--751
+[][] 
  []
 
-<421_L.png, id=191, 103.88812pt x 372.64218pt>
-File: 421_L.png Graphic file (type png)
- <use 421_L.png>
-Package pdftex.def Info: 421_L.png used on input line 721.
-(pdftex.def)             Requested size: 64.93842pt x 232.94058pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [35 <./421_M.png> <./421_L.png>] <421_1.png, id=197, 293.59688pt x 268.75406pt
->
-File: 421_1.png Graphic file (type png)
-
-<use 421_1.png>
-Package pdftex.def Info: 421_1.png used on input line 730.
-(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
- <421_2.png, id=198, 293.59688pt x 268.75406pt>
-File: 421_2.png Graphic file (type png)
- <use 421_2.png>
-Package pdftex.def Info: 421_2.png used on input line 739.
-(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
-
-<421_3.png, id=199, 293.59688pt x 268.75406pt>
-File: 421_3.png Graphic file (type png)
- <use 421_3.png>
-Package pdftex.def Info: 421_3.png used on input line 744.
-(pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
-
-<421_4.png, id=200, 293.59688pt x 268.75406pt>
-File: 421_4.png Graphic file (type png)
- <use 421_4.png>
-Package pdftex.def Info: 421_4.png used on input line 750.
+ [35 <./421_1.png> <./421_2.png> <./421_3.png>]
+<421_5.png, id=204, 293.59688pt x 268.75406pt>
+File: 421_5.png Graphic file (type png)
+ <use 421_5.png>
+Package pdftex.def Info: 421_5.png used on input line 755.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
 
-Underfull \vbox (badness 1072) has occurred while \output is active []
+<421_6.png, id=205, 293.59688pt x 268.75406pt>
+File: 421_6.png Graphic file (type png)
+ <use 421_6.png>
+Package pdftex.def Info: 421_6.png used on input line 763.
+(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
@@ -1215,41 +1351,49 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[36 <./421_1.png> <./421_2.png> <./421_3.png>]
-<421_5.png, id=207, 293.59688pt x 268.75406pt>
-File: 421_5.png Graphic file (type png)
- <use 421_5.png>
-Package pdftex.def Info: 421_5.png used on input line 757.
-(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
-
-<421_6.png, id=208, 293.59688pt x 268.75406pt>
-File: 421_6.png Graphic file (type png)
- <use 421_6.png>
-Package pdftex.def Info: 421_6.png used on input line 765.
-(pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [37 <./421_4.png> <./421_5.png>] <421_7.png, id=214, 293.59688pt x 268.75406pt
->
+[36 <./421_4.png> <./421_5.png>]
+<421_7.png, id=211, 293.59688pt x 268.75406pt>
 File: 421_7.png Graphic file (type png)
-
-<use 421_7.png>
-Package pdftex.def Info: 421_7.png used on input line 775.
+ <use 421_7.png>
+Package pdftex.def Info: 421_7.png used on input line 773.
 (pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
- <421_8.png, id=215, 293.59688pt x 268.75406pt>
+
+<421_8.png, id=212, 293.59688pt x 268.75406pt>
 File: 421_8.png Graphic file (type png)
  <use 421_8.png>
-Package pdftex.def Info: 421_8.png used on input line 780.
+Package pdftex.def Info: 421_8.png used on input line 778.
 (pdftex.def)             Requested size: 177.42868pt x 162.41422pt.
 
-<421_9.png, id=216, 293.59688pt x 268.75406pt>
+<421_9.png, id=213, 293.59688pt x 268.75406pt>
 File: 421_9.png Graphic file (type png)
  <use 421_9.png>
-Package pdftex.def Info: 421_9.png used on input line 786.
+Package pdftex.def Info: 421_9.png used on input line 784.
 (pdftex.def)             Requested size: 220.1971pt x 201.56505pt.
 
+Overfull \hbox (17.0pt too wide) in paragraph at lines 782--787
+[][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37 <./421_6.png> <./421_7.png> <./421_8.png>]
+<421_W1.png, id=220, 451.6875pt x 301.125pt>
+File: 421_W1.png Graphic file (type png)
+ <use 421_W1.png>
+Package pdftex.def Info: 421_W1.png used on input line 793.
+(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
+
+<421_W2.png, id=221, 451.6875pt x 301.125pt>
+File: 421_W2.png Graphic file (type png)
+ <use 421_W2.png>
+Package pdftex.def Info: 421_W2.png used on input line 802.
+(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
+
+Overfull \hbox (291.0054pt too wide) in paragraph at lines 798--805
+\T1/ppl/m/n/10.95 to-wy udzia™ po-szcze-gÛl-nych stra-te-gii w ko-lej-nych ite-
+ra-cjach: [] 
+ []
 
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
@@ -1257,102 +1401,135 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[38 <./421_6.png> <./421_7.png> <./421_8.png>]
-<421_W1.png, id=223, 451.6875pt x 301.125pt>
-File: 421_W1.png Graphic file (type png)
- <use 421_W1.png>
-Package pdftex.def Info: 421_W1.png used on input line 795.
-(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
-
-<421_W2.png, id=224, 451.6875pt x 301.125pt>
-File: 421_W2.png Graphic file (type png)
- <use 421_W2.png>
-Package pdftex.def Info: 421_W2.png used on input line 804.
-(pdftex.def)             Requested size: 338.76479pt x 225.84319pt.
- [39 <./421_9.png> <./421_W1.png>]
-Overfull \hbox (40.76506pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 40 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
-IA Z R”õNORODNÅ MACIERZÅ WYPäAT
- []
-
-[40 <./421_W2.png>]
+[38 <./421_9.png> <./421_W1.png>] [39 <./421_W2.png>]
 Rozdzia\PlPrIeC {\l } 5.
-<511_1.png, id=234, 296.60812pt x 271.76532pt>
+
+LaTeX Warning: Citation `NM' on page 40 undefined on input line 809.
+
+
+LaTeX Warning: Citation `IM' on page 40 undefined on input line 809.
+
+
+LaTeX Warning: Citation `W' on page 40 undefined on input line 809.
+
+<511_1.png, id=231, 296.60812pt x 271.76532pt>
 File: 511_1.png Graphic file (type png)
  <use 511_1.png>
-Package pdftex.def Info: 511_1.png used on input line 836.
+Package pdftex.def Info: 511_1.png used on input line 834.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
-<511_2.png, id=235, 296.60812pt x 271.76532pt>
+<511_2.png, id=232, 296.60812pt x 271.76532pt>
 File: 511_2.png Graphic file (type png)
  <use 511_2.png>
-Package pdftex.def Info: 511_2.png used on input line 841.
+Package pdftex.def Info: 511_2.png used on input line 839.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
- [41
+
+Underfull \vbox (badness 1019) has occurred while \output is active []
+
+ [40
 
 ]
-<511_3.png, id=240, 296.60812pt x 271.76532pt>
+<511_3.png, id=236, 296.60812pt x 271.76532pt>
 File: 511_3.png Graphic file (type png)
  <use 511_3.png>
-Package pdftex.def Info: 511_3.png used on input line 848.
+Package pdftex.def Info: 511_3.png used on input line 846.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-<511_4.png, id=241, 296.60812pt x 271.76532pt>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 844--849
+[][] 
+ []
+
+<511_4.png, id=237, 296.60812pt x 271.76532pt>
 File: 511_4.png Graphic file (type png)
  <use 511_4.png>
-Package pdftex.def Info: 511_4.png used on input line 856.
+Package pdftex.def Info: 511_4.png used on input line 854.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
-<511_5.png, id=242, 296.60812pt x 271.76532pt>
+<511_5.png, id=238, 296.60812pt x 271.76532pt>
 File: 511_5.png Graphic file (type png)
  <use 511_5.png>
-Package pdftex.def Info: 511_5.png used on input line 861.
+Package pdftex.def Info: 511_5.png used on input line 859.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+ [41 <./511_1.png> <./511_2.png> <./511_3.png> <./511_4.png> <./511_5.png>]
+<511_6.png, id=243, 296.60812pt x 271.76532pt>
+File: 511_6.png Graphic file (type png)
+ <use 511_6.png>
+Package pdftex.def Info: 511_6.png used on input line 868.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 866--871
+[][] 
+ []
+
+<511_W.png, id=244, 454.69875pt x 304.13625pt>
+File: 511_W.png Graphic file (type png)
+ <use 511_W.png>
+Package pdftex.def Info: 511_W.png used on input line 877.
+(pdftex.def)             Requested size: 341.02322pt x 228.10162pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 875--880
+[][] 
+ []
+
+<512_1.png, id=245, 296.60812pt x 271.76532pt>
+File: 512_1.png Graphic file (type png)
+ <use 512_1.png>
+Package pdftex.def Info: 512_1.png used on input line 886.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<512_2.png, id=246, 296.60812pt x 271.76532pt>
+File: 512_2.png Graphic file (type png)
+ <use 512_2.png>
+Package pdftex.def Info: 512_2.png used on input line 891.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 42 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[42 <./511_1.png> <./511_2.png> <./511_3.png> <./511_4.png> <./511_5.png>]
-<511_6.png, id=246, 296.60812pt x 271.76532pt>
-File: 511_6.png Graphic file (type png)
- <use 511_6.png>
-Package pdftex.def Info: 511_6.png used on input line 870.
+[42 <./511_6.png> <./511_W.png>]
+<512_3.png, id=250, 296.60812pt x 271.76532pt>
+File: 512_3.png Graphic file (type png)
+ <use 512_3.png>
+Package pdftex.def Info: 512_3.png used on input line 900.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-<511_W.png, id=247, 454.69875pt x 304.13625pt>
-File: 511_W.png Graphic file (type png)
- <use 511_W.png>
-Package pdftex.def Info: 511_W.png used on input line 879.
-(pdftex.def)             Requested size: 341.02322pt x 228.10162pt.
+<512_4.png, id=251, 296.60812pt x 271.76532pt>
+File: 512_4.png Graphic file (type png)
+ <use 512_4.png>
+Package pdftex.def Info: 512_4.png used on input line 909.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-<512_1.png, id=248, 296.60812pt x 271.76532pt>
-File: 512_1.png Graphic file (type png)
- <use 512_1.png>
-Package pdftex.def Info: 512_1.png used on input line 888.
-(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+Overfull \hbox (17.0pt too wide) in paragraph at lines 907--912
+[][] 
+ []
 
-<512_2.png, id=249, 296.60812pt x 271.76532pt>
-File: 512_2.png Graphic file (type png)
- <use 512_2.png>
-Package pdftex.def Info: 512_2.png used on input line 893.
-(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43 <./511_6.png> <./511_W.png>] <512_3.png, id=253, 296.60812pt x 271.76532pt
->
-File: 512_3.png Graphic file (type png)
+ [43 <./512_1.png> <./512_2.png> <./512_3.png>]
 
-<use 512_3.png>
-Package pdftex.def Info: 512_3.png used on input line 902.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- <512_4.png, id=254, 296.60812pt x 271.76532pt>
-File: 512_4.png Graphic file (type png)
- <use 512_4.png>
-Package pdftex.def Info: 512_4.png used on input line 911.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+LaTeX Warning: Reference `im1' on page 44 undefined on input line 917.
+
+<521_1.png, id=255, 296.60812pt x 271.76532pt>
+File: 521_1.png Graphic file (type png)
+ <use 521_1.png>
+Package pdftex.def Info: 521_1.png used on input line 923.
+(pdftex.def)             Requested size: 248.39906pt x 227.60123pt.
+
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 923--924
+ [][] 
+ []
+
+<521_L.png, id=256, 73.77562pt x 270.25969pt>
+File: 521_L.png Graphic file (type png)
+ <use 521_L.png>
+Package pdftex.def Info: 521_L.png used on input line 928.
+(pdftex.def)             Requested size: 64.93842pt x 237.8911pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1362,71 +1539,68 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[44 <./512_1.png> <./512_2.png> <./512_3.png>]
-<521_1.png, id=258, 296.60812pt x 271.76532pt>
-File: 521_1.png Graphic file (type png)
- <use 521_1.png>
-Package pdftex.def Info: 521_1.png used on input line 925.
-(pdftex.def)             Requested size: 248.39906pt x 227.60123pt.
+[44 <./512_4.png>] <521_2.png, id=260, 296.60812pt x 271.76532pt>
+File: 521_2.png Graphic file (type png)
 
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 925--926
- [][] 
- []
+<use 521_2.png>
+Package pdftex.def Info: 521_2.png used on input line 937.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ <521_3.png, id=261, 296.60812pt x 271.76532pt>
+File: 521_3.png Graphic file (type png)
+ <use 521_3.png>
+Package pdftex.def Info: 521_3.png used on input line 946.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
-<521_L.png, id=259, 73.77562pt x 270.25969pt>
-File: 521_L.png Graphic file (type png)
- <use 521_L.png>
-Package pdftex.def Info: 521_L.png used on input line 930.
-(pdftex.def)             Requested size: 64.93842pt x 237.8911pt.
+[45 <./521_1.png> <./521_L.png> <./521_2.png>]
+<521_4.png, id=265, 296.60812pt x 271.76532pt>
+File: 521_4.png Graphic file (type png)
+ <use 521_4.png>
+Package pdftex.def Info: 521_4.png used on input line 955.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<521_5.png, id=266, 296.60812pt x 271.76532pt>
+File: 521_5.png Graphic file (type png)
+ <use 521_5.png>
+Package pdftex.def Info: 521_5.png used on input line 962.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45 <./512_4.png>] <521_2.png, id=263, 296.60812pt x 271.76532pt>
-File: 521_2.png Graphic file (type png)
- <use 521_2.png>
-Package pdftex.def Info: 521_2.png used on input line 939.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
-
-<521_3.png, id=264, 296.60812pt x 271.76532pt>
-File: 521_3.png Graphic file (type png)
- <use 521_3.png>
-Package pdftex.def Info: 521_3.png used on input line 948.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 46 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[46 <./521_1.png> <./521_L.png> <./521_2.png>]
-<521_4.png, id=268, 296.60812pt x 271.76532pt>
-File: 521_4.png Graphic file (type png)
- <use 521_4.png>
-Package pdftex.def Info: 521_4.png used on input line 957.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
-
-<521_5.png, id=269, 296.60812pt x 271.76532pt>
-File: 521_5.png Graphic file (type png)
- <use 521_5.png>
-Package pdftex.def Info: 521_5.png used on input line 964.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [47 <./521_3.png> <./521_4.png>] <521_6.png, id=274, 296.60812pt x 271.76532pt
->
+[46 <./521_3.png> <./521_4.png>]
+<521_6.png, id=270, 296.60812pt x 271.76532pt>
 File: 521_6.png Graphic file (type png)
-
-<use 521_6.png>
-Package pdftex.def Info: 521_6.png used on input line 973.
+ <use 521_6.png>
+Package pdftex.def Info: 521_6.png used on input line 971.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- <521_W.png, id=275, 454.69875pt x 304.13625pt>
+
+<521_W.png, id=271, 454.69875pt x 304.13625pt>
 File: 521_W.png Graphic file (type png)
  <use 521_W.png>
-Package pdftex.def Info: 521_W.png used on input line 982.
+Package pdftex.def Info: 521_W.png used on input line 980.
 (pdftex.def)             Requested size: 341.02322pt x 228.10162pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [47 <./521_5.png> <./521_6.png>] <522_1.png, id=276, 296.60812pt x 271.76532pt
+>
+File: 522_1.png Graphic file (type png)
+
+<use 522_1.png>
+Package pdftex.def Info: 522_1.png used on input line 989.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ <522_2.png, id=277, 296.60812pt x 271.76532pt>
+File: 522_2.png Graphic file (type png)
+ <use 522_2.png>
+Package pdftex.def Info: 522_2.png used on input line 995.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Underfull \vbox (badness 2980) has occurred while \output is active []
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1434,35 +1608,36 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[48 <./521_5.png> <./521_6.png>]
-<522_1.png, id=279, 296.60812pt x 271.76532pt>
-File: 522_1.png Graphic file (type png)
- <use 522_1.png>
-Package pdftex.def Info: 522_1.png used on input line 991.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
-
-<522_2.png, id=280, 296.60812pt x 271.76532pt>
-File: 522_2.png Graphic file (type png)
- <use 522_2.png>
-Package pdftex.def Info: 522_2.png used on input line 997.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
-
-Underfull \vbox (badness 2980) has occurred while \output is active []
-
- [49 <./521_W.png> <./522_1.png>] <522_3.png, id=284, 296.60812pt x 271.76532pt
->
+[48 <./521_W.png> <./522_1.png>]
+<522_3.png, id=281, 296.60812pt x 271.76532pt>
 File: 522_3.png Graphic file (type png)
-
-<use 522_3.png>
-Package pdftex.def Info: 522_3.png used on input line 1006.
+ <use 522_3.png>
+Package pdftex.def Info: 522_3.png used on input line 1004.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- <522_4.png, id=285, 296.60812pt x 271.76532pt>
+
+<522_4.png, id=282, 296.60812pt x 271.76532pt>
 File: 522_4.png Graphic file (type png)
  <use 522_4.png>
-Package pdftex.def Info: 522_4.png used on input line 1013.
+Package pdftex.def Info: 522_4.png used on input line 1011.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49 <./522_2.png> <./522_3.png>] <522_5.png, id=286, 296.60812pt x 271.76532pt
+>
+File: 522_5.png Graphic file (type png)
+
+<use 522_5.png>
+Package pdftex.def Info: 522_5.png used on input line 1021.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+ <522_6.png, id=287, 296.60812pt x 271.76532pt>
+File: 522_6.png Graphic file (type png)
+ <use 522_6.png>
+Package pdftex.def Info: 522_6.png used on input line 1026.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+
+LaTeX Warning: Citation `W' on page 50 undefined on input line 1034.
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1470,110 +1645,128 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[50 <./522_2.png> <./522_3.png>]
-<522_5.png, id=289, 296.60812pt x 271.76532pt>
-File: 522_5.png Graphic file (type png)
- <use 522_5.png>
-Package pdftex.def Info: 522_5.png used on input line 1023.
-(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
-
-<522_6.png, id=290, 296.60812pt x 271.76532pt>
-File: 522_6.png Graphic file (type png)
- <use 522_6.png>
-Package pdftex.def Info: 522_6.png used on input line 1028.
-(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
- [51 <./522_4.png> <./522_5.png> <./522_6.png>] <531_1.png, id=294, 296.60812pt
- x 271.76532pt>
+[50 <./522_4.png> <./522_5.png> <./522_6.png>]
+<531_1.png, id=291, 296.60812pt x 271.76532pt>
 File: 531_1.png Graphic file (type png)
-
-<use 531_1.png>
-Package pdftex.def Info: 531_1.png used on input line 1059.
+ <use 531_1.png>
+Package pdftex.def Info: 531_1.png used on input line 1057.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- <531_2.png, id=295, 296.60812pt x 271.76532pt>
+
+<531_2.png, id=292, 296.60812pt x 271.76532pt>
 File: 531_2.png Graphic file (type png)
  <use 531_2.png>
-Package pdftex.def Info: 531_2.png used on input line 1066.
+Package pdftex.def Info: 531_2.png used on input line 1064.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [51 <./531_1.png>] <531_3.png, id=296, 296.60812pt x 271.76532pt>
+File: 531_3.png Graphic file (type png)
+ <use 531_3.png>
+Package pdftex.def Info: 531_3.png used on input line 1073.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<531_4.png, id=297, 296.60812pt x 271.76532pt>
+File: 531_4.png Graphic file (type png)
+ <use 531_4.png>
+Package pdftex.def Info: 531_4.png used on input line 1083.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_5.png, id=298, 296.60812pt x 271.76532pt>
+File: 531_5.png Graphic file (type png)
+ <use 531_5.png>
+Package pdftex.def Info: 531_5.png used on input line 1088.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 52 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[52 <./531_1.png>] <531_3.png, id=299, 296.60812pt x 271.76532pt>
-File: 531_3.png Graphic file (type png)
-
-<use 531_3.png>
-Package pdftex.def Info: 531_3.png used on input line 1075.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- <531_4.png, id=300, 296.60812pt x 271.76532pt>
-File: 531_4.png Graphic file (type png)
- <use 531_4.png>
-Package pdftex.def Info: 531_4.png used on input line 1085.
-(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
-
-<531_5.png, id=301, 296.60812pt x 271.76532pt>
-File: 531_5.png Graphic file (type png)
- <use 531_5.png>
-Package pdftex.def Info: 531_5.png used on input line 1090.
-(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
- [53 <./531_2.png> <./531_3.png>] <531_6.png, id=306, 296.60812pt x 271.76532pt
->
+[52 <./531_2.png> <./531_3.png>]
+<531_6.png, id=302, 296.60812pt x 271.76532pt>
 File: 531_6.png Graphic file (type png)
-
-<use 531_6.png>
-Package pdftex.def Info: 531_6.png used on input line 1100.
+ <use 531_6.png>
+Package pdftex.def Info: 531_6.png used on input line 1098.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
- <531_7.png, id=307, 296.60812pt x 271.76532pt>
+
+<531_7.png, id=303, 296.60812pt x 271.76532pt>
 File: 531_7.png Graphic file (type png)
  <use 531_7.png>
-Package pdftex.def Info: 531_7.png used on input line 1105.
+Package pdftex.def Info: 531_7.png used on input line 1103.
 (pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
 
-<531_8.png, id=308, 296.60812pt x 271.76532pt>
+<531_8.png, id=304, 296.60812pt x 271.76532pt>
 File: 531_8.png Graphic file (type png)
  <use 531_8.png>
-Package pdftex.def Info: 531_8.png used on input line 1111.
+Package pdftex.def Info: 531_8.png used on input line 1109.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [53 <./531_4.png> <./531_5.png> <./531_6.png> <./531_7.png>]
+<532_1.png, id=309, 296.60812pt x 271.76532pt>
+File: 532_1.png Graphic file (type png)
+ <use 532_1.png>
+Package pdftex.def Info: 532_1.png used on input line 1121.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 54 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[54 <./531_4.png> <./531_5.png> <./531_6.png> <./531_7.png>]
-<532_1.png, id=312, 296.60812pt x 271.76532pt>
-File: 532_1.png Graphic file (type png)
- <use 532_1.png>
-Package pdftex.def Info: 532_1.png used on input line 1123.
-(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- [55 <./531_8.png> <./532_1.png>] <533_1.png, id=316, 296.60812pt x 271.76532pt
->
+[54 <./531_8.png> <./532_1.png>]
+Overfull \hbox (1.17903pt too wide) in paragraph at lines 1128--1129
+[]\T1/ppl/m/n/10.95 Obserwacje do-ko-na-ne na pod-sta-wie prze-pro-wa-dzo-nych 
+przez nas eks-pe-ry-men-tÛw zgod-
+ []
+
+<533_1.png, id=313, 296.60812pt x 271.76532pt>
 File: 533_1.png Graphic file (type png)
-
-<use 533_1.png>
-Package pdftex.def Info: 533_1.png used on input line 1153.
+ <use 533_1.png>
+Package pdftex.def Info: 533_1.png used on input line 1151.
 (pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
- <533_15.png, id=317, 261.97874pt x 250.68657pt>
+
+<533_15.png, id=314, 261.97874pt x 250.68657pt>
 File: 533_15.png Graphic file (type png)
-
-<use 533_15.png>
-Package pdftex.def Info: 533_15.png used on input line 1162.
+ <use 533_15.png>
+Package pdftex.def Info: 533_15.png used on input line 1160.
 (pdftex.def)             Requested size: 177.42868pt x 169.78372pt.
- <533_17.png, id=318, 262.73157pt x 250.68657pt>
-File: 533_17.png Graphic file (type png)
 
-<use 533_17.png>
-Package pdftex.def Info: 533_17.png used on input line 1167.
+<533_17.png, id=315, 262.73157pt x 250.68657pt>
+File: 533_17.png Graphic file (type png)
+ <use 533_17.png>
+Package pdftex.def Info: 533_17.png used on input line 1165.
 (pdftex.def)             Requested size: 177.42868pt x 169.30174pt.
 
 Underfull \vbox (badness 3568) has occurred while \output is active []
+
+ [55 <./533_1.png>] <533_2.png, id=319, 249.93375pt x 228.10219pt>
+File: 533_2.png Graphic file (type png)
+ <use 533_2.png>
+Package pdftex.def Info: 533_2.png used on input line 1175.
+(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+
+<533_3.png, id=320, 249.93375pt x 228.10219pt>
+File: 533_3.png Graphic file (type png)
+ <use 533_3.png>
+Package pdftex.def Info: 533_3.png used on input line 1180.
+(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+
+<533_4.png, id=321, 254.45062pt x 232.61906pt>
+File: 533_4.png Graphic file (type png)
+ <use 533_4.png>
+Package pdftex.def Info: 533_4.png used on input line 1189.
+(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
+
+<533_5.png, id=322, 254.45062pt x 232.61906pt>
+File: 533_5.png Graphic file (type png)
+ <use 533_5.png>
+Package pdftex.def Info: 533_5.png used on input line 1194.
+(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1581,55 +1774,33 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[56 <./533_1.png>] <533_2.png, id=322, 249.93375pt x 228.10219pt>
-File: 533_2.png Graphic file (type png)
+[56 <./533_15.png> <./533_17.png> <./533_2.png> <./533_3.png>] [57 <./533_4.png
+> <./533_5.png>]
+Rozdzia\PlPrIeC {\l } 6.
+[58
 
-<use 533_2.png>
-Package pdftex.def Info: 533_2.png used on input line 1177.
-(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
- <533_3.png, id=323, 249.93375pt x 228.10219pt>
-File: 533_3.png Graphic file (type png)
- <use 533_3.png>
-Package pdftex.def Info: 533_3.png used on input line 1182.
-(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+] [59
 
-<533_4.png, id=324, 254.45062pt x 232.61906pt>
-File: 533_4.png Graphic file (type png)
- <use 533_4.png>
-Package pdftex.def Info: 533_4.png used on input line 1191.
-(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
-
-<533_5.png, id=325, 254.45062pt x 232.61906pt>
-File: 533_5.png Graphic file (type png)
- <use 533_5.png>
-Package pdftex.def Info: 533_5.png used on input line 1196.
-(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [57 <./533_15.png> <./533_17.png> <./533_2.png> <./533_3.png>]
-Overfull \hbox (34.57938pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 58 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
-IA O UOG”LNIONYCH SÅSIEDZTWACH
+]
+Overfull \hbox (7.60312pt too wide) in paragraph at lines 1220--1222
+\T1/ppl/m/n/10.95 O±wiadczamy, ªe pra-c¶ ma-gi-ster-sk° pod ty-tu-™em: ,,Sy-mu-
+la-cje Prze-strzen-ne-go Dy-le-ma-tu Wi¶π-
  []
 
-[58 <./533_4.png> <./533_5.png>]
-Rozdzia\PlPrIeC {\l } 6.
-[59
-
-] [60
-
-] [61
+[60
 
 ] (SzablonDyplomowy.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 13803 strings out of 493333
- 227997 string characters out of 3139191
- 282054 words of memory out of 3000000
+ 13799 strings out of 493333
+ 227917 string characters out of 3139191
+ 281681 words of memory out of 3000000
  16974 multiletter control sequences out of 15000+200000
  31174 words of font info for 65 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
@@ -1646,9 +1817,9 @@ rogram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/pa
 latino/uplri8a.pfb>
-Output written on SzablonDyplomowy.pdf (63 pages, 1864617 bytes).
+Output written on SzablonDyplomowy.pdf (62 pages, 1864886 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
+ 382 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  466 words of extra memory for PDF output out of 10000 (max. 10000000)
 
