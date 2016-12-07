@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2016.12.7)  7 DEC 2016 12:52
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2016.12.7)  7 DEC 2016 13:16
 entering extended mode
 **SzablonDyplomowy.tex
 (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.tex
@@ -848,7 +848,7 @@ File: 411_1.png Graphic file (type png)
 <411_2.png, id=154, 296.60812pt x 271.76532pt>
 File: 411_2.png Graphic file (type png)
  <use 411_2.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 606--612
+Overfull \hbox (17.0pt too wide) in paragraph at lines 606--611
 [][]
  []
 
@@ -860,13 +860,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <411_3.png, id=159, 296.60812pt x 271.76532pt>
 File: 411_3.png Graphic file (type png)
  <use 411_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 613--619
-[][]
+Overfull \hbox (17.0pt too wide) in paragraph at lines 612--617
+[][] 
  []
 
 File: 411_3.png Graphic file (type png)
 <use 411_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 620--625
+Overfull \hbox (17.0pt too wide) in paragraph at lines 618--623
 [][] 
  []
 
@@ -886,7 +886,7 @@ File: 412_M.png Graphic file (type png)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [31]
-Overfull \hbox (2.17877pt too wide) in paragraph at lines 637--638
+Overfull \hbox (2.17877pt too wide) in paragraph at lines 634--635
 []\T1/ppl/m/n/10.95 Uk™ad po-cz°t-ko-wy stra-te-gii jest ta-ki sam. Pierw-sze r
 Ûª-ni-ce po-ja-wia-j° si¶ do-pie-ro w czwar-
  []
@@ -894,7 +894,7 @@ Overfull \hbox (2.17877pt too wide) in paragraph at lines 637--638
 <412_1.png, id=167, 316.18124pt x 289.83281pt>
 File: 412_1.png Graphic file (type png)
  <use 412_1.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 639--644
+Overfull \hbox (17.0pt too wide) in paragraph at lines 636--641
 [][] 
  []
 
@@ -911,15 +911,15 @@ IA Z R”õNORODNÅ MACIERZÅ WYPäAT
 <412_2.png, id=171, 302.63063pt x 276.28218pt>
 File: 412_2.png Graphic file (type png)
  <use 412_2.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 647--652
+Overfull \hbox (17.0pt too wide) in paragraph at lines 642--647
 [][] 
  []
 
 <412_3.png, id=172, 284.56313pt x 258.9675pt>
 File: 412_3.png Graphic file (type png)
  <use 412_3.png>
-Overfull \hbox (62.24123pt too wide) in paragraph at lines 653--659
-\T1/ppl/m/n/10.95 dem-na-stym: [] 
+Overfull \hbox (17.0pt too wide) in paragraph at lines 648--653
+[][] 
  []
 
 
@@ -929,15 +929,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 (PNG copy)>] <412_4.png, id=176, 273.27094pt x 249.93375pt>
 File: 412_4.png Graphic file (type png)
  <use 412_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 660--666
-[][]
+Overfull \hbox (17.0pt too wide) in paragraph at lines 654--659
+[][] 
  []
 
 <412_5.png, id=177, 287.57437pt x 261.22594pt>
 File: 412_5.png Graphic file (type png)
  <use 412_5.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 667--673
-[][]
+Overfull \hbox (17.0pt too wide) in paragraph at lines 660--665
+[][] 
  []
 
 
@@ -953,14 +953,14 @@ IA Z R”õNORODNÅ MACIERZÅ WYPäAT
 <412_6.png, id=183, 272.51813pt x 249.18094pt>
 File: 412_6.png Graphic file (type png)
  <use 412_6.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 674--680
-[][]
+Overfull \hbox (17.0pt too wide) in paragraph at lines 666--671
+[][] 
  []
 
 <421_M.png, id=184, 292.84406pt x 325.215pt>
 File: 421_M.png Graphic file (type png)
  <use 421_M.png>
-Overfull \hbox (68.80006pt too wide) in paragraph at lines 683--690
+Overfull \hbox (68.80006pt too wide) in paragraph at lines 676--683
 \T1/ppl/m/n/10.95 trum plan-szy: [] 
  []
 
@@ -968,22 +968,22 @@ Overfull \hbox (68.80006pt too wide) in paragraph at lines 683--690
 PNG copy)>]
 File: 321_1.png Graphic file (type png)
  <use 321_1.png>
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 697--698
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 689--690
  [][] 
  []
 
 <421_L.png, id=189, 103.88812pt x 372.64218pt>
 File: 421_L.png Graphic file (type png)
  <use 421_L.png>
+<421_1.png, id=190, 293.59688pt x 268.75406pt>
+File: 421_1.png Graphic file (type png)
+ <use 421_1.png>
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 36 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
 [36 <H:/Inø/SPD/Docs/TeX/421_M.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/421_L.png>]
-<421_1.png, id=194, 293.59688pt x 268.75406pt>
-File: 421_1.png Graphic file (type png)
- <use 421_1.png>
 <421_2.png, id=195, 293.59688pt x 268.75406pt>
 File: 421_2.png Graphic file (type png)
  <use 421_2.png>
@@ -993,7 +993,7 @@ File: 421_3.png Graphic file (type png)
 <421_4.png, id=197, 293.59688pt x 268.75406pt>
 File: 421_4.png Graphic file (type png)
  <use 421_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 729--734
+Overfull \hbox (17.0pt too wide) in paragraph at lines 721--726
 [][] 
  []
 
@@ -1025,7 +1025,7 @@ File: 421_8.png Graphic file (type png)
 <421_9.png, id=213, 293.59688pt x 268.75406pt>
 File: 421_9.png Graphic file (type png)
  <use 421_9.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 765--770
+Overfull \hbox (17.0pt too wide) in paragraph at lines 757--762
 [][] 
  []
 
@@ -1039,7 +1039,7 @@ File: 421_W1.png Graphic file (type png)
 <421_W2.png, id=221, 451.6875pt x 301.125pt>
 File: 421_W2.png Graphic file (type png)
  <use 421_W2.png>
-Overfull \hbox (291.0054pt too wide) in paragraph at lines 781--788
+Overfull \hbox (291.0054pt too wide) in paragraph at lines 773--780
 \T1/ppl/m/n/10.95 to-wy udzia™ po-szcze-gÛl-nych stra-te-gii w ko-lej-nych ite-
 ra-cjach: [] 
  []
@@ -1067,7 +1067,7 @@ Underfull \vbox (badness 1019) has occurred while \output is active []
 <511_3.png, id=237, 296.60812pt x 271.76532pt>
 File: 511_3.png Graphic file (type png)
  <use 511_3.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 827--832
+Overfull \hbox (17.0pt too wide) in paragraph at lines 819--824
 [][] 
  []
 
@@ -1082,14 +1082,14 @@ SPD/Docs/TeX/511_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_5.png (PNG copy)>]
 <511_6.png, id=243, 296.60812pt x 271.76532pt>
 File: 511_6.png Graphic file (type png)
  <use 511_6.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 849--854
+Overfull \hbox (17.0pt too wide) in paragraph at lines 841--846
 [][] 
  []
 
 <511_W.png, id=244, 454.69875pt x 304.13625pt>
 File: 511_W.png Graphic file (type png)
  <use 511_W.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 858--863
+Overfull \hbox (17.0pt too wide) in paragraph at lines 850--855
 [][] 
  []
 
@@ -1114,7 +1114,7 @@ File: 512_3.png Graphic file (type png)
 <512_4.png, id=251, 296.60812pt x 271.76532pt>
 File: 512_4.png Graphic file (type png)
  <use 512_4.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 890--895
+Overfull \hbox (17.0pt too wide) in paragraph at lines 882--887
 [][] 
  []
 
@@ -1126,7 +1126,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <521_1.png, id=255, 296.60812pt x 271.76532pt>
 File: 521_1.png Graphic file (type png)
  <use 521_1.png>
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 906--907
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 898--899
  [][] 
  []
 
@@ -1257,7 +1257,7 @@ IA O UOG”LNIONYCH SÅSIEDZTWACH
 
 [56 <H:/Inø/SPD/Docs/TeX/531_8.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/532_1.png (
 PNG copy)>]
-Overfull \hbox (1.17903pt too wide) in paragraph at lines 1111--1112
+Overfull \hbox (1.17903pt too wide) in paragraph at lines 1103--1104
 []\T1/ppl/m/n/10.95 Obserwacje do-ko-na-ne na pod-sta-wie prze-pro-wa-dzo-nych 
 przez nas eks-pe-ry-men-tÛw zgod-
  []
@@ -1304,7 +1304,7 @@ Rozdzia\PlPrIeC {\l } 6.
 ] [61
 
 ]
-Overfull \hbox (7.60312pt too wide) in paragraph at lines 1203--1205
+Overfull \hbox (7.60312pt too wide) in paragraph at lines 1195--1197
 \T1/ppl/m/n/10.95 O±wiadczamy, ªe pra-c¶ ma-gi-ster-sk° pod ty-tu-™em: ,,Sy-mu-
 la-cje Prze-strzen-ne-go Dy-le-ma-tu Wi¶π-
  []
@@ -1313,11 +1313,11 @@ la-cje Prze-strzen-ne-go Dy-le-ma-tu Wi¶π-
 
 ] (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.aux) ) 
 Here is how much of TeX's memory you used:
- 7843 strings out of 494019
- 110100 string characters out of 3143879
+ 7858 strings out of 494019
+ 110253 string characters out of 3143879
  189321 words of memory out of 3000000
- 10856 multiletter control sequences out of 15000+200000
- 31174 words of font info for 65 fonts, out of 3000000 for 9000
+ 10867 multiletter control sequences out of 15000+200000
+ 33191 words of font info for 76 fonts, out of 3000000 for 9000
  716 hyphenation exceptions out of 8191
  41i,13n,73p,929b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.
@@ -1333,7 +1333,7 @@ ymbols/msbm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
 plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Pr
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on SzablonDyplomowy.pdf (64 pages, 1935766 bytes).
+Output written on SzablonDyplomowy.pdf (64 pages, 1956628 bytes).
 PDF statistics:
  382 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
