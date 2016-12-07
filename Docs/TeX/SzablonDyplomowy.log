@@ -1493,4 +1493,319 @@ Package pdftex.def Info: 512_3.png used on input line 902.
 File: 512_4.png Graphic file (type png)
  <use 512_4.png>
 Package pdftex.def Info: 512_4.png used on input line 911.
-(pdftex
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 909--914
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 44 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[44 <./512_1.png> <./512_2.png> <./512_3.png>]
+
+LaTeX Warning: Reference `im1' on page 45 undefined on input line 919.
+
+<521_1.png, id=256, 296.60812pt x 271.76532pt>
+File: 521_1.png Graphic file (type png)
+ <use 521_1.png>
+Package pdftex.def Info: 521_1.png used on input line 925.
+(pdftex.def)             Requested size: 248.39906pt x 227.60123pt.
+
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 925--926
+ [][] 
+ []
+
+<521_L.png, id=257, 73.77562pt x 270.25969pt>
+File: 521_L.png Graphic file (type png)
+ <use 521_L.png>
+Package pdftex.def Info: 521_L.png used on input line 930.
+(pdftex.def)             Requested size: 64.93842pt x 237.8911pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [45 <./512_4.png>] <521_2.png, id=261, 296.60812pt x 271.76532pt>
+File: 521_2.png Graphic file (type png)
+ <use 521_2.png>
+Package pdftex.def Info: 521_2.png used on input line 939.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<521_3.png, id=262, 296.60812pt x 271.76532pt>
+File: 521_3.png Graphic file (type png)
+ <use 521_3.png>
+Package pdftex.def Info: 521_3.png used on input line 948.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 46 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[46 <./521_1.png> <./521_L.png> <./521_2.png>]
+<521_4.png, id=266, 296.60812pt x 271.76532pt>
+File: 521_4.png Graphic file (type png)
+ <use 521_4.png>
+Package pdftex.def Info: 521_4.png used on input line 957.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<521_5.png, id=267, 296.60812pt x 271.76532pt>
+File: 521_5.png Graphic file (type png)
+ <use 521_5.png>
+Package pdftex.def Info: 521_5.png used on input line 962.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<521_6.png, id=268, 296.60812pt x 271.76532pt>
+File: 521_6.png Graphic file (type png)
+ <use 521_6.png>
+Package pdftex.def Info: 521_6.png used on input line 971.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [47 <./521_3.png> <./521_4.png> <./521_5.png>]
+<521_W.png, id=273, 454.69875pt x 304.13625pt>
+File: 521_W.png Graphic file (type png)
+ <use 521_W.png>
+Package pdftex.def Info: 521_W.png used on input line 980.
+(pdftex.def)             Requested size: 341.02322pt x 228.10162pt.
+
+<522_1.png, id=274, 296.60812pt x 271.76532pt>
+File: 522_1.png Graphic file (type png)
+ <use 522_1.png>
+Package pdftex.def Info: 522_1.png used on input line 989.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 48 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[48 <./521_6.png> <./521_W.png>]
+<522_2.png, id=278, 296.60812pt x 271.76532pt>
+File: 522_2.png Graphic file (type png)
+ <use 522_2.png>
+Package pdftex.def Info: 522_2.png used on input line 995.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<522_3.png, id=279, 296.60812pt x 271.76532pt>
+File: 522_3.png Graphic file (type png)
+ <use 522_3.png>
+Package pdftex.def Info: 522_3.png used on input line 1004.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49 <./522_1.png> <./522_2.png>] <522_4.png, id=283, 296.60812pt x 271.76532pt
+>
+File: 522_4.png Graphic file (type png)
+
+<use 522_4.png>
+Package pdftex.def Info: 522_4.png used on input line 1011.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ <522_5.png, id=284, 296.60812pt x 271.76532pt>
+File: 522_5.png Graphic file (type png)
+ <use 522_5.png>
+Package pdftex.def Info: 522_5.png used on input line 1021.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<522_6.png, id=285, 296.60812pt x 271.76532pt>
+File: 522_6.png Graphic file (type png)
+ <use 522_6.png>
+Package pdftex.def Info: 522_6.png used on input line 1026.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 50 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[50 <./522_3.png> <./522_4.png>]
+
+LaTeX Warning: Citation `W' on page 51 undefined on input line 1034.
+
+<531_1.png, id=289, 296.60812pt x 271.76532pt>
+File: 531_1.png Graphic file (type png)
+ <use 531_1.png>
+Package pdftex.def Info: 531_1.png used on input line 1057.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ [51 <./522_5.png> <./522_6.png>] <531_2.png, id=293, 296.60812pt x 271.76532pt
+>
+File: 531_2.png Graphic file (type png)
+
+<use 531_2.png>
+Package pdftex.def Info: 531_2.png used on input line 1064.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ <531_3.png, id=294, 296.60812pt x 271.76532pt>
+File: 531_3.png Graphic file (type png)
+ <use 531_3.png>
+Package pdftex.def Info: 531_3.png used on input line 1073.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 52 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[52 <./531_1.png> <./531_2.png>]
+<531_4.png, id=298, 296.60812pt x 271.76532pt>
+File: 531_4.png Graphic file (type png)
+ <use 531_4.png>
+Package pdftex.def Info: 531_4.png used on input line 1083.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_5.png, id=299, 296.60812pt x 271.76532pt>
+File: 531_5.png Graphic file (type png)
+ <use 531_5.png>
+Package pdftex.def Info: 531_5.png used on input line 1088.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_6.png, id=300, 296.60812pt x 271.76532pt>
+File: 531_6.png Graphic file (type png)
+ <use 531_6.png>
+Package pdftex.def Info: 531_6.png used on input line 1098.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+<531_7.png, id=301, 296.60812pt x 271.76532pt>
+File: 531_7.png Graphic file (type png)
+ <use 531_7.png>
+Package pdftex.def Info: 531_7.png used on input line 1103.
+(pdftex.def)             Requested size: 177.42868pt x 162.57527pt.
+
+Underfull \vbox (badness 5696) has occurred while \output is active []
+
+ [53 <./531_3.png> <./531_4.png> <./531_5.png>]
+<531_8.png, id=306, 296.60812pt x 271.76532pt>
+File: 531_8.png Graphic file (type png)
+ <use 531_8.png>
+Package pdftex.def Info: 531_8.png used on input line 1109.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+<532_1.png, id=307, 296.60812pt x 271.76532pt>
+File: 532_1.png Graphic file (type png)
+ <use 532_1.png>
+Package pdftex.def Info: 532_1.png used on input line 1121.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 54 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[54 <./531_6.png> <./531_7.png> <./531_8.png>]
+Overfull \hbox (1.17903pt too wide) in paragraph at lines 1128--1129
+[]\T1/ppl/m/n/10.95 Obserwacje do-ko-na-ne na pod-sta-wie prze-pro-wa-dzo-nych 
+przez nas eks-pe-ry-men-tÛw zgod-
+ []
+
+<533_1.png, id=311, 296.60812pt x 271.76532pt>
+File: 533_1.png Graphic file (type png)
+ <use 533_1.png>
+Package pdftex.def Info: 533_1.png used on input line 1151.
+(pdftex.def)             Requested size: 222.45554pt x 203.82349pt.
+ [55 <./532_1.png>] <533_15.png, id=315, 261.97874pt x 250.68657pt>
+File: 533_15.png Graphic file (type png)
+ <use 533_15.png>
+Package pdftex.def Info: 533_15.png used on input line 1160.
+(pdftex.def)             Requested size: 177.42868pt x 169.78372pt.
+
+<533_17.png, id=316, 262.73157pt x 250.68657pt>
+File: 533_17.png Graphic file (type png)
+ <use 533_17.png>
+Package pdftex.def Info: 533_17.png used on input line 1165.
+(pdftex.def)             Requested size: 177.42868pt x 169.30174pt.
+
+<533_2.png, id=317, 249.93375pt x 228.10219pt>
+File: 533_2.png Graphic file (type png)
+ <use 533_2.png>
+Package pdftex.def Info: 533_2.png used on input line 1175.
+(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+
+<533_3.png, id=318, 249.93375pt x 228.10219pt>
+File: 533_3.png Graphic file (type png)
+ <use 533_3.png>
+Package pdftex.def Info: 533_3.png used on input line 1180.
+(pdftex.def)             Requested size: 177.42868pt x 161.93626pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (34.57938pt too wide) has occurred while \output is active
+\T1/ppl/m/n/10.95 56 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
+IA O UOG”LNIONYCH SÅSIEDZTWACH
+ []
+
+[56 <./533_1.png> <./533_15.png> <./533_17.png>]
+<533_4.png, id=324, 254.45062pt x 232.61906pt>
+File: 533_4.png Graphic file (type png)
+ <use 533_4.png>
+Package pdftex.def Info: 533_4.png used on input line 1189.
+(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
+
+<533_5.png, id=325, 254.45062pt x 232.61906pt>
+File: 533_5.png Graphic file (type png)
+ <use 533_5.png>
+Package pdftex.def Info: 533_5.png used on input line 1194.
+(pdftex.def)             Requested size: 177.42868pt x 162.21106pt.
+ [57 <./533_2.png> <./533_3.png> <./533_4.png> <./533_5.png>]
+Rozdzia\PlPrIeC {\l } 6.
+[58
+
+] [59
+
+]
+Overfull \hbox (7.60312pt too wide) in paragraph at lines 1220--1222
+\T1/ppl/m/n/10.95 O±wiadczamy, ªe pra-c¶ ma-gi-ster-sk° pod ty-tu-™em: ,,Sy-mu-
+la-cje Prze-strzen-ne-go Dy-le-ma-tu Wi¶π-
+ []
+
+[60
+
+] (SzablonDyplomowy.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 13799 strings out of 493333
+ 227915 string characters out of 3139191
+ 281681 words of memory out of 3000000
+ 16973 multiletter control sequences out of 15000+200000
+ 31174 words of font info for 65 fonts, out of 3000000 for 9000
+ 1143 hyphenation exceptions out of 8191
+ 42i,13n,77p,931b,460s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/pa
+latino/uplri8a.pfb>
+Output written on SzablonDyplomowy.pdf (62 pages, 1860937 bytes).
+PDF statistics:
+ 380 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 461 words of extra memory for PDF output out of 10000 (max. 10000000)
+
