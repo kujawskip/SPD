@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2016.12.7)  7 DEC 2016 12:19
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2016.12.7)  7 DEC 2016 12:52
 entering extended mode
 **SzablonDyplomowy.tex
 (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.tex
@@ -493,7 +493,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 \c@prz=\count138
 \c@np=\count139
 
-No file SzablonDyplomowy.aux.
+(H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
@@ -508,6 +508,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
@@ -623,9 +624,6 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 179.
-
-LaTeX Warning: Citation `PS' on page 7 undefined on input line 206.
-
 [7
 
 ] [8] <N11.png, id=46, 386.19281pt x 243.15843pt>
@@ -704,18 +702,6 @@ wo±¢ oraz syn-chro-ni-za-cj¶ w°t-kÛw opi-
 
 [14]
 Rozdzia\PlPrIeC {\l } 3.
-
-LaTeX Warning: Citation `NM' on page 15 undefined on input line 329.
-
-
-LaTeX Warning: Citation `IM' on page 15 undefined on input line 329.
-
-
-LaTeX Warning: Citation `W' on page 15 undefined on input line 329.
-
-
-LaTeX Warning: Citation `NM' on page 15 undefined on input line 335.
-
 <311_1.png, id=74, 293.59688pt x 268.75406pt>
 File: 311_1.png Graphic file (type png)
  <use 311_1.png>
@@ -729,14 +715,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [15
 
 ]
-
-LaTeX Warning: Citation `IM' on page 16 undefined on input line 346.
-
 <311_2.png, id=79, 293.59688pt x 268.75406pt>
 File: 311_2.png Graphic file (type png)
  <use 311_2.png>
 Overfull \hbox (17.0pt too wide) in paragraph at lines 372--378
 [][]
+ []
+
+
+Overfull \hbox (26.30826pt too wide) in paragraph at lines 372--378
+\T1/ppl/m/n/10.95 Dla $\OML/cmm/m/it/10.95 b \OT1/cmr/m/n/10.95 = 1\OML/cmm/m/i
+t/10.95 :\OT1/cmr/m/n/10.95 40$ \T1/ppl/m/n/10.95 osi°-ga-my po-wsta-wa-nie zbl
+i-ªo-nych kszta™-tem do frak-tal-nych struk-tur: <--ODNOëNIK
  []
 
 [16 <H:/Inø/SPD/Docs/TeX/311_1.png>]
@@ -796,80 +786,91 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: 311_9.png Graphic file (type png)
  <use 311_9.png> [20 <H:/Inø/SPD/Docs/TeX/311_7.png (PNG copy)> <H:/Inø/SPD/Doc
 s/TeX/311_8.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/311_9.png>]
-
-LaTeX Warning: Citation `IM' on page 21 undefined on input line 443.
-
-
-LaTeX Warning: Citation `IM' on page 21 undefined on input line 444.
+Overfull \hbox (4.19841pt too wide) in paragraph at lines 448--449
+\T1/ppl/m/n/10.95 9 (stra-te-gia za-wsze wy-ba-czaj), kaª-d° z nich przed-sta-w
+io-no in-nym ko-lo-rem: <---ZMNIEJSZYÇ
+ []
 
 <321_L.png, id=106, 107.65219pt x 261.22594pt>
 File: 321_L.png Graphic file (type png)
- <use 321_L.png> [21]
+ <use 321_L.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Reference `fig:321_1' on page 22 undefined on input line 457.
-
+ [21]
 <321_1.png, id=110, 293.59688pt x 268.75406pt>
 File: 321_1.png Graphic file (type png)
- <use 321_1.png> [22 <H:/Inø/SPD/Docs/TeX/321_L.png>] <321_2.png, id=115, 293.5
-9688pt x 268.75406pt>
+ <use 321_1.png> [22 <H:/Inø/SPD/Docs/TeX/321_L.png> <H:/Inø/SPD/Docs/TeX/321_1
+.png>]
+<321_2.png, id=116, 293.59688pt x 268.75406pt>
 File: 321_2.png Graphic file (type png)
-
-<use 321_2.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [23 <H:/Inø/SPD/Docs/TeX/321_1.png>] <321_3.png, id=121, 293.59688pt x 268.754
-06pt>
+ <use 321_2.png>
+<321_3.png, id=117, 293.59688pt x 268.75406pt>
 File: 321_3.png Graphic file (type png)
+ <use 321_3.png>
+Underfull \vbox (badness 4254) has occurred while \output is active []
 
-<use 321_3.png> <321_4.png, id=122, 293.59688pt x 268.75406pt>
+ [23 <H:/Inø/SPD/Docs/TeX/321_2.png>] <321_4.png, id=123, 293.59688pt x 268.754
+06pt>
 File: 321_4.png Graphic file (type png)
- <use 321_4.png>
-[24 <H:/Inø/SPD/Docs/TeX/321_2.png> <H:/Inø/SPD/Docs/TeX/321_3.png>]
-<321_5.png, id=128, 293.59688pt x 268.75406pt>
+
+<use 321_4.png> <321_5.png, id=124, 293.59688pt x 268.75406pt>
 File: 321_5.png Graphic file (type png)
  <use 321_5.png>
-<321_6.png, id=129, 293.59688pt x 268.75406pt>
+[24 <H:/Inø/SPD/Docs/TeX/321_3.png> <H:/Inø/SPD/Docs/TeX/321_4.png>]
+<321_6.png, id=130, 293.59688pt x 268.75406pt>
 File: 321_6.png Graphic file (type png)
  <use 321_6.png>
-Underfull \vbox (badness 3849) has occurred while \output is active []
-
- [25 <H:/Inø/SPD/Docs/TeX/321_4.png> <H:/Inø/SPD/Docs/TeX/321_5.png>]
-<321_7.png, id=135, 293.59688pt x 268.75406pt>
+<321_7.png, id=131, 293.59688pt x 268.75406pt>
 File: 321_7.png Graphic file (type png)
  <use 321_7.png>
-<321_W1.png, id=136, 451.6875pt x 301.125pt>
+Underfull \vbox (badness 3849) has occurred while \output is active []
+
+ [25 <H:/Inø/SPD/Docs/TeX/321_5.png> <H:/Inø/SPD/Docs/TeX/321_6.png>]
+<321_W1.png, id=137, 451.6875pt x 301.125pt>
 File: 321_W1.png Graphic file (type png)
- <use 321_W1.png>
-Underfull \vbox (badness 3209) has occurred while \output is active []
-
- [26 <H:/Inø/SPD/Docs/TeX/321_6.png> <H:/Inø/SPD/Docs/TeX/321_7.png>]
-<321_W2.png, id=142, 451.6875pt x 301.125pt>
+ <use 321_W1.png> [26 <H:/Inø/SPD/Docs/TeX/321_7.png> <H:/Inø/SPD/Docs/TeX/321_
+W1.png>]
+<321_W2.png, id=143, 451.6875pt x 301.125pt>
 File: 321_W2.png Graphic file (type png)
- <use 321_W2.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [27 <H:/Inø/SPD/Docs/TeX/321_W1.png>] [28 <H:/Inø/SPD/Docs/TeX/321_W2.png>]
+ <use 321_W2.png> [27 <H:/Inø/SPD/Docs/TeX/321_W2.png>]
 Rozdzia\PlPrIeC {\l } 4.
-
-LaTeX Warning: Citation `NM' on page 29 undefined on input line 565.
-
-<411_M.png, id=151, 296.60812pt x 325.215pt>
+<411_M.png, id=148, 296.60812pt x 325.215pt>
 File: 411_M.png Graphic file (type png)
- <use 411_M.png> [29
+ <use 411_M.png> [28
 
 ]
-<411_0.png, id=156, 296.60812pt x 271.76532pt>
+<411_0.png, id=152, 296.60812pt x 271.76532pt>
 File: 411_0.png Graphic file (type png)
  <use 411_0.png>
-<411_1.png, id=157, 296.60812pt x 271.76532pt>
+<411_1.png, id=153, 296.60812pt x 271.76532pt>
 File: 411_1.png Graphic file (type png)
  <use 411_1.png>
-
-LaTeX Warning: Reference `nm1' on page 30 undefined on input line 604.
-
-<411_2.png, id=158, 296.60812pt x 271.76532pt>
+<411_2.png, id=154, 296.60812pt x 271.76532pt>
 File: 411_2.png Graphic file (type png)
  <use 411_2.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 606--612
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29 <H:/Inø/SPD/Docs/TeX/411_M.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/411_0.png 
+(PNG copy)> <H:/Inø/SPD/Docs/TeX/411_1.png (PNG copy)>]
+<411_3.png, id=159, 296.60812pt x 271.76532pt>
+File: 411_3.png Graphic file (type png)
+ <use 411_3.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 613--619
+[][]
+ []
+
+File: 411_3.png Graphic file (type png)
+<use 411_3.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 620--625
+[][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -878,23 +879,26 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[30 <H:/Inø/SPD/Docs/TeX/411_M.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/411_0.png (
-PNG copy)> <H:/Inø/SPD/Docs/TeX/411_1.png (PNG copy)>]
-<411_3.png, id=162, 296.60812pt x 271.76532pt>
-File: 411_3.png Graphic file (type png)
- <use 411_3.png>
-File: 411_3.png Graphic file (type png)
- <use 411_3.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [31 <H:/Inø/SPD/Docs/TeX/411_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/411_3.png 
-(PNG copy)>]
-
-LaTeX Warning: Reference `fig:421_M' on page 32 undefined on input line 628.
-
-<412_M.png, id=166, 296.60812pt x 385.44pt>
+[30 <H:/Inø/SPD/Docs/TeX/411_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/411_3.png (
+PNG copy)>] <412_M.png, id=163, 296.60812pt x 385.44pt>
 File: 412_M.png Graphic file (type png)
  <use 412_M.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31]
+Overfull \hbox (2.17877pt too wide) in paragraph at lines 637--638
+[]\T1/ppl/m/n/10.95 Uk™ad po-cz°t-ko-wy stra-te-gii jest ta-ki sam. Pierw-sze r
+Ûª-ni-ce po-ja-wia-j° si¶ do-pie-ro w czwar-
+ []
+
+<412_1.png, id=167, 316.18124pt x 289.83281pt>
+File: 412_1.png Graphic file (type png)
+ <use 412_1.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 639--644
+[][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -903,18 +907,40 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[32] <412_1.png, id=170, 316.18124pt x 289.83281pt>
-File: 412_1.png Graphic file (type png)
- <use 412_1.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [33 <H:/Inø/SPD/Docs/TeX/412_M.png (PNG copy)>]
-<412_2.png, id=174, 302.63063pt x 276.28218pt>
+[32 <H:/Inø/SPD/Docs/TeX/412_M.png (PNG copy)>]
+<412_2.png, id=171, 302.63063pt x 276.28218pt>
 File: 412_2.png Graphic file (type png)
  <use 412_2.png>
-<412_3.png, id=175, 284.56313pt x 258.9675pt>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 647--652
+[][] 
+ []
+
+<412_3.png, id=172, 284.56313pt x 258.9675pt>
 File: 412_3.png Graphic file (type png)
  <use 412_3.png>
+Overfull \hbox (62.24123pt too wide) in paragraph at lines 653--659
+\T1/ppl/m/n/10.95 dem-na-stym: [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33 <H:/Inø/SPD/Docs/TeX/412_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/412_2.png 
+(PNG copy)>] <412_4.png, id=176, 273.27094pt x 249.93375pt>
+File: 412_4.png Graphic file (type png)
+ <use 412_4.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 660--666
+[][]
+ []
+
+<412_5.png, id=177, 287.57437pt x 261.22594pt>
+File: 412_5.png Graphic file (type png)
+ <use 412_5.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 667--673
+[][]
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -923,58 +949,65 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[34 <H:/Inø/SPD/Docs/TeX/412_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/412_2.png (
-PNG copy)>] <412_4.png, id=179, 273.27094pt x 249.93375pt>
-File: 412_4.png Graphic file (type png)
- <use 412_4.png>
-<412_5.png, id=180, 287.57437pt x 261.22594pt>
-File: 412_5.png Graphic file (type png)
- <use 412_5.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [35 <H:/Inø/SPD/Docs/TeX/412_3.png> <H:/Inø/SPD/Docs/TeX/412_4.png>]
-<412_6.png, id=187, 272.51813pt x 249.18094pt>
+[34 <H:/Inø/SPD/Docs/TeX/412_3.png> <H:/Inø/SPD/Docs/TeX/412_4.png>]
+<412_6.png, id=183, 272.51813pt x 249.18094pt>
 File: 412_6.png Graphic file (type png)
  <use 412_6.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 674--680
+[][]
+ []
 
-LaTeX Warning: Citation `IM' on page 36 undefined on input line 683.
-
-<421_M.png, id=188, 292.84406pt x 325.215pt>
+<421_M.png, id=184, 292.84406pt x 325.215pt>
 File: 421_M.png Graphic file (type png)
  <use 421_M.png>
+Overfull \hbox (68.80006pt too wide) in paragraph at lines 683--690
+\T1/ppl/m/n/10.95 trum plan-szy: [] 
+ []
+
+[35 <H:/Inø/SPD/Docs/TeX/412_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/412_6.png (
+PNG copy)>]
+File: 321_1.png Graphic file (type png)
+ <use 321_1.png>
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 697--698
+ [][] 
+ []
+
+<421_L.png, id=189, 103.88812pt x 372.64218pt>
+File: 421_L.png Graphic file (type png)
+ <use 421_L.png>
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 36 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[36 <H:/Inø/SPD/Docs/TeX/412_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/412_6.png (
-PNG copy)>]
-
-LaTeX Warning: Reference `im1' on page 37 undefined on input line 692.
-
-File: 321_1.png Graphic file (type png)
-<use 321_1.png>
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 697--698
- [][] 
- []
-
-<421_L.png, id=192, 103.88812pt x 372.64218pt>
-File: 421_L.png Graphic file (type png)
- <use 421_L.png> [37 <H:/Inø/SPD/Docs/TeX/421_M.png (PNG copy)> <H:/Inø/SPD/Doc
-s/TeX/421_L.png>]
-<421_1.png, id=197, 293.59688pt x 268.75406pt>
+[36 <H:/Inø/SPD/Docs/TeX/421_M.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/421_L.png>]
+<421_1.png, id=194, 293.59688pt x 268.75406pt>
 File: 421_1.png Graphic file (type png)
  <use 421_1.png>
-<421_2.png, id=198, 293.59688pt x 268.75406pt>
+<421_2.png, id=195, 293.59688pt x 268.75406pt>
 File: 421_2.png Graphic file (type png)
  <use 421_2.png>
-<421_3.png, id=199, 293.59688pt x 268.75406pt>
+<421_3.png, id=196, 293.59688pt x 268.75406pt>
 File: 421_3.png Graphic file (type png)
  <use 421_3.png>
-<421_4.png, id=200, 293.59688pt x 268.75406pt>
+<421_4.png, id=197, 293.59688pt x 268.75406pt>
 File: 421_4.png Graphic file (type png)
  <use 421_4.png>
-Underfull \vbox (badness 5374) has occurred while \output is active []
+Overfull \hbox (17.0pt too wide) in paragraph at lines 729--734
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37 <H:/Inø/SPD/Docs/TeX/421_1.png> <H:/Inø/SPD/Docs/TeX/421_2.png> <H:/Inø/SP
+D/Docs/TeX/421_3.png>] <421_5.png, id=204, 293.59688pt x 268.75406pt>
+File: 421_5.png Graphic file (type png)
+ <use 421_5.png>
+<421_6.png, id=205, 293.59688pt x 268.75406pt>
+File: 421_6.png Graphic file (type png)
+ <use 421_6.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
@@ -982,26 +1015,34 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[38 <H:/Inø/SPD/Docs/TeX/421_1.png> <H:/Inø/SPD/Docs/TeX/421_2.png> <H:/Inø/SPD
-/Docs/TeX/421_3.png>] <421_5.png, id=207, 293.59688pt x 268.75406pt>
-File: 421_5.png Graphic file (type png)
-
-<use 421_5.png> <421_6.png, id=208, 293.59688pt x 268.75406pt>
-File: 421_6.png Graphic file (type png)
- <use 421_6.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [39 <H:/Inø/SPD/Docs/TeX/421_4.png> <H:/Inø/SPD/Docs/TeX/421_5.png>]
-<421_7.png, id=214, 293.59688pt x 268.75406pt>
+[38 <H:/Inø/SPD/Docs/TeX/421_4.png> <H:/Inø/SPD/Docs/TeX/421_5.png>]
+<421_7.png, id=211, 293.59688pt x 268.75406pt>
 File: 421_7.png Graphic file (type png)
  <use 421_7.png>
-<421_8.png, id=215, 293.59688pt x 268.75406pt>
+<421_8.png, id=212, 293.59688pt x 268.75406pt>
 File: 421_8.png Graphic file (type png)
  <use 421_8.png>
-<421_9.png, id=216, 293.59688pt x 268.75406pt>
+<421_9.png, id=213, 293.59688pt x 268.75406pt>
 File: 421_9.png Graphic file (type png)
  <use 421_9.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 765--770
+[][] 
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [39 <H:/Inø/SPD/Docs/TeX/421_6.png> <H:/Inø/SPD/Docs/TeX/421_7.png> <H:/Inø/SP
+D/Docs/TeX/421_8.png>] <421_W1.png, id=220, 451.6875pt x 301.125pt>
+File: 421_W1.png Graphic file (type png)
+ <use 421_W1.png>
+<421_W2.png, id=221, 451.6875pt x 301.125pt>
+File: 421_W2.png Graphic file (type png)
+ <use 421_W2.png>
+Overfull \hbox (291.0054pt too wide) in paragraph at lines 781--788
+\T1/ppl/m/n/10.95 to-wy udzia™ po-szcze-gÛl-nych stra-te-gii w ko-lej-nych ite-
+ra-cjach: [] 
+ []
 
 
 Overfull \hbox (40.76506pt too wide) has occurred while \output is active
@@ -1009,76 +1050,89 @@ Overfull \hbox (40.76506pt too wide) has occurred while \output is active
 IA Z R”õNORODNÅ MACIERZÅ WYPäAT
  []
 
-[40 <H:/Inø/SPD/Docs/TeX/421_6.png> <H:/Inø/SPD/Docs/TeX/421_7.png> <H:/Inø/SPD
-/Docs/TeX/421_8.png>] <421_W1.png, id=223, 451.6875pt x 301.125pt>
-File: 421_W1.png Graphic file (type png)
-
-<use 421_W1.png> <421_W2.png, id=224, 451.6875pt x 301.125pt>
-File: 421_W2.png Graphic file (type png)
- <use 421_W2.png>
-[41 <H:/Inø/SPD/Docs/TeX/421_9.png> <H:/Inø/SPD/Docs/TeX/421_W1.png>]
-Overfull \hbox (40.76506pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 42 \T1/ppl/m/sl/10.95 ROZDZIAä 4.  PRZESTRZENNY DYLEMAT WIÜôN
-IA Z R”õNORODNÅ MACIERZÅ WYPäAT
- []
-
-[42 <H:/Inø/SPD/Docs/TeX/421_W2.png>]
+[40 <H:/Inø/SPD/Docs/TeX/421_9.png> <H:/Inø/SPD/Docs/TeX/421_W1.png>] [41 <H:/I
+nø/SPD/Docs/TeX/421_W2.png>]
 Rozdzia\PlPrIeC {\l } 5.
-
-LaTeX Warning: Citation `NM' on page 43 undefined on input line 792.
-
-
-LaTeX Warning: Citation `IM' on page 43 undefined on input line 792.
-
-
-LaTeX Warning: Citation `W' on page 43 undefined on input line 792.
-
-<511_1.png, id=235, 296.60812pt x 271.76532pt>
+<511_1.png, id=232, 296.60812pt x 271.76532pt>
 File: 511_1.png Graphic file (type png)
  <use 511_1.png>
-<511_2.png, id=236, 296.60812pt x 271.76532pt>
+<511_2.png, id=233, 296.60812pt x 271.76532pt>
 File: 511_2.png Graphic file (type png)
- <use 511_2.png> [43
+ <use 511_2.png>
+Underfull \vbox (badness 1019) has occurred while \output is active []
+
+ [42
 
 ]
-<511_3.png, id=240, 296.60812pt x 271.76532pt>
+<511_3.png, id=237, 296.60812pt x 271.76532pt>
 File: 511_3.png Graphic file (type png)
  <use 511_3.png>
-<511_4.png, id=241, 296.60812pt x 271.76532pt>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 827--832
+[][] 
+ []
+
+<511_4.png, id=238, 296.60812pt x 271.76532pt>
 File: 511_4.png Graphic file (type png)
  <use 511_4.png>
-<511_5.png, id=242, 296.60812pt x 271.76532pt>
+<511_5.png, id=239, 296.60812pt x 271.76532pt>
 File: 511_5.png Graphic file (type png)
- <use 511_5.png>
+ <use 511_5.png> [43 <H:/Inø/SPD/Docs/TeX/511_1.png (PNG copy)> <H:/Inø/SPD/Doc
+s/TeX/511_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_3.png (PNG copy)> <H:/Inø/
+SPD/Docs/TeX/511_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_5.png (PNG copy)>]
+<511_6.png, id=243, 296.60812pt x 271.76532pt>
+File: 511_6.png Graphic file (type png)
+ <use 511_6.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 849--854
+[][] 
+ []
+
+<511_W.png, id=244, 454.69875pt x 304.13625pt>
+File: 511_W.png Graphic file (type png)
+ <use 511_W.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 858--863
+[][] 
+ []
+
+<512_1.png, id=245, 296.60812pt x 271.76532pt>
+File: 512_1.png Graphic file (type png)
+ <use 512_1.png>
+<512_2.png, id=246, 296.60812pt x 271.76532pt>
+File: 512_2.png Graphic file (type png)
+ <use 512_2.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 44 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[44 <H:/Inø/SPD/Docs/TeX/511_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_2.png (
-PNG copy)> <H:/Inø/SPD/Docs/TeX/511_3.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_
-4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_5.png (PNG copy)>]
-<511_6.png, id=246, 296.60812pt x 271.76532pt>
-File: 511_6.png Graphic file (type png)
- <use 511_6.png>
-<511_W.png, id=247, 454.69875pt x 304.13625pt>
-File: 511_W.png Graphic file (type png)
- <use 511_W.png>
-<512_1.png, id=248, 296.60812pt x 271.76532pt>
-File: 512_1.png Graphic file (type png)
- <use 512_1.png>
-<512_2.png, id=249, 296.60812pt x 271.76532pt>
-File: 512_2.png Graphic file (type png)
- <use 512_2.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [45 <H:/Inø/SPD/Docs/TeX/511_6.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_W.png 
-(PNG copy)>] <512_3.png, id=253, 296.60812pt x 271.76532pt>
+[44 <H:/Inø/SPD/Docs/TeX/511_6.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/511_W.png (
+PNG copy)>] <512_3.png, id=250, 296.60812pt x 271.76532pt>
 File: 512_3.png Graphic file (type png)
  <use 512_3.png>
-<512_4.png, id=254, 296.60812pt x 271.76532pt>
+<512_4.png, id=251, 296.60812pt x 271.76532pt>
 File: 512_4.png Graphic file (type png)
  <use 512_4.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 890--895
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [45 <H:/Inø/SPD/Docs/TeX/512_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/512_2.png 
+(PNG copy)> <H:/Inø/SPD/Docs/TeX/512_3.png (PNG copy)>]
+<521_1.png, id=255, 296.60812pt x 271.76532pt>
+File: 521_1.png Graphic file (type png)
+ <use 521_1.png>
+Overfull \hbox (70.97038pt too wide) in paragraph at lines 906--907
+ [][] 
+ []
+
+<521_L.png, id=256, 73.77562pt x 270.25969pt>
+File: 521_L.png Graphic file (type png)
+ <use 521_L.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1087,53 +1141,45 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[46 <H:/Inø/SPD/Docs/TeX/512_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/512_2.png (
-PNG copy)> <H:/Inø/SPD/Docs/TeX/512_3.png (PNG copy)>]
-
-LaTeX Warning: Reference `im1' on page 47 undefined on input line 900.
-
-<521_1.png, id=258, 296.60812pt x 271.76532pt>
-File: 521_1.png Graphic file (type png)
- <use 521_1.png>
-Overfull \hbox (70.97038pt too wide) in paragraph at lines 906--907
- [][] 
- []
-
-<521_L.png, id=259, 73.77562pt x 270.25969pt>
-File: 521_L.png Graphic file (type png)
- <use 521_L.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [47 <H:/Inø/SPD/Docs/TeX/512_4.png (PNG copy)>]
-<521_2.png, id=264, 296.60812pt x 271.76532pt>
+[46 <H:/Inø/SPD/Docs/TeX/512_4.png (PNG copy)>]
+<521_2.png, id=260, 296.60812pt x 271.76532pt>
 File: 521_2.png Graphic file (type png)
  <use 521_2.png>
-<521_3.png, id=265, 296.60812pt x 271.76532pt>
+<521_3.png, id=261, 296.60812pt x 271.76532pt>
 File: 521_3.png Graphic file (type png)
- <use 521_3.png>
+ <use 521_3.png> [47 <H:/Inø/SPD/Docs/TeX/521_1.png (PNG copy)> <H:/Inø/SPD/Doc
+s/TeX/521_L.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_2.png (PNG copy)>]
+<521_4.png, id=266, 296.60812pt x 271.76532pt>
+File: 521_4.png Graphic file (type png)
+ <use 521_4.png>
+<521_5.png, id=267, 296.60812pt x 271.76532pt>
+File: 521_5.png Graphic file (type png)
+ <use 521_5.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 48 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[48 <H:/Inø/SPD/Docs/TeX/521_1.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_L.png (
-PNG copy)> <H:/Inø/SPD/Docs/TeX/521_2.png (PNG copy)>]
-<521_4.png, id=269, 296.60812pt x 271.76532pt>
-File: 521_4.png Graphic file (type png)
- <use 521_4.png>
-<521_5.png, id=270, 296.60812pt x 271.76532pt>
-File: 521_5.png Graphic file (type png)
- <use 521_5.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [49 <H:/Inø/SPD/Docs/TeX/521_3.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_4.png 
-(PNG copy)>] <521_6.png, id=274, 296.60812pt x 271.76532pt>
+[48 <H:/Inø/SPD/Docs/TeX/521_3.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_4.png (
+PNG copy)>] <521_6.png, id=271, 296.60812pt x 271.76532pt>
 File: 521_6.png Graphic file (type png)
  <use 521_6.png>
-<521_W.png, id=275, 454.69875pt x 304.13625pt>
+<521_W.png, id=272, 454.69875pt x 304.13625pt>
 File: 521_W.png Graphic file (type png)
  <use 521_W.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [49 <H:/Inø/SPD/Docs/TeX/521_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_6.png 
+(PNG copy)>] <522_1.png, id=276, 296.60812pt x 271.76532pt>
+File: 522_1.png Graphic file (type png)
+ <use 522_1.png>
+<522_2.png, id=277, 296.60812pt x 271.76532pt>
+File: 522_2.png Graphic file (type png)
+ <use 522_2.png>
+Underfull \vbox (badness 1755) has occurred while \output is active []
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1141,101 +1187,106 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[50 <H:/Inø/SPD/Docs/TeX/521_5.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/521_6.png (
-PNG copy)>] <522_1.png, id=279, 296.60812pt x 271.76532pt>
-File: 522_1.png Graphic file (type png)
- <use 522_1.png>
-<522_2.png, id=280, 296.60812pt x 271.76532pt>
-File: 522_2.png Graphic file (type png)
- <use 522_2.png>
-Underfull \vbox (badness 1755) has occurred while \output is active []
-
- [51 <H:/Inø/SPD/Docs/TeX/521_W.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_1.png 
-(PNG copy)>] <522_3.png, id=284, 296.60812pt x 271.76532pt>
+[50 <H:/Inø/SPD/Docs/TeX/521_W.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_1.png (
+PNG copy)>] <522_3.png, id=281, 296.60812pt x 271.76532pt>
 File: 522_3.png Graphic file (type png)
  <use 522_3.png>
-<522_4.png, id=285, 296.60812pt x 271.76532pt>
+<522_4.png, id=282, 296.60812pt x 271.76532pt>
 File: 522_4.png Graphic file (type png)
  <use 522_4.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+ [51 <H:/Inø/SPD/Docs/TeX/522_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_3.png 
+(PNG copy)>] <522_5.png, id=286, 296.60812pt x 271.76532pt>
+File: 522_5.png Graphic file (type png)
+ <use 522_5.png>
+<522_6.png, id=287, 296.60812pt x 271.76532pt>
+File: 522_6.png Graphic file (type png)
+ <use 522_6.png>
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 52 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[52 <H:/Inø/SPD/Docs/TeX/522_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_3.png (
-PNG copy)>] <522_5.png, id=289, 296.60812pt x 271.76532pt>
-File: 522_5.png Graphic file (type png)
- <use 522_5.png>
-<522_6.png, id=290, 296.60812pt x 271.76532pt>
-File: 522_6.png Graphic file (type png)
- <use 522_6.png>
-
-LaTeX Warning: Citation `W' on page 53 undefined on input line 1017.
-
-[53 <H:/Inø/SPD/Docs/TeX/522_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_5.png (
+[52 <H:/Inø/SPD/Docs/TeX/522_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/522_5.png (
 PNG copy)> <H:/Inø/SPD/Docs/TeX/522_6.png (PNG copy)>]
-<531_1.png, id=295, 296.60812pt x 271.76532pt>
+<531_1.png, id=291, 296.60812pt x 271.76532pt>
 File: 531_1.png Graphic file (type png)
  <use 531_1.png>
-<531_2.png, id=296, 296.60812pt x 271.76532pt>
+<531_2.png, id=292, 296.60812pt x 271.76532pt>
 File: 531_2.png Graphic file (type png)
  <use 531_2.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+ [53 <H:/Inø/SPD/Docs/TeX/531_1.png (PNG copy)>]
+<531_3.png, id=297, 296.60812pt x 271.76532pt>
+File: 531_3.png Graphic file (type png)
+ <use 531_3.png>
+<531_4.png, id=298, 296.60812pt x 271.76532pt>
+File: 531_4.png Graphic file (type png)
+ <use 531_4.png>
+<531_5.png, id=299, 296.60812pt x 271.76532pt>
+File: 531_5.png Graphic file (type png)
+ <use 531_5.png>
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 54 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[54 <H:/Inø/SPD/Docs/TeX/531_1.png (PNG copy)>]
-<531_3.png, id=300, 296.60812pt x 271.76532pt>
-File: 531_3.png Graphic file (type png)
- <use 531_3.png>
-<531_4.png, id=301, 296.60812pt x 271.76532pt>
-File: 531_4.png Graphic file (type png)
- <use 531_4.png>
-<531_5.png, id=302, 296.60812pt x 271.76532pt>
-File: 531_5.png Graphic file (type png)
- <use 531_5.png> [55 <H:/Inø/SPD/Docs/TeX/531_2.png (PNG copy)> <H:/Inø/SPD/Doc
-s/TeX/531_3.png (PNG copy)>]
-<531_6.png, id=306, 296.60812pt x 271.76532pt>
+[54 <H:/Inø/SPD/Docs/TeX/531_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531_3.png (
+PNG copy)>] <531_6.png, id=303, 296.60812pt x 271.76532pt>
 File: 531_6.png Graphic file (type png)
  <use 531_6.png>
-<531_7.png, id=307, 296.60812pt x 271.76532pt>
+<531_7.png, id=304, 296.60812pt x 271.76532pt>
 File: 531_7.png Graphic file (type png)
  <use 531_7.png>
-<531_8.png, id=308, 296.60812pt x 271.76532pt>
+<531_8.png, id=305, 296.60812pt x 271.76532pt>
 File: 531_8.png Graphic file (type png)
  <use 531_8.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+ [55 <H:/Inø/SPD/Docs/TeX/531_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531_5.png 
+(PNG copy)> <H:/Inø/SPD/Docs/TeX/531_6.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531
+_7.png (PNG copy)>] <532_1.png, id=309, 296.60812pt x 271.76532pt>
+File: 532_1.png Graphic file (type png)
+ <use 532_1.png>
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 \T1/ppl/m/n/10.95 56 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[56 <H:/Inø/SPD/Docs/TeX/531_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531_5.png (
-PNG copy)> <H:/Inø/SPD/Docs/TeX/531_6.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/531_
-7.png (PNG copy)>] <532_1.png, id=312, 296.60812pt x 271.76532pt>
-File: 532_1.png Graphic file (type png)
+[56 <H:/Inø/SPD/Docs/TeX/531_8.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/532_1.png (
+PNG copy)>]
+Overfull \hbox (1.17903pt too wide) in paragraph at lines 1111--1112
+[]\T1/ppl/m/n/10.95 Obserwacje do-ko-na-ne na pod-sta-wie prze-pro-wa-dzo-nych 
+przez nas eks-pe-ry-men-tÛw zgod-
+ []
 
-<use 532_1.png> [57 <H:/Inø/SPD/Docs/TeX/531_8.png (PNG copy)> <H:/Inø/SPD/Docs
-/TeX/532_1.png (PNG copy)>] <533_1.png, id=316, 296.60812pt x 271.76532pt>
+<533_1.png, id=313, 296.60812pt x 271.76532pt>
 File: 533_1.png Graphic file (type png)
-
-<use 533_1.png> <533_15.png, id=317, 261.97874pt x 250.68657pt>
+ <use 533_1.png>
+<533_15.png, id=314, 261.97874pt x 250.68657pt>
 File: 533_15.png Graphic file (type png)
-
-<use 533_15.png> <533_17.png, id=318, 262.73157pt x 250.68657pt>
+ <use 533_15.png>
+<533_17.png, id=315, 262.73157pt x 250.68657pt>
 File: 533_17.png Graphic file (type png)
-
-<use 533_17.png>
+ <use 533_17.png>
 Underfull \vbox (badness 3568) has occurred while \output is active []
+
+ [57 <H:/Inø/SPD/Docs/TeX/533_1.png (PNG copy)>]
+<533_2.png, id=319, 249.93375pt x 228.10219pt>
+File: 533_2.png Graphic file (type png)
+ <use 533_2.png>
+<533_3.png, id=320, 249.93375pt x 228.10219pt>
+File: 533_3.png Graphic file (type png)
+ <use 533_3.png>
+<533_4.png, id=321, 254.45062pt x 232.61906pt>
+File: 533_4.png Graphic file (type png)
+ <use 533_4.png>
+<533_5.png, id=322, 254.45062pt x 232.61906pt>
+File: 533_5.png Graphic file (type png)
+ <use 533_5.png>
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (34.57938pt too wide) has occurred while \output is active
@@ -1243,69 +1294,48 @@ Overfull \hbox (34.57938pt too wide) has occurred while \output is active
 IA O UOG”LNIONYCH SÅSIEDZTWACH
  []
 
-[58 <H:/Inø/SPD/Docs/TeX/533_1.png (PNG copy)>]
-<533_2.png, id=322, 249.93375pt x 228.10219pt>
-File: 533_2.png Graphic file (type png)
- <use 533_2.png>
-<533_3.png, id=323, 249.93375pt x 228.10219pt>
-File: 533_3.png Graphic file (type png)
- <use 533_3.png>
-<533_4.png, id=324, 254.45062pt x 232.61906pt>
-File: 533_4.png Graphic file (type png)
- <use 533_4.png>
-<533_5.png, id=325, 254.45062pt x 232.61906pt>
-File: 533_5.png Graphic file (type png)
- <use 533_5.png>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [59 <H:/Inø/SPD/Docs/TeX/533_15.png> <H:/Inø/SPD/Docs/TeX/533_17.png> <H:/Inø/
-SPD/Docs/TeX/533_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/533_3.png (PNG copy)>]
-Overfull \hbox (34.57938pt too wide) has occurred while \output is active
-\T1/ppl/m/n/10.95 60 \T1/ppl/m/sl/10.95 ROZDZIAä 5.  PRZESTRZENNY DYLEMAT WIÜôN
-IA O UOG”LNIONYCH SÅSIEDZTWACH
- []
-
-[60 <H:/Inø/SPD/Docs/TeX/533_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/533_5.png (
+[58 <H:/Inø/SPD/Docs/TeX/533_15.png> <H:/Inø/SPD/Docs/TeX/533_17.png> <H:/Inø/S
+PD/Docs/TeX/533_2.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/533_3.png (PNG copy)>]
+[59 <H:/Inø/SPD/Docs/TeX/533_4.png (PNG copy)> <H:/Inø/SPD/Docs/TeX/533_5.png (
 PNG copy)>]
 Rozdzia\PlPrIeC {\l } 6.
-[61
+[60
 
-] [62
+] [61
 
-] [63
+]
+Overfull \hbox (7.60312pt too wide) in paragraph at lines 1203--1205
+\T1/ppl/m/n/10.95 O±wiadczamy, ªe pra-c¶ ma-gi-ster-sk° pod ty-tu-™em: ,,Sy-mu-
+la-cje Prze-strzen-ne-go Dy-le-ma-tu Wi¶π-
+ []
 
-] (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.aux)
+[62
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] (H:\Inø\SPD\Docs\TeX\SzablonDyplomowy.aux) ) 
 Here is how much of TeX's memory you used:
- 7841 strings out of 494019
- 110020 string characters out of 3143879
+ 7843 strings out of 494019
+ 110100 string characters out of 3143879
  189321 words of memory out of 3000000
  10856 multiletter control sequences out of 15000+200000
  31174 words of font info for 65 fonts, out of 3000000 for 9000
  716 hyphenation exceptions out of 8191
  41i,13n,73p,929b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/urw/palatino/uplr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
-/palatino/uplri8a.pfb>
-Output written on SzablonDyplomowy.pdf (65 pages, 1935103 bytes).
+{C:/Program Files (x86)/MiKTeX 2.
+9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/u
+plb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on SzablonDyplomowy.pdf (64 pages, 1935766 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
+ 382 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  466 words of extra memory for PDF output out of 10000 (max. 10000000)
 
