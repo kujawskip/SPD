@@ -460,6 +460,7 @@ Po siedemnastu iteracjach struktury fraktalne jest zbyt du¿e by pomieœciæ siê na
 Fraktalna struktura zaburzy³a siê z powodu braku miejsca na planszy. Ostatecznie czêœciowa symetria zosta³a zachowana jednak¿e nie jest to koniecznoœæ. Jednym z powodów zaburzenia symetrii mo¿e byæ funkcja wyboru strategii podczas aktualizacji strategii – model teoretyczny nie rozs¹dza na jakiej podstawie nale¿y rozs¹dzaæ remisy. W takiej sytuacji wybór móg³by byæ losowy, ale w celu zachowania determinizmu koniecznego do istnienia automatu komórkowego, wedle naszej implementacji komórka wybiera najpierw siebie (jeœli posiada najwiêksz¹ iloœæ punktów), a potem s¹siada o najmniejszej wspó³rzêdnej X. W wypadku kolejnego remisu decyduje najmniejsza wspó³rzêdna Y. Doprowadza to do sytuacji, w której odpowiadaj¹ce sobie komórki znajduj¹ce siê po dwóch stronach osi symetrii mog¹ wybraæ do pobrania strategii komórki które nie odpowiadaj¹ sobie w ten sam sposób, co zaburza symetrycznoœæ uk³adu.
 \section{Eksperyment Ishidy i Moriego}
 \label{im1}
+
 \cite{IM} Drugi eksperyment oparty by³ na pracy Y. Ishidy i T. Moriego.  W tym eksperymencie badane by³y strategie postaci ,,Zdradzaj gdy k s¹siadów zdradza''. Wnioskiem z eksperymentów by³o zauwa¿enie zjawiska klastrowania siê strategii w przestrzeni(parafrazuj¹c 
 \cite{IM})
 
@@ -693,7 +694,8 @@ Eksperyment ostatecznie potwierdzi³ hipotezê, ¿e roz³o¿enie macierzy wyp³at nawe
 \section{Eksperyment Ishidy i Moriego}
 \label{im2}
 \cite{IM}
-Podczas powtórzenia tego eksperymentu, wykorzystane zosta³y trzy macierze o bardzo zró¿nicowanych wartoœciach funkcji wyp³at, u³o¿one w koncentryczne krêgi dooko³a œrodka planszy. Wartoœci te zosta³y dobrane tak by zachêcaæ strategie le¿¹ce na granicy miêdzy dwoma ró¿nymi macierzami do przejmowania strategii od tych komórek, które le¿¹ dalej od centrum planszy:
+
+Podczas powtórzenia tego eksperymentu, wykorzystane zosta³y trzy macierze o bardzo zró¿nicowanych wartoœciach funkcji wyp³at, u³o¿one w koncentryczne krêgi dooko³a œrodka planszy. Wartoœci te zosta³y dobrane tak by zachêcaæ strategie le¿¹ce na granicy miêdzy dwoma ró¿nymi macierzami do przejmowania strategii od tych komórek, które le¿¹ dalej od centrum planszy: --> tekst siê dziwnie zawija wokó³ obrazka
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_M}
@@ -712,19 +714,17 @@ Wykorzystany zosta³ ponownie uk³ad pocz¹tkowy z rozdzia³u 3.2: \nameref{im1}: %o
 \centering
 \includegraphics[width=0.55\textwidth]{321_L}
 \end{minipage}
-\caption{Uk³ad pocz¹tkowy + legenda}
+\caption{Uk³ad pocz¹tkowy}
 \end{figure}
-
-W pierwszym kroku ponownie widaæ dominacje strategii o niskich wartoœciach k (w szczególnoœci strategii zawsze zdradzaj), jednak¿e w tym wypadku przetrwa³o wiêcej strategii bardziej pokojowych:
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_1}
-\captionof{figure}{Krok 1}
+\captionof{figure}{Krok 1. ponownie widaæ dominacje strategii o niskich wartoœciach k (w szczególnoœci strategii zawsze zdradzaj), jednak¿e w tym wypadku przetrwa³o wiêcej strategii preferuj¹cych rozwi¹zania pokojowe.}
 \end{minipage}
 \end{center}
 
-W kolejnych krokach trend rozszerzenia siê strategii o niskich k utrzymuje siê, ponownie faworyzuj¹c strategiê "zdradzaj gdy 1 s¹siad zdradza". Tak jak w kroku wczeœniejszym, pod wp³ywem modyfikacji macierzy wyp³at strategie pokojowe d³u¿ej utrzymuj¹ siê w otoczeniu bardziej agresywnych strategii: Mo¿na zauwa¿yæ, ¿e strategie uk³adaj¹ siê w struktury odpowiadaj¹ce uk³adowi macierzy – tworz¹ one koncentryczne krêgi w oko³o œrodka siatki.
+W kolejnych krokach trend rozszerzenia siê strategii o niskich k utrzymuje siê, ponownie faworyzuj¹c strategiê "zdradzaj gdy 1 s¹siad zdradza". Tak jak w kroku wczeœniejszym, pod wp³ywem modyfikacji macierzy wyp³at strategie pokojowe d³u¿ej utrzymuj¹ siê w otoczeniu agresywniejszych strategii: Mo¿na zauwa¿yæ, ¿e strategie uk³adaj¹ siê w struktury odpowiadaj¹ce uk³adowi macierzy – tworz¹ one koncentryczne krêgi w oko³o œrodka siatki.
 
 \begin{figure}[H] \centering \begin{minipage}[t]{.4\textwidth}
 \centering
@@ -740,22 +740,20 @@ W kolejnych krokach trend rozszerzenia siê strategii o niskich k utrzymuje siê, 
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_4}
-\captionof{figure}{Krok 4}
+\captionof{figure}{Krok 4. Mo¿na zaobserwowaæ powsta³e w przestrzeni stabilne struktury tych samych strategii. Dominuj¹c¹ strategi¹ jest strategia o k = 1 (,,zdradzaj gdy 1 s¹siad zdradza''). Iloœæ strategii o wysokich k jest niewielka co sugeruje, ¿e znikn¹ one lub pozostan¹ w niewielkich skupiskach.}
 \end{minipage}
 
-W kroku czwartym wyraŸnie widaæ ju¿ powsta³e w przestrzeni struktury tych samych strategii, utrzymuj¹ce siê w przestrzeni. Dominuj¹c¹ strategi¹ jest strategia o k = 1 ("zdradzaj gdy 1 s¹siad zdradza").  Iloœæ strategii o wysokich k jest niewielka co sugeruje, ¿e znikn¹ one lub pozostan¹ w niewielkich skupiskach.
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_5}
-\captionof{figure}{Krok 5}
+\captionof{figure}{Krok 5. Zgodnie z przewidywaniami strategia zawsze wybaczaj oraz inne strategie o wysokich k stopniowo zanikaj¹.}
 \end{minipage}
 \end{center}
 
-Zgodnie z przewidywaniami strategia zawsze wybaczaj oraz inne strategie o wysokich k stopniowo zanikaj¹ i ju¿ w kroku szóstym nie wystêpuj¹ one wcale.
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_6}
-\captionof{figure}{Krok 6}
+\captionof{figure}{Krok 6. Ostateczny zanik strategii o wysokich k}
 \end{minipage}
 \end{center}
 
@@ -779,26 +777,25 @@ W kolejnych krokach znikaæ bêd¹ kolejne strategie o k wy¿szym ni¿ 3:
 \captionof{figure}{Krok 27 - Ostatni}
 \end{minipage}
 
-Mimo tego, ¿e strategie pokojowe utrzymywa³y siê d³u¿ej, ni¿ w przypadku jednorodnej macierzy wyp³at, ponownie jesteœmy w stanie zaobserwowaæ dominacjê strategii, które maj¹ k niskie acz ró¿ne od 0. Ciekawym faktem jest równie¿ to, ¿e po pozostaniu ostatnich 4 strategii, automat przechodzi w oscylacje. Obliczenie wprowadzi³o wystarczaj¹cy szum, by zaniknê³a widoczna struktura uk³adu macierzy.
+Mimo tego, ¿e strategie pokojowe utrzymywa³y siê d³u¿ej, ni¿ w przypadku jednorodnej macierzy wyp³at, ponownie jesteœmy w stanie zaobserwowaæ dominacjê strategii, które maj¹ k niskie acz ró¿ne od 0. Stabilizacja uk³adu okaza³a siê byæ oscylacj¹ od momentu zanikniêcia strategii o k>3. Obliczenie wprowadzi³o wystarczaj¹cy szum, by zaniknê³a widoczna struktura uk³adu macierzy wyp³at.
 
-Poni¿ej przedstawiono procentowy stosunek liczby komórek o danej strategii do liczby wszystkich komórek w kolejnych iteracjach:
+Poni¿ej przedstawiono procentowy stosunek liczby komórek o danej strategii do liczby wszystkich komórek w kolejnych iteracjach: --> odnoœnik
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_W1}
 \captionof{figure}{}
 \end{minipage}
 \end{center}
-%wykresy + dodaæ "poni¿ej przedstawiono zale¿noœci takie a takie"
 Na nastêpuj¹cym wykresie przedstawiono procentowy udzia³ sum punktów danej strategii w ogólnych punktach zdobytych przez wszystkie strategie.
-Poni¿ej przedstawiono procentowy udzia³ poszczególnych strategii w kolejnych iteracjach:
+Poni¿ej przedstawiono procentowy udzia³ poszczególnych strategii w kolejnych iteracjach: --> odnoœnik + ucina nam wykres wysuwaj¹c go poza dokument
 \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{421_W2}
 \captionof{figure}{}
 \end{minipage}
 
-Na wykresach idealnie widaæ rosn¹c¹ dominacjê strategii, w szczególnoœci tych o niskim k - liczebnoœæ strategii o k = 1 znacz¹co przewy¿sza pozosta³e strategie. Zsumowane œrednie wartoœci punktów zdobytych przez tê strategiê zachowuj¹ sta³y trend wzrostowy.
-\vfill
+Na wykresach idealnie widaæ rosn¹c¹ dominacjê strategii o niskim k, w szczególnoœci tych o k = 1 - liczebnoœæ tej strategii znacz¹co przewy¿sza licznoœci pozosta³ych. Zsumowane œrednie wartoœci punktów zdobytych przez tê strategiê zachowuj¹ sta³y trend wzrostowy.
+
 \chapter{Przestrzenny Dylemat WiêŸnia o Uogólnionych S¹siedztwach}
 Oryginalne eksperymenty \cite{NM, IM} zosta³y rozszerzone równie¿ o uogólnione s¹siedztwa, a tak¿e dodatkowo powtórzone zosta³y eksperymenty J. Wanga \cite{W} dotycz¹ce rozszerzonych s¹siedztw Moore’a.
 
@@ -809,7 +806,7 @@ Dla przypomnienia poni¿ej znajduje siê uogólniona macierz wyp³at oryginalnego ek
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $b$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -821,7 +818,7 @@ Dla przypomnienia poni¿ej znajduje siê uogólniona macierz wyp³at oryginalnego ek
 \end{tabular}
 \end{center}
 
-Eksperyment powieliliœmy dla s¹siedztwa von Neumanna o rozmiarze 2 i 3 (dla parametru b = 1.4). W obydwu wypadkach struktura rozrasta siê szybciej, zgodnie z powiêkszonym s¹siedztwem:
+Eksperyment powieliliœmy dla s¹siedztwa von Neumanna o rozmiarze 2 i 3 (dla parametru $b$ = 1.4). W obu przypadkach struktura rozrasta siê szybciej, zgodnie z powiêkszonym s¹siedztwem:
 
 \begin{figure}[H] \centering \begin{minipage}[t]{.4\textwidth}
 \centering
@@ -841,7 +838,7 @@ Eksperyment powieliliœmy dla s¹siedztwa von Neumanna o rozmiarze 2 i 3 (dla para
 \captionof{figure}{Krok 3 - d = 2}
 \end{minipage}
 
-Szybsze rozrastanie siê struktur powoduje równie¿ szybsze osi¹gniêcie granic siatki:
+Szybsze rozrastanie siê struktur powoduje równie¿ szybsze osi¹gniêcie granic siatki: --> co widaæ na rysnkach x i y
 
 \begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
@@ -855,7 +852,7 @@ Szybsze rozrastanie siê struktur powoduje równie¿ szybsze osi¹gniêcie granic sia
 \end{minipage}
 \end{figure}
 
-Powoduje to, ¿e uk³ad w krótkim czasie destabilizuje siê:
+Szybszy rozrost powoduje, ¿e uk³ad w krótkim czasie destabilizuje co przedstawiono na --> odnoœnik
 
  \begin{minipage}[t]{\linewidth}
 \centering
@@ -864,7 +861,7 @@ Powoduje to, ¿e uk³ad w krótkim czasie destabilizuje siê:
 \end{minipage}
 
 
-Brak mo¿liwoœci obliczeniowych nie pozwoli³ na odkrycie jak d³ugo zajmie ustabilizowanie uk³adu, jednak¿e dla obliczonych iteracji wykres niestabilnoœci uk³adu (obrazuj¹cy ile komórek zmieni³o strategiê w danej iteracji) sugeruje d³ugi, chaotyczny przebieg obliczeñ. Zamieszczono go poni¿ej.
+Brak mo¿liwoœci obliczeniowych nie pozwoli³ na odkrycie jak d³ugo zajmie ustabilizowanie uk³adu, jednak¿e dla obliczonych iteracji wykres niestabilnoœci uk³adu (obrazuj¹cy ile komórek zmieni³o strategiê w danej iteracji) sugeruje d³ugi, chaotyczny przebieg obliczeñ. Zamieszczono go poni¿ej. --> odnoœnik zamiast "poni¿ej"
 
  \begin{minipage}[t]{\linewidth}
 \centering
@@ -873,7 +870,7 @@ Brak mo¿liwoœci obliczeniowych nie pozwoli³ na odkrycie jak d³ugo zajmie ustabil
 \end{minipage}
 
 
-Dla uk³adu o rozmiarze s¹siedztwa 3 wspomniane wczeœniej efekty zachodz¹ jeszcze szybciej - co wynika z szybszego rozrastania siê uk³adu.
+Dla uk³adu o rozmiarze s¹siedztwa 3 wspomniane wczeœniej efekty zachodz¹ jeszcze szybciej. Wnioskujemy, ¿e wynika to z szybszego rozrastania siê uk³adu.
 
 \begin{figure}[H]\centering \begin{minipage}[t]{.4\textwidth}
 \centering
@@ -887,28 +884,23 @@ Dla uk³adu o rozmiarze s¹siedztwa 3 wspomniane wczeœniej efekty zachodz¹ jeszcze
 \end{minipage}
 \end{figure}
 
-Uk³ad osi¹ga granice siatki ju¿ w kroku 6:
-
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{512_3}
-\captionof{figure}{Krok 2 - d = 3}
+\captionof{figure}{Krok 2 - d = 3. Osi¹gniêcie granic siatki przez strukturê.}
 \end{minipage}
-\end{center}
 
-Destabilizacja zaczyna byæ szczególnie widoczna w kroku 24:
-
- \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{512_4}
-\captionof{figure}{Krok 24 - d = 3}
+\captionof{figure}{Krok 24 - d = 3. Ostateczna destabilizacja struktur.}
 \end{minipage}
 
 
 W tym przypadku równie¿ nie uda³o siê osi¹gn¹æ stabilizacji z powodu zbyt d³ugich obliczeñ.
 \section{Eksperyment Ishidy i Moriego}
 %odnoœniki
-Eksperyment 3.2. \nameref{im1} opisuj¹cy klasteryzacjê strategii, zosta³ rozszerzony o dwa s¹siedztwa - s¹siedztwo Moore'a o rozmiarze 2 i s¹siedztwo Moore'a o rozmiarze 3. Wygenerowany zosta³ uk³ad pocz¹tkowy dla pierwszego s¹siedztwa. Poni¿ej znajduje siê graficzna reprezentacja wygenerowanego uk³adu pocz¹tkowego, kolory odpowiadaj¹ konkretnym strategiom.
+Rozszerzyliœmy 3.2. \nameref{im1} opisuj¹cy klasteryzacjê strategii o dwa s¹siedztwa - s¹siedztwo Moore'a o rozmiarze 2 i s¹siedztwo Moore'a o rozmiarze 3. Wygenerowany zosta³ uk³ad pocz¹tkowy dla pierwszego s¹siedztwa. Poni¿ej znajduje siê graficzna reprezentacja wygenerowanego uk³adu pocz¹tkowego, kolory odpowiadaj¹ konkretnym strategiom.
 
 \begin{figure}[H]
 \centering
@@ -921,19 +913,18 @@ Eksperyment 3.2. \nameref{im1} opisuj¹cy klasteryzacjê strategii, zosta³ rozszer
 \centering
 \includegraphics[width=0.366\textwidth]{521_L}
 \end{minipage}
-\caption{Uk³ad pocz¹tkowy + legenda}
+\caption{Uk³ad pocz¹tkowy}
 \end{figure}
 
 W tym eksperymencie równie¿ zaobserwowane wczeœniej zjawiska bêd¹ zachodziæ du¿o szybciej z powodu wiêkszych s¹siedztw.
 
-\begin{center} \begin{minipage}[t]{\linewidth}
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{521_2}
 \captionof{figure}{Krok 1}
 \end{minipage}
-\end{center}
 
-W kroku pierwszym dzia³ania automatu wiêkszoœæ uk³adu przyjmuje strategie k=0. Niewielka czêœæ posiada strategie k=1 i k=2. Pozosta³e strategiê maj¹ znacz¹co mniejsz¹ licznoœæ. Jest to ten sam efekt ekspansji strategii agresywnych, który mo¿na zauwa¿yæ w oryginalnym eksperymencie, przemno¿ony przez powiêkszone s¹siedztwo.
+W kroku pierwszym dzia³ania automatu wiêkszoœæ uk³adu przyjmuje strategiê k=0. Niewielka czêœæ posiada strategie k=1 i k=2. Pozosta³e strategie maj¹ znacz¹co mniejsz¹ licznoœæ. Jest to ten sam efekt ekspansji strategii agresywnych, który mo¿na zauwa¿yæ w oryginalnym eksperymencie, wzmocniony przez powiêkszone s¹siedztwo.
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -942,7 +933,7 @@ W kroku pierwszym dzia³ania automatu wiêkszoœæ uk³adu przyjmuje strategie k=0. N
 \end{minipage}
 \end{center}
 
-Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1.
+Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardziej agresywne prosperuj¹. Dominacja strategii k=0 zaczyna byæ zmniejszana przez strategiê k=1. --> dwie grafiki w jednej linii + merge komentarzy
 
 \begin{figure}[H] \begin{minipage}[t]{.4\textwidth}
 \centering
@@ -956,7 +947,7 @@ Tak jak poprzednio strategie o wysokich k zanikaj¹ podczas gdy strategie bardzie
 \end{minipage}
 \end{figure}
 
-Strategie pokojowe w praktyce ca³kowicie zaniknê³y, wszystkie pozosta³e strategie maj¹ k<5. Stopniowo strategie zanikaj¹, a¿ do prawie pe³nej dominacji strategii k=1:
+Strategie pokojowe zanik³y, wszystkie pozosta³e strategie maj¹ k<5. W kolejnych krokach równie¿ one bêd¹ stopniowo zanikaæ, a¿ do prawie pe³nej dominacji strategii k=1. --> odnoœnik
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -965,7 +956,7 @@ Strategie pokojowe w praktyce ca³kowicie zaniknê³y, wszystkie pozosta³e strategi
 \end{minipage}
 \end{center}
 
-Na poni¿szym wykresie zobaczymy liczebnoœæ liczebnoœæ strategii ró¿nych typów jako stosunek do ogólnej liczby komórek.
+Na wykresie -->ODNOŒNIK przedstawiono procentowy udzia³ strategii w kolejnych iteracjach.
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -973,8 +964,9 @@ Na poni¿szym wykresie zobaczymy liczebnoœæ liczebnoœæ strategii ró¿nych typów ja
 \captionof{figure}{}
 \end{minipage}
 \end{center}
-Wykres liczebnoœci pokazuje zarówno pocz¹tkow¹ drastyczn¹ dominacje strategii "zawsze zdradzaj" jak i póŸniejsze wybicie siê strategii "zdradzaj gdy 1 s¹siad zdradza". Mimo rozszerzenie s¹siedztwa i pojawienia siê znacz¹cej liczby nowych strategii nadal utrzymuje siê trend zanikania tych o wysokim k.
-Dla s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy uk³ad pocz¹tkowy. Dla ustalenia uwagi strategia „zawsze zdradzaj” zosta³a zaznaczona na czarno.
+Wykres liczebnoœci pokazuje zarówno pocz¹tkow¹ drastyczn¹ dominacjê strategii ,,zawsze zdradzaj'' jak i póŸniejsze wybicie siê strategii ,,zdradzaj gdy 1 s¹siad zdradza''. Mimo rozszerzenia s¹siedztwa i pojawienia siê znacz¹cej liczby nowych strategii nadal utrzymuje siê trend zanikania tych o wysokim k.
+
+W celu zbadania s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy uk³ad pocz¹tkowy. Dla ustalenia uwagi strategia „zawsze zdradzaj” zosta³a zaznaczona na czarno.
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -989,7 +981,9 @@ Dla s¹siedztwa Moore o rozmiarze 3 wygenerowany zosta³ nastêpuj¹cy uk³ad pocz¹tk
 \end{minipage}
 \end{center}
 
-W kroku 1 widaæ znacz¹c¹ dominacje strategii "zawsze zdradzaj", jednak¿e ju¿ w kroku 2 strategia k=1 zaczyna dominowaæ.
+--> zmieœciæ je obook siebie
+
+W kroku 1 widaæ znacz¹c¹ dominacje strategii ,,zawsze zdradzaj'', jednak¿e ju¿ w kroku 2 strategia k=1 zaczyna dominowaæ.
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -1005,7 +999,9 @@ W kroku 1 widaæ znacz¹c¹ dominacje strategii "zawsze zdradzaj", jednak¿e ju¿ w k
 \end{minipage}
 \end{center}
 
-W kolejnych krokach strategia k=0 zmniejsza swoj¹ liczebnoœæ. Ciekawym jest utworzenie siê nowej struktury "zawsze zdradzaj" w kroku 6, która nie istnia³a we wczeœniejszych krokach. Struktura ta odpowiada kszta³tem s¹siedztwu Moore'a o rozmiarze 3.
+-->obrazki obok siebie
+
+W kolejnych krokach strategia k=0 zmniejsza swoj¹ liczebnoœæ. Ciekawym jest utworzenie siê nowej struktury "zawsze zdradzaj" w kroku 6, która nie istnia³a we wczeœniejszych krokach. Struktura ta odpowiada kszta³tem s¹siedztwu Moore'a o rozmiarze 3. --> ??
 \begin{figure}[H]
 \centering
 \begin{minipage}[b]{.4\textwidth}
@@ -1024,13 +1020,13 @@ W dalszym ci¹gu obliczeñ automatu znacz¹ca zmniejsza siê iloœæ strategii innych 
 
 \section{Eksperyment Wanga}
 \cite{W}
-Eksperyment J. Wanga polega³ na zbadaniu jaki wp³yw na obliczenia przestrzennego dylematu wiêŸnia maj¹ rozszerzaj¹ce siê s¹siedztwa. Wnioskiem z tego eksperymentu by³o, ¿e im wiêksze s¹siedztwo tym wiêksza szansa na klasteryzacja siê tych samych strategii. Efekt ten mia³ byæ proporcjonalny do prawdopodobieñstwa wyboru najlepszego s¹siada podczas aktualizacji strategii. W tej pracy rozwa¿ymy szczególny przypadek w którym to prawdopodobieñstwo zbiega do 1.
+Eksperyment J. Wanga polega³ na zbadaniu jaki wp³yw na obliczenia przestrzennego dylematu wiêŸnia maj¹ rozszerzone s¹siedztwa. Wnioskiem z tego eksperymentu by³o, ¿e im wiêksze s¹siedztwo tym wiêksza szansa na klasteryzacja siê tych samych strategii. Efekt ten mia³ byæ proporcjonalny do prawdopodobieñstwa wyboru najlepszego s¹siada podczas aktualizacji strategii. W tej pracy rozwa¿ymy szczególny przypadek w którym to prawdopodobieñstwo zbiega do 1.
 
 \begin{center}
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $1.5$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -1042,7 +1038,7 @@ Eksperyment J. Wanga polega³ na zbadaniu jaki wp³yw na obliczenia przestrzennego
 \end{tabular}
 \end{center}
 
-W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strategii zawsze zdradzaj i zawsze wybaczaj reprezentowanych odpowiednio kolorem granatowym i ¿ó³tym.
+W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strategii zawsze zdradzaj i zawsze wybaczaj reprezentowanych odpowiednio kolorem granatowym i ¿ó³tym. Graficzna reprezentacja widoczna jest na --> odnoœnik
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -1054,11 +1050,11 @@ W celu powtórzenia eksperymentu wygenerowaliœmy uk³ad o losowym roz³o¿eniu strat
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{531_2}
-\captionof{figure}{Krok 1}
+\captionof{figure}{Krok 1. Mo¿na zaobserwowaæ znany z eksperymentów Ishidy i Moriego efekt pocz¹tkowej dominacji strategii agresywnych.}
 \end{minipage}
 \end{center}
 
-W kroku 1 widaæ znany z eksperymentów Ishidy i Moriego efekt pocz¹tkowej dominacji strategii agresywnych. Z braku wystêpowania strategii k=1 i k=2 istnieje niezerowe prawdopodobieñstwo przetrwania strategii pokojowej.
+[Z braku wystêpowania strategii k=1 i k=2 istnieje niezerowe prawdopodobieñstwo przetrwania strategii pokojowej.] --> przenieœæ do wniosków eksperymentu
 
 \begin{center} \begin{minipage}[t]{\linewidth}
 \centering
@@ -1067,7 +1063,7 @@ W kroku 1 widaæ znany z eksperymentów Ishidy i Moriego efekt pocz¹tkowej dominac
 \end{minipage}
 \end{center}
 
-W kolejnym kroku powsta³y przestrzenne struktury - strategie zaczê³y klastrowaæ siê. Strategie pokojowe mog¹ dziêki temu zyskiwaæ przewagê nad strategiami agresywnymi - strategia "zawsze zdradzaj" otrzymuje punkty za ka¿d¹ strategiê wybaczaj¹c¹ w swoim s¹siedztwie ale nie za inne k=0. Strategia "zawsze wybaczaj" zaœ przeciwnie. W wypadku powstania prostok¹tnej struktury w przestrzeni strategie zdradzaj¹ce maj¹ dostêp do 3 "¿ywicieli" podczas gdy strategie wybaczaj¹ce maj¹ do 5 wspieraj¹cych je komórek.
+W [kolejnym --> odnoœnik] kroku w ywniku klasteryzacji powsta³y przestrzenne struktury. Strategie pokojowe mog¹ dziêki temu zyskiwaæ przewagê nad strategiami agresywnymi - strategia ,,zawsze zdradzaj'' otrzymuje punkty za ka¿d¹ strategiê wybaczaj¹c¹ w swoim s¹siedztwie ale nie za inne k=0. W wypadku powstania prostok¹tnej struktury w przestrzeni strategie zdradzaj¹ce maj¹ dostêp do 3 "¿ywicieli" podczas gdy strategie wybaczaj¹ce maj¹ do 5 wspieraj¹cych je komórek.
 \begin{figure}[H]
 \centering
 \begin{minipage}[b]{.4\textwidth}
@@ -1102,7 +1098,8 @@ Zgodnie z wczeœniejsz¹ obserwacj¹, klastry strategii pokojowych rozszerzaj¹ siê,
 \captionof{figure}{Krok 97 - fina³owy}
 \end{minipage}
 \end{center}
-Powodem dlaczego struktury w przestrzeni strategii zdradzaj¹cych mog¹ istnieæ, jest odwrotna sytuacja do poprzednio opisanej - strategie zdradzaj¹ce maj¹ teraz przewagê s¹siadów, którzy s¹ ich "¿ywicielami". Powoduje to uzyskanie chwilowej przewagi przez agresorów, która przy zwiêkszeniu rozmiaru obiektu w przestrzeni zanika. Powoduje to oscylacje miêdzy kilkoma kszta³tami, co widaæ w krokach 95, 96 i 97.
+
+Przetrwanie strategii agresywnych wynika z faktu, ¿e maj¹ one teraz przewagê s¹siadów, którzy s¹ ich "¿ywicielami". Powoduje to uzyskanie chwilowej przewagi przez agresorów. Przewaga ta zanika wraz z rozrostem struktur agresywnych. Powoduje to oscylacje miêdzy kilkoma kszta³tami, co widaæ w krokach 95, 96 i 97.
 
 Ten sam uk³ad dla s¹siedztwa Moore'a o rozmiarze 2 i 3 dzia³a zupe³nie inaczej.
 
@@ -1117,7 +1114,7 @@ Dla s¹siedztwa o rozmiarze 2 w pierwszym kroku uzyskujemy uk³ad:
 
 Licznoœæ strategii pokojowych jest ni¿sza, co powoduje, ¿e nie s¹ one w stanie osi¹gn¹æ masy krytycznej wystarczaj¹cej do sklastrowania siê. W nastêpnym kroku uk³ad jest ca³kowicie zajêty przez strategie agresywne. Dla s¹siedztwa Moore'a o rozmiarze 3 nie zachodzi nawet przejœciowy krok w którym pozostaj¹ przy ¿yciu strategie pokojowe.
 
-Obserwacje dokonane na podstawie przeprowadzonych przez nas eksperymentów zgodne s¹ z wnioskami eksperymentu Wanga - powiêkszenie s¹siedztwa zwiêksza efekt klastrowania siê strategii, co wp³ywa na pocz¹tkow¹ dominacje strategii agresywnych - ich pocz¹tkowe klastrowanie siê powoduje, ¿e strategiom pokojowym brak wystarczaj¹co du¿ych struktur by przetrwaæ.
+Obserwacje dokonane na podstawie przeprowadzonych przez nas eksperymentów zgodne s¹ z wnioskami eksperymentu Wanga - powiêkszenie s¹siedztwa zwiêksza efekt klastrowania siê strategii, co wp³ywa na pocz¹tkow¹ dominacjê strategii agresywnych - ich pocz¹tkowe klastrowanie siê powoduje, ¿e strategiom pokojowym brak wystarczaj¹co du¿ych struktur by przetrwaæ.
 
 Dla macierzy 
 
@@ -1125,7 +1122,7 @@ Dla macierzy
 \begin{tabular}{cc|cc|cc|}
 \cline{3-6}
 & & \multicolumn{4}{ c| }{Gracz A} \\ \cline{3-6}
-& & \multicolumn{2}{c|}{Zdrada} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
+& & \multicolumn{2}{c|}{$\;\;\;$Zdrada$\;\;\;$} & \multicolumn{2}{c|}{Kooperacja} \\ \cline{1-6}
 \multicolumn{1}{ |c  }{\multirow{4}{*}{Gracz B} } &
 \multicolumn{1}{ |c| }{\multirow{2}{*}{Zdrada}} & & $1$ & & $1.01$    \\ 
 \multicolumn{1}{ |c  }{}                        &
@@ -1137,13 +1134,12 @@ Dla macierzy
 \end{tabular}
 \end{center}
 
-Strategie wybaczaj¹ce musz¹ mieæ tylko jednego wiêcej s¹siada kooperuj¹cego ni¿ strategie zdradzaj¹ce by nad nimi dominowaæ. W takiej sytuacji widzimy wiêksze klastrowanie siê strategii pokojowych:
-\begin{center} \begin{minipage}[t]{\linewidth}
+Strategie wybaczaj¹ce musz¹ mieæ tylko jednego wiêcej s¹siada kooperuj¹cego ni¿ strategie zdradzaj¹ce by nad nimi dominowaæ, co u³atwia im klasteryzacjê. U¿yto tego samego uk³adu pocz¹tkowego co --> odnoœnik
+\begin{minipage}[t]{\linewidth}
 \centering
 \includegraphics[scale=0.75]{533_1}
 \captionof{figure}{Uk³ad pocz¹tkowy}
 \end{minipage}
-\end{center}
 
 \begin{figure}[H]
 \centering
@@ -1159,7 +1155,7 @@ Strategie wybaczaj¹ce musz¹ mieæ tylko jednego wiêcej s¹siada kooperuj¹cego ni¿ 
 \end{minipage} 
 \end{figure}
 
-Jak widaæ struktury strategii pokojowej s¹ wiêksze w przypadku s¹siedztwa o wiêkszym rozmiarze.
+Jak widaæ struktury strategii pokojowej s¹ wiêksze w przypadku s¹siedztwa o wiêkszym zasiêgu.
 \begin{figure}[H]
 \centering
 \begin{minipage}[b]{.4\textwidth}
@@ -1188,13 +1184,10 @@ W tym przypadku struktury s¹ podobnego rozmiaru, jednak¿e s¹siedztwo wiêksze osi
 \end{minipage} 
 \end{figure}
 
-Uk³ad o wiêkszym s¹siedztwie znacz¹co szybciej osi¹gn¹³ stan stabilny - w kroku 7 w przeciwieñstwie do kroku 12 w s¹siedztwie mniejszym. Efekt zwiêkszonego klastrowania widoczny jest równie¿ w zwiêkszonej strukturze strategii agresywnych.
-
-\vfill
+Uk³ad o wiêkszym s¹siedztwie znacz¹co szybciej osi¹gn¹³ stan stabilny - w kroku siódmym w przeciwieñstwie do kroku dwunastego w s¹siedztwie mniejszym. Efekt zwiêkszonego klastrowania widoczny jest równie¿ w zwiêkszonej strukturze strategii agresywnych.
 
 \chapter{Wnioski}
-
-!!!!!!!!!!!!!!!!!
+%Teoria gier jest pe³na modeli, które choæ z pozoru wydaj¹ siê byæ proste, w rzeczywistoœci dobrze opisuj¹ z³o¿one zjawiska ekonomiczne i spo³eczne. Jednym z takich modeli jest dylemat wiêŸnia. Od momentu kiedy zosta³ po raz pierwszy formalnie zdefiniowany liczne badania z ró¿nych obszarów nauki od matematyki przez ekonomiê po socjologiê odnosi³y siê doñ, próbuj¹c dociec jaka strategia dzia³ania jest najlepsza i jak bardzo graj¹cy cz³owiek jest siê w stanie do tej optymalnej metody gry zbli¿yæ. Mnogoœæ i interdyscyplinarnoœæ zastosowañ dylematu wiêŸnia czyni¹ ten temat niezwykle interesuj¹cym, a rozliczne drogi modyfikacji, które mo¿na zastosowaæ na tej oryginalnej, prostej formule otwieraj¹ wiele ciekawych mo¿liwoœci badañ.
 
 \begin{thebibliography}{11}
 \bibitem[1]{NM} Martin A. Nowak, Robert M. May \emph{Evolutionary games and spatial chaos}, Nature, 1992, 359.6398: 826-829.
