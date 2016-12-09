@@ -1,5 +1,5 @@
 \chapter{Analiza Biznesowa}
-Niniejszy dodatek powsta³ przed procesem implementacji na potrzeby przedmiotu Projek Zespo³owy i stanowi wyci¹g z pierwoten analizy biznesowej ograniczony do informacji pominiêtych w g³ównej czêœci pracy in¿ynierskiej.
+Niniejszy dodatek powsta³ przed procesem implementacji na potrzeby przedmiotu Projekt Zespo³owy i stanowi wyci¹g z pierwotnej analizy biznesowej ograniczony do informacji pominiêtych w g³ównej czêœci pracy in¿ynierskiej.
 \section{Cele biznesowe}
 \subsection{Wymagania Funkcjonalne}
 Aplikacja zak³ada istnienie tylko jednego aktora – u¿ytkownika. Przewidujemy istnienie nastêpuj¹cych przypadków u¿ycia:
@@ -22,16 +22,83 @@ Aplikacja zak³ada istnienie tylko jednego aktora – u¿ytkownika. Przewidujemy ist
 \begin{itemize}
 \item Usability – Przejrzysty interfejs u¿ytkownika. Aplikacja obs³ugiwana g³ównie za pomoc¹ myszki.
 \item Relability – Dzia³anie na systemie Windows o wersji 7 lub wy¿szej posiadaj¹cej dostêp do œrodowiska uruchomieniowego jêzyka wspólnego .NET wersji 4.5.
-\item Performance –P³ynnoœæ obs³ugi przy wielkoœci problemu 50x50 na komputerach o specyfikacji zbli¿onej do komputerów w pracowniach komputerowych wydzia³u MiNI PW. Wykorzystanie mo¿liwoœci procesów wielordzeniowych w trakcie obliczeñ.
+\item Performance – P³ynnoœæ obs³ugi przy wielkoœci problemu 50x50 na komputerach o specyfikacji zbli¿onej do komputerów w pracowniach komputerowych wydzia³u MiNI PW. Wykorzystanie mo¿liwoœci procesów wielordzeniowych w trakcie obliczeñ.
 \item Security – Nie dotyczy, poniewa¿ aplikacja nie dokonuje przesy³ania danych miêdzy komputerami ani nie uwierzytelnia u¿ytkowników i nie przeprowadza obliczeñ na utajnionych danych.
 \end{itemize}
 \section{Testy Akceptacyjne}
 -->SCENARIUSZE!
 \section{Harmonogram Prac}
 Zamieszczony w tej sekcji harmonogram odzwierciedla tok prac nad aplikacj¹.
--->HARMONOGRAM
+\begin{center}
+\begin{tabular}{|c|c|c|p{10cm}|}
+\cline{1-4}
+\multicolumn{4}{ |c| }{\textbf{Harmonogram}}\\
+\cline{1-4}
+\textbf{Lp.} & \textbf{Data} & \textbf{Kto} & \textbf{Opis}
+\\
+\cline{1-4}
+\multirow{2}{*}{01} & \multirow{2}{*}{2015-11-20} & Patryk Kujawski & \multirow{2}{*}{Projektowanie aplikacji} \\ 
+& & B³a¿ej Bobko & \\
+\cline{1-4}
+
+02 & 2015-11-24 & B³a¿ej Bobko & Implementacja silnika logicznego \\
+\cline{1-4}
+03 & 2015-11-25 & Patryk Kujawski & Interfejs u¿ytkownika \\ \cline{1-4}
+\multirow{2}{*}{04} & \multirow{2}{*}{2015-12-01} & Patryk Kujawski & \multirow{2}{*}{Integracja modu³ów}
+\\
+& & B³a¿ej Bobko & \\ \cline{1-4} 
+05 & 2015-12-02 & B³a¿ej Bobko & Wielow¹tkowoœæ \\ \cline{1-4}
+06 & 2015-12-03 & Patryk Kujawski & Poprawki przejrzystoœci UI \\ \cline{1-4}
+\multirow{2}{*}{07} & \multirow{2}{*}{2016-02-01} & Patryk Kujawski & \multirow{2}{*}{Badanie problemów rozpoznawania wzorca} \\
+& & B³a¿ej Bobko & \\ \cline{1-4}
+08 & 2016-09-01 & B³a¿ej Bobko & Modyfikacja silnika logicznego w celu zwiêkszenia mo¿liwoœci obliczeniowych \\ \cline{1-4}
+09 & 2016-10-01 & Patryk Kujawski & Dodanie mo¿liwoœci wprowadzania macierzy niejednorodnych w UI \\ \cline{1-4}
+10 & 2016-10-02 & B³a¿ej Bobko & Dodania do silnika logicznego uogólnionych s¹siedztw i niejednorodnych macierzy \\ \cline{1-4}
+11 & 2016-10-10 & Patryk Kujawski & Modyfikacja UI w celu uwzglêdnienia nowych elementów silnika logicznego \\ \cline{1-4}
+\multirow{3}{*}{12} & 2016-10-15 & Patryk Kujawski & \multirow{3}{*}{Przeprowadzanie i opisywanie eksperymentów}\\
+& -- & & \\
+& 2016-11-25 & B³a¿ej Bobko & \\
+\cline{1-4}
+
+\end{tabular}
+\end{center}
 \chapter{Instrukja U¿ytkownika}
 \section{Interfejs U¿ytkownika}
---> UI obrazki z opisem funkcjonalnoœci
+\subsection{Okno g³ówne}
+\begin{figure}[H]
+\centering
+\includegraphics{UI1}
+\end{figure}
+\subsection{Okno wyboru uk³adu pocz¹tkowego}
+\begin{figure}[H]
+\centering
+\includegraphics{UI2}
+\end{figure}
+\subsection{Okno symulacji}
+\begin{figure}[H]
+\centering
+\includegraphics{UI3}
+\end{figure}
+\vfill
+\subsection{Okno wyboru macierzy niejednorodnych}
+\begin{figure}[H]
+\centering
+\includegraphics{UI4}
+\end{figure}
 \section{Diagramy stanów}
--->Diagramy stanów
+\subsection{Stany wprowadzania macierzy}
+\begin{figure}[H]
+\centering
+\includegraphics{DS1}
+\end{figure}
+\subsection{Stany wprowadzania uk³adu pocz¹tkowego}
+\begin{figure}[H]
+\centering
+\includegraphics{DS2}
+\end{figure}
+\vfill
+\subsection{Stany symulacji}
+\begin{figure}[H]
+\centering
+\includegraphics{DS3}
+\end{figure}
