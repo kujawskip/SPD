@@ -1,0 +1,181 @@
+\chapter{Dokumentacja techniczna}
+\section{Diagramy klas}
+\subsection{Przestrzeñ nazw SPD.Engine}
+\begin{figure}[H]
+\centering
+\begin{minipage}{.4\textwidth}
+\centering
+\includegraphics[width=\linewidth]{DT1}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+\centering
+\includegraphics[width=1.4\linewidth]{DT2}
+\end{minipage}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{DT3}
+\end{figure}
+\subsection{Przestrzeñ nazw SPD.Engine.Neighbourhoods}
+\begin{figure}[H]
+\centering
+\includegraphics{DT4}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{DT5}
+\end{figure}
+
+\subsection{Przestrzeñ nazw SPD.Engine.Strategies}
+\begin{figure}[H]
+\centering
+\includegraphics{DT6}
+\end{figure}
+
+\subsection{Opis Klas}
+\subsubsection{Interfejs IStrategy}
+Wymusza implementacjê  sposobu podejmowania decyzji na podstawie danych o wspó³graj¹cych komórkach.
+\begin{itemize}
+\item StrategyCode – w³aœciwoœæ wykorzystywana przez SPD do wykrywania stabilizacji, ka¿da strategia bior¹ca udzia³ w obliczeniu powinna mieæ unikalny StrategyCode. Na tej podstawie SPD dokonuje rozró¿nienia ró¿nych strategii implementowanych przy pomocy tej samej klasy (jak w przypadku IntegerStrategy).
+\item bool Decide(Coord opponent) – zwraca decyzjê o zdradzie (true) b¹dŸ kooperacji (false). Ka¿da instancja strategii wywo³uje tê funkcjê raz na krok na s¹siada.
+\item void PostProcess(Coord opponent, bool betrayed) – odpowiada za przetworzenie decyzji przeciwnika w celu ustosunkowania siê do niej w kolejnych krokach. Ka¿da instancja strategii wywo³uje tê funkcjê raz na krok na s¹siada.
+\item void EndStep() – postprocessing kroku, ka¿da instancja strategii wywo³uje tê funkcjê raz na krok.
+\item void Clear() – postprocessing pokolenia, ka¿da instancja strategii wywo³uje tê funkcjê raz na pokolenie.
+\item IStrategy GetCopy() – Tworzenie czystej kopii strategii na rzecz jej propagacji w trakcie etapu SPD optymalizowania strategii.
+\end{itemize}
+\subsubsection{Klasa IntegerStrategy}
+Implementuje interfejs IStrategy w sposób opisany w specyfikacji problemu – Zdradza jeœli podane k s¹siadów j¹ zdradzi³o w poprzednim kroku. Z perspektywy technicznej strategie „nigdy nie zdradzaj” i  „zawsze zdradzaj” s¹ realizowana przez klasê IntegerStrategy z parametrem k odpowiednio n i 0, gdzie n to maksymalna licznoœæ s¹siadów komórki + 1.\
+\begin{itemize}
+\item int BetrayalTreshold – próg zdrady, iloœæ tolerowanych zdrad po których strategia sstaje siê agresywna.
+\item int StrategyCode – Dla odró¿nienia ró¿nych strategii implementowanych przez tê klasê StrategyCode jest parametryzowany progiem zdrady (czyli iloœci¹ zdrad po której strategia staje siê agresywna)
+\item bool Decide(Coord opponent) – zwraca true jeœli w poprzednim kroku przekroczono próg zdrady, false w p.p.
+\item void PostProcess(Coord opponent, bool betrayed) – zlicza zdrady
+\item void EndStep() – podnosi flagê agresywnoœci jeœli iloœæ tolerowanych zdrad zosta³a przekroczona. Czyœci licznik zdrad.
+\item void Clear() – Czyœci liczniki i flagi.
+\item IStrategy GetCopy() – tworzy swoj¹ czyst¹ kopiê.
+\item Konstruktor przyjmuje próg zdrady w formie liczby ca³kowitej
+\end{itemize}
+\subsubsection{Klasa Coord}
+Klasa pomocnicza opisuj¹ca po³o¿enie gracza / strategii na siatce. Wykorzystywana jako klucz s³ownikowy w trakcie obliczeñ oraz GetHashCode() na rzecz optymalizacji procesu wykrywania stabilizacji uk³adu.
+\subsubsection{Klasa PointMatrix}
+Klasa pomocnicza przetrzymuj¹ca informacje na temat macierzy wyp³at obliczenia.
+\begin{itemize}
+\item float NoneBetrayed – nagroda któr¹ dostaj¹ obaj gracze, jeœli ¿aden nie zdradzi³.
+\item float WasBetrayed – iloœæ punktów przyznane=ych zdradzonemu.
+\item float BetrayedOther – iloœæ punktów przyznawanych zdradzaj¹cemu.
+\item float BothBetrayed – iloœc punktów przyznawanych graczom jeœli obaj zdradzili.
+\item void GetPoints(bool firstBetrayed, bool secondBetrayed, out float firstPoints, out float secondPoints) – funkcja s³u¿¹ca ekstrakcji nagród dla obu graczy w zadanej kombinacji decyzji.
+\end{itemize}
+\subsubsection{Interfejs INeighbourhood}
+Definiuje s¹siedztwo w obliczeniu automatu poprzez:
+\begin{itemize}
+\item IEnumerable<Coord> GetNeighbours(int x, int y) – zwraca kolekcjê s¹siadów komórki o wspó³rzêdnych (x,y)
+\item IEnumerable<Coord> GetNeighbours(Coord c) – jak wy¿ej.
+\item IEnumerable<Coord> GetHalfNeighbours(int x, int y) – Zwraca dok³adnie po³owê s¹siadów gracza o koordynatach (x,y) tak¹, ¿e ¿adna para ze zwróconej kolekcji nie znajduje siê naprzeciw siebie wzglêdem (x,y) pojmowanego jako œrodek.
+\item IEnumerable<Coord> GetHalfNeighbours(Coord c) – jak wy¿ej.
+\end{itemize}
+Klasa SPD wykonuj¹c obliczenia z u¿yciem strategii traktuje s¹siedztwa na dwa sposoby: dla zadanej strategii musi przetworzyæ ca³e jej s¹siedztwo b¹dŸ przetwarzaj¹c strategie s¹siedzkie przetwarza obie jednoczeœnie. W drugim przypadku korzystamy z kolekcji zawieraj¹cej po³owê s¹siadów, dziêki czemu ka¿da para s¹siedzkich komórek przetwarzana jest tylko raz.\
+\subsubsection{Klasa SPD}
+Odpowiada za obliczenie automatu komórkowego
+\begin{itemize}
+\item Func<Coord, PointMatrix> Matrix – W³aœciwoœæ daj¹ca dostêp do macierzy wyp³at obowi¹zuj¹cej w trakcie obliczenia. W klasycznym wariancie przestrzennego dylematu wiêŸnia delegat ten zawsze zwraca tê sam¹ macierz.
+\item int CurrentIteration – Przetrzymuje informacjê o tym, które pokolenie obecnie jest obliczane
+\item int Width – szerokoœæ siatki graczy.
+\item int Height – wysokoœæ siatki graczy.
+\item int StepsPerIteration – iloœæ kroków przypadaj¹cych na jedno pokolenie.
+\item int ThreadCount – iloœæ w¹tków na których przeprowadzane jest obliczenie.
+\item OptimizationKind OptimizationKind – rodzaj optymalizacji strategii, nie ma wp³ywu na wynik jeœli Matrix jest funkcj¹ sta³¹.
+\item Coord[] Neighbours(int x, int y) – zwraca s¹siadów gracza o zadanych koordynatach.
+\item SPDResult Iterate() – Wykonaj krok automatu.
+\item Task<SPDResult> IterateAsync() – Wykonaj krok automatu asynchronicznie.
+\end{itemize}
+Konstruktory:
+\begin{itemize}
+\item SPD(Func<Coord, PointMatrix> mFunc, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1, OptimizationKind optimizationKind = OptimizationKind.Absolute)
+\item SPD(PointMatrix m, INeighbourhood neighbourhood, int[,] initialConfiguration, IDictionary<int, IStrategy> possibleStrategies, int stepNum, int threadNum = 1, OptimizationKind optimizationKind = OptimizationKind.Absolute)
+\end{itemize}
+Gdzie:
+\begin{itemize}
+\item mFunc – funkcja determinuj¹ca macierz wyp³at obowi¹zuj¹c¹ grcza o zadanych koordynatach.
+\item m – macierz wyp³at obowi¹zuj¹ca wszystkich graczy.
+\item neighbourhood – obiekt determinuj¹cy s¹siedztwo obowi¹zuj¹ce w obliczeniu SPD.
+\item initialConfiguration – tablica identyfikatorów strategii determinuj¹ca pocz¹tkowe rozmieszczenie strategii na siatce jak równie¿ wysokoœæ i szerokoœæ siatki.
+\item possibleStrategies – s³ownik w którym kluczem jest identyfikator zaœ wartoœci¹ jest strategia.
+\item stepNum – iloœæ kroków (decyzji) w toku jednego pokolenia.
+\item threadNum – iloœæ w¹tków na których ma odbywaæ siê obliczenie.
+\item optimizationKind – rodzaj optymalizacji strategii.
+\begin{itemize}
+\item Absolute – pod uwagê brany jest tylko wynik punktowy s¹siadów.
+\item Relative – pod uwagê brany jest ci¹g decyzji s¹siada i obliczana jest iloœæ punktów jak¹ by zdoby³ posiadaj¹c inn¹ macierz wyp³at.
+\end{itemize}
+\end{itemize}
+\subsubsection{Klasa SPDResult}
+Struktura POCO reprezentuj¹ca wynik obliczenia SPD, czyli stan automatu w konkretnym pokoleniu.
+\begin{itemize}
+\item int[,] StrategyConfig – rozmieszczenie strategii na siatce w formie dwuwymiarowej tablicy identyfikatorów strategii
+\item float[,] Points – iloœæ punktów jakie zebra³y strategie w toku tego pokolenia
+\item bool Stabilization – czy wykryto stabilizacjê uk³adu
+\end{itemize}
+\subsection{Opis Algorytmu}
+Klasa SPD w momencie inicjalizacji przeprowadza preprocessing danych wejœciowych. Dla oszczêdnoœci obliczeniowej (kosztem pamiêci) dla ka¿dego gracza generujemy tablicê koordynatów jego s¹siadów oraz ka¿demu t=1…threadNum (reprezentuj¹cym podzia³ obliczenia na w¹tki) przydzielamy tablicê koordynatów którymi dany w¹tek bêdzie siê zajmowa³.
+
+Jeden krok automatu wygl¹da nastêpuj¹co:
+\begin{itemize}
+\item Powórz stepCount razy
+\begin{itemize}
+\item Zleæ w¹tkom wykonanie funkcji Decide(podejmuj¹c¹ decyzjê czy zdradziæ czy nie) na przydzielonych im strategiach, zapamiêtaj decyzje strategii i zaczekaj, a¿ skoñcz¹
+\begin{itemize}
+\item Korzystaj¹c z INeighbourhood.GetHalfNeighbours sprawiamy, ¿e iteruj¹c po graczach a nastêpnie po po³owie ich s¹siadów ¿adnej pary s¹siadów nie przetworzymy dwukrotnie.
+\item Dla ka¿dego gracza podleg³ego w¹tkowi (gracz ten ma wspó³rzêdne c)
+\begin{itemize}
+\item Dla ka¿dego s¹siada s z po³owicznej kolekcji s¹siadów c
+\begin{itemize}
+\item Wywo³aj funkcjê Decide(s) strategii gracza o koordynatach c
+\item Wywo³aj funkcjê funkcjê Decide(c) strategii gracza o koordynatach s
+\item Zapamiêtaj obie decyzje
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item Zleæ w¹tkom wykonanie funkcji PostProcess(wykonuj¹c¹ dzia³ania odpowiedzialne za ustosunkowanie siê strategii do zaistnia³ej sytuacji) na przydzielonych im strategiach na podstawie wyników poprzedniego kroku, zapisz zdobyte przez strategie punkty (oraz kombinacje decyzji par na potrzeby optymalizacji wzglêdnej) i zaczekaj, a¿ skoñcz¹
+\begin{itemize}
+\item Korzystaj¹c z INeighbourhood.GetHalfNeighbours sprawiamy, ¿e iteruj¹c po graczach a nastêpnie po po³owie ich s¹siadów ¿adnej pary s¹siadów nie przetworzymy dwukrotnie.
+\item Dla ka¿dego gracza podleg³ego w¹tkowi  (gracz ten ma wspó³rzêdne c)
+\begin{itemize}
+\item Dla ka¿dego s¹siada s z po³owicznej kolekcji s¹siadów c
+\begin{itemize}
+\item ZnajdŸ zapamiêtane decyzje graczy
+\begin{itemize}
+\item Ozn. $D_c($s$)$ =  decyzja c przeciw s
+\end{itemize}
+\item Wywo³aj funkcjê PostProcess(s, $D_s($c$)$) strategii gracza o koordynatach c
+\item Wywo³aj funkcjê PostProcess(c, $D_c($s$)$) strategii gracza o koordynatach s
+\item Zapamiêtaj kombinacjê decyzji dla tej pary oraz zaktualizuj ich punkty wynikaj¹ce z ich macierzy wyp³at
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\item Zleæ w¹tkom wykonanie funkcji EndStep(czyszcz¹c¹ flagi i pamiêæ pomiêdzy ruchami graczy) na przydzielonych im strategiach i zaczekaj, a¿ skoñcz¹
+\end{itemize}
+\item Zleæ w¹tkom wykonanie funkcji Clear(czyszcz¹cej flagi i pamiêæ po wykonaniu wszystkich ruchów) na przydzielonych im strategiach i zaczekaj a¿ skoñcz¹.
+\item Zleæ w¹tkom optymalizacjê strategii
+\begin{itemize}
+\item Na potrzeby oszczêdnoœci zu¿ycia procesora przy przeszukiwaniu s³owników w tym etapie wykorzystano INeighbourhood.GetNeighbours.
+\item Tworzony jest pomocniczy s³ownik (thread safe) w którym w¹tki bêd¹ umieszcza³y dla ka¿dej z przydzielonych im strategii now¹, wynikaj¹c¹ z procesu optymalizacji.
+\item Optymalizacja jednej komórki wygl¹da nastêpuj¹co
+\begin{itemize}
+\item Dla optymalizacji bezwzglêdnej (Absolute) rozpatrujemy komórkê a nastêpnie jej s¹siadów (w kolejnoœci zdefiniowanej przez zadane s¹siedztwo) w poszukiwaniu (pierwszej) maksymalnej liczby punktów zdobytej poœród nich. Zwracana jest strategia o tej iloœci punktów.
+\item Dla optymalizacji wzglêdnej (Relative) rozpatrujemy komórkê c oraz a nastêpnie dla ka¿dego z s¹siadów ewaluujemy jego ci¹g decyzji wzglêdem obowi¹zuj¹cej komórkê c macierzy wyp³at ¿eby dowiedzieæ siê jaka jest wzglêdna wartoœæ punktowa tego s¹siada. Wy³aniamy najbardziej efektywnego na podstawie obliczonych punktacji wzglêdnych.
+\end{itemize}
+\item Po zakoñczeniu procesu wy³aniania najlepszych s¹siadów nastêpuje przepisanie pomocniczego s³ownika do s³ownika przetrzymuj¹cego stan automatu
+\end{itemize}
+\item Dodanie nowej konfiguracji do kolekcji przesz³ych iteracji
+\begin{itemize}
+\item Obliczenie wartoœci funkcji mieszaj¹cej dla nowego pokolenia.
+\item Przeszukanie kolekcji poprzednich konfiguracji w poszukiwaniu takiej, która mia³aby taki sam wynik funkcji mieszaj¹cej – jest ona kandydatem na pocz¹tek cyklu.
+\item Porównanie kandydatów z now¹ konfiguracj¹ i stwierdzenie, czy nast¹pi³o powtórzenie – powtórzenie oznacza stabilizacjê uk³adu – powsta³ cykl.
+\end{itemize}
+\item Generacja wynikowej struktury SPDResult.
+\item Postprocessing – czyszczenie zmiennych i kolekcji pomocniczych.
+\item Inkrementacja licznika pokoleñ.
+\end{itemize}
+
+

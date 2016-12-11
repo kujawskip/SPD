@@ -73,6 +73,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\SPD2.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\PerformanceLog.cs" />
     <Compile Include="View\ColorPicker.xaml.cs">
