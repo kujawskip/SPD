@@ -75,7 +75,7 @@
         </GroupBox>
         <Menu HorizontalAlignment="Left">
             <MenuItem Header="Opcje">
-                <MenuItem Header="Zmień czcionke" Click="Font_OnClick" />
+                <MenuItem Header="Zmień czcionkę" Click="Font_OnClick" />
                 <MenuItem Header="Zmień kolory" Click="Color_OnClick" />
             </MenuItem>
         </Menu>

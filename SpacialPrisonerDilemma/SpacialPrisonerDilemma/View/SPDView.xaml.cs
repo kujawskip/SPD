@@ -288,7 +288,7 @@ namespace SpacialPrisonerDilemma.View
                 new SPD.Engine.SPD(
                     Matrix.Function,
                     neighbourhood, strategies,
-                  _strategyDictionary, 10, threadNum, Matrix.ModifiedPointCounting ? SPD.Engine.OptimizationKind.Relative : SPD.Engine.OptimizationKind.Absolute);
+                  _strategyDictionary, 10, threadNum, Matrix.ModifiedPointCounting ? OptimizationKind.Relative : OptimizationKind.Absolute);
 
             Speed = 1;
             PointsModel = new PlotModel();
@@ -579,14 +579,7 @@ namespace SpacialPrisonerDilemma.View
 
             if (Looper != null) Looper.Wait();
             if (_iteration != null) _iteration.Wait();
-            var pl = Model.SPD.ClearAndGetLog();
-            if (!PerformanceCheck.IsChecked.HasValue || !PerformanceCheck.IsChecked.Value) return;
             
-
-            if (pl.StepTimes.Length == 0) return;
-             MessageBox.Show(string.Format("Mediana: {0}\nŚrednia: {1}\nMaksymalny czas kroku: {2}\nMinimalny czas kroku: {3}",
-                       pl.Median, pl.Average, pl.MaxStepTime, pl.MinStepTime));
-
         }
 
         private Brush GetBrush(int p)

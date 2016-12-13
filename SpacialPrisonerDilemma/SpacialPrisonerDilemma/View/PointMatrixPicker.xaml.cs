@@ -7,11 +7,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Win32;
-using SpacialPrisonerDilemma.Model;
-using System.Windows.Controls.Primitives;
 using SPD.Engine;
 
 namespace SpacialPrisonerDilemma.View
@@ -290,6 +289,7 @@ namespace SpacialPrisonerDilemma.View
                 var fs = new FileStream(ofd.FileName,FileMode.Open);
                 var obj = bf.Deserialize(fs);
                 Condition = PointMatrixPick.CreatePickFromIC(obj as InitialConditions, Condition);
+                fs.Close();
             }
         }
 
@@ -303,7 +303,8 @@ namespace SpacialPrisonerDilemma.View
             {
                 var fs = new FileStream(ofd.FileName, FileMode.Create);
                 bf.Serialize(fs,Condition);
-               
+                fs.Close();
+
             }
         }
 

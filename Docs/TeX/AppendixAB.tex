@@ -26,7 +26,277 @@ Aplikacja zak³ada istnienie tylko jednego aktora – u¿ytkownika. Przewidujemy ist
 \item Security – Nie dotyczy, poniewa¿ aplikacja nie dokonuje przesy³ania danych miêdzy komputerami ani nie uwierzytelnia u¿ytkowników i nie przeprowadza obliczeñ na utajnionych danych.
 \end{itemize}
 \section{Testy Akceptacyjne}
--->SCENARIUSZE!
+\begin{enumerate}
+\item	Modyfikacja macierzy wyp³at + b³êdy
+\begin{enumerate}
+\item	W oknie g³ównym aplikacji mo¿na zdefiniowaæ 4 wartoœci macierzy wyp³at (pocz¹tkowo wype³nione s¹ domyœlnymi wartoœciami). Wartoœci s¹ walidowane.
+\item	Test: Wprowadzenie wartoœci nie spe³niaj¹cych warunków dylematu wiêŸnia
+\begin{enumerate}
+\item	Oczekiwany efekt: b³¹d wartoœci
+\item	Wynik testu: W interfejsie wprowadzania wartoœci macierzy wyœwietli³ siê komunikat "B³¹d wartoœci". Przejœcie do symulacji nie by³o mo¿liwe.
+\end{enumerate}
+\item	Test: znaki nie bêd¹ce liczbami
+\begin{enumerate}
+\item	Oczekiwany efekt: b³¹d przetwarzania
+\end{enumerate}
+\item	Wynik testu: W interfejsie wprowadzania wartoœci macierzy wyœwietli³ siê komunikat "B³¹d przetwarzania". Przejœcie do symulacji nie by³o mo¿liwe.
+\item	Test: poprawne wartoœci
+\begin{enumerate}
+\item	Oczekiwany efekt: brak komunikatu o b³êdzie
+\item	Wynik testu: Dla ró¿nych wartoœci macierzy obliczenia symulacji uzyskuj¹ ró¿ne efekty
+\end{enumerate}
+\end{enumerate}
+\item	Wprowadzenie / zmodyfikowanie uk³adu pocz¹tkowego
+\begin{enumerate}
+\item	W oknie g³ównym aplikacji po klikniêciu przycisku „WprowadŸ pocz¹tkowy stan” otwiera siê okno definiowania stanów pocz¹tkowych.
+\item	Test: modyfikacja
+\begin{enumerate}
+\item	Oczekiwany efekt: jeœli wczeœniej zdefiniowano uk³ad pocz¹tkowy to jego wizualizacja zostanie przedstawiona w oknie gotowa do modyfikacji.
+\item	Wynik testu: Zaakceptowano uk³ad i otworzono okno wprowadzania uk³adu ponownie. Wizualizacja zosta³a przedstawiona zgodnie z oczekiwaniami.
+\end{enumerate}
+\item	Test: losowy uk³ad
+\begin{enumerate}
+\item	Dodatkowe kroki: Klikniêcie przycisku „Losowy”
+\item	Oczekiwany efekt: Wygenerowany zostanie uk³ad pocz¹tkowy o zadanym rozmiarze z równym prawdopodobieñstwem dla ka¿dej strategii.
+\item	Wynik testu: Zosta³ wygenerowany uk³ad o losowym kszta³cie.
+\item	Oczekiwany efekt: Jeœli „Tryb dwustanowy” jest zaznaczone wygenerowany zostanie uk³ad pocz¹tkowy o zadanym rozmiarze z równym prawdopodobieñstwem dla strategii „zawsze zdradzaj” i „zawsze wybaczaj”
+\item	Wynik testu: Wystêpuj¹ tylko te dwie strategie w zbli¿onej liczebnoœci.
+\end{enumerate}
+\item	Test: zdefiniowany uk³ad
+\begin{enumerate}
+\item	Dodatkowe kroki: Wybranie z listy geometrii uk³adu.
+\item	Oczekiwany efekt: Wygenerowany zostanie uk³ad pocz¹tkowy o zadanym rozmiarze o rozmieszczeniu zgodnym z wybran¹ geometri¹.
+\item	Wynik testu: Wybrano z listy opcjê "Ko³o" dla rozmiaru 20, utworzy³ siê uk³ad sk³adaj¹cy siê z pierœcieni rozchodz¹cych siê od œrodka planszy.
+\item	Oczekiwany efekt: Jeœli „Tryb dwustanowy” jest zaznaczone wygenerowany zostanie uk³ad pocz¹tkowy o zadanym rozmiarze o rozmieszczeniu zgodnym z wybran¹ geometri¹ zawieraj¹cy jedynie strategie „zawsze zdradzaj” i „zawsze wybaczaj”.
+\item	Wynik testu: Ponownie wybrano "Ko³o". Wygenerowany zosta³ uk³ad przedstawiaj¹cy ko³o o kolorze niebieskim ("zawsze zdradzaj") na tle koloru ¿ó³tego ("zawsze wybaczaj").
+\end{enumerate}
+\item	Test: zmiana rozmiaru przy wprowadzonym stanie
+\begin{enumerate}
+\item	Dodatkowe kroki: przesuniêcie suwaka rozmiaru
+\item	Oczekiwany efekt: powtórna generacja uk³adu na podstawie parametrów o nowo zdefiniowanym rozmiarze.
+\item	Wynik testu: Po wybraniu opcji "Ko³o" i zmianie rozmiaru suwaka, wygenerowa³ siê wiêkszy uk³ad o kszta³cie ko³a.
+\end{enumerate}
+\item	Test: zamiana pojedynczych komórek
+\begin{enumerate}
+\item	Dodatkowe kroki: zaznaczenie „zmiana komórki”, wybór docelowego koloru z listy lub legendy, klikniêcie komórki, któr¹ chcemy zamieniæ.
+\item	Oczekiwany efekt: komórka zmieni strategiê (kolor) na wybran¹.
+\item	Wynik testu: Wybrano z legendy strategiê "zawsze wybaczaj" co zmieni³o kolor na liœcie wyboru kolorów. Nastêpnie klikniêto komórkê, która zmieni³a kolor na ¿ó³ty.
+\end{enumerate}
+\item	Test: podmiana ca³ej klasy strategii na inn¹
+\begin{enumerate}
+\item	Dodatkowe kroki: zaznaczenie „zast¹pienie koloru”, wybór docelowego koloru z listy lub legendy, klikniêcie komórki.
+\item	Oczekiwany efekt: wszystkie komórki o tym samym kolorze co klikniêta zmieni¹ strategiê (kolor) na wybran¹.
+\item	Wynik testu: Wybrano opcjê "Ko³o" w trybie dwustanowym. Nastêpnie wybrano z listy strategiê zawsze zdradzaj i klikniêciem zast¹piono wszystkie strategie zawsze wybaczaj.
+\end{enumerate}
+\item	Test: zatwierdzanie uk³adu pocz¹tkowego
+\begin{enumerate}
+\item	Oczekiwany efekt: Jeœli wprowadzono uk³ad pocz¹tkowy to przycisk „Akceptuj” jest aktywny i po klikniêciu przekierowuje z powrotem do okna g³ównego.
+\item	Wynik testu: Wciœniêto przycisk "ZatwierdŸ". Okno zamknê³o siê. Przycisk "Uruchom" w g³ównym oknie sta³ siê aktywny.
+\end{enumerate}
+\end{enumerate}
+\item	Zapisanie / wczytanie uk³adu pocz¹tkowego (serializacja)
+\begin{enumerate}
+\item	W oknie g³ównym aplikacji po klikniêciu przycisku „WprowadŸ pocz¹tkowy stan” otwiera siê okno definiowania stanów pocz¹tkowych.
+\item	Test: Wczytanie uk³adu pocz¹tkowego
+\begin{enumerate}
+\item	Dodatkowe kroki: Klikniêcie „Wczytaj” oraz wybór pliku *.cic w eksploratorze plików
+\item	Oczekiwany efekt: Zapisany w pliku uk³ad zostanie wczytany do aplikacji i przedstawiony w wizualizacji.
+\item	Wynik testu: Zapisano krok symulacji a nastêpnie wczytano, wizualizacja zmieni³a siê na oczekiwan¹.
+\end{enumerate}
+\item	Test: Zapisanie uk³adu pocz¹tkowego
+\begin{enumerate}
+\item	Oczekiwany efekt: Jeœli wprowadzono uk³ad pocz¹tkowy to przycisk „Zapisz” jest aktywny i po klikniêciu otwiera okno zapisywania pliku.
+\item	Wynik testu: Zapisano plik z uk³adem, który nastêpnie wczytano bez b³êdu.
+\end{enumerate}
+\end{enumerate}
+\item	Zmiana s¹siedztwa (i jak siê ma do uk³adu pocz¹tkowego)
+\begin{enumerate}
+\item	W oknie g³ównym mo¿na wybraæ s¹siedztwo, jego zasiêg jak i geometriê planszy.
+\item	Test: Zmiana s¹siedztwa
+\begin{enumerate}
+\item	Oczekiwany efekt: Okno ustalenia uk³adu zmieni siê na podstawie zmienionego s¹siedztwa
+\item	Wynik testu: Okno ustalania uk³adu pocz¹tkowego jest œwiadome potencjalnej liczbie s¹siadów i bierze pod uwagê liczbê strategii równ¹ maksimum licznoœci s¹siedztwa na planszy przy generowaniu uk³adu.
+\item	Oczekiwany efekt: Jeœli wczeœniej zaakceptowano uk³ad pocz¹tkowy jest on tracony.
+\item	Wynik testu: Po powiêkszeniu rozmiaru s¹siedztwa uk³ad zosta³ stracony.
+\end{enumerate}
+\end{enumerate}
+\item	Wprowadzenie uk³adu macierzy wyp³at
+\begin{enumerate}
+\item	Po wprowadzeniu uk³adu pocz¹tkowego i poprawnej macierzy wyp³at mo¿liwe jest naciœniêcie przycisku „zaawansowane”. Otwiera to okno definiowania uk³adów macierzy.
+\item	Test: dodanie nowej macierzy
+\begin{enumerate}
+\item	Dodatkowe kroki: wprowadzenie macierzy wyp³at w prawej stronie okna i klikniêcie „+”.
+\item	Oczekiwany efekt: jeœli nowa macierz wyp³at jest poprawna i nie wystêpuje na liœcie macierzy zostanie dodana do listy rozpatrywanej macierzy. W p.p. przycisk „+” jest nieaktywny.
+\item	Wynik testu: Brak mo¿liwoœci dodania tej samej macierzy drugi raz (przycisk "+" jest nieaktywny.) Zmieniono jedn¹ z wartoœci macierzy na liczbê spe³niaj¹c¹ warunki dylematu wiêŸnia - przycisk + sta³ siê aktywny. Nastêpnie zmieniono jedn¹ z wartoœci na tekst "Error" - przycisk ponownie zdezaktywowa³ siê. Po powrocie do wczeœniej wartoœci przycisk zosta³ wciœniêty i macierz pojawi³a siê na liœcie.
+\end{enumerate}
+\item	Test: losowy uk³ad
+\begin{enumerate}
+\item	Dodatkowe kroki: Klikniêcie przycisku „Losowy”
+\item	Oczekiwany efekt: Wygenerowany zostanie uk³ad macierzy z równym prawdopodobieñstwem dla ka¿dej macierzy.
+\item	Wynik testu: Uzyskano losowy uk³ad macierzy na siatce.
+\end{enumerate}
+\item	Test: zdefiniowany uk³ad
+\begin{enumerate}
+\item	Dodatkowe kroki: Wybranie z listy geometrii uk³adu.
+\item	Oczekiwany efekt: Wygenerowany zostanie uk³ad macierzy o rozmieszczeniu zgodnym z wybran¹ geometri¹.
+\item	Wynik testu: Wybrano z listy opcjê "Ko³o". Kolory u³o¿y³y siê w koncentryczne krêgi woko³o œrodka planszy.
+\end{enumerate}
+\item	Test: zamiana pojedynczych komórek
+\begin{enumerate}
+\item	Dodatkowe kroki: zaznaczenie „zmiana komórki”, wybór docelowego koloru z listy, klikniêcie komórki, któr¹ chcemy zamieniæ.
+\item	Oczekiwany efekt: komórka zmieni macierz (kolor) na wybran¹.
+\item	Wynik testu: Wybrano z listy kolorów kolor fioletowy nastêpnie klikniêto jedn¹ z komórek na planszy. Komórka zmieni³a kolor na wybrany.
+\end{enumerate}
+\item	Test: podmiana ca³ej klasy macierzy na inn¹
+\begin{enumerate}
+\item	Dodatkowe kroki: zaznaczenie „zast¹pienie koloru”, wybór docelowego koloru z listy, klikniêcie komórki.
+\item	Oczekiwany efekt: wszystkie komórki o tym samym kolorze co klikniêta zmieni¹ macierz (kolor) na wybran¹.
+\item	Wynik testu: Wybrano z listy kolorów kolor fioletowy nastêpnie klikniêto niebiesk¹ komórkê na planszy. Wszystkie niebieskie komórki  zmieni³y kolor na wybrany.
+\end{enumerate}
+\item	Test: usuwanie macierzy z listy rozpatrywanych.
+\begin{enumerate}
+\item	Dodatkowe kroki: klikniêcie prawym przyciskiem myszy na definicji macierzy i wybranie opcji „Usuñ”.
+\item	Oczekiwany efekt: Definicja macierzy zostanie usuniêta z listy oraz wizualizacji.
+\item	Wynik testu: Przy jednej macierzy na listy usuniêcie by³o niemo¿liwe. Po dodaniu kolejnej macierzy wylosowano uk³ad. Po usuniêciu pierwszej macierzy z listy pozosta³a jedna a uk³ad zmieni³ siê na jednokolorow¹ planszê.
+\end{enumerate}
+\item	Zapisanie / wczytanie uk³adu macierzy
+\begin{enumerate}
+\item	Test: Wczytanie uk³adu pocz¹tkowego
+\begin{enumerate}
+\item	Dodatkowe kroki: Klikniêcie „Wczytaj” oraz wybór pliku *.cic w eksploratorze plików
+\item	Oczekiwany efekt: Zapisany w pliku uk³ad zostanie wczytany do aplikacji i przedstawiony w wizualizacji.
+\item	Wynik testu: Wczytano zapisany uk³ad macierzy, który zgodnie z oczekiwaniami pojawi³ siê w wizualizacji.
+\end{enumerate}
+\item	Test: Zapisanie uk³adu macierzy
+\begin{enumerate}
+\item	Oczekiwany efekt: Jeœli wprowadzono uk³ad macierzy to przycisk „Zapisz” jest aktywny i po klikniêciu otwiera okno zapisywania pliku.
+\item	Wynik testu: Zapisano uk³ad macierzy a nastêpnie zmieniono go i wczytano zapisany, który zosta³ wyœwietlony.
+\end{enumerate}
+\end{enumerate}
+\item	Test: zatwierdzanie uk³adu macierzy
+\begin{enumerate}
+\item	Oczekiwany efekt: Jeœli wprowadzono uk³ad macierzy to przycisk „Akceptuj” jest aktywny i po klikniêciu przekierowuje z powrotem do okna g³ównego.
+\item	Wynik testu: Wybrano drastycznie ró¿ne wartoœci dla macierzy obecnych w uk³adzie. Kroki dzia³ania symulacji by³y znacz¹co ró¿ne.
+\end{enumerate}
+\item	Test: porzucanie uk³adu macierzy
+\begin{enumerate}
+\item	Dodatkowe kroki: odznaczenie opcji „Aktywne” w sekcji „Macierz wyp³at” porzuca uk³ad macierzy.
+\item	Oczekiwany efekt: Symulacja bêdzie bra³a pod uwagê jedynie zdefiniowan¹ w oknie g³ównym macierz.
+\item	Wynik testu: Odznaczono opcje "Aktywne" co spowodowa³o, ¿e symulacja dzia³a zgodnie z oryginaln¹ macierz¹ wyp³at.
+\end{enumerate}
+\end{enumerate}
+\item	Symulacja
+\begin{enumerate}
+\item	Po wprowadzeniu poprawnych parametrów symulacji przycisk „Uruchom” staje siê aktywny. Po jego klikniêciu otwiera siê okno symulacji.
+\item	Start symulacji
+\begin{enumerate}
+\item	Dodatkowe kroki: wciœniêcie przycisku „Start”.
+\item	Oczekiwany efekt: cykliczne zmiany wykresów i wizualizacji zgodne z obliczeniem przestrzennego dylematu wiêŸnia. Zmiana przycisku „Start” na „Stop”
+\item	Wynik testu: Wciœniêto przycisk "Start", który nastêpnie zmieni³ tekst. Wizualizacja automatu cyklicznie zmienia³a siê.
+\end{enumerate}
+\item	Stop symulacji
+\begin{enumerate}
+\item	Dodatkowe kroki: wciœniêcie przycisku „Stop”.
+\item	Oczekiwany efekt: Przejœcie w tryb oczekiwania na zakoñczenie obliczeñ. Zmiana przycisku „Stop” na „Oczekiwanie” i jego dezaktywacja. Po zakoñczeniu obliczenia przycisk automatycznie wróci do stanu „Start” i uaktywnia siê.
+\item	Wynik testu: Wciœniêto przycisk "Stop". Jego opis zmieni³ siê zgodnie z oczekiwaniami, po nastêpuj¹cej jednej aktualizacji wizualizacji automatu, przycisk wróci³ do stanu "Start".
+\end{enumerate}
+\item	Zmiana prêdkoœci symulacji
+\begin{enumerate}
+\item	Dodatkowe kroki: przesuniêcie suwaka prêdkoœci
+\item	Oczekiwany efekt: Zmiana opóŸnienia wystêpuj¹cego pomiêdzy kolejnymi iteracjami obliczenia
+\item	Wynik testu: Dla niewielkiego uk³adu podczas obliczeñ zmieniono prêdkoœæ z 1 na 5 co zauwa¿alnie wp³ynê³o na prêdkoœæ zmian wizualizacji.
+\end{enumerate}
+\item	Podgl¹d poprzednich pokoleñ
+\begin{enumerate}
+\item	Dodatkowe kroki: przesuniêcie suwaka iteracji
+\item	Oczekiwany efekt: podgl¹d przesz³ych stanów automatu.
+\item	Wynik testu: Podczas dzia³ania symulacji przesuniêto suwak na wartoœæ 0, co spowodowa³o wyœwietlenie uk³adu pocz¹tkowego, a nastêpnie przesuniêto go po kolei a¿ do aktualnej w danym momencie maksymalnej wartoœci, co pozwoli³o na obejrzenie wszystkich kroków automatu. Po ustawieniu suwaka na najwy¿szej wartoœci, wizualizacja ponownie zaczê³a siê aktualizowaæ automatycznie.
+\end{enumerate}
+\item	Eksport uk³adu
+\begin{enumerate}
+\item	Dodatkowe kroki: klikniêcie prawym przyciskiem na wizualizacjê i wybór „zapisz jako plik cic”.
+\item	Oczekiwany efekt: otwarcie okna zapisywania do pliku uk³adu wyœwietlonego w wizualizacji.
+\item	Wynik testu: Zapis uk³adu uda³ siê bez b³êdu, uda³o siê go równie¿ wczytaæ przy wyborze uk³adu pocz¹tkowego.
+\end{enumerate}
+\item	Wykrywanie stabilizacji
+\begin{enumerate}
+\item	Oczekiwany efekt: Jeœli obliczenie natrafi na jeden z przesz³ych kroków wyœwietlony zostaje komunikat o ustabilizowaniu uk³adu z pytaniem o kontynuowanie obliczeñ.
+\item	Wynik testu: Po pojawieniu siê komunikatu wybrano by kontynuowaæ obliczenia. Automat wygenerowa³ kolejny krok, którego wizualizacja by³a taka sama jak w kroku poprzednim. Tym razem wybrano opcjê zakoñczenia obliczeñ, co sprawi³o, ¿e przycisk "Stop" przeszed³ na "Start".
+\end{enumerate}
+\item	Zapisywanie plików graficznych
+\begin{enumerate}
+\item	Dodatkowe kroki:
+\begin{enumerate}
+\item	Klikniêcie prawym przyciskiem na wizualizacjê i wybór „zapisz jako obrazek”
+\item	Klikniêcie prawym przyciskiem na dowolny wykres i wybór „zapisz do pliku PNG”
+\end{enumerate}
+\item	Oczekiwany efekt: Zapisanie na dysku pliku graficznego z wybran¹ grafik¹.
+\item	Wynik testu: Pojawi³o siê okno pozwalaj¹ce na wybór pliku do którego zapisaæ wybrany obraz. Zapisano jeden z wykresów oraz wizualizacje automatu.
+\end{enumerate}
+\item	Przybli¿anie / Oddalanie wizualizacji / wykresów
+\begin{enumerate}
+\item	Dodatkowe kroki: u¿ycie kó³ka myszy nad wizualizacj¹ lub wykresem
+\item	Oczekiwany efekt: przybli¿enie lub oddalenie odpowiednio wizualizacji lub wykresu.
+\item	Wynik testu: Z sukcesem przybli¿ono wizualizacje a nastêpnie oddalono do standardowego rozmiaru.
+\end{enumerate}
+\end{enumerate}
+\item	Podœwietlanie strategii
+\begin{enumerate}
+\item	W oknie definiowania uk³adu pocz¹tkowego oraz w oknie obliczenia istnieje mo¿liwoœæ podœwietlenia strategii tego samego typu po najechaniu mysz¹ na jedn¹ z nich b¹dŸ na kolor na legendzie.
+\item	Oczekiwany efekt: wszystkie strategii tego samego typu podœwietlaj¹ siê na czarno.
+\item	Wynik testu: Najechano na jedn¹ ze strategii na legendzie, co spowodowa³o podœwietlenie siê komórek o jej kolorze na czarno i pojawienie siê opisu "Zdradzaj gdy 2 s¹siadów zdradza". Podœwietlenie komórki na uk³adzie spowodowa³o ten sam efekt.
+\end{enumerate}
+\item	Zmiana zestawu kolorów
+\begin{enumerate}
+\item	W oknie g³ównym po naciœniêciu „Opcje” i wyborze „zmieñ kolory” otwiera siê okno wyboru palety kolorów.
+\begin{enumerate}
+\item	Test: zmiana koloru. Wybór palety z listy i klikniêcie „zatwierdŸ”
+\begin{enumerate}
+\item	Oczekiwany efekt: Zmiana palety kolorów w oknach definiowania uk³adu pocz¹tkowego i oknie wizualizacji
+\item	Wynik testu: Wybrano z listy mo¿liwych zestawów kolorów inny zestaw ni¿ standardowy i zaakceptowano. W oknie symulacji i w oknie wyboru uk³adu pocz¹tkowego kolory odpowiada³y nowemu zestawowi.
+\end{enumerate}
+\item	Test: porzucenie zmiany koloru. Klikniêcie przycisku „anuluj”
+\begin{enumerate}
+\item	Oczekiwany efekt: ¿adne zmiany kolorystyczne nie zostaj¹ wprowadzone.
+\item	Wynik testu: Wybrano z listy mo¿liwych zestawów kolorów inny zestaw ni¿ standardowy i odrzucono. W oknie symulacji i w oknie wyboru uk³adu pocz¹tkowego kolory odpowiada³y zestawowi standardowemu.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\item	Zmiana czcionki legendy
+\begin{enumerate}
+\item	W oknie g³ównym po naciœniêciu „Opcje” i wyborze „zmieñ czcionkê” otwiera siê okno wyboru czcionki w legendzie.
+
+\item	Test: zmiana czcionki. Wybór czcionki z listy i klikniêcie „zatwierdŸ”
+
+\begin{enumerate}
+\item	Oczekiwany efekt: Zmiana czcionki w oknach definiowania uk³adu pocz¹tkowego i oknie wizualizacji
+\item	Wynik testu: Wybrano z listy mo¿liwych czcionek, inn¹ czcionkê ni¿ standardow¹ i zaakceptowano. W oknie symulacji i w oknie wyboru uk³adu pocz¹tkowego tekst widoczny na legendzie napisany by³ wybran¹ czcionk¹.
+\end{enumerate}
+\item	Test: porzucenie zmiany koloru. Klikniêcie przycisku „anuluj”
+\begin{enumerate}
+\item	Oczekiwany efekt: ¿adne zmiany nie zostaj¹ wprowadzone.
+\item	Wynik testu: Wybrano z listy mo¿liwych czcionek, inn¹ czcionkê ni¿ standardow¹ i odrzucono. W oknie symulacji i w oknie wyboru uk³adu pocz¹tkowego tekst widoczny na legendzie napisany by³ standardow¹ czcionk¹.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\vfill
+\section{Diagramy stanów}
+\subsection{Stany wprowadzania macierzy}
+\begin{figure}[H]
+\centering
+\includegraphics{DS1}
+\end{figure}
+\subsection{Stany wprowadzania uk³adu pocz¹tkowego}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.92]{DS2}
+\end{figure}
+
+\subsection{Stany symulacji}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.92]{DS3}
+\end{figure}
 \section{Harmonogram Prac}
 Zamieszczony w tej sekcji harmonogram odzwierciedla tok prac nad aplikacj¹.
 \begin{center}
@@ -67,38 +337,20 @@ Zamieszczony w tej sekcji harmonogram odzwierciedla tok prac nad aplikacj¹.
 \subsection{Okno g³ówne}
 \begin{figure}[H]
 \centering
-\includegraphics{UI1}
+\includegraphics[scale=.75]{UI1}
 \end{figure}
 \subsection{Okno wyboru uk³adu pocz¹tkowego}
 \begin{figure}[H]
 \centering
-\includegraphics{UI2}
+\includegraphics[width=1.2\linewidth]{UI2}
 \end{figure}
 \subsection{Okno symulacji}
 \begin{figure}[H]
 \centering
-\includegraphics{UI3}
+\includegraphics[width=.9\linewidth]{UI3}
 \end{figure}
-\vfill
 \subsection{Okno wyboru macierzy niejednorodnych}
 \begin{figure}[H]
 \centering
-\includegraphics{UI4}
-\end{figure}
-\section{Diagramy stanów}
-\subsection{Stany wprowadzania macierzy}
-\begin{figure}[H]
-\centering
-\includegraphics{DS1}
-\end{figure}
-\subsection{Stany wprowadzania uk³adu pocz¹tkowego}
-\begin{figure}[H]
-\centering
-\includegraphics{DS2}
-\end{figure}
-\vfill
-\subsection{Stany symulacji}
-\begin{figure}[H]
-\centering
-\includegraphics{DS3}
+\includegraphics[width=.94\linewidth]{UI4}
 \end{figure}

@@ -6,11 +6,10 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Win32;
-using SpacialPrisonerDilemma.Model;
-using System.Windows.Controls.Primitives;
 
 namespace SpacialPrisonerDilemma.View
 {
@@ -250,7 +249,7 @@ namespace SpacialPrisonerDilemma.View
             {
                 var fs = new FileStream(ofd.FileName, FileMode.Create);
                 bf.Serialize(fs,Condition);
-               
+                fs.Close();
             }
         }
 

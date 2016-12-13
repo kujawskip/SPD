@@ -73,7 +73,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\SPD2.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Tools\PerformanceLog.cs" />
     <Compile Include="View\ColorPicker.xaml.cs">
@@ -132,11 +131,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Cell.cs" />
-    <Compile Include="Model\IntegerStrategy.cs" />
-    <Compile Include="Model\IStrategy.cs" />
-    <Compile Include="Model\Skirmish.cs" />
-    <Compile Include="Model\SPD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

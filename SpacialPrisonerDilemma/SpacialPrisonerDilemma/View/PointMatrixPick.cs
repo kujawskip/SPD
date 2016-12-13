@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using SPD.Engine;
@@ -15,7 +13,7 @@ namespace SpacialPrisonerDilemma.View
         public List<PointMatrix> Matrices;
         public int[,] Indices;
         public bool ModifiedPointCounting;
-        public System.Func<Coord, PointMatrix> Function
+        public Func<Coord, PointMatrix> Function
         {
             get { return x => (Matrices[Indices[x.X, x.Y]]); }
         }

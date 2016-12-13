@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -388,6 +387,8 @@ namespace SpacialPrisonerDilemma.View
 
         private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            _ic = null;
+            NotifyPropertyChanged("NoError");
             UpdateColors();
         }
     }
