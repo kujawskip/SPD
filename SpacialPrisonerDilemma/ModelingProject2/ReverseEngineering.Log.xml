@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2016-11-22T15:36:06" Importance="High" Text="Reverse Engineering Started." />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '1a759c88-7a12-4c0d-9403-4dcc3e406fd8' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '5e5d5400-5c35-4def-bc97-6a8a0d93efca' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Boolean' -  (PrimitiveType)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD' -  (Package)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine' -  (Package)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Coord' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies' -  (Package)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Medium" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy' -  (Class)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::_isAggressive' -  (Property)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::BetrayalThreshold' -  (Property)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::Clear' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::Decide' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::Decide::opponent' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::EndStep' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::GetCopy' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::IntegerStrategy' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::IntegerStrategy::threshold' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::PostProcess' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::PostProcess::opponent' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::PostProcess::opponentBetrayed' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::StrategyCode' -  (Property)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::ToString' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IntegerStrategy::val' -  (Property)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Medium" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy' -  (Interface)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::Clear' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::Decide' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::Decide::opponent' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::EndStep' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::GetCopy' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::PostProcess' -  (Operation)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::PostProcess::opponent' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::PostProcess::opponentBetrayed' -  (Parameter)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::SPD::Engine::Strategies::IStrategy::StrategyCode' -  (Property)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System' -  (Package)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Collections' -  (Package)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Collections::Concurrent' -  (Package)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Collections::Concurrent::ConcurrentDictionary' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Collections::Concurrent::ConcurrentDictionary&lt;Int64‎, Int32‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject2::System::Int64' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'String' -  (PrimitiveType)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject2::SPD::Engine::Strategies::IntegerStrategy to ModelingProject2::SPD::Engine::Strategies::IStrategy (InterfaceRealization)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="Diagnostic" Text="Relationship reverse engineered into the UML model: ModelingProject2::SPD::Engine::Coord to ModelingProject2::System::IEquatable&lt;Coord‎&gt; (InterfaceRealization)" />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="High" Text="(2) type(s) fully reverse engineered." />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="High" Text="(4) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2016-11-22T15:36:07" Importance="High" Text="The reverse engineering operation completed with (0) error(s), and (0) warning(s)." />
+</Log>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2016-11-30T13:32:45" Importance="High" Text="Reverse Engineering Started." />
+  <Error Timestamp="2016-11-30T13:32:52" Importance="High" Text="Object reference not set to an instance of an object. Reverse engineer process was stopped." />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '0bfb9daf-3440-4b1e-accb-c27e410480f7' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '142f92af-e5dc-4331-b8fc-7c11e194868f' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '83eec90b-d61a-4cd3-ae55-de0ed615e6a7' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: '8b40ede8-5ef7-49e4-be5f-ff66731e2135' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'a6311f7f-c2a5-4ebe-be5a-cab43efe11cc' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Boolean' -  (PrimitiveType)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'f5de972c-d5a1-4191-82e2-ba478b7a91a4' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ff647508-e37f-4594-bdc5-9c272deca50b' -  (ClassifierTemplateParameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'Integer' -  (PrimitiveType)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::Coord' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::Neighbourhoods' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::Neighbourhoods::INeighbourhood' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::OptimizationKind' -  (Enumeration)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::PointMatrix' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::CheckHistory' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::CheckHistory::strategyConfig' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::CompareCodes' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::CompareCodes::config1' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::CompareCodes::config2' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::ExtractToArray' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::ExtractToArray::dict' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::ExtractToArray‎&lt;T‎&gt;' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::GetHashOf' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::GetHashOf::strategyConfig' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::Iterate' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::IterateAsync' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::Neighbours' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::Neighbours::x' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::Neighbours::y' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::ProcessHistory' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::ProcessHistory::strategyConfig' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD' -  (Operation)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::initialConfiguration' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::m' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::mFunc' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::neighbourhood' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::optimizationKind' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::possibleStrategies' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::stepNum' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPD::SPD::threadNum' -  (Parameter)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::SPDResult' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::Strategies' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::SPD::Engine::Strategies::IStrategy' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections::Concurrent' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections::Concurrent::ConcurrentDictionary' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections::Concurrent::ConcurrentDictionary&lt;Coord‎, IStrategy‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections::Generic' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections::Generic::IDictionary' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Collections::Generic::IDictionary&lt;Int32‎, IStrategy‎&gt;' -  (Interface)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Func' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Func&lt;Coord‎, PointMatrix‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Threading' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Threading::Tasks' -  (Package)" />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Threading::Tasks::Task' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="Diagnostic" Text="Element reverse engineered into the UML model: 'ModelingProject3::System::Threading::Tasks::Task&lt;SPDResult‎&gt;' -  (Class)   (partially reverse engineered - definition not updated) " />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="High" Text="(0) type(s) fully reverse engineered." />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="High" Text="(15) type(s) partially reverse engineered.  These types were not included in the original selection so their full definitions are not reverse engineered.  Instead, this shallow operation has simply ensured these types exist in the UML model because they are needed in order to fully describe other elements." />
+  <Message Timestamp="2016-11-30T13:32:52" Importance="High" Text="The reverse engineering operation completed with (1) error(s), and (0) warning(s)." />
+</Log>

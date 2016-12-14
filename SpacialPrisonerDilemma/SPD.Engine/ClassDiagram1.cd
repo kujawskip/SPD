@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SPD.Engine.Coord" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAYiA=</HashCode>
+      <FileName>Coord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.CoordPair" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAIAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Coord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.PointMatrix" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAQAAAAAAAAEAACAAAAAAAAIAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>PointMatrix.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SPD.Engine.SPD" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgABAABABBARAUhBCAhFEIgAggAAgAEAEQAAgAAAE=</HashCode>
+      <FileName>SPD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SPD.Engine.SituationMatrix" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIIAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAA=</HashCode>
+      <FileName>SPD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SPD.Engine.SPDResult" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>SPDResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.Mixed" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAgAAAAAAAAAAEAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\Mixed.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.Moore" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAEAAgAAgAAABAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\Moore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.MooreTorus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAEAAgAAgAAABAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\Moore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.Taxi" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAAAAgAAgAAABAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\Taxi.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.TaxiTorus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAAAAAAAgAAABAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\Taxi.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.VonNeumann" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAEAAAAAgAAABAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\VonNeumann.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Neighbourhoods.VonNeumannTorus" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="3.25" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAACAAAAEAAAAAgAAABAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\VonNeumann.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SPD.Engine.Strategies.IntegerStrategy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAISAAAAAAIAAAAAAQAAAAAAAAAAAAAAAQBBAAAA=</HashCode>
+      <FileName>Strategies\IntegerStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="SPD.Engine.Neighbourhoods.INeighbourhood" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Neighbourhoods\INeighbourhood.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SPD.Engine.Strategies.IStrategy" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAASAAAAAAIAAAAAAAAAAAAAAAAAAAAAAABBAAAA=</HashCode>
+      <FileName>Strategies\IStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SPD.Engine.OptimizationKind" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>SPD.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SPD.Engine.SituationKind" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAgAAAAAAAIACAAAAAAAAAAAAA=</HashCode>
+      <FileName>SPD.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

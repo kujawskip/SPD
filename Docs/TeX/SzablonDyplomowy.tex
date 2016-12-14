@@ -7,7 +7,7 @@
 \usepackage{amsmath}
 \usepackage{enumerate}
 \usepackage{enumitem}
-\setlistdepth{9}
+
 \usepackage{float}
 \usepackage{verbatim}
 \usepackage[MeX]{polski}
@@ -38,7 +38,7 @@ bindingoffset=10mm, top=25mm, bottom=25mm}
 \newcommand*{\norm}[1]{\left\Vert{#1}\right\Vert}
 \newcommand*{\abs}[1]{\left\vert{#1}\right\vert}
 \newcommand*{\om}{\omega}
-
+\setlistdepth{9}
 \setlist[itemize,1]{label=$\bullet$}
 \setlist[itemize,2]{label=$\circ$}
 \setlist[itemize,3]{label=--}
@@ -55,6 +55,7 @@ bindingoffset=10mm, top=25mm, bottom=25mm}
 \title{Symulacje Przestrzennego Dylematu WiêŸnia}
 
 \begin{document}
+
 \pagenumbering{arabic}
 % Za¿ó³æ gêœl¹ jaŸñ.
 \begin{titlepage}
@@ -1253,6 +1254,11 @@ Obserwacje powstaj¹cych struktur w przestrzeni sk³aniaj¹ nas do wniosku, ¿e twor
 \pagestyle{empty}
 \noindent Warszawa, dnia ...............
 \vspace{5cm}
+
+\begin{appendices}
+\input{AppendixAB}
+\input{AppendixDT}
+\end{appendices}
 \begin{center}
 \LARGE{Oœwiadczenie}
 \end{center}
@@ -1261,8 +1267,4 @@ Oœwiadczamy, ¿e pracê in¿yniersk¹ pod tytu³em: ,,Symulacje Przestrzennego Dylema
 \begin{flushright}
 ...........................................
 \end{flushright}
-\begin{appendices}
-\input{AppendixAB}
-\input{AppendixDT}
-\end{appendices}
 \end{document}
